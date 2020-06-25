@@ -12,7 +12,7 @@
                 <div class="col-lg-3">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="{{ asset('frontend')}}/img/bg/banner8.jpg" alt=""></a>
+                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner8.jpg" alt=""></a>
                         </div>
                         <div class="banner_text">
                             <h3>Skin care</h3>
@@ -23,7 +23,7 @@
                 <div class="col-lg-3">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="{{ asset('frontend')}}/img/bg/banner9.jpg" alt=""></a>
+                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner9.jpg" alt=""></a>
                         </div>
                         <div class="banner_text">
                             <h3>Skin care</h3>
@@ -34,7 +34,7 @@
                 <div class="col-lg-3">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="{{ asset('frontend')}}/img/bg/banner10.jpg" alt=""></a>
+                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner10.jpg" alt=""></a>
                         </div>
                         <div class="banner_text">
                             <h3>Skin care</h3>
@@ -45,7 +45,7 @@
                 <div class="col-lg-3">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="{{ asset('frontend')}}/img/bg/banner11.jpg" alt=""></a>
+                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner11.jpg" alt=""></a>
                         </div>
                         <div class="banner_text">
                             <h3>Skin care</h3>
@@ -56,7 +56,7 @@
                 <div class="col-lg-3">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="{{ asset('frontend')}}/img/bg/banner8.jpg" alt=""></a>
+                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner8.jpg" alt=""></a>
                         </div>
                         <div class="banner_text">
                             <h3>Skin care</h3>

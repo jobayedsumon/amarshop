@@ -10,7 +10,7 @@
                             <p>
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboruLorem ipsum dolor sit amet datat non proident
                             </p>
-                            <a href="shop.html">+ Shop Now </a>
+                            <a href="{{ route('shop') }}">+ Shop Now </a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                             <p>
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboruLorem ipsum dolor sit amet datat non proident
                             </p>
-                            <a href="shop.html">+ Shop Now </a>
+                            <a href="{{ route('shop') }}">+ Shop Now </a>
                         </div>
                     </div>
                 </div>
