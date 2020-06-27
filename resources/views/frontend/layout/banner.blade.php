@@ -9,61 +9,23 @@
         </div>
         <div class="row">
             <div class="banner_carousel banner_column4 owl-carousel">
-                <div class="col-lg-3">
-                    <div class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner8.jpg" alt=""></a>
-                        </div>
-                        <div class="banner_text">
-                            <h3>Skin care</h3>
-                            <p>/ 09 items</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner9.jpg" alt=""></a>
-                        </div>
-                        <div class="banner_text">
-                            <h3>Skin care</h3>
-                            <p>/ 09 items</p>
+
+                @forelse($categories as $category)
+                    <div class="col-lg-3">
+                        <div class="single_banner">
+                            <div class="banner_thumb">
+                                <a href="{{ route('shop') }}"><img src="{{ asset($category->category_image)}}" alt=""></a>
+                            </div>
+                            <div class="banner_text">
+                                <h3>{{ $category->category_name }}e</h3>
+                                <p>/ {{ $category->products->count() }} items</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner10.jpg" alt=""></a>
-                        </div>
-                        <div class="banner_text">
-                            <h3>Skin care</h3>
-                            <p>/ 09 items</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner11.jpg" alt=""></a>
-                        </div>
-                        <div class="banner_text">
-                            <h3>Skin care</h3>
-                            <p>/ 09 items</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single_banner">
-                        <div class="banner_thumb">
-                            <a href="{{ route('shop') }}"><img src="{{ asset('frontend')}}/img/bg/banner8.jpg" alt=""></a>
-                        </div>
-                        <div class="banner_text">
-                            <h3>Skin care</h3>
-                            <p>/ 09 items</p>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                @endforelse
+
+
             </div>
         </div>
     </div>

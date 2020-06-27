@@ -23,8 +23,10 @@ Route::get('/product-details', 'FrontendController@product_details')->name('prod
 Route::get('/wishlist', 'FrontendController@wishlist')->name('wishlist');
 Route::get('/cart', 'FrontendController@cart')->name('cart');
 Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
-Route::get('/my-account', 'FrontendController@my_account')->name('my-account');
-Route::get('/customer-login', 'FrontendController@customer_login')->name('customer-login');
+Route::get('/my-account', 'FrontendController@my_account')->name('my-account')->middleware('auth:customer');
+Route::get('/customer-login', 'CustomerController@customer_login')->name('customer-login');
+Route::post('/customer-login', 'CustomerController@login_customer');
+Route::post('/customer-register', 'CustomerController@register_customer');
 Route::get('/contact', 'FrontendController@contact');
 Route::get('/about', 'FrontendController@about');
 
@@ -35,17 +37,18 @@ Auth::routes(['register' => false]);
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
+	Route::get('customers', function () {
+        $customers = \App\Customer::all();
+		return view('pages.customers', compact('customers'));
+	})->name('customers');
 
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
+//	Route::get('categories', function () {
+//		return view('pages.categories');
+//	})->name('categories');
 
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
+	Route::get('slider', 'SlideController@index')->name('slider');
+	Route::post('slider', 'SlideController@store')->name('slider');
+	Route::get('slider/{id}/delete', ['as' => 'slider.delete', 'uses' => 'SlideController@destroy']);
 
 	Route::get('map', function () {
 		return view('pages.map');
@@ -65,9 +68,14 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::resource('users', 'UserController', ['except' => ['show']]);
+	Route::resource('products', 'ProductController', ['except' => ['show']]);
+	Route::resource('categories', 'CategoryController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
+
+Route::get('logout_user', 'Auth\LoginController@logout_user')->name('logout_user');
+Route::get('logout_customer', 'CustomerController@logout_customer')->name('logout_customer');
 

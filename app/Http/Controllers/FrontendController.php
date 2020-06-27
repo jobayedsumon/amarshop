@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -9,7 +11,9 @@ class FrontendController extends Controller
     //
     public function index()
     {
-        return view('frontend.index');
+        $sliders = Slider::all();
+        $categories = Category::all();
+        return view('frontend.index', compact('sliders', 'categories'));
     }
 
     public function shop()
@@ -40,11 +44,6 @@ class FrontendController extends Controller
     public function my_account()
     {
         return view('frontend.my-account');
-    }
-
-    public function customer_login()
-    {
-        return view('frontend.customer-login');
     }
 
     public function contact()

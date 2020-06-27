@@ -59,17 +59,39 @@
                                         <li class="mega_items"><a href="{{ route('shop') }}">shop<i class="fa fa-angle-down"></i></a>
                                             <div class="mega_menu">
                                                 <ul class="mega_menu_inner">
-                                                    <li><a href="#"><img src="{{ asset('frontend')}}/img/bg/banner_menu.jpg" alt=""></a></li>
-                                                    <li><a href="#"><img src="{{ asset('frontend')}}/img/bg/banner_menu.jpg" alt=""></a></li>
-                                                    <li><a href="#"><img src="{{ asset('frontend')}}/img/bg/banner_menu.jpg" alt=""></a></li>
-                                                    <li><a href="#"><img src="{{ asset('frontend')}}/img/bg/banner_menu.jpg" alt=""></a></li>
+
+                                                    @forelse($categories as $category)
+                                                        <li><a href="{{ route('shop') }}"><img src="{{ asset($category->category_image)}}" alt=""></a></li>
+                                                    @empty
+                                                    @endforelse
+
                                                 </ul>
                                             </div>
                                         </li>
 
                                         <li><a href="/contact"> Contact Us</a></li>
                                         <li><a href="/about"> About us</a></li>
-                                        <li><a href="{{ route('customer-login') }}">Login <i class=""></i></a></li>
+
+                                        @auth('customer')
+
+                                            <li class="dropdown">
+                                                <a class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-user"></i>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                                    <a class="dropdown-item" href="{{ route('my-account') }}">My Account <i class=""></i></a>
+                                                    <hr>
+                                                    <a class="dropdown-item" href="{{ route('logout_customer') }}">Logout <i class=""></i></a>
+
+                                                </div>
+                                            </li>
+
+
+                                        @elseguest
+                                            <li><a href="{{ route('customer-login') }}">Login <i class=""></i></a></li>
+                                        @endauth
+
                                     </ul>
                                 </nav>
                             </div>
@@ -141,9 +163,12 @@
                                         </div>
                                     </div>
                                     <!--mini cart end-->
+
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
