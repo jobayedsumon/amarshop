@@ -17,15 +17,16 @@ class CreateProductsTable extends Migration
 
             $table->id();
 
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('sub_category_id')->constrained();
 
-            $table->string('product_title');
+            $table->string('name');
             $table->string('short_description')->nullable();
-            $table->text('product_description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('price');
-            $table->integer('discount_price')->nullable();
-            $table->string('product_image');
+            $table->integer('discount');
+            $table->string('image_primary');
+            $table->string('image_secondary');
 
             $table->timestamps();
         });
