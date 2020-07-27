@@ -1,4 +1,4 @@
-<div class="product_area  mb-100">
+<div class="product_area  mb-100 mt-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -8,154 +8,47 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="product_carousel product_column4 owl-carousel">
-                <div class="col-lg-3">
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product14.jpg" alt=""></a>
-                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product15.jpg" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-15%</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                    </ul>
-                                </div>
+
+        <div id="owl-demo-2" class="owl-carousel owl-theme product_column4 product_carousel">
+
+
+            @forelse($newProducts as $newProduct)
+
+                <article class="single_product mr-3">
+                    <figure class="h-full flex flex-column justify-between">
+                        <div class="product_thumb">
+                            <a class="primary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
+                                <img src="{{ asset($newProduct->image_primary)}}" alt=""></a>
+                            <a class="secondary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
+                                <img src="{{ asset($newProduct->image_secondary)}}" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">-{{ $newProduct->discount }}%</span>
                             </div>
-                            <figcaption class="product_content">
-                                <h4 class="product_name"><a href="{{ route('product-details') }}">Fila Locker Room Varsity</a></h4>
-                                <div class="price_box">
-                                    <span class="old_price">$183.00</span>
-                                    <span class="current_price">$78.00</span>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html">+ Add to cart</a>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product10.jpg" alt=""></a>
-                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product11.jpg" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-15%</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                    </ul>
-                                </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="wishlist"><a href="javascript:void(0)" onclick="return wishlist({{ $newProduct->id }})" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                    <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
+                                </ul>
                             </div>
-                            <figcaption class="product_content">
-                                <h4 class="product_name"><a href="{{ route('product-details') }}">Trans-Weight Hooded Wind</a></h4>
-                                <div class="price_box">
-                                    <span class="old_price">$178.00</span>
-                                    <span class="current_price">$65.00</span>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html">+ Add to cart</a>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product12.jpg" alt=""></a>
-                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product13.jpg" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-15%</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <figcaption class="product_content">
+                            <h4 class="product_name"><a href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
+                                    {{ $newProduct->name }}</a></h4>
+                            <div class="price_box">
+                                <span class="old_price">BDT {{ $newProduct->price }}</span>
+                                <span class="current_price">BDT {{ $newProduct->price * $newProduct->discount_price / 100 }}</span>
                             </div>
-                            <figcaption class="product_content">
-                                <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Juicy Quilted</a></h4>
-                                <div class="price_box">
-                                    <span class="old_price">$180.00</span>
-                                    <span class="current_price">$58.00</span>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html">+ Add to cart</a>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product17.jpg" alt=""></a>
-                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product16.jpg" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-15%</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                    </ul>
-                                </div>
+                            <div class="add_to_cart">
+                                <a href="{{ route('cart') }}">+ Add to cart</a>
                             </div>
-                            <figcaption class="product_content">
-                                <h4 class="product_name"><a href="{{ route('product-details') }}">Water and Wind Resistant</a></h4>
-                                <div class="price_box">
-                                    <span class="old_price">$176.00</span>
-                                    <span class="current_price">$86.00</span>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html">+ Add to cart</a>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product6.jpg" alt=""></a>
-                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend')}}/img/product/product7.jpg" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-15%</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <figcaption class="product_content">
-                                <h4 class="product_name"><a href="{{ route('product-details') }}">Madden by Steve Madden</a></h4>
-                                <div class="price_box">
-                                    <span class="old_price">$156.00</span>
-                                    <span class="current_price">$82.00</span>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html">+ Add to cart</a>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div>
-            </div>
+                        </figcaption>
+                    </figure>
+                </article>
+
+            @empty
+            @endforelse
         </div>
+
     </div>
 </div>

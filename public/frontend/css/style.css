@@ -5,14 +5,14 @@
     01. header css here
     02. slider area css here
     03. product section css here
-    04. banner section css here 
+    04. banner section css here
     05. blog area css here
     06. newsletter area css here
     07. footer area css here
     08. shop page css here
-    09. error page css heer 
+    09. error page css heer
     10. about page css here
-    11. blog page css here 
+    11. blog page css here
     12. blog details css here
     13. cart page css here
     14. checkout page css here
@@ -146,7 +146,7 @@ figure {
   margin: 0;
 }
 
-/*-- 
+/*--
     - Common Classes
 -----------------------------------------*/
 .fix {
@@ -189,7 +189,7 @@ figure {
   margin: 0;
 }
 
-/*-- 
+/*--
     - Background color
 -----------------------------------------*/
 .bg-white {
@@ -235,10 +235,10 @@ figure {
   height: 100%;
 }
 
-/*-- 
+/*--
     - color
 -----------------------------------------*/
-/*-- 
+/*--
     - Input Placeholder
 -----------------------------------------*/
 input:-moz-placeholder, textarea:-moz-placeholder {
@@ -261,11 +261,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-/*-- 
-    Scroll Up 
+/*--
+    Scroll Up
 -----------------------------------------*/
 #scrollUp {
-  background: #d52121 none repeat scroll 0 0;
+  background: #F4587A none repeat scroll 0 0;
   bottom: 85px;
   color: #ffffff;
   cursor: pointer;
@@ -290,7 +290,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   animation-iteration-count: infinite;
 }
 
-/*-- 
+/*--
     - Main Wrapper
 -----------------------------------------*/
 .main-wrapper.header-transparent {
@@ -771,7 +771,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: uppercase;
   line-height: 16px;
   font-size: 16px;
-  display: inline-block;
+  display: flex;
+    align-items: center;
   font-weight: 400;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -922,7 +923,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .header_account_list {
-  margin-right: 40px;
+  margin-right: 50px;
   position: relative;
 }
 .header_account_list:last-child {
@@ -993,25 +994,25 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .header_account_list > a span.cart_itemtotal {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   margin-left: 5px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_account_list > a span.cart_itemtotal {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 @media only screen and (max-width: 767px) {
   .header_account_list > a span.cart_itemtotal {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 .header_account_list span.item_count {
   width: 20px;
   height: 20px;
   line-height: 20px;
-  background: #d52121;
+  background: #F4587A;
   color: #fff;
   border-radius: 100%;
   text-align: center;
@@ -1115,7 +1116,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .dropdown_search form input {
   width: 100%;
   border: 0;
-  background: inherit;
+  /*background: inherit;*/
   height: 42px;
   color: #333;
   padding: 0 50px 0 10px;
@@ -2587,6 +2588,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .single_product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   border: 1px solid #e5e5e5;
   padding: 10px;
   background: #fff;
@@ -2654,33 +2658,33 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-bottom: 0;
 }
 .action_links ul li a {
-  font-size: 24px;
+  font-size: 18px;
   display: inline-block;
-  width: 52px;
-  height: 52px;
-  line-height: 58px;
+  width: 42px;
+  height: 42px;
+  line-height: 45px;
   border-radius: 50%;
   text-align: center;
   background: #f8f8f8;
 }
 .action_links ul li a:hover {
   color: #fff;
-  background: #d52121;
+  background: #F4587A;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .action_links ul li a {
-    font-size: 19px;
-    width: 45px;
-    height: 45px;
-    line-height: 49px;
+    font-size: 18px;
+      width: 42px;
+      height: 42px;
+      line-height: 45px;
   }
 }
 @media only screen and (max-width: 767px) {
   .action_links ul li a {
     font-size: 18px;
-    width: 44px;
-    height: 44px;
-    line-height: 48px;
+      width: 42px;
+      height: 42px;
+      line-height: 45px;
   }
 }
 
@@ -2688,13 +2692,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: absolute;
 }
 .label_product span.label_sale {
-  top: 10px;
-  left: 10px;
+  bottom: 10px;
+    right: 10px;
   text-transform: uppercase;
-  color: #ffffff;
-  background: #d52121;
+  color: #f00;
+  /*background: #F4587A;*/
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   height: 22px;
   line-height: 22px;
   width: 50px;
@@ -2891,8 +2895,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: relative;
 }
 
+
+.product_items {
+    height: 100%;
+}
+
 .product_items .single_product {
-  margin-bottom: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .product_items .single_product:last-child {
   margin-bottom: 0;
@@ -4526,7 +4538,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .footer_menu ul li {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .footer_menu ul li:last-child {
   margin-bottom: 0;
@@ -4602,7 +4614,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .copyright_area p {
   text-transform: capitalize;
   line-height: 24px;
-  font-size: 15px;
+  font-size: 11px;
 }
 @media only screen and (max-width: 767px) {
   .copyright_area p {
@@ -4818,7 +4830,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 15px;
   height: 15px;
   top: -7px;
-  cursor: pointer;
+  cursor: inherit;
   border-radius: 50%;
   border: 2px solid #d52121;
 }
@@ -4836,11 +4848,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   float: right;
   text-align: right;
   line-height: 31px;
-  width: 60px;
+  /*width: 60px;*/
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .widget_list.widget_filter form input {
-    width: 65px;
+    /*width: 65px;*/
   }
 }
 .widget_list.widget_filter form button {
@@ -4849,7 +4861,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 0 20px;
   text-transform: capitalize;
   color: #ffffff;
-  background: #333;
+  background: #F4587A;
   border: 0;
   border-radius: 30px;
   float: left;
@@ -4857,7 +4869,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   transition: 0.3s;
 }
 .widget_list.widget_filter form button:hover {
-  background: #d52121;
+  background: #DD316D;
 }
 
 .tag_cloud a {
@@ -5013,11 +5025,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 3px;
 }
 .pagination ul li a:hover {
-  background: #d52121;
+  background: #EC1C50;
   color: #ffffff;
 }
 .pagination ul li.current {
-  background: #d52121;
+  background: #EC1C50;
   color: #ffffff;
 }
 .pagination ul li.next {
@@ -5505,7 +5517,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .shop_wrapper .single_product {
   position: relative;
-  margin-bottom: 24px;
+    height: 100%;
 }
 .shop_wrapper.grid_list .single_product {
   margin-bottom: 30px;
@@ -5678,14 +5690,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_d_right .priduct_social ul li a.twitter {
   background: #1DA1F2;
 }
-.product_d_right .priduct_social ul li a.pinterest {
+.product_d_right .priduct_social ul li a.youtube {
   background: #CB2028;
 }
 .product_d_right .priduct_social ul li a.google-plus {
   background: #fe6d4c;
 }
-.product_d_right .priduct_social ul li a.linkedin {
-  background: #010103;
+.product_d_right .priduct_social ul li a.instagram {
+  background: #fe6d4c;
 }
 .product_d_right .product_timing {
   position: inherit;
@@ -5760,7 +5772,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_variant.quantity input {
   width: 130px;
   border: 1px solid #ebebeb;
-  background: none;
+  /*background: none;*/
   height: 42px;
   padding: 0 12px;
   border-radius: 5px;
@@ -5848,6 +5860,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 30px;
   display: block;
 }
+
+.product_variant .size ul li a {
+    width: auto;
+    height: 30px;
+    display: block;
+}
+
 .product_variant.color ul li.color1 a {
   background: #000000;
 }
@@ -6045,7 +6064,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .product_review_form input {
   border: 1px solid #ddd;
-  background: none;
+  /*background: none;*/
   width: 100%;
   height: 40px;
   padding: 0 20px;
@@ -6246,7 +6265,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .grouped_form table tbody tr td input[type="number"] {
   width: 50px;
-  background: inherit;
+  /*background: inherit;*/
   border: 1px solid #ededed;
   padding: 0 5px;
   height: 40px;
@@ -6562,7 +6581,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 60px;
   height: 40px;
   padding: 0 5px 0 10px;
-  background: none;
+  /*background: none;*/
   border: 1px solid #ededed;
 }
 .table_desc .cart_page table tbody tr td .product_total {
@@ -6583,7 +6602,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .cart_submit button {
-  background: #333;
+  background: #F4587A;
   border: 0;
   color: #ffffff;
   display: inline-block;
@@ -6599,7 +6618,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 3px;
 }
 .cart_submit button:hover {
-  background: #d52121;
+  background: #DD316D;
 }
 
 .coupon_inner {
@@ -6610,7 +6629,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-bottom: 20px;
 }
 .coupon_inner button {
-  background: #333;
+  background: #F4587A;
   border: 0;
   color: #ffffff;
   display: inline-block;
@@ -6626,12 +6645,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 3px;
 }
 .coupon_inner button:hover {
-  background: #d52121;
+  background: #DD316D;
 }
 .coupon_inner input {
   border: 1px solid #ededed;
   height: 42px;
-  background: none;
+  /*background: none;*/
   padding: 0 20px;
   margin-right: 20px;
   font-size: 12px;
@@ -6672,11 +6691,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .coupon_code h3 {
-  color: #ffffff;
+  color: #000;
   line-height: 36px;
   padding: 5px 15px;
-  background: #333;
-  text-transform: uppercase;
+  background: rgb(249, 187, 202);
+
   font-size: 16px;
   font-weight: 500;
 }
@@ -6717,7 +6736,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: right;
 }
 .checkout_btn a {
-  background: #d52121;
+  background: #F4587A;
   color: #ffffff;
   font-size: 15px;
   padding: 3px 14px;
@@ -6728,7 +6747,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-bottom: 0;
 }
 .checkout_btn a:hover {
-  background: #333;
+  background: #DD316D;
   color: #ffffff;
 }
 
@@ -6810,7 +6829,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .form_group input {
   border: 1px solid #ededed;
-  background: none;
+  /*background: none;*/
   height: 45px;
   width: 350px;
   padding: 0 20px;
@@ -6872,7 +6891,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 #checkout_coupon input {
-  background: none;
+  /*background: none;*/
   border: 1px solid #ededed;
   width: 200px;
   height: 45px;
@@ -6915,12 +6934,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 5px 10px;
   text-transform: uppercase;
   color: #ffffff;
-  background: #333;
+  background: #F4587A;
   font-weight: 500;
 }
 .checkout_form input {
   border: 1px solid #ededed;
-  background: none;
+  /*background: none;*/
   height: 40px;
   width: 100%;
   padding: 0 20px;
@@ -6950,7 +6969,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 5px 10px;
   text-transform: capitalize;
   color: #ffffff;
-  background: #333;
+  background: #F4587A;
   font-weight: 500;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -6965,7 +6984,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .checkout_form label.righ_0:hover {
-  background: #333;
+  background: #DD316D;
 }
 
 .checkout_form input[type="checkbox"] {
@@ -6983,7 +7002,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 5px 10px;
   text-transform: capitalize;
   color: #ffffff;
-  background: #d52121;
+  background: #F4587A;
   font-weight: 500;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -6996,7 +7015,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .order_button button:hover {
-  background: #333;
+  background: #DD316D;
 }
 
 @media only screen and (max-width: 767px) {
@@ -7172,7 +7191,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-right: 10px;
 }
 .contact_message ul li a:hover {
-  color: #d52121;
+  color: #DD316D;
 }
 .contact_message label {
   line-height: 18px;
@@ -7182,7 +7201,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .contact_message input {
   border: 1px solid #ededed;
   height: 45px;
-  background: #ffffff;
+  /*background: #ffffff;*/
   width: 100%;
   padding: 0 20px;
   color: #757575;
@@ -7209,7 +7228,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 0 30px;
   text-transform: capitalize;
   border: none;
-  background: #333;
+  background: #F4587A;
   color: #ffffff;
   cursor: pointer;
   -webkit-transition: 0.3s;
@@ -7217,7 +7236,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 4px;
 }
 .contact_message button:hover {
-  background: #d52121;
+  background: #DD316D;
 }
 @media only screen and (max-width: 767px) {
   .contact_message.content {
@@ -7277,11 +7296,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 40px;
   max-width: 100%;
   padding: 0 20px;
-  background: none;
+  /*background: none;*/
   width: 100%;
 }
 .account_form button {
-  background: #d52121;
+  background: #F4587A;
   border: 0;
   color: #ffffff;
   display: inline-block;
@@ -7298,7 +7317,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 20px;
 }
 .account_form button:hover {
-  background: #333;
+  background: #DD316D;
 }
 
 .login_submit label input[type="checkbox"] {
@@ -7557,7 +7576,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .account_login_form form input {
   border: 1px solid #ddd;
-  background: none;
+  /*background: none;*/
   height: 40px;
   margin-bottom: 20px;
   width: 100%;
@@ -8056,7 +8075,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .faq-style-wrap .panel-title a[aria-expanded="true"] {
   border-radius: 3px 3px 0 0;
   color: #ffffff;
-  background: #d52121;
+  background: #F4587A;
 }
 
 .panel.panel-default {
@@ -8640,7 +8659,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .widget_search input {
   height: 35px;
   border: 1px solid #ededed;
-  background: #fff;
+  /*background: #fff;*/
   color: #333;
   width: 100%;
   margin-bottom: 20px;
@@ -9436,19 +9455,19 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: #3c5b9b;
 }
 .modal_social ul li.facebook a:hover {
-  background: #d52121;
+  background: #F4587A;
 }
 .modal_social ul li.twitter a {
   background: #1DA1F2;
 }
 .modal_social ul li.twitter a:hover {
-  background: #d52121;
+  background: #F4587A;
 }
-.modal_social ul li.pinterest a {
+.modal_social ul li.youtube a {
   background: #BD081B;
 }
 .modal_social ul li.pinterest a:hover {
-  background: #d52121;
+  background: #F4587A;
 }
 .modal_social ul li.google-plus a {
   background: #DC5043;
@@ -9456,11 +9475,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .modal_social ul li.google-plus a:hover {
   background: #d52121;
 }
-.modal_social ul li.linkedin a {
-  background: #010103;
+.modal_social ul li.instagram a {
+  background: #DC5043;
 }
 .modal_social ul li.linkedin a:hover {
-  background: #d52121;
+  background: #F4587A;
 }
 
 .modal_price {
@@ -9511,7 +9530,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .modal_add_to_cart form input {
   width: 95px;
   border: 1px solid #ededed;
-  background: none;
+  /*background: none;*/
   padding: 0 10px;
   height: 45px;
 }
@@ -9522,7 +9541,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .modal_add_to_cart form button {
   background: none;
-  border: 1px solid #333;
+  /*border: 1px solid #EC1C50;*/
   margin-left: 10px;
   font-size: 12px;
   font-weight: 700;
@@ -9531,7 +9550,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 18px;
   padding: 10px 15px;
   text-transform: uppercase;
-  background: #333;
+  background: #F4587A;
   color: #ffffff;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -9543,9 +9562,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .modal_add_to_cart form button:hover {
-  background: #d52121;
+  background: #EC1C50;
   color: #ffffff;
-  border-color: #d52121;
+  border-color: #EC1C50;
 }
 
 .modal_body {
@@ -9708,7 +9727,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #747474;
 }
 #frm_subscribe form input {
-  background: #EBEBEB;
+  /*background: #EBEBEB;*/
   padding: 0 127px 0 20px;
   height: 45px;
   border: 0;
@@ -9868,7 +9887,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .error_form form input {
   padding: 0 60px 0 30px;
-  background: #f8f8f8;
+  /*background: #f8f8f8;*/
   border: 1px solid #ddd;
   color: #333;
   height: 40px;

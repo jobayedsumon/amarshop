@@ -46,19 +46,19 @@
                                     @forelse($products as $product)
                                         <tr class="">
                                             <td>
-                                                <img width="100px" src="{{ asset($product->product_image) }}" alt="">
+                                                <img width="100px" src="{{ asset($product->image_primary) }}" alt="">
                                             </td>
                                             <td>
-                                                {{ $product->product_title }}
+                                                <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>
                                             </td>
                                             <td>
-                                                {{ $product->category->category_name }}
+                                                {{ $product->category->name }}
                                             </td>
                                             <td class="text-primary">
                                                 {{ $product->price }}
                                             </td>
                                             <td class="text-primary">
-                                                {{ $product->discount_price }}
+                                                {{ $product->discount }}
                                             </td>
                                             <td>
                                                 {{ $product->short_description }}

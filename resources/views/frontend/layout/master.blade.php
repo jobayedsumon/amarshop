@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bonique - Beauty & Cosmetic eCommerce HTML Template </title>
+    <title>Amar Shop - Shop With A Smile</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend')}}/img/favicon.ico">
 
@@ -38,8 +40,14 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('frontend')}}/css/style.css">
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+
     <!--modernizr min js here-->
     <script src="{{ asset('frontend')}}/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -63,7 +71,9 @@
 <!--product area end-->
 
 <!--banner static area start-->
-@yield('banner-static')
+@yield('deals')
+
+@yield('product-filter')
 <!--banner static area end-->
 
 <!--product area start-->
@@ -82,14 +92,19 @@
 @yield('shipping')
 <!--shipping area end-->
 
-<!--footer area start-->
-@yield('footer')
-<!--footer area end-->
 
 <!-- modal area start-->
 @yield('modal')
 <!-- modal area end-->
 
+@yield('script')
+
+<!--footer area start-->
+@yield('footer')
+<!--footer area end-->
+
+
+<script src="{{ asset('js/app.js') }}"></script>
 
 <!-- JS
 ============================================ -->
@@ -122,6 +137,9 @@
 
 <!-- Main JS -->
 <script src="{{ asset('frontend')}}/js/main.js"></script>
+
+
+<script src="{{ asset('frontend')}}/js/custom.js"></script>
 
 
 

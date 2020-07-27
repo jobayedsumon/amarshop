@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,9 @@ class CustomerController extends Controller
 
     public function customer_login()
     {
-        return view('frontend.customer-login');
+        $categories = Category::all();
+
+        return view('frontend.customer-login', compact('categories'));
     }
 
     public function register_customer(Request $request)

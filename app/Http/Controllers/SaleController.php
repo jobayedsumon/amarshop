@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sale;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -21,9 +22,10 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($productId)
     {
         //
+        return view('pages.sale', compact('productId'));
     }
 
     /**
@@ -35,6 +37,9 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         //
+        Sale::create($request->all());
+
+        return redirect()->back();
     }
 
     /**

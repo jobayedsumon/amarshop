@@ -12,4 +12,9 @@ class Customer extends Authenticatable
     use Notifiable;
 
     protected $guarded = [];
+
+    public function wishlist()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 }

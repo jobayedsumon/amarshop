@@ -6,6 +6,7 @@
 
 @endsection
 
+
 @section('slider')
 
     @include('frontend.layout.slider')
@@ -24,23 +25,25 @@
 
 @endsection
 
+
+@section('deals')
+
+    @include('frontend.layout.deals')
+
+@endsection
+
+@section('product-filter')
+
+    @include('frontend.product-filter')
+
+@endsection
+
 @section('new-arrival')
 
     @include('frontend.layout.new-arrival')
 
 @endsection
 
-@section('banner-static')
-
-    @include('frontend.layout.banner-static')
-
-@endsection
-
-@section('shipping')
-
-    @include('frontend.layout.shipping')
-
-@endsection
 
 @section('modal')
 

@@ -97,11 +97,11 @@
                                                 @forelse($categories as $category)
 
                                                     <td>
-                                                        <img width="100px" src="{{ asset($category->category_image) }}" alt="">
+                                                        <img width="100px" src="{{ asset($category->image) }}" alt="">
                                                     </td>
 
                                                     <td class="text-success font-weight-bold">
-                                                        {{ $category->category_name }}
+                                                        {{ $category->name }}
                                                     </td>
 
                                                     <td class="td-actions">

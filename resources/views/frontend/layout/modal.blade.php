@@ -56,8 +56,8 @@
                                     <h2>Donec Ac Tempus</h2>
                                 </div>
                                 <div class="modal_price mb-10">
-                                    <span class="new_price">$64.99</span>
-                                    <span class="old_price" >$78.99</span>
+                                    <span class="new_price">BDT 64.99</span>
+                                    <span class="old_price" >BDT 78.99</span>
                                 </div>
                                 <div class="modal_description mb-15">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae </p>
@@ -94,10 +94,9 @@
                                     <h2>Share this product</h2>
                                     <ul>
                                         <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

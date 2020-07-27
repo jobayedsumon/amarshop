@@ -27,12 +27,12 @@
                                     </div>
                                 @endif
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Product Title') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Product Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="product_title" id="input-name" type="text" placeholder="{{ __('Product Title') }}" value="" required="true" aria-required="true"/>
-                                            @if ($errors->has('product_title'))
-                                                <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('product_title') }}</span>
+                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="{{ __('Product Name') }}" value="" required="true" aria-required="true"/>
+                                            @if ($errors->has('name'))
+                                                <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                                                 <div class="inline-block relative w-64">
                                                     <select name="category_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                                         @forelse($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                             <hr>
                                                         @empty
                                                         @endforelse
@@ -57,6 +57,28 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Sub Category') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64">
+                                                    <select name="sub_category_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                                        @forelse($sub_categories as $sub_category)
+                                                            <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
+                                                            <hr>
+                                                        @empty
+                                                        @endforelse
+                                                    </select>
+                                                </div>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Price') }}</label>
                                     <div class="col-sm-7">
@@ -72,12 +94,12 @@
                                     <br>
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Discount Price') }}</label>
+                                        <label class="col-sm-2 col-form-label">{{ __('Discount') }}</label>
                                         <div class="col-sm-7">
-                                            <div class="form-group{{ $errors->has('discount_price') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('discount_price') ? ' is-invalid' : '' }}" name="discount_price" id="input-discount_price" type="number" placeholder="{{ __('Price') }}" value="" required />
-                                                @if ($errors->has('discount_price'))
-                                                    <span id="discount_price-error" class="error text-danger" for="input-discount_price">{{ $errors->first('discount_price') }}</span>
+                                            <div class="form-group{{ $errors->has('discount') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" name="discount" id="input-discount" type="number" placeholder="{{ __('Discount') }}" value="" required />
+                                                @if ($errors->has('discount'))
+                                                    <span id="discount-error" class="error text-danger" for="input-discount_price">{{ $errors->first('discount') }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -86,12 +108,24 @@
                                     <br>
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Product Image') }}</label>
+                                        <label class="col-sm-2 col-form-label">{{ __('Primary Image') }}</label>
                                         <div class="col-sm-7">
-                                            <div class="{{ $errors->has('product_image') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('product_image') ? ' is-invalid' : '' }}" name="product_image" id="input-product_image" type="file" required />
-                                                @if ($errors->has('product_image'))
-                                                    <span id="product_image-error" class="error text-danger" for="input-product_image">{{ $errors->first('product_image') }}</span>
+                                            <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image_primary" id="input-image_primary" type="file" required />
+                                                @if ($errors->has('image_primary'))
+                                                    <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Secondary Image') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="{{ $errors->has('image_secondary') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('image_secondary') ? ' is-invalid' : '' }}" name="image_secondary" id="input-image_secondary" type="file" required />
+                                                @if ($errors->has('image_secondary'))
+                                                    <span id="image_secondary-error" class="error text-danger" for="input-image_secondary">{{ $errors->first('image_secondary') }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -114,10 +148,10 @@
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label" for="input-password">{{ __('Full Description') }}</label>
                                         <div class="col-sm-7">
-                                            <div class="form-group{{ $errors->has('product_description') ? ' has-danger' : '' }}">
-                                                <textarea class="w-100" name="product_description" id="" cols="" rows="10"></textarea>
-                                                @if ($errors->has('product_description'))
-                                                    <span id="product_description-error" class="error text-danger" for="input-product_description">{{ $errors->first('product_description') }}</span>
+                                            <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
+                                                <textarea class="w-100" name="description" id="" cols="" rows="10"></textarea>
+                                                @if ($errors->has('description'))
+                                                    <span id="description-error" class="error text-danger" for="input-product_description">{{ $errors->first('description') }}</span>
                                                 @endif
                                             </div>
                                         </div>

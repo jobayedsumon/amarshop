@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -29,8 +31,9 @@ class ProductController extends Controller
     {
         //
         $categories = Category::all();
+        $sub_categories = SubCategory::all();
 
-        return view('products.add-product', compact('categories'));
+        return view('products.add-product', compact('categories', 'sub_categories'));
     }
 
     /**
@@ -42,18 +45,24 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $name = $request->file('product_image')->getClientOriginalName();
-        $path = $request->file('product_image')->storeAs('product', $name);
-        $path = 'storage/' .$path;
+        $image_primary = $request->file('image_primary')->getClientOriginalName();
+        $image_primary = $request->file('image_primary')->storeAs('product', $image_primary);
+        $image_primary = 'storage/' .$image_primary;
+
+        $image_secondary = $request->file('image_secondary')->getClientOriginalName();
+        $image_secondary = $request->file('image_secondary')->storeAs('product', $image_secondary);
+        $image_secondary = 'storage/' .$image_secondary;
 
         Product::create([
-            'product_title' => $request->product_title,
+            'name' => $request->name,
             'price' => $request->price,
-            'discount_price' => $request->discount_price,
+            'discount' => $request->discount,
             'category_id' => $request->category_id,
+            'sub_category_id' => $request->sub_category_id,
             'short_description' => $request->short_description,
-            'product_description' => $request->product_description,
-            'product_image' => $path,
+            'description' => $request->description,
+            'image_primary' => $image_primary,
+            'image_secondary' => $image_secondary,
         ]);
 
         return redirect(route('products.index'));
@@ -68,6 +77,8 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+        $productId = $id;
+        return view('products.show', compact('productId'));
     }
 
     /**
@@ -103,7 +114,7 @@ class ProductController extends Controller
     {
         //
 
-        unlink(public_path($product->product_image));
+        File::delete($product->product_image);
 
         $product->delete();
 

@@ -18,8 +18,9 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', 'FrontendController@index')->name('home');
-Route::get('/shop', 'FrontendController@shop')->name('shop');
-Route::get('/product-details', 'FrontendController@product_details')->name('product-details');
+Route::get('/shop/{shopId}', 'FrontendController@shop')->name('shop');
+Route::get('/shop/{shopId}/subshop/{subId}', 'FrontendController@subshop')->name('subshop');
+Route::get('/shop/{shopId}/subshop/{subId}/product/{productId}', 'FrontendController@product_details')->name('product-details');
 Route::get('/wishlist', 'FrontendController@wishlist')->name('wishlist');
 Route::get('/cart', 'FrontendController@cart')->name('cart');
 Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
@@ -29,6 +30,10 @@ Route::post('/customer-login', 'CustomerController@login_customer');
 Route::post('/customer-register', 'CustomerController@register_customer');
 Route::get('/contact', 'FrontendController@contact');
 Route::get('/about', 'FrontendController@about');
+
+//AJAX CALL
+Route::post('/wishlist/add', 'AjaxController@add_wishlist');
+Route::get('/wishlist/remove/{wishId}', 'AjaxController@remove_wishlist');
 
 
 
@@ -50,9 +55,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('slider', 'SlideController@store')->name('slider');
 	Route::get('slider/{id}/delete', ['as' => 'slider.delete', 'uses' => 'SlideController@destroy']);
 
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
+	Route::resource('sale', 'SaleController', ['except' => ['show']]);
+	Route::get('sale/{productId}', 'SaleController@create');
 
 	Route::get('notifications', function () {
 		return view('pages.notifications');
@@ -69,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('users', 'UserController', ['except' => ['show']]);
-	Route::resource('products', 'ProductController', ['except' => ['show']]);
+	Route::resource('products', 'ProductController');
 	Route::resource('categories', 'CategoryController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

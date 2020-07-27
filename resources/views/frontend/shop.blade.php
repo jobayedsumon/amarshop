@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="/">home</a></li>
                             <li> Beauty & shop</li>
                         </ul>
                     </div>
@@ -34,179 +34,14 @@
             <div class="row">
                 <div class="col-lg-3 col-md-12">
                    <!--sidebar widget start-->
-                    <aside class="sidebar_widget">
-                        <div class="widget_inner">
-                            <div class="widget_list widget_categories">
-                                <h3>Women</h3>
-                                <ul>
-                                    <li class="widget_sub_categories sub_categories1"><a href="javascript:void(0)">Shoes</a>
-                                        <ul class="widget_dropdown_categories dropdown_categories1">
-                                            <li><a href="#">Document</a></li>
-                                            <li><a href="#">Dropcap</a></li>
-                                            <li><a href="#">Dummy Image</a></li>
-                                            <li><a href="#">Dummy Text</a></li>
-                                            <li><a href="#">Fancy Text</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="widget_sub_categories sub_categories2"><a href="javascript:void(0)">Bags</a>
-                                        <ul class="widget_dropdown_categories dropdown_categories2">
-                                            <li><a href="#">Flickr</a></li>
-                                            <li><a href="#">Flip Box</a></li>
-                                            <li><a href="#">Cocktail</a></li>
-                                            <li><a href="#">Frame</a></li>
-                                            <li><a href="#">Flickrq</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="widget_sub_categories sub_categories3"><a href="javascript:void(0)">Clothing</a>
-                                        <ul class="widget_dropdown_categories dropdown_categories3">
-                                            <li><a href="#">Platform Beds</a></li>
-                                            <li><a href="#">Storage Beds</a></li>
-                                            <li><a href="#">Regular Beds</a></li>
-                                            <li><a href="#">Sleigh Beds</a></li>
-                                            <li><a href="#">Laundry</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="widget_list widget_filter">
-                                <h3>Filter by price</h3>
-                                <form action="#">
-                                    <div id="slider-range"></div>
-                                    <button type="submit">Filter</button>
-                                    <input type="text" name="text" id="amount" />
-                                </form>
-                            </div>
-                            <div class="widget_list widget_color">
-                                <h3>Select By Color</h3>
-                                <ul>
-                                    <li>
-                                        <a href="#">Black  <span>(6)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Blue <span>(8)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Brown <span>(10)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Green <span>(6)</span></a>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            <div class="widget_list tags_widget">
-                                <h3>Product tags</h3>
-                                <div class="tag_cloud">
-                                    <a href="#">Men</a>
-                                    <a href="#">Women</a>
-                                    <a href="#">Watches</a>
-                                    <a href="#">Bags</a>
-                                    <a href="#">Dress</a>
-                                </div>
-                            </div>
-                            <div class="widget_list widget_banner">
-                                <a href="#"><img src="{{ asset('frontend') }}/img/bg/banner17.jpg" alt=""></a>
-                            </div>
-                            <div class="small_product_area widget_sid_product">
-                                <div class="section_title">
-                                   <h2>Trending</h2>
-                                </div>
-                                <div class="small_product_container product_column1 owl-carousel">
-                                    <div class="product_items">
-                                        <div class="single_product">
-                                            <div class="product_thumb">
-                                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product13.jpg" alt=""></a>
-                                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product12.jpg" alt=""></a>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4 class="product_name"><a href="{{ route('product-details') }}">Calvin Klein Jeans Reflective</a></h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">$186.00</span>
-                                                    <span class="current_price">$56.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single_product">
-                                            <div class="product_thumb">
-                                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product14.jpg" alt=""></a>
-                                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product15.jpg" alt=""></a>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4 class="product_name"><a href="{{ route('product-details') }}">New Balance Arishi Sport v1</a></h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">$210.00</span>
-                                                    <span class="current_price">$68.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single_product">
-                                            <div class="product_thumb">
-                                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product16.jpg" alt=""></a>
-                                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product17.jpg" alt=""></a>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4 class="product_name"><a href="{{ route('product-details') }}">Brixton Patrol All Terrain Ano</a></h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">$136.00</span>
-                                                    <span class="current_price">$76.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product_items">
-                                        <div class="single_product">
-                                            <div class="product_thumb">
-                                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product6.jpg" alt=""></a>
-                                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product7.jpg" alt=""></a>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4 class="product_name"><a href="{{ route('product-details') }}">Originals Kaval Windbreaker</a></h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">$245.00</span>
-                                                    <span class="current_price">$76.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single_product">
-                                            <div class="product_thumb">
-                                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product8.jpg" alt=""></a>
-                                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product9.jpg" alt=""></a>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Juicy Quilted</a></h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">$180.00</span>
-                                                    <span class="current_price">$58.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="single_product">
-                                            <div class="product_thumb">
-                                                <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product11.jpg" alt=""></a>
-                                                <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product10.jpg" alt=""></a>
-                                            </div>
-                                            <div class="product_content">
-                                                <h4 class="product_name"><a href="{{ route('product-details') }}">Water and Wind Resistant</a></h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">$176.00</span>
-                                                    <span class="current_price">$86.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
+                    @include('frontend.filter')
                     <!--sidebar widget end-->
                 </div>
                 <div class="col-lg-9 col-md-12">
                     <!--shop wrapper start-->
 
                     <div class="shop_banner_area">
-                        <img src="{{ asset('frontend') }}/img/bg/banner16.jpg" alt="">
+                        <img src="{{ asset($shop->image) }}" class="img-fluid single_slider w-100" alt="">
                     </div>
 
                     <!--shop toolbar start-->
@@ -215,7 +50,6 @@
 
                             <button data-role="grid_3" type="button" class="active btn-grid-3" data-toggle="tooltip" title="3"></button>
 
-                            <button data-role="grid_4" type="button"  class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
 
                             <button data-role="grid_list" type="button"  class="btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
@@ -233,52 +67,67 @@
 {{--                            </form>--}}
 {{--                        </div>--}}
                         <div class="page_amount">
-                            <p>Showing 1–12 of 21 results</p>
+                            @php
+                                $total = $shop->products()->count();
+                                $shops = $shop->products()->paginate(9);
+                                $perPage = $shop->products()->paginate(9)->count();
+
+                            @endphp
+                            <p>Showing {{ min(12, $perPage) }} of {{ $total }} results</p>
                         </div>
                     </div>
                      <!--shop toolbar end-->
                      <div class="row shop_wrapper">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
+
+                         @forelse($shops = $shop->products()->paginate(9) as $product)
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 my-3">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product6.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product7.jpg" alt=""></a>
+                                    <a class="primary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
+                                        <img src="{{ asset($product->image_primary) }}" alt=""></a>
+                                    <a class="secondary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
+                                        <img src="{{ asset($product->image_secondary) }}" alt=""></a>
                                     <div class="label_product">
-                                        <span class="label_sale">-15%</span>
+                                        <span class="label_sale">-{{ $product->discount }}%</span>
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                            <li class="wishlist"><a href="{{ route('wishlist') }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                            <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
                                             <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Originals Kaval Windbreaker</a></h4>
+                                    <h4 class="product_name"><a href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
+                                            {{ $product->name }}</a></h4>
                                     <div class="price_box">
-                                        <span class="old_price">$245.00</span>
-                                        <span class="current_price">$76.00</span>
+                                        <span class="old_price">BDT {{ $product->price }}</span>
+                                        <span class="current_price">BDT {!! $product->price * $product->discount_price / 100 !!}</span>
                                     </div>
                                     <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
+                                        <a href="{{ route('cart') }}">+ Add to cart</a>
                                     </div>
                                 </div>
                                 <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Originals Kaval Windbreaker</a></h4>
+                                    <h4 class="product_name"><a href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
+                                            {{ $product->name }}</a></h4>
                                     <div class="price_box">
-                                        <span class="old_price">$245.00</span>
-                                        <span class="current_price">$76.00</span>
+                                        <span class="old_price">BDT {{ $product->price }}</span>
+                                        <span class="current_price">BDT {!! $product->price * $product->discount_price / 100 !!}</span>
                                     </div>
                                     <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
+                                        <p>{{ $product->short_description }}</p>
                                     </div>
                                     <div class="list_action_wrapper">
                                         <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
+                                            <a href="{{ route('cart') }}" title="Add to cart">+ Add to Cart</a>
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                                <li class="wishlist"><a href="{{ route('wishlist') }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                                <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
                                                 <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
                                             </ul>
                                         </div>
@@ -286,537 +135,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product8.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product9.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Water and Wind Resistant</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$235.00</span>
-                                        <span class="current_price">$86.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Water and Wind Resistant</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$235.00</span>
-                                        <span class="current_price">$86.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product10.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product11.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Juicy Quilted</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$190.00</span>
-                                        <span class="current_price">$82.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Juicy Quilted</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$190.00</span>
-                                        <span class="current_price">$82.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product12.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product13.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">New Balance Fresh Foam</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$196.00</span>
-                                        <span class="current_price">$95.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">New Balance Fresh Foam</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$196.00</span>
-                                        <span class="current_price">$95.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product14.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product15.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Madden by Steve Madden</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$234.00</span>
-                                        <span class="current_price">$58.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Madden by Steve Madden</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$234.00</span>
-                                        <span class="current_price">$58.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product16.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product17.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Fila Locker Room Varsity</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$178.00</span>
-                                        <span class="current_price">$68.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Fila Locker Room Varsity</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$178.00</span>
-                                        <span class="current_price">$68.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product18.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product19.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Calvin Klein Jeans Reflect</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$182.00</span>
-                                        <span class="current_price">$85.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Calvin Klein Jeans Reflect</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$182.00</span>
-                                        <span class="current_price">$85.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product9.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product8.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Tricot Logo</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$225.00</span>
-                                        <span class="current_price">$56.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Tricot Logo</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$225.00</span>
-                                        <span class="current_price">$56.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product11.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product10.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Trans-Weight Hooded Wind</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$238.00</span>
-                                        <span class="current_price">$72.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Trans-Weight Hooded Wind</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$238.00</span>
-                                        <span class="current_price">$72.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product13.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product12.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Originals Kaval Windbreaker</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$245.00</span>
-                                        <span class="current_price">$76.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Originals Kaval Windbreaker</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$245.00</span>
-                                        <span class="current_price">$76.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product15.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product14.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Juicy Quilted</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$205.00</span>
-                                        <span class="current_price">$59.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Juicy Couture Juicy Quilted</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$205.00</span>
-                                        <span class="current_price">$59.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product17.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details') }}"><img src="{{ asset('frontend') }}/img/product/product16.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-15%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Brixton Patrol All Terrain</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$215.00</span>
-                                        <span class="current_price">$49.00</span>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html">+ Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details') }}">Brixton Patrol All Terrain</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">$215.00</span>
-                                        <span class="current_price">$49.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
-                                    </div>
-                                    <div class="list_action_wrapper">
-                                        <div class="list_cart_btn">
-                                            <a href="cart.html" title="Add to cart">+ Add to Cart</a>
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                         @empty
+
+                         @endforelse
+
                     </div>
                     <div class="shop_toolbar t_bottom">
                         <div class="pagination">
+                            {{ $shops->links() }}
                             <ul>
                                 <li class="current">1</li>
                                 <li><a href="#">2</a></li>

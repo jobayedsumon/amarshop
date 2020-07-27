@@ -16,8 +16,8 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->integer('sale_percentage');
-            $table->date('sale_expire');
+            $table->integer('percentage');
+            $table->date('expire');
             $table->timestamps();
         });
     }

@@ -143,11 +143,6 @@
 @endsection
 
 
-@section('shipping')
-
-    @include('frontend.layout.shipping')
-
-@endsection
 
 @section('modal')
 

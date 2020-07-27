@@ -83,10 +83,10 @@
                 </ul>
             </div>
         </li>
-{{--      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">--}}
-{{--        <a class="nav-link" href="{{ route('map') }}">--}}
-{{--          <i class="material-icons">location_ons</i>--}}
-{{--            <p>{{ __('Maps') }}</p>--}}
+{{--      <li class="nav-item{{ $activePage == 'sale' ? ' active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('sale') }}">--}}
+{{--          <i class="material-icons">%</i>--}}
+{{--            <p>{{ __('Sale') }}</p>--}}
 {{--        </a>--}}
 {{--      </li>--}}
 {{--      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">--}}
