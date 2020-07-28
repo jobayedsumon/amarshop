@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="brand_container owl-carousel ">
+                <div class="brand_container owl-carousel owl-theme">
                     @forelse($brands as $brand)
                         <div class="single_brand">
-                            <a href="#"><img src="{{ asset($brand->image) }}" class="img-fluid" alt=""></a>
+                            <a href="#"><img class="h-full" src="{{ asset($brand->image) }}" class="img-fluid" alt=""></a>
                         </div>
                     @empty
                     @endforelse

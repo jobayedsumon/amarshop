@@ -6,19 +6,7 @@
                     <div class="col-lg-4">
                         <div class="language_currency top_left">
                             <ul>
-                                {{--                                <li class="language"><a href="#"><img src="{{ asset('frontend')}}/img/icon/language.png" alt=""> English <i class="icon-right ion-ios-arrow-down"></i></a>--}}
-                                {{--                                    <ul class="dropdown_language">--}}
-                                {{--                                        <li><a href="#">Bangla</a></li>--}}
-                                {{--                                    </ul>--}}
-                                {{--                                </li>--}}
-                                {{--                                <li class="currency"><a href="#"> BDT  <i class="icon-right ion-ios-arrow-down"></i></a>--}}
-                                {{--                                    <ul class="dropdown_currency">--}}
-                                {{--                                        <li><a href="#">€ Euro</a></li>--}}
-                                {{--                                        <li><a href="#">£ Pound Sterling</a></li>--}}
-                                {{--                                        <li><a href="#">$ US Dollar</a></li>--}}
-                                {{--                                    </ul>--}}
-                                {{--                                </li>--}}
-                                {{--                                <li><a href="tel:(00)123456789">(00) 123 456 789</a></li>--}}
+
 
                             </ul>
                         </div>
@@ -26,7 +14,6 @@
                     <div class="col-lg-8 col-md-8">
                         <div class="language_currency text-right">
                             <ul>
-                                {{--                                <li><span>Mon - Fri: 8:00 - 18:00</span></li>--}}
 
                                 <li><a href="#"><i class="icon-refresh icons mr-1"></i> Compare (3)</a></li>
 
@@ -46,13 +33,13 @@
         <div class="header_middle sticky-header">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-lg-2 col-md-2 flex justify-center" style="bottom: 1rem">
+                    <div class="col-lg-2 col-md-2 col-sm-2 flex justify-center" style="bottom: 1rem">
                         <div class="logo">
                             <a href="{{ route('home') }}"><img width="150px" src="{{ asset('frontend/img/logo/logo-amarshop.com.bd.png')}}" alt=""></a>
                         </div>
 
                     </div>
-                    <div class="col-lg-7 col-md-7 flex justify-center">
+                    <div class="col-lg-8 col-md-8 col-sm-8 flex justify-center">
                         <div class="header_right_info menu_position">
                             <!--main menu start-->
                             <div class="main_menu">
@@ -134,7 +121,7 @@
 
                     </div>
 
-                    <div class="col-md-3 col-lg-3 flex justify-center">
+                    <div class="col-md-2 col-lg-2 col-sm-2 flex justify-center">
                         <div class="header_account_area">
                             <div class="header_account_list search_list">
                                 <a href="javascript:void(0)"><i id="searchIcon" class="icon-magnifier icons"></i></a>

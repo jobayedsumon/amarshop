@@ -4456,6 +4456,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .single_brand {
   overflow: hidden;
+    height: 100px;
 }
 .single_brand img {
   transition: .3s;
@@ -4920,6 +4921,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .select_option {
   display: flex;
   align-items: center;
+    cursor: inherit;
 }
 @media only screen and (max-width: 767px) {
   .select_option {
@@ -5317,6 +5319,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .grid_list .product_content.list_content {
+    position: absolute;
+    top: 50px;
+    right: 0px;
   width: 66.66667%;
   float: left;
   padding: 0;
@@ -6071,7 +6076,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_review_form textarea {
   border: 1px solid #ddd;
-  background: none;
+  /*background: none;*/
   height: 120px;
   resize: none;
   width: 100%;
@@ -6963,7 +6968,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #d52121;
 }
 .checkout_form label.righ_0 {
-  cursor: pointer;
+
   font-size: 15px;
   line-height: 27px;
   padding: 5px 10px;
@@ -7029,7 +7034,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 45px;
   max-width: 100%;
   padding: 0 30px 0 20px;
-  background: none;
+  /*background: none;*/
   font-size: 13px;
   resize: none;
   line-height: 45px;
@@ -9554,7 +9559,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ffffff;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  cursor: pointer;
 }
 @media only screen and (max-width: 767px) {
   .modal_add_to_cart form button {

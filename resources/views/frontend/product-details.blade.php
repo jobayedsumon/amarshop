@@ -120,7 +120,7 @@
                             <div class="product_variant quantity">
                                 <label>quantity</label>
                                 <input min="1" max="100" value="1" type="number">
-                                <button class="button" type="submit">add to cart</button>
+                                <button class="customButton" type="submit">add to cart</button>
 
                             </div>
                             <div class=" product_d_action">
@@ -232,8 +232,8 @@
 
                 @forelse($related_products as $related_product)
 
-                        <article class="single_product h-full flex justify-between mr-3">
-                            <figure class="flex justify-between">
+                        <article class="single_product  mr-3">
+                            <figure class="h-full flex flex-column justify-between">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
                                         <img src="{{ asset($related_product->image_primary)}}" alt=""></a>

@@ -2,6 +2,10 @@
     cursor: url("/css/cursor.cur"), auto;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body, .header_middle, .sticky-header .sticky, .mega_menu, .dropdown_search {
     background: #FDE6EC !important;
 }
@@ -59,7 +63,7 @@ body, .header_middle, .sticky-header .sticky, .mega_menu, .dropdown_search {
 }
 
 .banner_thumb {
-    width: 300px;
+
     height: 300px;
     overflow: hidden;
 }
@@ -139,4 +143,15 @@ footer, .header_top {
 
 .table-responsive table thead {
     background: rgb(249, 187, 202);
+}
+
+.pagination ul li {
+    background-color: #F9BBCA;
+}
+
+.pagination ul li a:hover {
+    background-color: #F4587A;
+}
+.pagination ul li.current {
+    background-color: #F4587A;
 }
