@@ -55,20 +55,7 @@
                                     </a>
 
                                 </li>
-{{--                                <li >--}}
-{{--                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ asset($product->image) }}"--}}
-{{--                                       data-zoom-image="{{ asset($product->image) }}">--}}
-{{--                                        <img src="{{ asset($product->image) }}" alt="zo-th-1"/>--}}
-{{--                                    </a>--}}
 
-{{--                                </li>--}}
-{{--                                <li >--}}
-{{--                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ asset($product->image) }}"--}}
-{{--                                       data-zoom-image="{{ asset($product->image) }}">--}}
-{{--                                        <img src="{{ asset($product->image) }}" alt="zo-th-1"/>--}}
-{{--                                    </a>--}}
-
-{{--                                </li>--}}
                             </ul>
                         </div>
                     </div>
@@ -78,11 +65,11 @@
                        <form action="#">
                             <div class="productd_title_nav">
                                 <h1><a href="#">{{ $product->name }}</a></h1>
-
+                                <input type="hidden" id="productId" value="{{ $product->id }}">
                             </div>
 
                             <div class="price_box">
-                                <span class="current_price">BDT {{ $product->discount_price }}</span>
+                                <span class="current_price">BDT {{ $product->price - round($product->price * $product->discount / 100) }}</span>
                                 <span class="old_price">BDT {{ $product->price }}</span>
                             </div>
                             <div class="product_desc">
@@ -93,8 +80,13 @@
                                 <label>color</label>
                                 <ul>
                                     @forelse($product->colors as $color)
-                                        <li class=""><a style="background-color: {{ $color->name }}"
-                                                        class="chooseColor" onclick="choose_color({{ $color->id }})"></a></li>
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label flex flex-col-reverse items-center">
+                                                <input type="radio" class="form-check-input colorId" name="color" value="{{ $color->id }}">
+                                                <li class=""><a style="background-color: {{ $color->name }}"></a></li>
+                                            </label>
+                                        </div>
+
                                     @empty
                                     @endforelse
 
@@ -104,7 +96,12 @@
                                     <label>size</label>
                                     <ul class="">
                                         @forelse($product->sizes as $size)
-                                            <li><a class="chooseSize" onclick="choose_size({{ $size->id }})">{{ $size->name }}</a></li>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label flex flex-col-reverse items-center">
+                                                    <input type="radio" class="form-check-input sizeId" name="size" value="{{ $size->id }}">
+                                                    <li class=""><a>{{ $size->name }}</a></li>
+                                                </label>
+                                            </div>
                                         @empty
                                         @endforelse
 
@@ -119,8 +116,8 @@
 
                             <div class="product_variant quantity">
                                 <label>quantity</label>
-                                <input min="1" max="100" value="1" type="number">
-                                <button class="customButton" type="submit">add to cart</button>
+                                <input min="1" max="100" id="count" value="1" type="number">
+                                <a href="javascript:void(0)" class="customButton" id="addToCart">add to cart</a>
 
                             </div>
                             <div class=" product_d_action">
@@ -246,7 +243,14 @@
                                         <ul>
                                             <li class="wishlist"><a href="javascript:void(0)" onclick="return wishlist({{ $related_product->id }})" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
                                             <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
-                                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
+                                            <li class="quick_button">
+                                                <a data-toggle="modal" data-target="#view-modal"
+                                                        class="quickButton"
+                                                        data-url="{{ route('dynamicModal',['id'=>$related_product->id])}}"
+                                                >
+                                                    <i class="icon-magnifier-add icons"></i>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -255,7 +259,8 @@
                                             {{ $related_product->name }}</a></h4>
                                     <div class="price_box">
                                         <span class="old_price">BDT {{ $related_product->price }}</span>
-                                        <span class="current_price">BDT {{ $related_product->price * $related_product->discount_price / 100 }}</span>
+
+                                        <span class="current_price">BDT {{ $related_product->price - round($related_product->price * $related_product->discount / 100) }}</span>
                                     </div>
                                     <div class="add_to_cart">
                                         <a href="{{ route('cart') }}">+ Add to cart</a>
@@ -267,50 +272,6 @@
                 @empty
                 @endforelse
             </div>
-{{--            <div class="row">--}}
-{{--                <div class="product_carousel product_column4 owl-carousel">--}}
-
-{{--                    @forelse($related_products as $related_product)--}}
-
-{{--                        --}}
-
-{{--                            <article class="single_product h-full flex justify-between">--}}
-{{--                                <figure class="flex justify-between">--}}
-{{--                                    <div class="product_thumb">--}}
-{{--                                        <a class="primary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">--}}
-{{--                                            <img src="{{ asset($related_product->image_primary)}}" alt=""></a>--}}
-{{--                                        <a class="secondary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">--}}
-{{--                                            <img src="{{ asset($related_product->image_secondary)}}" alt=""></a>--}}
-{{--                                        <div class="label_product">--}}
-{{--                                            <span class="label_sale">-{{ $related_product->discount }}%</span>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="action_links">--}}
-{{--                                            <ul>--}}
-{{--                                                <li class="wishlist"><a href="javascript:void(0)" onclick="return wishlist({{ $related_product->id }})" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>--}}
-{{--                                                <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>--}}
-{{--                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <figcaption class="product_content">--}}
-{{--                                        <h4 class="product_name"><a href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">--}}
-{{--                                                {{ $related_product->name }}</a></h4>--}}
-{{--                                        <div class="price_box">--}}
-{{--                                            <span class="old_price">BDT {{ $related_product->price }}</span>--}}
-{{--                                            <span class="current_price">BDT {{ $related_product->price * $related_product->discount_price / 100 }}</span>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="add_to_cart">--}}
-{{--                                            <a href="{{ route('cart') }}">+ Add to cart</a>--}}
-{{--                                        </div>--}}
-{{--                                    </figcaption>--}}
-{{--                                </figure>--}}
-{{--                            </article>--}}
-
-{{--                    @empty--}}
-{{--                    @endforelse--}}
-
-{{--               </div>--}}
-{{--            </div>--}}
         </div>
     </section>
     <!--product area end-->
@@ -319,18 +280,20 @@
     @include('frontend.layout.brand')
     <!--brand area end-->
 
-
-
-
-
 @endsection
-
 
 @section('modal')
 
-    @include('frontend.layout.modal')
+@forelse($related_products as $related_product)
+    @include('frontend.layout.modal', ['data' => $related_product])
+@empty
+@endforelse
 
 @endsection
+
+
+
+
 
 @section('script')
 

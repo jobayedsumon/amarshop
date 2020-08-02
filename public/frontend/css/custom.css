@@ -47,6 +47,7 @@ body, .header_middle, .sticky-header .sticky, .mega_menu, .dropdown_search {
 .customButton {
     background: #F9BBCA !important;
     color: #000 !important;
+    text-align: center;
 }
 
 .customButton:hover {
@@ -68,9 +69,14 @@ body, .header_middle, .sticky-header .sticky, .mega_menu, .dropdown_search {
     overflow: hidden;
 }
 
-.banner_thumb img, .product_thumb img {
+.banner_thumb img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+}
+
+.product_thumb img {
+    width: 100%;
     object-fit: cover;
 }
 

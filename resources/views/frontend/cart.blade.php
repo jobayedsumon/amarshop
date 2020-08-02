@@ -1,6 +1,5 @@
 
 
-
 @extends('frontend.layout.master')
 
 @section('header')
@@ -31,7 +30,8 @@
      <!--shopping cart area start -->
     <div class="shopping_cart_area">
         <div class="container">
-            <form action="#">
+            <form action="/cart/update" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-12">
                         <div class="table_desc">
@@ -42,43 +42,48 @@
                                     <th class="product_remove">Delete</th>
                                     <th class="product_thumb">Image</th>
                                     <th class="product_name">Product</th>
+                                    <th class="product_name">Color</th>
+                                    <th class="product_name">Size</th>
                                     <th class="product-price">Price</th>
                                     <th class="product_quantity">Quantity</th>
                                     <th class="product_total">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @php
+
+                                $sub_total = 0;
+                                $shipping_cost = 100;
+
+                            @endphp
+
+                            @forelse($cart as $data)
+
+                                @php
+                                    $product = \App\Product::findOrFail($data['product_id']);
+                                    $color = \App\Color::find($data['color_id']);
+                                    $size = \App\Size::find($data['size_id']);
+
+                                @endphp
+
                                 <tr>
-                                   <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{ asset('frontend') }}/img/s-product/product.jpg" alt=""></a></td>
-                                    <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                    <td class="product-price">BDT 65.00</td>
-                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                    <td class="product_total">BDT 130.00</td>
+                                   <td class="product_remove"><a href="/cart/remove/{{ $data['cart_id'] }}"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="product_thumb"><a href="#"><img src="{{ asset($product->image_primary) }}" alt=""></a></td>
+                                    <td class="product_name"><a href="#">{{ $product->name }}</a></td>
+                                    <td class="product-price"><span style="background-color: {{ $color ? $color->name : '' }}" class="p-3"> &nbsp;</span></td>
+                                    <td class="product-price">{{ $size ? $size->name : '' }}</td>
+                                    <td class="product-price">BDT {{ $cart_price = $product->discount ? $product->price - round($product->price * $product->discount / 100) : $product->price }}</td>
+                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" name="count[]" value="{{ $data['count'] }}" type="number"></td>
+                                    <td class="product_total">BDT {!! $row_total = $cart_price * $data['count'] !!}</td>
+
+                                    @php
+                                        $sub_total += $row_total;
+                                    @endphp
 
 
                                 </tr>
-
-                                <tr>
-                                   <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{ asset('frontend') }}/img/s-product/product2.jpg" alt=""></a></td>
-                                    <td class="product_name"><a href="#">Handbags justo</a></td>
-                                    <td class="product-price">BDT 90.00</td>
-                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                    <td class="product_total">BDT 180.00</td>
-
-
-                                </tr>
-                                <tr>
-                                   <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{ asset('frontend') }}/img/s-product/product3.jpg" alt=""></a></td>
-                                    <td class="product_name"><a href="#">Handbag elit</a></td>
-                                    <td class="product-price">BDT 80.00</td>
-                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                    <td class="product_total">BDT 160.00</td>
-
-
-                                </tr>
+                            @empty
+                            @endforelse
 
                             </tbody>
                         </table>
@@ -108,17 +113,17 @@
                                 <div class="coupon_inner">
                                    <div class="cart_subtotal">
                                        <p>Subtotal</p>
-                                       <p class="cart_amount">BDT 215.00</p>
+                                       <p class="cart_amount" id="cart_sub_total">BDT {{ $sub_total }}</p>
                                    </div>
                                    <div class="cart_subtotal ">
                                        <p>Shipping</p>
-                                       <p class="cart_amount"><span>Flat Rate:</span> BDT 255.00</p>
+                                       <p class="cart_amount"><span>Flat Rate:</span> BDT {{ $shipping_cost }}</p>
                                    </div>
-                                   <a href="#">Calculate shipping</a>
+{{--                                   <a href="#">Calculate shipping</a>--}}
 
                                    <div class="cart_subtotal">
                                        <p>Total</p>
-                                       <p class="cart_amount">BDT 215.00</p>
+                                       <p class="cart_amount" id="cart_total_amount">BDT {{ $total_amount = $sub_total + $shipping_cost }}</p>
                                    </div>
                                    <div class="checkout_btn">
                                        <a href="#">Proceed to Checkout</a>
@@ -141,8 +146,6 @@
     <!--brand area end-->
 
 @endsection
-
-
 
 
 @section('footer')

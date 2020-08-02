@@ -34,6 +34,14 @@ Route::get('/about', 'FrontendController@about');
 //AJAX CALL
 Route::post('/wishlist/add', 'AjaxController@add_wishlist');
 Route::get('/wishlist/remove/{wishId}', 'AjaxController@remove_wishlist');
+Route::post('/cart/add', 'AjaxController@add_cart');
+Route::post('/cart/update', 'AjaxController@update_cart');
+Route::get('/cart/remove/{cartId}', 'AjaxController@remove_cart');
+
+Route::get('dynamicModal/{id}',[
+    'as'=>'dynamicModal',
+    'uses'=> 'AjaxController@loadModal'
+]);
 
 
 

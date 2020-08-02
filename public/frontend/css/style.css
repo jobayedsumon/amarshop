@@ -1187,7 +1187,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 18px;
   line-height: 24px;
   padding: 10px 30px;
-  text-transform: capitalize;
+  text-transform: uppercase;
   font-weight: 400;
   position: relative;
 }
@@ -5799,7 +5799,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-left: 10px;
   }
 }
-.product_variant.quantity button {
+.product_variant.quantity a {
   border: 0;
   font-size: 16px;
   margin-left: 20px;
@@ -5810,22 +5810,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   min-width: 270px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .product_variant.quantity button {
+  .product_variant.quantity a {
     min-width: 240px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .product_variant.quantity button {
+  .product_variant.quantity a {
     min-width: 170px;
   }
 }
 @media only screen and (max-width: 767px) {
-  .product_variant.quantity button {
+  .product_variant.quantity a {
     min-width: inherit;
     margin-left: 10px;
   }
 }
-.product_variant.quantity button:hover {
+.product_variant.quantity a:hover {
   background: #3E444A;
 }
 .product_variant.color {

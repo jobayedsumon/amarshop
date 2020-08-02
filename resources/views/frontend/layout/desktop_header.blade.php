@@ -22,7 +22,7 @@
                                 <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (<span id="wishlistCount">{{ auth()->guard('customer')->user()->wishlist->count()  }}</span>)</a></li>
 
                                 @elseguest('customer')
-                                    <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (3)</a></li>
+                                    <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist ()</a></li>
                                 @endauth
                             </ul>
                         </div>
@@ -134,46 +134,46 @@
                             </div>
                             <div class="header_account_list  mini_cart_wrapper">
                                 <a href="javascript:void(0)"><i class="icon-bag icons"></i>
-                                    <span class="cart_itemtotal">BDT 1024</span>
-                                    <span class="item_count">2</span>
+                                    <span class="cart_itemtotal cart_sub_total">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
+                                    <span class="item_count cart_items_count">{{ session()->get('cart_items_count') ?? 0 }}</span>
                                 </a>
                                 <!--mini cart-->
                                 <div class="mini_cart">
-                                    <div class="cart_gallery">
-                                        <div class="cart_item">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="{{ asset('frontend')}}/img/s-product/product.jpg" alt=""></a>
-                                            </div>
-                                            <div class="cart_info">
-                                                <a href="#">Juicy Couture Tricot</a>
-                                                <p>1 x <span> BDT 30.00 </span></p>
-                                            </div>
-                                            <div class="cart_remove">
-                                                <a href="#"><i class="ion-ios-close-outline"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="cart_item">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="{{ asset('frontend')}}/img/s-product/product2.jpg" alt=""></a>
-                                            </div>
-                                            <div class="cart_info">
-                                                <a href="#">Juicy Couture Juicy</a>
-                                                <p>1 x <span> BDT 29.00 </span></p>
-                                            </div>
-                                            <div class="cart_remove">
-                                                <a href="#"><i class="ion-ios-close-outline"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div class="cart_gallery">--}}
+{{--                                        <div class="cart_item">--}}
+{{--                                            <div class="cart_img">--}}
+{{--                                                <a href="#"><img src="{{ asset('frontend')}}/img/s-product/product.jpg" alt=""></a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="cart_info">--}}
+{{--                                                <a href="#">Juicy Couture Tricot</a>--}}
+{{--                                                <p>1 x <span> BDT 30.00 </span></p>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="cart_remove">--}}
+{{--                                                <a href="#"><i class="ion-ios-close-outline"></i></a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="cart_item">--}}
+{{--                                            <div class="cart_img">--}}
+{{--                                                <a href="#"><img src="{{ asset('frontend')}}/img/s-product/product2.jpg" alt=""></a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="cart_info">--}}
+{{--                                                <a href="#">Juicy Couture Juicy</a>--}}
+{{--                                                <p>1 x <span> BDT 29.00 </span></p>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="cart_remove">--}}
+{{--                                                <a href="#"><i class="ion-ios-close-outline"></i></a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="mini_cart_table">
                                         <div class="cart_table_border">
                                             <div class="cart_total">
                                                 <span>Sub total:</span>
-                                                <span class="price">BDT 125.00</span>
+                                                <span class="price cart_sub_total">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
                                             </div>
                                             <div class="cart_total mt-10">
                                                 <span>total:</span>
-                                                <span class="price">BDT 125.00</span>
+                                                <span class="price cart_total_amount">BDT {{ session()->get('cart_sub_total') ? session()->get('cart_sub_total') + 100 : 0 }}</span>
                                             </div>
                                         </div>
                                     </div>

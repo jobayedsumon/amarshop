@@ -11,7 +11,7 @@
                         <ul class="nav nav-tabs" id="navContent">
                             @forelse($featuredCategories as $featuredCategory)
                                 <li>
-                                    <a data-toggle="tab" href="#tab{{ $featuredCategory->id }}">
+                                    <a class="text-uppercase" data-toggle="tab" href="#tab{{ $featuredCategory->id }}">
                                         {{ $featuredCategory->name }}
                                     </a>
                                 </li>
@@ -38,8 +38,8 @@
 
                                 <div class="col-md-3 col-sm-6 my-3">
                                     <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
+                                        <article class=" single_product">
+                                            <figure class="h-full flex flex-column justify-between">
                                                 <div class="product_thumb">
                                                     <a class="primary_img" href="{{ route('product-details', [$featuredProduct->category->id, $featuredProduct->sub_category->id, $featuredProduct->id]) }}">
                                                         <img src="{{ asset($featuredProduct->image_primary)}}" alt=""></a>

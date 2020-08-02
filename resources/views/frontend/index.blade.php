@@ -45,11 +45,11 @@
 @endsection
 
 
-@section('modal')
+{{--@section('modal')--}}
 
-    @include('frontend.layout.modal')
+{{--    @include('frontend.layout.modal')--}}
 
-@endsection
+{{--@endsection--}}
 
 @section('footer')
 

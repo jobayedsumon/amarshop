@@ -80,20 +80,10 @@ class FrontendController extends Controller
     {
 
 
-
-        $cart = Session::get('cart');
-
-//        $cart[] = array(
-//            'id' => 2,
-//            'count' => 4,
-//            'name' =>'item 2'
-//        );
-
-        Session::put('cart', $cart);
-
-        $cart = Session::get('cart');
+        $cart = \session()->get('cart') ?? [];
 
         $brands = Brand::all();
+
 
         return view('frontend.cart', compact('cart', 'brands'));
     }
