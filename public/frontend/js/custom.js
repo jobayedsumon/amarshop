@@ -1,5 +1,6 @@
 function sweetAlter(icon, title) {
     Swal.fire({
+        backdrop:false,
         position: 'top-end',
         icon: icon,
         title: title,
@@ -8,9 +9,11 @@ function sweetAlter(icon, title) {
     });
 }
 
+    $('.wishlistButton').click(function (e) {
 
+        e.preventDefault();
 
-    function wishlist(productId) {
+       let productId = $(this).data('id');
 
         let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
@@ -27,7 +30,9 @@ function sweetAlter(icon, title) {
 
             }
         });
-    }
+
+    });
+
 
     $('#addToCart').click(function (e) {
 

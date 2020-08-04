@@ -1,5 +1,6 @@
 @extends('layouts.app', ['activePage' => 'products', 'titlePage' => __('Products List')])
 
+@canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
 @section('content')
 
     <div class="content">
@@ -88,4 +89,5 @@
     </div>
 
 @endsection
+@endcanany
 

@@ -21,9 +21,9 @@ class SlideController extends Controller
         $path = 'storage/' .$path;
 
         Slider::create([
-           'slide_title' => $request->slide_title,
-           'slide_exert' => $request->slide_exert,
-           'slide_image' => $path,
+           'title' => $request->slide_title,
+           'exert' => $request->slide_exert,
+           'image' => $path,
         ]);
 
         return redirect(route('slider'));
@@ -34,7 +34,7 @@ class SlideController extends Controller
     {
         $slider = Slider::findOrFail($id);
 
-        unlink(public_path($slider->slide_image));
+        unlink(public_path($slider->image));
 
         $slider->delete();
 

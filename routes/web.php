@@ -13,9 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/log', function () {
+   $activities = \Spatie\Activitylog\Models\Activity::all();
+   return view('log', compact('activities'));
+})->middleware('can:access-manager-data');
+
+/*********************
+ *
+ *
+ * FRONTEND ROUTES
+ */
+/*********************
+ *
+ */
 
 Route::get('/', 'FrontendController@index')->name('home');
 Route::get('/shop/{shopId}', 'FrontendController@shop')->name('shop');
@@ -45,47 +55,54 @@ Route::get('dynamicModal/{id}',[
 
 
 
+
+/**************
+ *
+ * BACKEND ROUTES
+ *
+ *
+ ***************/
+
+
+
 Auth::routes(['register' => false]);
 
-Route::get('/admin', 'AdminController@index')->name('admin')->middleware('auth');
-
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('customers', function () {
-        $customers = \App\Customer::all();
-		return view('pages.customers', compact('customers'));
-	})->name('customers');
 
-//	Route::get('categories', function () {
-//		return view('pages.categories');
-//	})->name('categories');
+    Route::get('/admin', 'AdminController@index')->name('admin');
 
-	Route::get('slider', 'SlideController@index')->name('slider');
-	Route::post('slider', 'SlideController@store')->name('slider');
-	Route::get('slider/{id}/delete', ['as' => 'slider.delete', 'uses' => 'SlideController@destroy']);
+    Route::prefix('admin')->group(function () {
 
-	Route::resource('sale', 'SaleController', ['except' => ['show']]);
-	Route::get('sale/{productId}', 'SaleController@create');
 
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
 
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
+            Route::resource('users', 'UserController', ['except' => ['show']]);
+            Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+            Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+            Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+            Route::get('activities/{id}', 'AdminController@destroy_activity')->middleware('can:access-manager-data');
 
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
-});
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::resource('users', 'UserController', ['except' => ['show']]);
-	Route::resource('products', 'ProductController');
-	Route::resource('categories', 'CategoryController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+            Route::resource('sale', 'SaleController', ['except' => ['show']]);
+
+
+
+            Route::get('slider', 'SlideController@index')->name('slider');
+            Route::post('slider', 'SlideController@store')->name('slider');
+            Route::get('slider/{id}/delete', ['as' => 'slider.delete', 'uses' => 'SlideController@destroy']);
+            Route::resource('products', 'ProductController');
+            Route::resource('categories', 'CategoryController', ['except' => ['show']]);
+            Route::resource('sub_categories', 'SubCategoryController', ['except' => ['show']]);
+
+
+            Route::get('customers', function () {
+                $customers = \App\Customer::all();
+                return view('pages.customers', compact('customers'));
+            })->name('customers');
+
+
+    });
+
 });
 
 Route::get('logout_user', 'Auth\LoginController@logout_user')->name('logout_user');

@@ -12,7 +12,7 @@
 
                 @forelse($categories as $category)
 {{--                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">--}}
-                        <div class="single_banner">
+                        <div class="single_banner m-2">
                             <div class="banner_thumb img-thumbnail">
                                 <a href="{{ route('shop', $category->id) }}"><img class="img-fluid banner_image" src="{{ asset($category->image)}}" alt=""></a>
                             </div>

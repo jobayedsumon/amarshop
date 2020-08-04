@@ -1,4 +1,6 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('User Manager')])
+@extends('layouts.app', ['activePage' => 'users', 'titlePage' => __('User Manager')])
+
+@can('access-all-data')
 
 @section('content')
 
@@ -33,6 +35,7 @@
                                         <th class="text-right">
                                             Actions
                                         </th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -49,11 +52,18 @@
                                             {{ $user->created_at }}
                                         </td>
                                         <td class="td-actions text-right">
+                                            <a rel="tooltip" href="{{ route('users.edit', $user->id) }}" class="btn btn-success btn-link"
+                                                    data-original-title="" title="Edit">
+                                                <i class="material-icons">edit</i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </td>
+                                        <td class="td-actions text-right">
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button rel="tooltip" class="btn btn-success btn-link"
-                                                   data-original-title="" title="">
+                                                <button rel="tooltip" class="btn btn-danger btn-link"
+                                                   data-original-title="" title="Delete" onclick="return confirm('Are you sure?')">
                                                     <i class="material-icons">delete</i>
                                                     <div class="ripple-container"></div>
                                                 </button>
@@ -73,4 +83,6 @@
     </div>
 
 @endsection
+
+@endcan
 

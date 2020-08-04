@@ -1,6 +1,6 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Add Slide Image')])
+@extends('layouts.app', ['activePage' => 'slider', 'titlePage' => __('Add Slide Image')])
 
-
+@canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -89,7 +89,7 @@
 
                                 @forelse($slideImages as $slideImage)
 
-                                        <img width="200px" class="img-thumbnail" src="{{ asset($slideImage->slide_image) }}" alt="">
+                                        <img width="200px" class="img-thumbnail" src="{{ asset($slideImage->image) }}" alt="">
                                     <a onclick="return confirm('Are you sure?')" href="{{ route('slider.delete', $slideImage->id) }}"><i class="fa fa-remove text-danger mr-2"></i></a>
 
                                 @empty
@@ -113,3 +113,4 @@
     </div>
     </div>
 @endsection
+@endcanany

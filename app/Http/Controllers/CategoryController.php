@@ -10,7 +10,7 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -38,16 +38,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->file('category_image')->getClientOriginalName();
-        $path = $request->file('category_image')->storeAs('category', $name);
+        $name = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('category', $name);
         $path = 'storage/' .$path;
 
         Category::create([
-            'category_name' => $request->category_name,
-            'category_image' => $path,
+            'name' => $request->name,
+            'image' => $path,
         ]);
 
-        return redirect('categories');
+        return redirect(route('categories.index'));
     }
 
     /**
@@ -94,7 +94,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
-        unlink(public_path($category->category_image));
+        unlink(public_path($category->image));
 
         $category->delete();
 

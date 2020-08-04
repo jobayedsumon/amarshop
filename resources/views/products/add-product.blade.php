@@ -1,5 +1,6 @@
 @extends('layouts.app', ['activePage' => 'add-product', 'titlePage' => __('Add Product')])
 
+@canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -175,3 +176,4 @@
     </div>
     </div>
 @endsection
+@endcanany

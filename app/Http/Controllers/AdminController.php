@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Spatie\Activitylog\Models\Activity;
+
 class AdminController extends Controller
 {
     /**
@@ -21,6 +24,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $activities = Activity::latest()->get();
+        $users = User::where('email', '!=', 'superadmin@amarshop.com.bd')->latest()->get();
+
+        return view('dashboard', compact('activities', 'users'));
+    }
+
+    public function destroy_activity(Activity $activity)
+    {
+
     }
 }

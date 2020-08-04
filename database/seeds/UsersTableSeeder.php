@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,12 +15,23 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        DB::table('users')->insert([
-            'name' => 'Amar Shop',
-            'email' => 'admin@amarshop.com.bd',
+        $user = Factory(App\User::class)->create([
+            'name' => 'Super Admin',
+            'email' => 'superadmin@amarshop.com.bd',
             'email_verified_at' => now(),
-            'password' => bcrypt('admin.amarshop'), // password
+            'password' => bcrypt('superadmin.amarshop'), // password
             'remember_token' => Str::random(10),
         ]);
+
+        $role = Role::create(['name'=>'super-admin']);
+        $permission = Permission::create([
+           'name' => 'access-all-data'
+        ]);
+
+        $role->givePermissionTo($permission);
+
+        $user->assignRole($role);
+
+
     }
 }

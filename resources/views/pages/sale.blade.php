@@ -1,5 +1,6 @@
 @extends('layouts.app', ['activePage' => 'sale', 'titlePage' => __('Give Sale')])
 
+@can('access-all-data')
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -38,7 +39,7 @@
                                     </div>
                                 </div>
 
-                                    <input type="hidden" name="product_id" value="{{ $productId }}">
+{{--                                    <input type="hidden" name="product_id" value="{{ $productId }}">--}}
 
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Expiry Date') }}</label>
@@ -144,3 +145,4 @@
     </div>
     </div>
 @endsection
+@endcan

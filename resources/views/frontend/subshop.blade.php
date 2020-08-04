@@ -82,7 +82,7 @@
 
                         @forelse($subshops = $subshop->products()->paginate(9) as $product)
 
-                            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 my-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
                                         <a class="primary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
@@ -94,9 +94,20 @@
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="wishlist"><a href="{{ route('wishlist') }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
+                                                <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $product->id }}"
+                                                                        title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                                <li class="compare">
+                                                    <a  title="Add to Compare">
+                                                        <i class="icon-refresh icons"></i></a></li>
+                                                <li class="quick_button">
+                                                    <a data-toggle="modal" data-target="#view-modal"
+                                                       class="quickButton"
+                                                       title="Quick View"
+                                                       data-url="{{ route('dynamicModal',['id'=>$product->id])}}"
+                                                    >
+                                                        <i class="icon-magnifier-add icons"></i>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -108,7 +119,10 @@
                                             <span class="current_price">BDT {!! $product->price * $product->discount_price / 100 !!}</span>
                                         </div>
                                         <div class="add_to_cart">
-                                            <a href="{{ route('cart') }}">+ Add to cart</a>
+                                            <a data-toggle="modal" data-target="#view-modal"
+                                               class="quickButton"
+                                               data-url="{{ route('dynamicModal',['id'=>$product->id])}}"
+                                            >+ Add to cart</a>
                                         </div>
                                     </div>
                                     <div class="product_content list_content">
@@ -123,13 +137,27 @@
                                         </div>
                                         <div class="list_action_wrapper">
                                             <div class="list_cart_btn">
-                                                <a href="{{ route('cart') }}" title="Add to cart">+ Add to Cart</a>
+                                                <a data-toggle="modal" data-target="#view-modal"
+                                                   class="quickButton"
+                                                   data-url="{{ route('dynamicModal',['id'=>$product->id])}}"
+                                                >+ Add to cart</a>
                                             </div>
                                             <div class="action_links">
                                                 <ul>
-                                                    <li class="wishlist"><a href="{{ route('wishlist') }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                    <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
-                                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="icon-magnifier-add icons"></i></a></li>
+                                                    <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $product->id }}"
+                                                                            title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                                    <li class="compare">
+                                                        <a  title="Add to Compare">
+                                                            <i class="icon-refresh icons"></i></a></li>
+                                                    <li class="quick_button">
+                                                        <a data-toggle="modal" data-target="#view-modal"
+                                                           class="quickButton"
+                                                           title="Quick View"
+                                                           data-url="{{ route('dynamicModal',['id'=>$product->id])}}"
+                                                        >
+                                                            <i class="icon-magnifier-add icons"></i>
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -145,13 +173,6 @@
                     <div class="shop_toolbar t_bottom">
                         <div class="pagination">
                             {{ $subshops->links() }}
-                            <ul>
-                                <li class="current">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li class="next"><a href="#">next</a></li>
-                                <li><a href="#">>></a></li>
-                            </ul>
                         </div>
                     </div>
                     <!--shop toolbar end-->
@@ -162,11 +183,11 @@
     </div>
     <!--shop  area end-->
 
-{{--@section('modal')--}}
+@section('modal')
 
-{{--    @include('frontend.layout.modal')--}}
+    @include('frontend.layout.modal')
 
-{{--@endsection--}}
+@endsection
 
 @section('footer')
 

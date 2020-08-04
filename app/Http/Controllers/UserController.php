@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use http\Env\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -24,7 +25,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $roles = Role::where('name', '!=', 'super-admin')->get();
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -39,6 +41,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string'],
         ]);
     }
 
@@ -52,13 +55,17 @@ class UserController extends Controller
     {
         $data = $this->validator($request->all())->validate();
 
-        User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
 
-        return redirect('user');
+        $role = Role::findByName($request->role);
+
+        $user->assignRole($role);
+
+        return redirect('/admin/users');
     }
 
     public function destroy(User $user)
@@ -66,5 +73,29 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->back();
+    }
+
+    public function edit(User $user)
+    {
+        $roles = Role::where('name', '!=', 'super-admin')->get();
+        return view('users.edit', compact('user', 'roles'));
+    }
+
+    protected function update(User $user, UserRequest $request)
+    {
+        $data = $request->all();
+
+        $user->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+
+        $role = Role::findByName($request->role);
+
+        $user->syncRoles([$role]);
+
+        return redirect('/admin/users');
     }
 }

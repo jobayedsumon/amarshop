@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Product extends Model
 {
     //
     protected $guarded = [];
+    use LogsActivity;
 
     public function category()
     {

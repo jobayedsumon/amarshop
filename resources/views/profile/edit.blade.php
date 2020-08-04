@@ -1,6 +1,9 @@
 @extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('User Profile')])
 
 @section('content')
+
+    @can('access-all-data')
+
   <div class="content">
     <div class="container-fluid">
       <div class="row">
@@ -121,4 +124,7 @@
       </div>
     </div>
   </div>
+
+    @endcan
+
 @endsection

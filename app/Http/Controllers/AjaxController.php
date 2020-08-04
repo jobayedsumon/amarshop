@@ -81,7 +81,7 @@ class AjaxController extends Controller
 
         session()->put('cart_sub_total', $cart_sub_total);
         session()->put('cart_items_count', count($newCart));
-        
+
 
         return redirect('/cart');
     }

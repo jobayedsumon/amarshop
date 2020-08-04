@@ -25,10 +25,18 @@
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="wishlist"><a href="{{ route('wishlist') }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                               o<li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $sale->product->id }}"
+                                                                        title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
                                                 <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
-                                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view">
-                                                        <i class="icon-magnifier-add icons"></i></a></li>
+                                                <li class="quick_button">
+                                                    <a data-toggle="modal" data-target="#view-modal"
+                                                       class="quickButton"
+                                                       title="Quick View"
+                                                       data-url="{{ route('dynamicModal',['id'=>$sale->product->id])}}"
+                                                    >
+                                                        <i class="icon-magnifier-add icons"></i>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -41,7 +49,10 @@
                                                 <span class="current_price">BDT {!! $sale->product->price * $sale->percentage / 100 !!}</span>
                                             </div>
                                             <div class="add_to_cart">
-                                                <a href="{{ route('cart') }}">+ Add to cart</a>
+                                                <a data-toggle="modal" data-target="#view-modal"
+                                                   class="quickButton"
+                                                   data-url="{{ route('dynamicModal',['id'=>$sale->product->id])}}"
+                                                >+ Add to cart</a>
                                             </div>
                                         </div>
                                         <div class="product_timing">
