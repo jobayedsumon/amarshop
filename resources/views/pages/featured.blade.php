@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'sale', 'titlePage' => __('Give Sale')])
+@extends('layouts.app', ['activePage' => 'featured-products', 'titlePage' => __('Featured Product')])
 
 @can('access-all-data')
 @section('content')
@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form method="post" action="{{ route('sale.store') }}" autocomplete="off" class="form-horizontal">
+                    <form method="post" action="{{ route('featured.store') }}" autocomplete="off" class="form-horizontal">
                         @csrf
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">{{ __('Give Sale') }}</h4>
+                                <h4 class="card-title">{{ __('Make Featured') }}</h4>
                             </div>
                             <div class="card-body ">
                                 @if (session('status'))
@@ -48,35 +48,9 @@
                                         </div>
                                     </div>
 
-                                <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Sale Percentage') }}</label>
-                                    <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('sale_percentage') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('percentage') ? ' is-invalid' : '' }}" name="percentage" id="input-percentage" type="number" placeholder="{{ __('Sale Percentage') }}" value="" required="true" aria-required="true"/>
-                                            @if ($errors->has('percentage'))
-                                                <span id="percentage-error" class="error text-danger" for="input-sale_percentage">{{ $errors->first('percentage') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-{{--                                    <input type="hidden" name="product_id" value="{{ $productId }}">--}}
-
-                                <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Expiry Date') }}</label>
-                                    <div class="col-sm-7">
-                                        <div class="{{ $errors->has('sale_expire') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('sale_expire') ? ' is-invalid' : '' }}" name="expire" id="input-sale_expire" type="date"/>
-                                            @if ($errors->has('sale_expire'))
-                                                <span id="sale_expire-error" class="error text-danger" for="input-sale_expire">{{ $errors->first('sale_expire') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Give Sale') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Make Featured') }}</button>
                             </div>
 
                         </div>
@@ -89,7 +63,7 @@
 
                     <div class="card ">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">{{ __('Available Sales') }}</h4>
+                            <h4 class="card-title">{{ __('Featured Products') }}</h4>
                         </div>
                         <div class="card-body ">
                             @if (session('status'))
@@ -111,33 +85,19 @@
                                         Product
                                     </th>
                                     <th>
-                                        Percentage
-                                    </th>
-                                    <th>
-                                        Expiry Date
-                                    </th>
-                                    <th>
-                                        Delete
+                                        Remove
                                     </th>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        @forelse($sales as $sale)
+                                        @forelse($featureds as $featured)
 
                                             <td>
-                                                {{ $sale->product->name }}
-                                            </td>
-
-                                            <td class="text-success font-weight-bold">
-                                                {{ $sale->percentage }}
-                                            </td>
-
-                                            <td class="text-success font-weight-bold">
-                                                {{ $sale->expire }}
+                                                {{ $featured->product->name }}
                                             </td>
 
                                             <td class="td-actions">
-                                                <form action="{{ route('sale.destroy', $sale->id) }}" method="POST">
+                                                <form action="{{ route('featured.destroy', $featured->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" rel="tooltip" class="btn btn-success btn-link"

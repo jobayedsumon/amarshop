@@ -7,11 +7,15 @@ html, body {
     overflow-x: hidden;
 }
 
-body, .header_middle, .sticky-header .sticky, .mega_menu, .dropdown_search {
-    background: #FDE6EC !important;
+body, .header_middle, .sticky-header .sticky{
+    background: rgba(253, 230, 236, 0.1) !important;
 }
 
-/* Equal Heights for OwlCarousel 2 */
+.mega_menu, .dropdown_search {
+    background: rgb(253, 230, 236) !important;
+}
+
+    /* Equal Heights for OwlCarousel 2 */
 .owl-carousel .owl-stage {
     display: -webkit-box;
     display: flex;

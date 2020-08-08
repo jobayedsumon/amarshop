@@ -34,7 +34,78 @@
             <div class="row">
                 <div class="col-lg-3 col-md-12">
                    <!--sidebar widget start-->
-                    @include('frontend.filter')
+                    <aside class="sidebar_widget">
+                        <div class="widget_inner">
+
+                            <form action="{{ route('filter-product-shop') }}" method="GET">
+                                @csrf
+
+                                <input type="hidden" name="category_id" value="{{ $shop->id }}">
+
+                                <div class="widget_list widget_filter">
+                                    <h3>Select price range</h3>
+                                    <div id="slider-range"></div>
+                                    <input type="text" name="price" id="amount" />
+                                </div>
+                                <div class="widget_list widget_color">
+                                    <h3>Select Color</h3>
+                                    <ul>
+                                        @php $colors = \App\Color::all(); @endphp
+
+                                        @forelse($colors as $color)
+                                            <li class="flex items-center justify-between mb-2">
+                                                <input type="radio" name="color" value="{{ $color->id }}"><span class="px-8 py-4 w-3/4" style="background-color: {{ $color->name }}"></span>
+                                            </li>
+
+                                        @empty
+
+                                        @endforelse
+
+                                    </ul>
+                                </div>
+
+                                <div class="widget_list widget_color">
+                                    <h3>Select SIze</h3>
+                                    <ul>
+                                        @php $sizes = \App\Size::all(); @endphp
+
+                                        @forelse($sizes as $size)
+                                            <li class="flex items-center justify-between mb-2">
+                                                <input type="radio" name="size" value="{{ $size->id }}"><span>{{ $size->name }}</span>
+                                            </li>
+
+                                        @empty
+
+                                        @endforelse
+                                    </ul>
+                                </div>
+
+                                <button class="customButton filter_button" type="submit">Filter</button>
+
+                            </form>
+
+                        </div>
+
+
+                        <div class="widget_list tags_widget mt-4">
+                            <h3>Product tags</h3>
+                            <div class="tag_cloud">
+                                @php $tags = \App\Tag::all(); @endphp
+
+                                @forelse($tags as $tag)
+
+                                    <a class="customButton" href="#">{{ $tag->name }}</a>
+                                @empty
+
+                                @endforelse
+
+
+                            </div>
+                        </div>
+
+
+                    </aside>
+
                     <!--sidebar widget end-->
                 </div>
                 <div class="col-lg-9 col-md-12">
@@ -67,19 +138,19 @@
 {{--                            </form>--}}
 {{--                        </div>--}}
                         <div class="page_amount">
-                            @php
-                                $total = $shop->products()->count();
-                                $shops = $shop->products()->paginate(9);
-                                $perPage = $shop->products()->paginate(9)->count();
+{{--                            @php--}}
+{{--                                $total = $shop->products()->count();--}}
+{{--                                $shops = $shop->products()->paginate(9);--}}
+{{--                                $perPage = $shop->products()->paginate(9)->count();--}}
 
-                            @endphp
-                            <p>Showing {{ min(12, $perPage) }} of {{ $total }} results</p>
+{{--                            @endphp--}}
+{{--                            <p>Showing {{ min(12, $perPage) }} of {{ $total }} results</p>--}}
                         </div>
                     </div>
                      <!--shop toolbar end-->
                      <div class="row shop_wrapper">
 
-                         @forelse($shops = $shop->products()->paginate(9) as $product)
+                         @forelse($data as $product)
 
                         <div class="col-lg-4 col-md-4 col-sm-6 col-6 my-3">
                             <div class="single_product">
@@ -171,7 +242,7 @@
                     </div>
                     <div class="shop_toolbar t_bottom">
                         <div class="pagination">
-                            {{ $shops->links() }}
+                            {{ $data->links() }}
                         </div>
                     </div>
                     <!--shop toolbar end-->

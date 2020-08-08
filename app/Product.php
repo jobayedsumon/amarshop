@@ -9,6 +9,10 @@ class Product extends Model
 {
     //
     protected $guarded = [];
+    /**
+     * @var mixed
+     */
+
     use LogsActivity;
 
     public function category()

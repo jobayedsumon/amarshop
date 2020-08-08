@@ -71,12 +71,7 @@
                 </ul>
             </div>
         </li>
-      <li class="nav-item{{ $activePage == 'slider' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('slider') }}">
-          <i class="material-icons">image</i>
-          <p>{{ __('Slider') }}</p>
-        </a>
-      </li>
+
         <li class="nav-item {{ ($activePage == 'products' || $activePage == 'add-product') ? ' active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="true">
                 <i class="fa fa-product-hunt"></i>
@@ -99,7 +94,7 @@
                         </a>
                     </li>
                     <li class="nav-item{{ $activePage == 'featured-product' ? ' active' : '' }}">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('featured.index') }}">
                             <span class="sidebar-mini"> FP </span>
                             <span class="sidebar-normal"> {{ __('Featured Product') }} </span>
                         </a>
@@ -113,12 +108,20 @@
             <p>{{ __('Sale') }}</p>
         </a>
       </li>
-{{--      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">--}}
-{{--        <a class="nav-link" href="{{ route('notifications') }}">--}}
-{{--          <i class="material-icons">notifications</i>--}}
-{{--          <p>{{ __('Notifications') }}</p>--}}
-{{--        </a>--}}
-{{--      </li>--}}
+
+      <li class="nav-item{{ $activePage == 'coupon' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('coupon.index') }}">
+          <i class="material-icons">%</i>
+          <p>{{ __('Coupon') }}</p>
+        </a>
+      </li>
+
+        <li class="nav-item{{ $activePage == 'slider' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('slider') }}">
+                <i class="material-icons">image</i>
+                <p>{{ __('Slider') }}</p>
+            </a>
+        </li>
 
 
     </ul>

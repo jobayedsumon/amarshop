@@ -94,6 +94,7 @@
                         </div>
                      </div>
                  </div>
+            </form>
                  <!--coupon code area start-->
                 <div class="coupon_area">
                     <div class="row">
@@ -102,10 +103,15 @@
                                 <h3 class="">Coupon</h3>
                                 <div class="coupon_inner">
                                     <p>Enter your coupon code if you have one.</p>
-                                    <input placeholder="Coupon code" type="text">
+                                    <form action="{{ route('apply-coupon') }}" method="POST">
+                                        @csrf
+                                    <input placeholder="Coupon Code" type="text" name="coupon">
                                     <button type="submit">Apply coupon</button>
+                                    </form>
                                 </div>
                             </div>
+
+                            <span class="text-danger">{{ session('message') }}</span>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="coupon_code right">
@@ -125,8 +131,24 @@
                                        <p>Total</p>
                                        <p class="cart_amount" id="cart_total_amount">BDT {{ $total_amount = $sub_total + $shipping_cost }}</p>
                                    </div>
+                                    @if(session()->has('couponCart'))
+                                        @php $couponCart = session()->get('couponCart'); @endphp
+                                    <div class="cart_subtotal">
+                                        <p>Discount</p>
+                                        <p class="flex">({{ $couponCart['code'] }})<a title="Remove" href="{{ route('remove-coupon') }}"><i class="fa fa-remove"></i></a></p>
+                                        <p class="cart_amount" id="cart_total_amount">BDT {{ $discount = round($total_amount * $couponCart['value'] / 100) }}</p>
+                                    </div>
+                                        <div class="cart_subtotal">
+                                            <p>After Discount</p>
+                                            <p class="cart_amount" id="cart_total_amount">BDT {{ $total_amount = $total_amount - $discount }}</p>
+                                        </div>
+                                    @endif
+
+                                    @php
+                                        session()->put('cart_total', $total_amount);
+                                    @endphp
                                    <div class="checkout_btn">
-                                       <a href="#">Proceed to Checkout</a>
+                                       <a href="{{ route('checkout') }}">Proceed to Checkout</a>
                                    </div>
                                 </div>
                             </div>
@@ -134,7 +156,7 @@
                     </div>
                 </div>
                 <!--coupon code area end-->
-            </form>
+
         </div>
     </div>
      <!--shopping cart area end -->

@@ -11,13 +11,8 @@ class FeaturedProduct extends Model
     protected $guarded = [];
     use LogsActivity;
 
-    public function categories()
+    public function product()
     {
-        return $this->hasMany(Category::class);
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

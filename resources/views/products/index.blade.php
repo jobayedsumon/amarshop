@@ -26,16 +26,19 @@
                                             Image
                                         </th>
                                         <th>
-                                            Title
+                                            Name
                                         </th>
                                         <th>
                                             Category
+                                        </th>
+                                        <th>
+                                            Sub Category
                                         </th>
                                         <th class="">
                                             Price
                                         </th>
                                         <th class="">
-                                            Discount Price
+                                            Discount
                                         </th>
                                         <th class="">
                                             Short Description
@@ -55,6 +58,9 @@
                                             <td>
                                                 {{ $product->category->name }}
                                             </td>
+                                            <td>
+                                                {{ $product->sub_category->name }}
+                                            </td>
                                             <td class="text-primary">
                                                 {{ $product->price }}
                                             </td>
@@ -63,6 +69,9 @@
                                             </td>
                                             <td>
                                                 {{ $product->short_description }}
+                                            </td>
+                                            <td class="td-actions">
+                                                <a href="{{ route('products.edit', $product->id) }}"><i class="material-icons">edit</i></a>
                                             </td>
                                             <td class="td-actions text-right">
                                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST">

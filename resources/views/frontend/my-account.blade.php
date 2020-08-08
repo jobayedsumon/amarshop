@@ -36,10 +36,9 @@
                             <ul role="tablist" class="nav flex-column dashboard-list">
                                 <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Dashboard</a></li>
                                 <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
-                                <li><a href="#downloads" data-toggle="tab" class="nav-link">Downloads</a></li>
-                                <li><a href="#address" data-toggle="tab" class="nav-link">Addresses</a></li>
+                                <li><a href="#address" data-toggle="tab" class="nav-link">Address</a></li>
                                 <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
-                                <li><a href="login.html" class="nav-link">logout</a></li>
+                                <li><a href="{{ route('logout_customer') }}" class="nav-link">logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,86 +81,105 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="downloads">
-                                <h3>Downloads</h3>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Downloads</th>
-                                                <th>Expires</th>
-                                                <th>Download</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="danger">Expired</span></td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Organic - ecommerce html template</td>
-                                                <td>Sep 11, 2018</td>
-                                                <td>Never</td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+
+                            @php
+
+                                if ($billing_address = auth('customer')->user()->billing_address)
+                                {
+                                       $address = explode('+', $billing_address);
+
+                                       $street = $address[0];
+                                       $city = $address[1];
+                                       $district = $address[2];
+                                       $division = strtolower($address[3]);
+                                }
+
+                            @endphp
+
                             <div class="tab-pane" id="address">
                                <p>The following addresses will be used on the checkout page by default.</p>
+                                <div class="checkout_form">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
                                 <h4 class="billing-address">Billing address</h4>
-                                <a href="#" class="view">Edit</a>
-                                <p><strong>Bobby Jackson</strong></p>
-                                <address>
-                                    House #15<br>
-                                    Road #1<br>
-                                    Block #C <br>
-                                    Banasree <br>
-                                    Dhaka <br>
-                                    1212
-                                </address>
-                                <p>Bangladesh</p>
+                                <div class="row">
+                                    <form action="{{ route('update-address') }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                    <div class="col-12 mb-20">
+                                        <label for="division">Division <span>*</span></label>
+                                        <select class="select_option" name="division" id="division">
+
+                                            <option value="{{ $division }}">{{ ucfirst($division) }}</option>
+
+                                            <option value="dhaka">Dhaka</option>
+                                            <option value="chittagong">Chittagong</option>
+                                            <option value="barisal">Barisal</option>
+                                            <option value="khulna">Khulna</option>
+                                            <option value="mymensingh">Mymensingh</option>
+                                            <option value="sylhet">Sylhet</option>
+                                            <option value="rangpur">Rangpur</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>District <span>*</span></label>
+                                        <input type="text" name="district" value="{{ $district }}">
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>Town / City <span>*</span></label>
+                                        <input type="text" name="city" value="{{ $city }}">
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>Street address  <span>*</span></label>
+                                        <input name="street" placeholder="House number and street name" type="text" value="{{ $street }}">
+                                    </div>
+
+                                    <button class="customButton py-2 px-6" style="border-radius: 5px" type="submit">Save</button>
+
+                                    </form>
+
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="account-details">
                                 <h3>Account details </h3>
                                 <div class="login">
                                     <div class="login_form_container">
                                         <div class="account_login_form">
-                                            <form action="#">
-                                                <p>Already have an account? <a href="#">Log in instead!</a></p>
-                                                <div class="input-radio">
-                                                    <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mr.</span>
-                                                    <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mrs.</span>
-                                                </div> <br>
-                                                <label>First Name</label>
-                                                <input type="text" name="first-name">
-                                                <label>Last Name</label>
-                                                <input type="text" name="last-name">
+                                            <form action="{{ route('update-account') }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <label>Name</label>
+                                                <input type="text" name="name" value="{{ auth('customer')->user()->name }}">
                                                 <label>Email</label>
-                                                <input type="text" name="email-name">
+                                                <input type="email" name="email" value="{{ auth('customer')->user()->email }}">
+                                                <label>Phone Number</label>
+                                                <input type="text" name="phone_number" value="{{ auth('customer')->user()->phone_number }}">
                                                 <label>Password</label>
-                                                <input type="password" name="user-password">
+                                                <input type="password" name="password" required>
                                                 <label>Birthdate</label>
-                                                <input type="text" placeholder="MM/DD/YYYY" value="" name="birthday">
+                                                <input type="date" placeholder="MM/DD/YYYY" value="{{ auth('customer')->user()->birthdate }}" name="birthdate">
                                                 <span class="example">
                                                   (E.g.: 05/31/1970)
                                                 </span>
                                                 <br>
                                                 <span class="custom_checkbox">
-                                                    <input type="checkbox" value="1" name="optin">
+                                                    <input {{ auth('customer')->user()->receive_offer ? 'checked' : '' }} type="checkbox" value="1" name="receive_offer">
                                                     <label>Receive offers from our partners</label>
                                                 </span>
                                                 <br>
                                                 <span class="custom_checkbox">
-                                                    <input type="checkbox" value="1" name="newsletter">
+                                                    <input {{ auth('customer')->user()->receive_offer ? 'checked' : '' }} type="checkbox" value="1" name="newsletter">
                                                     <label>Sign up for our newsletter<br><em>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</em></label>
                                                 </span>
                                                 <div class="save_button primary_btn default_button">
-                                                   <button type="submit">Save</button>
+                                                   <button class="customButton py-2 px-6" style="border-radius: 5px" type="submit">Save</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -177,44 +195,11 @@
     <!-- my account end   -->
 
      <!--brand area start-->
-    <div class="brand_area brand_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="brand_container owl-carousel ">
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand1.jpg" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand2.jpg" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand3.jpg" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand4.jpg" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand5.jpg" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand1.jpg" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@include('frontend.layout.brand')
     <!--brand area end-->
 
 @endsection
 
-
-@section('shipping')
-
-    @include('frontend.layout.shipping')
-
-@endsection
 
 @section('modal')
 

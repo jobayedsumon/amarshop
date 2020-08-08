@@ -28,7 +28,7 @@ class CustomerController extends Controller
     {
         $data = $request->validate([
            'email' => 'email|required|unique:customers',
-           'password' => 'required|confirmed',
+           'password' => 'required|confirmed|min:6',
         ]);
 
         Customer::create([

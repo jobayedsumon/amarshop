@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Sale;
+use App\Coupon;
 use Illuminate\Http\Request;
 
-class SaleController extends Controller
+class CouponController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,9 @@ class SaleController extends Controller
     public function index()
     {
         //
-        $products = Product::latest()->get();
-        $sales = Sale::latest()->get();
+        $coupons = Coupon::latest()->get();
 
-        return view('pages.sale', compact('products', 'sales'));
+        return view('pages.coupon', compact('coupons'));
     }
 
     /**
@@ -27,10 +25,9 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($productId)
+    public function create()
     {
         //
-        return view('pages.sale', compact('productId'));
     }
 
     /**
@@ -42,9 +39,9 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         //
-        Sale::create($request->all());
+        Coupon::create($request->all());
 
-        return redirect()->back();
+        return redirect(route('coupon.index'));
     }
 
     /**
@@ -87,11 +84,11 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public function destroy(Coupon $coupon)
     {
         //
-        $sale->delete();
+        $coupon->delete();
 
-        return redirect(route('sale.index'));
+        return redirect(route('coupon.index'));
     }
 }

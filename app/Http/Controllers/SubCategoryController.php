@@ -71,21 +71,42 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubCategory $sub_category)
     {
         //
+        $categories = Category::all();
+
+        return view('pages.edit-sub_category', compact('sub_category', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param SubCategory $sub_category
+     *
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SubCategory $sub_category)
     {
         //
+        if ($request->file('image')) {
+
+            $name = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('category', $name);
+            $path = 'storage/' .$path;
+
+            unlink(asset($sub_category->image));
+        } else {
+            $path = $sub_category->image;
+        }
+
+
+        $sub_category->update([
+            'name' => $request->name,
+            'image' => $path,
+        ]);
+
+        return redirect(route('sub_categories.index'));
     }
 
     /**

@@ -67,9 +67,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
+        return view('pages.edit-category', compact('category'));
     }
 
     /**
@@ -79,9 +80,26 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
+        if ($request->file('image')) {
+            $name = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('category', $name);
+            $path = 'storage/' .$path;
+
+            unlink(asset($category->image));
+        } else {
+            $path = $category->image;
+        }
+
+
+        $category->update([
+            'name' => $request->name,
+            'image' => $path,
+        ]);
+
+        return redirect(route('categories.index'));
     }
 
     /**

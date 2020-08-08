@@ -91,7 +91,10 @@
                                                 Category Name
                                             </th>
                                             <th>
-                                                Action
+                                                Edit
+                                            </th>
+                                            <th>
+                                                Delete
                                             </th>
                                             </thead>
                                             <tbody>
@@ -107,6 +110,11 @@
                                                     </td>
 
                                                     <td class="td-actions">
+                                                        <a href="{{ route('categories.edit', $category->id) }}"><i class="material-icons">edit</i></a>
+                                                    </td>
+
+                                                    <td class="td-actions">
+
                                                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')

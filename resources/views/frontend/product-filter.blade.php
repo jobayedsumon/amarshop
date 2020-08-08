@@ -15,15 +15,10 @@
         <div class="col-md-9 col-lg-9 col-sm-6">
             <div class="shop_wrapper">
 
-                @php
-
-                $shop = $categories[0];
-
-                @endphp
 
                 <div class="product_carousel product_column3 owl-carousel">
 
-                @forelse($shops = $shop->products()->paginate(9) as $product)
+                @forelse($data ?? [] as $product)
 
                         <div class="single_product m-2">
                             <div class="product_thumb">

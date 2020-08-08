@@ -114,7 +114,10 @@
                                                 Sub Category
                                             </th>
                                             <th>
-                                                Action
+                                                Edit
+                                            </th>
+                                            <th>
+                                                Delete
                                             </th>
                                             </thead>
                                             <tbody>
@@ -131,6 +134,10 @@
 
                                                     <td class="text-success font-weight-bold">
                                                         {{ $sub_category->name }}
+                                                    </td>
+
+                                                    <td class="td-actions">
+                                                        <a href="{{ route('sub_categories.edit', $sub_category->id) }}"><i class="material-icons">edit</i></a>
                                                     </td>
 
                                                     <td class="td-actions">

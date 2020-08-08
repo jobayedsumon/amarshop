@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\FeaturedProduct;
 use App\Product;
-use App\Sale;
 use Illuminate\Http\Request;
 
-class SaleController extends Controller
+class FeaturedController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
         //
+        $featureds = FeaturedProduct::latest()->get();
         $products = Product::latest()->get();
-        $sales = Sale::latest()->get();
 
-        return view('pages.sale', compact('products', 'sales'));
+        return view('pages.featured', compact('featureds', 'products'));
     }
 
     /**
@@ -27,10 +27,9 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($productId)
+    public function create()
     {
         //
-        return view('pages.sale', compact('productId'));
     }
 
     /**
@@ -42,9 +41,14 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         //
-        Sale::create($request->all());
+        $product = Product::findOrFail($request->product_id);
 
-        return redirect()->back();
+        FeaturedProduct::create([
+            'product_id' => $product->id,
+            'category_id' => $product->category_id
+        ]);
+
+        return redirect(route('featured.index'));
     }
 
     /**
@@ -87,11 +91,8 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public function destroy($id)
     {
         //
-        $sale->delete();
-
-        return redirect(route('sale.index'));
     }
 }

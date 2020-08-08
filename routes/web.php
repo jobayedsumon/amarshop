@@ -34,7 +34,13 @@ Route::get('/shop/{shopId}/subshop/{subId}/product/{productId}', 'FrontendContro
 Route::get('/wishlist', 'FrontendController@wishlist')->name('wishlist');
 Route::get('/cart', 'FrontendController@cart')->name('cart');
 Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
+Route::post('/payment', 'PaymentController@index')->name('payment');
+Route::get('/filter-product', 'AjaxController@filter_product')->name('filter-product');
+Route::get('/filter-product-shop', 'AjaxController@filter_product_shop')->name('filter-product-shop');
+Route::get('/filter-product-subshop', 'AjaxController@filter_product_subshop')->name('filter-product-subshop');
 Route::get('/my-account', 'FrontendController@my_account')->name('my-account')->middleware('auth:customer');
+Route::patch('/my-account/update-account', 'FrontendController@update_account')->name('update-account')->middleware('auth:customer');
+Route::patch('/my-account/update-address', 'FrontendController@update_address')->name('update-address')->middleware('auth:customer');
 Route::get('/customer-login', 'CustomerController@customer_login')->name('customer-login');
 Route::post('/customer-login', 'CustomerController@login_customer');
 Route::post('/customer-register', 'CustomerController@register_customer');
@@ -47,6 +53,9 @@ Route::get('/wishlist/remove/{wishId}', 'AjaxController@remove_wishlist');
 Route::post('/cart/add', 'AjaxController@add_cart');
 Route::post('/cart/update', 'AjaxController@update_cart');
 Route::get('/cart/remove/{cartId}', 'AjaxController@remove_cart');
+
+Route::post('/cart/apply-coupon', 'AjaxController@apply_coupon')->name('apply-coupon');
+Route::get('/cart/remove-coupon', 'AjaxController@remove_coupon')->name('remove-coupon');
 
 Route::get('dynamicModal/{id}',[
     'as'=>'dynamicModal',
@@ -84,6 +93,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
             Route::resource('sale', 'SaleController', ['except' => ['show']]);
+            Route::resource('featured', 'FeaturedController', ['except' => ['show']]);
+            Route::resource('coupon', 'CouponController', ['except' => ['show']]);
 
 
 

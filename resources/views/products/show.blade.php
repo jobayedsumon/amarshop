@@ -42,6 +42,10 @@
                                 <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
                             </div>
 
+                            <div class="card-footer ml-auto mr-auto">
+                                <a href="{{ route('products.edit', $productId) }}" class="btn btn-info">{{ __('Edit') }}</a>
+                            </div>
+
 
                         </div>
 
