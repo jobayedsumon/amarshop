@@ -94,5 +94,10 @@ class FeaturedController extends Controller
     public function destroy($id)
     {
         //
+        $featuredProduct = FeaturedProduct::findOrFail($id);
+
+        $featuredProduct->delete();
+
+        return redirect(route('featured.index'));
     }
 }

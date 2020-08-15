@@ -58,7 +58,10 @@
                                                     {{ $wish->product->name }}</a></td>
                                             <td class="product-price">{{ $wish->product->price }}</td>
                                             {{--                                            <td class="product_quantity">In Stock</td>--}}
-                                            <td class="product_total"><a href="{{ route('cart') }}">Add To Cart</a></td>
+                                            <td class="product_total"><a data-toggle="modal" data-target="#view-modal"
+                                                 class="quickButton"
+                                                 data-url="{{ route('dynamicModal',['id'=>$wish->product->id])}}"
+                                                >Add to cart</a></td>
 
 
                                         </tr>
@@ -85,6 +88,10 @@
    @include('frontend.layout.brand')
     <!--brand area end-->
 
+@endsection
+
+@section('modal')
+    @include('frontend.layout.modal')
 @endsection
 
 

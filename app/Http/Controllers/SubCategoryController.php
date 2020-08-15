@@ -95,7 +95,7 @@ class SubCategoryController extends Controller
             $path = $request->file('image')->storeAs('category', $name);
             $path = 'storage/' .$path;
 
-            unlink(asset($sub_category->image));
+            if (file_exists(public_path($sub_category->image))) unlink(public_path($sub_category->image));
         } else {
             $path = $sub_category->image;
         }
@@ -119,7 +119,8 @@ class SubCategoryController extends Controller
     public function destroy(SubCategory $sub_category)
     {
         //
-        unlink(public_path($sub_category->image));
+        if (file_exists(public_path($sub_category->image)))
+            unlink(public_path($sub_category->image));
 
         $sub_category->delete();
 

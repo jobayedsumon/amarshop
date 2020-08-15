@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AmarCare;
 use App\Brand;
 use App\Category;
 use App\FeaturedProduct;
@@ -9,6 +10,7 @@ use App\Product;
 use App\Sale;
 use App\Slider;
 use App\SubCategory;
+use App\Tag;
 use App\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -101,7 +103,9 @@ class FrontendController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('frontend.my-account', compact('categories', 'brands'));
+        $customer = \auth('customer')->user();
+
+        return view('frontend.my-account', compact('categories', 'brands', 'customer'));
     }
 
     public function update_account(Request $request)
@@ -158,5 +162,42 @@ class FrontendController extends Controller
     {
         $brands = Brand::all();
         return view('frontend.about', compact('brands'));
+    }
+
+    public function amar_care($catId)
+    {
+        $vlogs = AmarCare::where('category_id', $catId)->latest()->get();
+
+        return view('pages.amar-care', compact('vlogs'));
+    }
+
+    public function vlog($catId, $vlogId)
+    {
+        $vlog = AmarCare::findOrFail($vlogId);
+
+        return view('pages.vlog', compact('vlog'));
+    }
+
+    public function compare()
+    {
+        $compare = \session()->get('compare');
+
+        return view('frontend.compare', compact('compare'));
+    }
+
+    public function tag_search($tagName)
+    {
+        $tag = Tag::where('name', $tagName)->first();
+
+        return view('frontend.tag-search', compact('tag'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $products = Product::where('name', 'LIKE', '%'.$search.'%')->get();
+
+        return view('frontend.search', compact('products', 'search'));
     }
 }

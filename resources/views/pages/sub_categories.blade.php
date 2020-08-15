@@ -10,7 +10,7 @@
                         @csrf
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Add Sub Category') }}</h4>
                             </div>
                             <div class="card-body ">
@@ -73,7 +73,7 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Add') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Add') }}</button>
                             </div>
 
                         </div>
@@ -85,7 +85,7 @@
                 <div class="col-md-6">
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Available Sub Categories') }}</h4>
                             </div>
                             <div class="card-body ">
@@ -103,7 +103,7 @@
                                 @endif
                                     <div class="table-responsive">
                                         <table class="table">
-                                            <thead class=" text-primary">
+                                            <thead class=" text-danger">
                                             <th>
                                                 Image
                                             </th>
@@ -128,16 +128,16 @@
                                                         <img width="100px" src="{{ asset($sub_category->image) }}" alt="">
                                                     </td>
 
-                                                    <td class="text-success font-weight-bold">
+                                                    <td class="text-danger font-weight-bold">
                                                         {{ $sub_category->category->name }}
                                                     </td>
 
-                                                    <td class="text-success font-weight-bold">
+                                                    <td class="text-danger font-weight-bold">
                                                         {{ $sub_category->name }}
                                                     </td>
 
                                                     <td class="td-actions">
-                                                        <a href="{{ route('sub_categories.edit', $sub_category->id) }}"><i class="material-icons">edit</i></a>
+                                                        <a href="{{ route('sub_categories.edit', $sub_category->id) }}"><i class="material-icons text-danger">edit</i></a>
                                                     </td>
 
                                                     <td class="td-actions">
@@ -146,7 +146,7 @@
                                                             @method('DELETE')
                                                             <button onclick="return confirm('Are you sure?')" rel="tooltip" class="btn btn-success btn-link"
                                                                     data-original-title="" title="Delete">
-                                                                <i class="material-icons">delete</i>
+                                                                <i class="material-icons text-danger">delete</i>
                                                                 <div class="ripple-container"></div>
                                                             </button>
                                                         </form>

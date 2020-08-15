@@ -10,7 +10,7 @@
                         @csrf
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Create Coupon') }}</h4>
                             </div>
                             <div class="card-body ">
@@ -68,7 +68,7 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Create Coupon') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Create Coupon') }}</button>
                             </div>
 
                         </div>
@@ -80,7 +80,7 @@
                 <div class="col-md-6">
 
                     <div class="card ">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-danger">
                             <h4 class="card-title">{{ __('Available Coupons') }}</h4>
                         </div>
                         <div class="card-body ">
@@ -98,7 +98,7 @@
                             @endif
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-danger">
                                     <th>
                                         Coupon
                                     </th>
@@ -120,11 +120,11 @@
                                                 {{ $coupon->code }}
                                             </td>
 
-                                            <td class="text-success font-weight-bold">
+                                            <td class="text-danger font-weight-bold">
                                                 {{ $coupon->value }}
                                             </td>
 
-                                            <td class="text-success font-weight-bold">
+                                            <td class="text-danger font-weight-bold">
                                                 {{ $coupon->expire }}
                                             </td>
 
@@ -132,9 +132,9 @@
                                                 <form action="{{ route('coupon.destroy', $coupon->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button onclick="return confirm('Are you sure?')" rel="tooltip" class="btn btn-success btn-link"
+                                                    <button onclick="return confirm('Are you sure?')" rel="tooltip" class="btn btn-danger btn-link"
                                                             data-original-title="" title="Delete">
-                                                        <i class="material-icons">delete</i>
+                                                        <i class="material-icons text-danger">delete</i>
                                                         <div class="ripple-container"></div>
                                                     </button>
                                                 </form>

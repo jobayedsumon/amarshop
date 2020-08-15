@@ -10,7 +10,7 @@
                         @csrf
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Upload Slide Images') }}</h4>
                             </div>
                             <div class="card-body ">
@@ -54,7 +54,7 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Upload') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Upload') }}</button>
                             </div>
 
                         </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-12">
 
                     <div class="card ">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-danger">
                             <h4 class="card-title">{{ __('Available Slides') }}</h4>
                         </div>
                         <div class="card-body ">

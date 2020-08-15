@@ -20,7 +20,7 @@
             <div class="card-footer">
               <div class="stats">
                 <i class="material-icons text-danger">product</i>
-                <a href="{{ route('products.index') }}">View</a>
+                <a class="text-danger" href="{{ route('products.index') }}">View</a>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">product</i> <a href="#">View</a>
+                <i class="material-icons">product</i> <a class="text-danger" href="#">View</a>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
             <div class="card-footer">
               <div class="stats">
                 <i class="material-icons">product</i>
-                  <a href="#">View</a>
+                  <a class="text-danger" href="#">View</a>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">product</i> <a href="#">View</a>
+                <i class="material-icons">product</i> <a class="text-danger" href="#">View</a>
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@
                           <td>
                               {{ $activity->created_at }}
                           </td>
-                        <td>{{ $activity->causer->name }} has {{ $activity->description }} {{ class_basename($activity->subject_type) }} {{ $activity->subject->name ?? '' }}</td>
+                        <td>{{ $activity->causer ? $activity->causer->name : '' }} has {{ $activity->description }} {{ class_basename($activity->subject_type) }} {{ $activity->subject->name ?? '' }}</td>
                         <td class="td-actions text-right">
 {{--                          <a type="button" href="/admin/activities/{{ $activity->id }}" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">--}}
 {{--                            <i class="material-icons">close</i>--}}

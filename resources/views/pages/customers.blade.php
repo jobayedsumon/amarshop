@@ -6,14 +6,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-danger">
                             <h4 class="card-title ">Customers</h4>
                             <p class="card-category"> Here is a list of the customers</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-danger">
                                     <th>
                                         Name
                                     </th>
@@ -55,10 +55,10 @@
                                         <td>
                                             {{ $customer->billing_address }}
                                         </td>
-                                        <td class="text-primary">
+                                        <td class="text-danger">
                                             {{ $customer->total_purchase_count }}
                                         </td>
-                                        <td class="text-primary">
+                                        <td class="text-danger">
                                             BDT {{ $customer->total_purchase_amount }}
                                         </td>
                                     </tr>
@@ -79,7 +79,7 @@
 
 {{--                <div class="col-md-12">--}}
 {{--                    <div class="card card-plain">--}}
-{{--                        <div class="card-header card-header-primary">--}}
+{{--                        <div class="card-header card-header-danger">--}}
 {{--                            <h4 class="card-title mt-0"> Table on Plain Background</h4>--}}
 {{--                            <p class="card-category"> Here is a subtitle for this table</p>--}}
 {{--                        </div>--}}

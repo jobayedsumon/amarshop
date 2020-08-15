@@ -10,7 +10,7 @@
                         @csrf
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Add Product') }}</h4>
                                 <p class="card-category">{{ __('Product information') }}</p>
                             </div>
@@ -31,7 +31,8 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Product Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="{{ __('Product Name') }}" value="" required="true" aria-required="true"/>
+                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text"
+                                                   placeholder="{{ __('Product Name') }}" value="" required="true" aria-required="true"/>
                                             @if ($errors->has('name'))
                                                 <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
                                             @endif
@@ -80,6 +81,64 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Brand') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64">
+                                                    <select name="brand_id"
+                                                            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                                        @forelse($brands as $brand)
+                                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                            <hr>
+                                                        @empty
+                                                        @endforelse
+                                                    </select>
+                                                </div>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Color') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64 flex items-center" id="colorDiv">
+                                                    <input class="{ $errors->has('color') ? ' is-invalid' : '' }}" name="color[]" type="color"
+                                                            value="" required="true" aria-required="true"/>
+
+                                                </div>
+
+                                                <a id="colorPlus"><span class="fa fa-plus"></span></a>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Size') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64">
+                                                    <input class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" name="size" id="input-name" type="text"
+                                                           placeholder="{{ __('Product Size') }}" value="" required="true" aria-required="true"/>
+
+                                                </div>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Price') }}</label>
                                     <div class="col-sm-7">
@@ -91,6 +150,20 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Quantity') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('quantity') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}" name="quantity" id="input-quantity" type="number" placeholder="{{ __('Product Quantity') }}" value="" required />
+                                                @if ($errors->has('quantity'))
+                                                    <span id="quantity-error" class="error text-danger" for="input-quantity">{{ $errors->first('quantity') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <br>
 
@@ -109,8 +182,9 @@
                                     <br>
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Primary Image') }}</label>
-                                        <div class="col-sm-7">
+                                        <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                                        <div class="col-sm-4">
+                                            <p>Primary</p>
                                             <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image_primary" id="input-image_primary" type="file" required />
                                                 @if ($errors->has('image_primary'))
@@ -118,11 +192,9 @@
                                                 @endif
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Secondary Image') }}</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-4">
+                                            <p>Secondary</p>
                                             <div class="{{ $errors->has('image_secondary') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('image_secondary') ? ' is-invalid' : '' }}" name="image_secondary" id="input-image_secondary" type="file" required />
                                                 @if ($errors->has('image_secondary'))
@@ -130,6 +202,31 @@
                                                 @endif
                                             </div>
                                         </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-4">
+                                            <p>Left</p>
+                                            <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image_left" id="input-image_primary" type="file" required />
+                                                @if ($errors->has('image_primary'))
+                                                    <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <p>Right</p>
+                                            <div class="{{ $errors->has('image_secondary') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('image_secondary') ? ' is-invalid' : '' }}" name="image_right" id="input-image_secondary" type="file" required />
+                                                @if ($errors->has('image_secondary'))
+                                                    <span id="image_secondary-error" class="error text-danger" for="input-image_secondary">{{ $errors->first('image_secondary') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+
                                     </div>
 
                                     <br>
@@ -158,9 +255,22 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Product Tags') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('tags') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags" id="input-tags" type="text"
+                                                       placeholder="{{ __('Use , separator only') }}" value="" required="true" aria-required="true"/>
+                                                @if ($errors->has('tags'))
+                                                    <span id="tags-error" class="error text-danger" for="input-tags">{{ $errors->first('tags') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Create Product') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Create Product') }}</button>
                             </div>
 
                         </div>
@@ -175,5 +285,19 @@
 
     </div>
     </div>
+
+
 @endsection
 @endcanany
+
+@push('js')
+    <script>
+        $('#colorPlus').click(function () {
+
+            let element = "<input class=\"{ $errors->has('color') ? ' is-invalid' : '' }}\" name=\"color[]\" id=\"input-name\" type=\"color\"\n" +
+                "value=\"\" required=\"true\" aria-required=\"true\"/>";
+
+            $('#colorDiv').append(element);
+        });
+    </script>
+@endpush

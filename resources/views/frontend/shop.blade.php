@@ -48,39 +48,39 @@
                                     <input type="text" name="price" id="amount" />
                                 </div>
                                 <div class="widget_list widget_color">
-                                    <h3>Select Color</h3>
-                                    <ul>
-                                        @php $colors = \App\Color::all(); @endphp
+                                    <h3>Select Brand</h3>
+                                    <select class="form-control p-2" id="colorSelect">
+                                        @php $brands = \App\Brand::all(); @endphp
 
-                                        @forelse($colors as $color)
-                                            <li class="flex items-center justify-between mb-2">
-                                                <input type="radio" name="color" value="{{ $color->id }}"><span class="px-8 py-4 w-3/4" style="background-color: {{ $color->name }}"></span>
-                                            </li>
+
+
+                                        @forelse($brands as $brand)
+                                            <option class="colorOption" value="{{ $brand->id }}">{{ $brand->name }}</option>
 
                                         @empty
 
                                         @endforelse
 
-                                    </ul>
+                                    </select>
                                 </div>
 
                                 <div class="widget_list widget_color">
                                     <h3>Select SIze</h3>
-                                    <ul>
+                                    <select class="form-control">
                                         @php $sizes = \App\Size::all(); @endphp
 
                                         @forelse($sizes as $size)
-                                            <li class="flex items-center justify-between mb-2">
-                                                <input type="radio" name="size" value="{{ $size->id }}"><span>{{ $size->name }}</span>
-                                            </li>
+                                            <option value="{{ $size->id }}">
+                                                {{ $size->name }}
+                                            </option>
 
                                         @empty
 
                                         @endforelse
-                                    </ul>
+                                    </select>
                                 </div>
 
-                                <button class="customButton filter_button" type="submit">Filter</button>
+                                <button id="filter" class="customButton filter_button" type="submit">Filter</button>
 
                             </form>
 
@@ -199,8 +199,8 @@
                                     <h4 class="product_name"><a href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
                                             {{ $product->name }}</a></h4>
                                     <div class="price_box">
+                                        <span class="current_price">BDT {{ $product->price - round($product->price * $product->discount / 100) }}</span>
                                         <span class="old_price">BDT {{ $product->price }}</span>
-                                        <span class="current_price">BDT {!! $product->price * $product->discount_price / 100 !!}</span>
                                     </div>
                                     <div class="product_desc">
                                         <p>{{ $product->short_description }}</p>

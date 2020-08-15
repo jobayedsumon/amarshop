@@ -18,7 +18,13 @@
                         <ul>
 
                             <li><a href="#"><i class="icon-equalizer icons"></i> Compare (3)</a></li>
-                            <li><a href="{{ route('wishlist') }}"><i class="icon-heart"></i> Wishlist (3)</a></li>
+                            @auth('customer')
+
+                                <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (<span id="wishlistCount">{{ auth()->guard('customer')->user()->wishlist->count()  }}</span>)</a></li>
+
+                            @elseguest('customer')
+                                <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist ()</a></li>
+                            @endauth
                         </ul>
                     </div>
                     <div class="header_account_area">
@@ -34,46 +40,21 @@
                         <div class="header_account_list  mini_cart_wrapper">
                             <a href="javascript:void(0)"><i class="icon-bag icons"></i>
                                 <span class="cart_itemtext">Cart:</span>
-                                <span class="cart_itemtotal">$59.00</span>
-                                <span class="item_count">2</span>
+                                <span class="cart_itemtotal">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
+                                <span class="item_count">{{ session()->get('cart_items_count') ?? 0 }}</span>
                             </a>
                             <!--mini cart-->
                             <div class="mini_cart">
-                                <div class="cart_gallery">
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Juicy Couture Tricot</a>
-                                            <p>1 x <span> $30.00 </span></p>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="ion-ios-close-outline"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Juicy Couture Juicy</a>
-                                            <p>1 x <span> $29.00 </span></p>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="ion-ios-close-outline"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="mini_cart_table">
                                     <div class="cart_table_border">
                                         <div class="cart_total">
-                                            <span>Sub total:</span>
-                                            <span class="price">$125.00</span>
+                                            <span>Sub Total:</span>
+                                            <span class="price cart_sub_total">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
                                         </div>
                                         <div class="cart_total mt-10">
-                                            <span>total:</span>
-                                            <span class="price">$125.00</span>
+                                            <span>Total:</span>
+                                            <span class="price cart_total_amount">BDT {{ session()->get('cart_sub_total') ? session()->get('cart_sub_total') + 100 : 0 }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -130,10 +111,12 @@
                             <li class="menu-item-has-children">
                                 <a href="#">Amar Care</a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Skin Care</a></li>
-                                    <li><a href="index-2.html">Hair Care</a></li>
-                                    <li><a href="index-3.html">Body Care</a></li>
-                                    <li><a href="index-4.html">Health Care</a></li>
+                                    @forelse($categories as $category)
+
+                                        <li><a class="" href="/amar-care/{{ $category->id }}">{{ $category->name }}</a></li>
+
+                                    @empty
+                                    @endforelse
                                 </ul>
                             </li>
 

@@ -8,25 +8,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-danger">
                             <h4 class="card-title ">Products List</h4>
                             <p class="card-category"> Here you can manage products</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">Add Product</a>
+                                    <a href="{{ route('products.create') }}" class="btn btn-sm btn-danger">Add Product</a>
                                 </div>
                             </div>
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-danger">
                                     <tr>
                                         <th>
                                             Image
                                         </th>
                                         <th>
                                             Name
+                                        </th>
+                                        <th>
+                                            Color
+                                        </th>
+                                        <th>
+                                            Size
+                                        </th>
+                                        <th>
+                                            Brand
                                         </th>
                                         <th>
                                             Category
@@ -53,7 +62,22 @@
                                                 <img width="100px" src="{{ asset($product->image_primary) }}" alt="">
                                             </td>
                                             <td>
-                                                <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>
+                                                <a class="text-danger" href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>
+                                            </td>
+                                            <td>
+                                                @forelse($product->colors as $color)
+                                                    <span class="p-2 mr-1" style="background-color: {{ $color->name }}"></span>
+                                                @empty
+                                                @endforelse
+                                            </td>
+                                            <td>
+                                                @forelse($product->sizes as $size)
+                                                    <span class="p-2">{{ $size->name }}</span>
+                                                @empty
+                                                @endforelse
+                                            </td>
+                                            <td>
+                                                {{ $product->brand->name }}
                                             </td>
                                             <td>
                                                 {{ $product->category->name }}
@@ -61,17 +85,17 @@
                                             <td>
                                                 {{ $product->sub_category->name }}
                                             </td>
-                                            <td class="text-primary">
+                                            <td class="text-danger">
                                                 {{ $product->price }}
                                             </td>
-                                            <td class="text-primary">
+                                            <td class="text-danger">
                                                 {{ $product->discount }}
                                             </td>
                                             <td>
                                                 {{ $product->short_description }}
                                             </td>
                                             <td class="td-actions">
-                                                <a href="{{ route('products.edit', $product->id) }}"><i class="material-icons">edit</i></a>
+                                                <a href="{{ route('products.edit', $product->id) }}"><i class="material-icons text-danger">edit</i></a>
                                             </td>
                                             <td class="td-actions text-right">
                                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST">
@@ -79,7 +103,7 @@
                                                     @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" rel="tooltip" class="btn btn-success btn-link"
                                                             data-original-title="" title="">
-                                                        <i class="material-icons">delete</i>
+                                                        <i class="material-icons text-danger">delete</i>
                                                         <div class="ripple-container"></div>
                                                     </button>
                                                 </form>

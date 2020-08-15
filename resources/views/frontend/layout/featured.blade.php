@@ -40,7 +40,7 @@
 
                                     <div class="product_items">
                                         <article class=" single_product m-2">
-                                            <figure class="h-full flex flex-column justify-between">
+                                            <figure class="h-full flex flex-column justify-start">
                                                 <div class="product_thumb">
                                                     <a class="primary_img" href="{{ route('product-details', [$featuredProduct->category->id, $featuredProduct->sub_category->id, $featuredProduct->id]) }}">
                                                         <img src="{{ asset($featuredProduct->image_primary)}}" alt=""></a>
@@ -70,8 +70,8 @@
                                                     <h4 class="product_name"><a href="{{ route('product-details', [$featuredProduct->category->id, $featuredProduct->sub_category->id, $featuredProduct->id]) }}">
                                                             {{ $featuredProduct->name }}</a></h4>
                                                     <div class="price_box">
+                                                        <span class="current_price">BDT {{ $featuredProduct->price - round($featuredProduct->price * $featuredProduct->discount / 100) }}</span>
                                                         <span class="old_price">BDT {{ $featuredProduct->price }}</span>
-                                                        <span class="current_price">BDT {{ $featuredProduct->price * $featuredProduct->discount_price / 100 }}</span>
                                                     </div>
                                                     <div class="add_to_cart">
                                                         <a data-toggle="modal" data-target="#view-modal"

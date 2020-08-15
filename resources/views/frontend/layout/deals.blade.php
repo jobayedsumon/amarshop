@@ -71,17 +71,45 @@
                 </div>
             </div>
 
+            <div class="col-md-8 col-lg-8 col-sm-6">
+                <section class="slider_section">
+                    <div class="deals_slider_area owl-carousel stop">
+
+                        @forelse($sliders as $slider)
+
+                            <div class="single_slider deals_slider d-flex align-items-center w-full" data-bgimg="{{ asset($slider->image)}}">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="slider_content">
+                                                <h2>Best Women's 2020</h2>
+                                                <h1>{{ $slider->title }}</h1>
+                                                <p>
+                                                    {{ $slider->exert }}
+                                                </p>
+                                                {{--                                <a href="{{ route('shop') }}">+ Shop Now </a>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                        @endforelse
 
 
 
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <img src="{{ asset('storage/slider/2.jpg') }}" class="img-thumbnail" alt="">
 
+                    </div>
+                </section>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <img src="{{ asset('storage/slider/4.jpg') }}" class="img-thumbnail" alt="">
-            </div>
+
+
+
+
+
+
+
 
 
 

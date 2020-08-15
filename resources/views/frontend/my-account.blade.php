@@ -59,24 +59,21 @@
                                                 <th>Date</th>
                                                 <th>Status</th>
                                                 <th>Total</th>
-                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @forelse($customer->orders as $order)
                                             <tr>
-                                                <td>1</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="success">Completed</span></td>
-                                                <td>$25.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
+                                                <td>{{ $order->id }}</td>
+                                                <td>{{ $order->created_at }}</td>
+                                                <td><span class="success"></span></td>
+                                                <td> BDT {{ $order->total }} for {{ $order->order_details->sum('count') }} items</td>
+
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>May 10, 2018</td>
-                                                <td>Processing</td>
-                                                <td>$17.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
-                                            </tr>
+
+                                        @empty
+                                        @endforelse
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -84,7 +81,7 @@
 
                             @php
 
-                                if ($billing_address = auth('customer')->user()->billing_address)
+                                if ($billing_address = $customer->billing_address ?? '')
                                 {
                                        $address = explode('+', $billing_address);
 
@@ -110,7 +107,7 @@
                                         <label for="division">Division <span>*</span></label>
                                         <select class="select_option" name="division" id="division">
 
-                                            <option value="{{ $division }}">{{ ucfirst($division) }}</option>
+                                            <option value="{{ $division ?? '' }}">{{ $division ?? '' }}</option>
 
                                             <option value="dhaka">Dhaka</option>
                                             <option value="chittagong">Chittagong</option>
@@ -125,17 +122,17 @@
 
                                     <div class="col-12 mb-20">
                                         <label>District <span>*</span></label>
-                                        <input type="text" name="district" value="{{ $district }}">
+                                        <input type="text" name="district" value="{{ $district ?? '' }}">
                                     </div>
 
                                     <div class="col-12 mb-20">
                                         <label>Town / City <span>*</span></label>
-                                        <input type="text" name="city" value="{{ $city }}">
+                                        <input type="text" name="city" value="{{ $city ?? '' }}">
                                     </div>
 
                                     <div class="col-12 mb-20">
                                         <label>Street address  <span>*</span></label>
-                                        <input name="street" placeholder="House number and street name" type="text" value="{{ $street }}">
+                                        <input name="street" placeholder="House number and street name" type="text" value="{{ $street ?? '' }}">
                                     </div>
 
                                     <button class="customButton py-2 px-6" style="border-radius: 5px" type="submit">Save</button>
@@ -156,26 +153,26 @@
                                                 @csrf
                                                 @method('PATCH')
                                                 <label>Name</label>
-                                                <input type="text" name="name" value="{{ auth('customer')->user()->name }}">
+                                                <input type="text" name="name" value="{{ $customer->name }}">
                                                 <label>Email</label>
-                                                <input type="email" name="email" value="{{ auth('customer')->user()->email }}">
+                                                <input type="email" name="email" value="{{ $customer->email }}">
                                                 <label>Phone Number</label>
-                                                <input type="text" name="phone_number" value="{{ auth('customer')->user()->phone_number }}">
+                                                <input type="text" name="phone_number" value="{{ $customer->phone_number }}">
                                                 <label>Password</label>
                                                 <input type="password" name="password" required>
                                                 <label>Birthdate</label>
-                                                <input type="date" placeholder="MM/DD/YYYY" value="{{ auth('customer')->user()->birthdate }}" name="birthdate">
+                                                <input type="date" placeholder="MM/DD/YYYY" value="{{ $customer->birthdate }}" name="birthdate">
                                                 <span class="example">
                                                   (E.g.: 05/31/1970)
                                                 </span>
                                                 <br>
                                                 <span class="custom_checkbox">
-                                                    <input {{ auth('customer')->user()->receive_offer ? 'checked' : '' }} type="checkbox" value="1" name="receive_offer">
+                                                    <input {{ $customer->receive_offer ? 'checked' : '' }} type="checkbox" value="1" name="receive_offer">
                                                     <label>Receive offers from our partners</label>
                                                 </span>
                                                 <br>
                                                 <span class="custom_checkbox">
-                                                    <input {{ auth('customer')->user()->receive_offer ? 'checked' : '' }} type="checkbox" value="1" name="newsletter">
+                                                    <input {{ $customer->receive_offer ? 'checked' : '' }} type="checkbox" value="1" name="newsletter">
                                                     <label>Sign up for our newsletter<br><em>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</em></label>
                                                 </span>
                                                 <div class="save_button primary_btn default_button">

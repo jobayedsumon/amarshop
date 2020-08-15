@@ -11,7 +11,7 @@
                         @method('patch')
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Edit Product') }}</h4>
                                 <p class="card-category">{{ __('Product information') }}</p>
                             </div>
@@ -82,6 +82,46 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Color') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64 flex items-center" id="colorDiv">
+                                                    @forelse($product->colors as $color)
+                                                    <input class="{ $errors->has('color') ? ' is-invalid' : '' }}" name="color[]" type="color"
+                                                           value="{{ $color->name }}" required="true" aria-required="true"/>
+                                                    @empty
+                                                    @endforelse
+
+                                                </div>
+
+                                                <a id="colorPlus"><span class="fa fa-plus"></span></a>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Size') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64">
+                                                    <input class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" name="size" id="input-name" type="text"
+                                                           placeholder="{{ __('Product Size') }}" value="@forelse($product->sizes as $size){{ $size->name }}{!! !$loop->last ? ', ' : '' !!}@empty @endforelse" required="true" aria-required="true"/>
+
+                                                </div>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Price') }}</label>
                                     <div class="col-sm-7">
@@ -94,6 +134,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Quantity') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('quantity') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}" name="quantity"
+                                                       id="input-quantity" type="number" placeholder="{{ __('Product Quantity') }}" value="{{ $product->quantity }}" required />
+                                                @if ($errors->has('quantity'))
+                                                    <span id="quantity-error" class="error text-danger" for="input-quantity">{{ $errors->first('quantity') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <br>
 
@@ -167,7 +222,7 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Update') }}</button>
                             </div>
 
                         </div>
@@ -184,3 +239,15 @@
     </div>
 @endsection
 @endcanany
+
+@push('js')
+    <script>
+        $('#colorPlus').click(function () {
+
+            let element = "<input class=\"{ $errors->has('color') ? ' is-invalid' : '' }}\" name=\"color[]\" id=\"input-name\" type=\"color\"\n" +
+                "value=\"\" required=\"true\" aria-required=\"true\"/>";
+
+            $('#colorDiv').append(element);
+        });
+    </script>
+@endpush

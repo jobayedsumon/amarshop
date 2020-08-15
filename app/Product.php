@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Actuallymab\LaravelComment\Contracts\Commentable;
+use Actuallymab\LaravelComment\HasComments;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use willvincent\Rateable\Rateable;
 
-class Product extends Model
+class Product extends Model implements Commentable
 {
     //
     protected $guarded = [];
@@ -14,6 +17,13 @@ class Product extends Model
      */
 
     use LogsActivity;
+    use HasComments;
+
+    public function canBeRated(): bool
+    {
+        return true; // default false
+    }
+
 
     public function category()
     {
@@ -23,6 +33,11 @@ class Product extends Model
     public function sub_category()
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 
     public function specifications()

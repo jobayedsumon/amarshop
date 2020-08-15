@@ -88,7 +88,7 @@ class CategoryController extends Controller
             $path = $request->file('image')->storeAs('category', $name);
             $path = 'storage/' .$path;
 
-            unlink(asset($category->image));
+            unlink(public_path($category->image));
         } else {
             $path = $category->image;
         }
@@ -112,7 +112,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
-        unlink(public_path($category->image));
+        if (file_exists(public_path($category->image)))
+            unlink(public_path($category->image));
 
         $category->delete();
 

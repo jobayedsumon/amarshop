@@ -33,6 +33,31 @@ function sweetAlter(icon, title) {
 
     });
 
+    $('.compareButton').click(function (e) {
+
+        e.preventDefault();
+
+        let productId = $(this).data('id');
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: 'POST',
+            url: '/compare/add',
+            data: {
+                _token: CSRF_TOKEN,
+                productId: productId
+            },
+            success: function (count) {
+                sweetAlter('success', 'Product added to compare');
+                console.log(count);
+                $('#compareCount').text(count);
+
+            }
+        });
+
+    });
+
 
     $('#addToCart').click(function (e) {
 
@@ -103,6 +128,70 @@ function sweetAlter(icon, title) {
                 $('#modal-loader').hide();
             })
     });
+
+    $('#filter').on('click', function (e) {
+        e.preventDefault();
+       let amount = $('#amount').val();
+       amount = amount.split(' - ');
+       minAmount = parseInt(amount[0]);
+       maxAmount = parseInt(amount[1]);
+
+       let brand = parseInt($('.brand:selected').val());
+       let size = parseInt($('.size:selected').val());
+
+       if (isNaN(brand)) brand = -1;
+       if (isNaN(size)) size = -1;
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: 'GET',
+            url: '/filter-product',
+            data: {
+                _token: CSRF_TOKEN,
+                brand_id: brand,
+                size_id: size,
+                min_amount: minAmount,
+                max_amount: maxAmount
+            },
+            success: function (result) {
+                $('#chooseProduct').html(result);
+            }
+        });
+
+
+
+
+    });
+
+    $('.rating').on('click', function (e) {
+        e.preventDefault();
+        let star = $(this).data('value');
+        $('#star').val(star);
+    });
+
+    $('#customerRating').on('click', function (e) {
+       e.preventDefault();
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: 'POST',
+            url: '/product/rate',
+            data: {
+                _token: CSRF_TOKEN,
+                product_id: $('#product').val(),
+                comment: $('#comment').val(),
+                star: $('#star').val()
+            },
+            success: function (result) {
+                console.log(result);
+                sweetAlter('success', 'Thank you for your review!');
+            }
+        });
+
+    });
+
 
 
 

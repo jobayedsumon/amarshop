@@ -15,7 +15,7 @@
             @forelse($newProducts as $newProduct)
 
                 <article class="single_product mr-3">
-                    <figure class="h-full flex flex-column justify-between">
+                    <figure class="h-full flex flex-column justify-start">
                         <div class="product_thumb">
                             <a class="primary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
                                 <img src="{{ asset($newProduct->image_primary)}}" alt=""></a>
@@ -28,7 +28,7 @@
                                 <ul>
                                     <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $newProduct->id }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
                                     <li class="compare">
-                                        <a  title="Add to Compare">
+                                        <a href="javascript:void(0)" class="compareButton" data-id="{{ $newProduct->id }}" title="Add to Compare">
                                             <i class="icon-refresh icons"></i></a></li>
                                     <li class="quick_button">
                                         <a data-toggle="modal" data-target="#view-modal"
@@ -46,8 +46,8 @@
                             <h4 class="product_name"><a href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
                                     {{ $newProduct->name }}</a></h4>
                             <div class="price_box">
+                                <span class="current_price">BDT {{ $newProduct->price - round($newProduct->price * $newProduct->discount / 100) }}</span>
                                 <span class="old_price">BDT {{ $newProduct->price }}</span>
-                                <span class="current_price">BDT {{ $newProduct->price * $newProduct->discount_price / 100 }}</span>
                             </div>
                             <div class="add_to_cart">
                                 <a data-toggle="modal" data-target="#view-modal"

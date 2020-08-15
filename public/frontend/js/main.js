@@ -44,6 +44,20 @@
         });
     }
 
+    var $deals_slider = $('.deals_slider_area');
+    if($deals_slider.length > 0) {
+        $deals_slider.owlCarousel({
+            // animateOut: 'fadeOut',
+            items: 1,
+            nav: false,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            loop: true,
+            animateOut: 'fadeOut',
+            dots: true,
+        });
+    }
+
     $('.stop').on('click',function(){
         var $this = $(this);
         if($this.hasClass('clicked')){

@@ -8,7 +8,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Size extends Model
 {
     //
-    use LogsActivity;
+    protected $guarded = [];
 
     public function products()
     {

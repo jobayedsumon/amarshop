@@ -10,39 +10,41 @@
                 <input type="text" name="price" id="amount" />
         </div>
         <div class="widget_list widget_color">
-            <h3>Select Color</h3>
-            <ul>
-                @php $colors = \App\Color::all(); @endphp
+            <h3>Select Brand</h3>
+            <select class="form-control p-2" id="colorSelect">
+                <option value=""></option>
+                @php $brands = \App\Brand::all(); @endphp
 
-                @forelse($colors as $color)
-                <li class="flex items-center justify-between mb-2">
-                    <input type="radio" name="color" value="{{ $color->id }}"><span class="px-8 py-4 w-3/4" style="background-color: {{ $color->name }}"></span>
-                </li>
+
+
+                @forelse($brands as $brand)
+                <option class="brand" value="{{ $brand->id }}">{{ $brand->name }}</option>
 
                 @empty
 
                 @endforelse
 
-            </ul>
+            </select>
         </div>
 
         <div class="widget_list widget_color">
             <h3>Select SIze</h3>
-            <ul>
+            <select class="form-control">
+                <option value=""></option>
                 @php $sizes = \App\Size::all(); @endphp
 
                 @forelse($sizes as $size)
-                    <li class="flex items-center justify-between mb-2">
-                        <input type="radio" name="size" value="{{ $size->id }}"><span>{{ $size->name }}</span>
-                    </li>
+                    <option class="size" value="{{ $size->id }}">
+                        {{ $size->name }}
+                    </option>
 
                 @empty
 
                 @endforelse
-            </ul>
+            </select>
         </div>
 
-            <button class="customButton filter_button" type="submit">Filter</button>
+            <button id="filter" class="customButton filter_button" type="submit">Filter</button>
 
         </form>
 
@@ -56,7 +58,7 @@
 
                 @forelse($tags as $tag)
 
-                    <a class="customButton" href="#">{{ $tag->name }}</a>
+                    <a class="customButton" href="{{ route('tag-search', $tag->name) }}">{{ $tag->name }}</a>
                 @empty
 
                 @endforelse
@@ -67,3 +69,10 @@
 
 
 </aside>
+
+<script>
+    $('#colorSelect').on('change', function () {
+       let color = $('.colorOption:selected').css('background-color');
+       $('#colorSelect').css('background-color', color);
+    });
+</script>

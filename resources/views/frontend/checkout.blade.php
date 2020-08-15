@@ -26,6 +26,21 @@
     </div>
     <!--breadcrumbs area end-->
 
+    @php
+
+        if ($billing_address = auth('customer')->user() ? auth('customer')->user()->billing_address : '')
+        {
+
+               $address = explode('+', $billing_address);
+
+               $street = $address[0];
+               $city = $address[1];
+               $district = $address[2];
+               $division = strtolower($address[3]);
+        }
+
+    @endphp
+
     <!--Checkout page section-->
     <div class="Checkout_section">
        <div class="container">
@@ -41,11 +56,12 @@
                             <div class="row">
                                 <div class="col-12 mb-20">
                                     <label>Name <span>*</span></label>
-                                    <input type="text" name="name">
+                                    <input type="text" name="name" value="{{ auth('customer')->user() ? auth('customer')->user()->name : '' }}">
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="division">Division <span>*</span></label>
                                     <select class="select_option" name="division" id="division">
+                                        <option value="{{ $division ?? '' }}">{{ $division ?? '' }}</option>
                                         <option value="dhaka">Dhaka</option>
                                         <option value="chittagong">Chittagong</option>
                                         <option value="barisal">Barisal</option>
@@ -59,42 +75,40 @@
 
                                 <div class="col-12 mb-20">
                                     <label>District <span>*</span></label>
-                                    <input type="text" name="district">
+                                    <input type="text" name="district" value="{{ $district ?? '' }}">
                                 </div>
 
                                 <div class="col-12 mb-20">
                                     <label>Town / City <span>*</span></label>
-                                    <input type="text" name="city">
+                                    <input type="text" name="city" value="{{ $city ?? '' }}">
                                 </div>
 
                                 <div class="col-12 mb-20">
                                     <label>Street address  <span>*</span></label>
-                                    <input name="street" placeholder="House number and street name" type="text">
+                                    <input name="street" placeholder="House number and street name" value="{{ $street ?? '' }}" type="text">
                                 </div>
 
                                 <div class="col-lg-6 mb-20">
                                     <label>Phone<span>*</span></label>
-                                    <input name="phone" type="text">
+                                    <input name="phone_number" type="text" value="{{ auth('customer')->user() ? auth('customer')->user()->phone_number : '' }}">
 
                                 </div>
                                  <div class="col-lg-6 mb-20">
                                     <label> Email Address   <span>*</span></label>
-                                      <input name="email" type="email">
+                                      <input name="email" type="email" value="{{ auth('customer')->user() ? auth('customer')->user()->email : '' }}">
 
                                 </div>
-                                <div class="col-12 mb-20">
-                                    <input id="account" type="checkbox" data-target="createp_account" />
-                                    <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">Create an account?</label>
 
-                                    <div id="collapseOne" class="collapse one" data-parent="#accordion">
-                                        <div class="card-body1">
-                                           <label> Account password   <span>*</span></label>
-                                            <input name="password" placeholder="password" type="password">
-                                            <label> Confirm password   <span>*</span></label>
-                                            <input name="confirm_password" placeholder="confirm password" type="password">
-                                        </div>
-                                    </div>
+                                <div class="col-lg-6 mb-20">
+
+                                <label> Account password   <span>*</span></label>
+                                <input name="password" placeholder="password" type="password" required>
+                                <label> Confirm password   <span>*</span></label>
+                                <input name="password_confirmation" placeholder="confirm password" type="password" required>
+
                                 </div>
+
+
                                 <div class="col-12 mb-20">
                                     <input id="address" type="checkbox" data-target="createp_account" />
                                     <label class="righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>

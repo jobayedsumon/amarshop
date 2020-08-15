@@ -10,7 +10,7 @@
                         @csrf
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Make Featured') }}</h4>
                             </div>
                             <div class="card-body ">
@@ -50,7 +50,7 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Make Featured') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Make Featured') }}</button>
                             </div>
 
                         </div>
@@ -62,7 +62,7 @@
                 <div class="col-md-6">
 
                     <div class="card ">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-danger">
                             <h4 class="card-title">{{ __('Featured Products') }}</h4>
                         </div>
                         <div class="card-body ">
@@ -80,7 +80,7 @@
                             @endif
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-danger">
                                     <th>
                                         Product
                                     </th>
@@ -93,7 +93,7 @@
                                         @forelse($featureds as $featured)
 
                                             <td>
-                                                {{ $featured->product->name }}
+                                                {{ $featured->product ? $featured->product->name : '' }}
                                             </td>
 
                                             <td class="td-actions">
@@ -102,7 +102,7 @@
                                                     @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" rel="tooltip" class="btn btn-success btn-link"
                                                             data-original-title="" title="Delete">
-                                                        <i class="material-icons">delete</i>
+                                                        <i class="material-icons text-danger">delete</i>
                                                         <div class="ripple-container"></div>
                                                     </button>
                                                 </form>

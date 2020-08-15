@@ -15,7 +15,7 @@
                         <div class="language_currency text-right">
                             <ul>
 
-                                <li><a href="#"><i class="icon-refresh icons mr-1"></i> Compare (3)</a></li>
+                                <li><a href="{{ route('compare') }}"><i class="icon-refresh icons mr-1"></i> Compare (3)</a></li>
 
                                 @auth('customer')
 
@@ -86,9 +86,13 @@
                                         <li><a href="#">Amar Care<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
 
-                                                <li><a class="" href="{{ route('my-account') }}">Skin Care</a></li>
+                                                @forelse($categories as $category)
 
-                                                <li><a class="" href="{{ route('logout_customer') }}">Hair Care</a></li>
+                                                <li><a class="" href="/amar-care/{{ $category->id }}">{{ $category->name }}</a></li>
+
+                                                @empty
+                                                @endforelse
+
                                             </ul>
                                         </li>
 
@@ -126,8 +130,8 @@
                             <div class="header_account_list search_list">
                                 <a href="javascript:void(0)"><i id="searchIcon" class="icon-magnifier icons"></i></a>
                                 <div class="dropdown_search">
-                                    <form action="#">
-                                        <input placeholder="Search entire store here ..." type="text">
+                                    <form action="{{ route('search') }}" method="GET">
+                                        <input placeholder="Search entire store here ..." type="text" name="search">
                                         <button type="submit"><i class="icon-magnifier icons"></i></button>
                                     </form>
                                 </div>
@@ -139,32 +143,6 @@
                                 </a>
                                 <!--mini cart-->
                                 <div class="mini_cart">
-{{--                                    <div class="cart_gallery">--}}
-{{--                                        <div class="cart_item">--}}
-{{--                                            <div class="cart_img">--}}
-{{--                                                <a href="#"><img src="{{ asset('frontend')}}/img/s-product/product.jpg" alt=""></a>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="cart_info">--}}
-{{--                                                <a href="#">Juicy Couture Tricot</a>--}}
-{{--                                                <p>1 x <span> BDT 30.00 </span></p>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="cart_remove">--}}
-{{--                                                <a href="#"><i class="ion-ios-close-outline"></i></a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="cart_item">--}}
-{{--                                            <div class="cart_img">--}}
-{{--                                                <a href="#"><img src="{{ asset('frontend')}}/img/s-product/product2.jpg" alt=""></a>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="cart_info">--}}
-{{--                                                <a href="#">Juicy Couture Juicy</a>--}}
-{{--                                                <p>1 x <span> BDT 29.00 </span></p>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="cart_remove">--}}
-{{--                                                <a href="#"><i class="ion-ios-close-outline"></i></a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                     <div class="mini_cart_table">
                                         <div class="cart_table_border">
                                             <div class="cart_total">

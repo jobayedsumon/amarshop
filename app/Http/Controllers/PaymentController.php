@@ -15,15 +15,23 @@ class PaymentController extends Controller
         if ($request->check_method == 'cod')
         {
             $this->cod($request);
+
+            session()->put('payment_message', 'Order placed successfully!');
+            session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total']);
+
+            return view('frontend.payment');
         }
     }
 
     public function cod($request)
     {
         if (auth('customer')->check()) {
-            $order = Order::create([
-                'customer_id' => auth('customer')->id()
+
+            $data = $request->validate([
+                'password' => 'required|confirmed',
             ]);
+
+            $customer = auth('customer')->user();
 
         } else {
 
@@ -32,38 +40,49 @@ class PaymentController extends Controller
                 'password' => 'required|confirmed',
             ]);
 
-            dd($data);
-
             $customer = Customer::create([
                 'email' => $data['email'],
                 'password' => bcrypt($data['password'])
             ]);
 
-
-
-            $order = Order::create([
-                'customer_id' => $customer->id
-            ]);
         }
+
+        $total = session()->get('cart_total');
+
+
+        $order = Order::create([
+            'customer_id' => $customer->id,
+            'total' => $total,
+            'notes' => $request->notes
+        ]);
+
+
+        $billing_address = $request->street . '+';
+        $billing_address .= $request->city . '+';
+        $billing_address .= $request->district . '+';
+        $billing_address .= ucfirst($request->division);
+
+        $customer->update([
+            'name' => $request->name,
+            'phone_number' => $request->phone_number,
+            'password' => bcrypt($data['password']),
+            'billing_address' => $billing_address,
+
+        ]);
 
 
         $count = session()->get('cart_items_count');
         $cart = session()->get('cart');
-        $total = session()->get('cart_total');
 
         for ($i = 0; $i < $count; $i++) {
             OrderDetails::create([
                 'order_id' => $order->id,
                 'product_id' => $cart[$i]['product_id'],
                 'count' => $cart[$i]['count'],
-                'total' => $total,
                 'color_id' => $cart[$i]['color_id'],
                 'size_id' => $cart[$i]['size_id'],
             ]);
         }
-
-        dd('THANK YOU!');
-
 
     }
 }

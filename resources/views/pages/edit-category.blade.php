@@ -12,7 +12,7 @@
                         @method('patch')
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Edit Category') }}</h4>
                             </div>
                             <div class="card-body ">
@@ -56,7 +56,7 @@
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Update') }}</button>
                             </div>
 
                         </div>
@@ -68,7 +68,7 @@
 {{--                <div class="col-md-6">--}}
 
 {{--                        <div class="card ">--}}
-{{--                            <div class="card-header card-header-primary">--}}
+{{--                            <div class="card-header card-header-danger">--}}
 {{--                                <h4 class="card-title">{{ __('Available Categories') }}</h4>--}}
 {{--                            </div>--}}
 {{--                            <div class="card-body ">--}}
@@ -86,7 +86,7 @@
 {{--                                @endif--}}
 {{--                                    <div class="table-responsive">--}}
 {{--                                        <table class="table">--}}
-{{--                                            <thead class=" text-primary">--}}
+{{--                                            <thead class=" text-danger">--}}
 {{--                                            <th>--}}
 {{--                                                Image--}}
 {{--                                            </th>--}}

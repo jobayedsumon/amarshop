@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Category;
+use App\Color;
 use App\Product;
+use App\Size;
 use App\SubCategory;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -32,8 +36,9 @@ class ProductController extends Controller
         //
         $categories = Category::all();
         $sub_categories = SubCategory::all();
+        $brands = Brand::all();
 
-        return view('products.add-product', compact('categories', 'sub_categories'));
+        return view('products.add-product', compact('categories', 'sub_categories', 'brands'));
     }
 
     /**
@@ -45,25 +50,74 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $allSize = explode(',', $request->size);
+        $allTags = explode(',', $request->tags);
+        $tagCount = count($allTags);
+        $sizeCount = count($allSize);
+        $colorCount = count($request->color);
+
         $image_primary = $request->file('image_primary')->getClientOriginalName();
+        $image_primary = now() . $image_primary;
         $image_primary = $request->file('image_primary')->storeAs('product', $image_primary);
         $image_primary = 'storage/' .$image_primary;
 
         $image_secondary = $request->file('image_secondary')->getClientOriginalName();
+        $image_secondary = now() . $image_secondary;
         $image_secondary = $request->file('image_secondary')->storeAs('product', $image_secondary);
         $image_secondary = 'storage/' .$image_secondary;
 
-        Product::create([
+        $image_left = $request->file('image_left')->getClientOriginalName();
+        $image_left = now() . $image_left;
+        $image_left = $request->file('image_left')->storeAs('product', $image_left);
+        $image_left = 'storage/' .$image_left;
+
+        $image_right = $request->file('image_right')->getClientOriginalName();
+        $image_right = now() . $image_right;
+        $image_right = $request->file('image_right')->storeAs('product', $image_right);
+        $image_right = 'storage/' .$image_right;
+
+        $product = Product::create([
             'name' => $request->name,
             'price' => $request->price,
+            'quantity' => $request->quantity,
             'discount' => $request->discount,
             'category_id' => $request->category_id,
             'sub_category_id' => $request->sub_category_id,
+            'brand_id' => $request->brand_id,
             'short_description' => $request->short_description,
             'description' => $request->description,
             'image_primary' => $image_primary,
             'image_secondary' => $image_secondary,
+            'image_left' => $image_left,
+            'image_right' => $image_right,
         ]);
+
+        for ($i=0; $i<$colorCount; $i++) {
+
+            $color = Color::firstOrCreate([
+                'name' => $request->color[$i]
+            ]);
+
+            $product->colors()->attach($color);
+        }
+
+        for ($i=0; $i<$sizeCount; $i++) {
+
+            $size = Size::firstOrCreate([
+                'name' => trim($allSize[$i])
+            ]);
+
+            $product->sizes()->attach($size);
+        }
+
+        for ($i=0; $i<$tagCount; $i++) {
+
+            $tag = Tag::firstOrCreate([
+                'name' => trim($allTags[$i])
+            ]);
+
+            $product->tags()->attach($tag);
+        }
 
         return redirect(route('products.index'));
     }
@@ -106,22 +160,30 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $allSize = explode(',', $request->size);
+        $sizeCount = count($allSize);
+        $colorCount = count($request->color);
+        $allTags = explode(',', $request->tags);
+        $tagCount = count($allTags);
+
         if ($request->file('image_primary')) {
-            $image_primary = $request->file('image_primary')->getClientOriginalName();
+            $image_primary = $request->file('image_primary')->getClientOriginalName().now();
             $image_primary = $request->file('image_primary')->storeAs('product', $image_primary);
             $image_primary = 'storage/' .$image_primary;
 
-            unlink(asset($product->image_primary));
+            if (file_exists(public_path($product->image_primary)))
+                unlink(public_path($product->image_primary));
         } else {
             $image_primary = $product->image_primary;
         }
 
         if ($request->file('image_secondary')) {
-            $image_secondary = $request->file('image_secondary')->getClientOriginalName();
+            $image_secondary = $request->file('image_secondary')->getClientOriginalName().now();
             $image_secondary = $request->file('image_secondary')->storeAs('product', $image_secondary);
             $image_secondary = 'storage/' .$image_secondary;
 
-            unlink(aset($product->image_secondary));
+            if (file_exists(public_path($product->image_secondary)))
+                unlink(public_path($product->image_secondary));
         } else {
             $image_secondary = $product->image_secondary;
         }
@@ -131,6 +193,7 @@ class ProductController extends Controller
         $product->update([
             'name' => $request->name,
             'price' => $request->price,
+            'quantity' => $request->quantity,
             'discount' => $request->discount,
             'category_id' => $request->category_id,
             'sub_category_id' => $request->sub_category_id,
@@ -139,6 +202,33 @@ class ProductController extends Controller
             'image_primary' => $image_primary,
             'image_secondary' => $image_secondary,
         ]);
+
+        for ($i=0; $i<$colorCount; $i++) {
+
+            $color = Color::firstOrCreate([
+                'name' => $request->color[$i]
+            ]);
+
+            $product->colors()->sync($color);
+        }
+
+        for ($i=0; $i<$sizeCount; $i++) {
+
+            $size = Size::firstOrCreate([
+                'name' => trim($allSize[$i])
+            ]);
+
+            $product->sizes()->sync($size);
+        }
+
+        for ($i=0; $i<$tagCount; $i++) {
+
+            $tag = Tag::firstOrCreate([
+                'name' => trim($allTags[$i])
+            ]);
+
+            $product->tags()->sync($tag);
+        }
 
         return redirect(route('products.index'));
     }
@@ -152,9 +242,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-
-        File::delete(asset($product->image_primary));
-        File::delete(asset($product->image_secondary));
+        if (file_exists(public_path($product->image_primary))) {
+            File::delete(public_path($product->image_primary));
+        }
+        if (file_exists(public_path($product->image_secondary))) {
+            File::delete(public_path($product->image_secondary));
+        }
 
         $product->delete();
 

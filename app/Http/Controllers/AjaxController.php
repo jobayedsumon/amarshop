@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AmarCare;
 use App\Brand;
 use App\Category;
 use App\Color;
@@ -27,6 +28,24 @@ class AjaxController extends Controller
         ]);
 
         return Wishlist::all()->count();
+    }
+
+    public function add_compare(Request $request)
+    {
+
+        $compare = session()->get('compare');
+
+        if (!$compare || count($compare) < 3) {
+
+            $compare[] = $request->productId;
+
+            session()->put('compare', $compare);
+
+            $compare = session()->get('compare');
+        }
+
+        return count($compare);
+
     }
 
     public function remove_wishlist($wishId)
@@ -126,6 +145,15 @@ class AjaxController extends Controller
         return view('frontend.layout.modal_body',['data'=>$product]);
     }
 
+    public function loadModalReview($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('frontend.layout.modal_review',['data'=>$product]);
+    }
+
+
+
     public function apply_coupon(Request $request)
     {
         $coupon = Coupon::where('code', $request->coupon)->first();
@@ -156,42 +184,30 @@ class AjaxController extends Controller
 
     public function filter_product(Request $request)
     {
-        $color = $request->color;
-        $size = $request->size;
+        $brand = $request->brand_id;
+        $size = $request->size_id;
 
-        $price = $request->price;
-        $price = explode(' - ', $price);
-        $minPrice = (int) $price[0];
-        $maxPrice = (int) $price[1];
+        $minPrice = $request->min_amount;
+        $maxPrice = $request->max_amount;
 
         $data = Product::whereBetween('price', [$minPrice, $maxPrice]);
 
-        if ($color) {
-            $prodIds = Color::find($color)->products()->pluck('id');
+
+
+        if ($brand != -1) {
+            $prodIds = Brand::find($brand)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }
 
-        if ($size) {
+        if ($size != -1) {
             $prodIds = Size::find($size)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }
 
         $data = $data->get();
 
-        $featuredCatIds = FeaturedProduct::all()->pluck('category_id')->unique();
-        $featuredProdIds = FeaturedProduct::all()->pluck('product_id');
-        $featuredCategories = Category::whereIn('id', $featuredCatIds)->get();
+        return view('frontend.choose-product', compact('data'))->render();
 
-
-        $sliders = Slider::all();
-        $categories = Category::all();
-
-        $newProducts = Product::latest()->get();
-        $allSale = Sale::all();
-        $brands = Brand::all();
-
-        return view('frontend.index', compact('sliders', 'categories',
-             'newProducts', 'featuredCategories', 'featuredProdIds', 'allSale', 'data'));
 
     }
 
@@ -256,6 +272,35 @@ class AjaxController extends Controller
         $categories = Category::all();
 
         return view('frontend.subshop', compact('categories', 'subshop', 'data'));
+
+    }
+
+    public function rate_product(Request $request)
+    {
+
+        $product = Product::findOrFail($request->product_id);
+        $star = $request->star;
+        $comment = $request->comment;
+        $customer = \auth('customer')->user();
+
+        $customer->comment($product, $comment, $star);
+
+        return redirect()->back();
+
+    }
+
+    public function comment_vlog(Request $request)
+    {
+
+        $vlog = AmarCare::findOrFail($request->vlog_id);
+        $comment = $request->comment;
+        $customer = \auth('customer')->user();
+
+
+
+        $customer->comment($vlog, $comment, $rate=0);
+
+        return redirect()->back();
 
     }
 

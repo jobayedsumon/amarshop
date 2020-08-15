@@ -1582,6 +1582,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-size: cover;
   height: 683px;
 }
+
+.deals_slider {
+    height: 620px;
+}
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .single_slider {
     height: 480px;

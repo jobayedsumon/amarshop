@@ -11,7 +11,7 @@
                         @method('patch')
 
                         <div class="card ">
-                            <div class="card-header card-header-primary">
+                            <div class="card-header card-header-danger">
                                 <h4 class="card-title">{{ __('Edit User') }}</h4>
                                 <p class="card-category">{{ __('User information') }}</p>
                             </div>
@@ -94,7 +94,7 @@
                                     </div>
                             </div>
                             <div class="card-footer ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                <button type="submit" class="btn btn-danger">{{ __('Update') }}</button>
                             </div>
 
                             </div>

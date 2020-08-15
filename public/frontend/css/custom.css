@@ -166,3 +166,7 @@ footer, .header_top {
 .pagination ul li.current {
     background-color: #F4587A;
 }
+
+.rating i {
+    color: #FEB954;
+}

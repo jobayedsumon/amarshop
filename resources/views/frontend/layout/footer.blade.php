@@ -35,6 +35,8 @@
 
                 <img src="{{ asset('frontend/img/logo/payments.png') }}" class="img-fluid" alt="">
             </div>
+
+
             <div class="col-lg-6 col-md-6 col-sm-12 flex justify-between">
                 <div class="footer_right">
                     <h3 class="footer_title">My Account</h3>
@@ -75,6 +77,7 @@
                 </div>
 
             </div>
+
         </div>
         <hr>
         <div class="row mt-2">

@@ -11,6 +11,12 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
+        <li class="nav-item{{ $activePage == 'amar-care' ? ' active' : '' }}">
+            <a class="nav-link" href="/admin/amar-care">
+                <i class="fa fa-heart"></i>
+                <p>{{ __('Amar Care') }}</p>
+            </a>
+        </li>
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('admin') }}">
           <i class="material-icons">dashboard</i>
@@ -47,6 +53,12 @@
             <p>{{ __('Customers') }}</p>
         </a>
       </li>
+        <li class="nav-item{{ $activePage == 'orders' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('orders') }}">
+                <i class="material-icons">people</i>
+                <p>{{ __('Orders') }}</p>
+            </a>
+        </li>
         <li class="nav-item {{ ($activePage == 'category' || $activePage == 'sub_category') ? ' ' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#category" aria-expanded="true">
                 <i class="fa fa-book"></i>
@@ -120,6 +132,13 @@
             <a class="nav-link" href="{{ route('slider') }}">
                 <i class="material-icons">image</i>
                 <p>{{ __('Slider') }}</p>
+            </a>
+        </li>
+
+        <li class="nav-item{{ $activePage == 'brand' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('brands.index') }}">
+                <i class="material-icons">image</i>
+                <p>{{ __('Brands') }}</p>
             </a>
         </li>
 

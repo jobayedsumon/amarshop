@@ -80,7 +80,7 @@
                                                 @forelse($data->sizes as $size)
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label flex flex-col-reverse items-center">
-                                                            <input type="radio" class="form-check-input sizeId" name="size" value="{{ $size->id }}">
+                                                            <input type="radio" class="form-check-input sizeId" name="size" value="{{ $size->id }}" required>
                                                             <li class=""><a>{{ $size->name }}</a></li>
                                                         </label>
                                                     </div>
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="modal_add_to_cart">
                                         <form action="">
-                                            <input type="hidden" id="productId_modal" value="{{ $data->id }}">
+                                            <input type="hidden" id="productId_modal" value="{{ $data->id }}" required>
                                             <input min="1" max="100" step="1" value="1" id="count_modal" type="number">
                                             <a id="addToCartModal" class="customButton py-3 px-5">Add to Cart</a>
                                         </form>
@@ -135,6 +135,10 @@
         colorId = $("input[name='color']:checked").val();
         sizeId = $("input[name='size']:checked").val();
         count = $('#count_modal').val();
+
+        if (colorId == null || sizeId == null) {
+            return false;
+        }
 
         $.ajax({
             type: 'POST',

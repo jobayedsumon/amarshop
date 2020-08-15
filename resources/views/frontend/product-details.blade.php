@@ -48,7 +48,7 @@
                                     </a>
 
                                 </li>
-                                <li >
+                                <li>
                                     <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ asset($product->image_secondary) }}"
                                        data-zoom-image="{{ asset($product->image_secondary) }}">
                                         <img src="{{ asset($product->image_secondary) }}" alt="zo-th-1"/>
@@ -67,6 +67,20 @@
                                 <h1><a href="#">{{ $product->name }}</a></h1>
                                 <input type="hidden" id="productId" value="{{ $product->id }}">
                             </div>
+
+                           <div class=" product_ratting">
+                               <ul>
+                                   @for($i=0;  $i<$product->averageRate(); $i++)
+                                   <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                   @endfor
+
+
+                                   <li class="review"><a data-toggle="modal"
+
+                                                         data-target="#view-modal-review"> (Customer review) </a></li>
+
+                               </ul>
+                           </div>
 
                             <div class="price_box">
                                 <span class="current_price">BDT {{ $product->price - round($product->price * $product->discount / 100) }}</span>
@@ -171,6 +185,9 @@
                                 <li>
                                      <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
                                 </li>
+                                <li>
+                                    <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews ()</a>
+                                </li>
 
                             </ul>
                         </div>
@@ -203,6 +220,97 @@
                                 </div>
                                 <div class="product_info_content">
                                     {{ $product->short_description }}
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" >
+                                <div class="reviews_wrapper">
+                                    <h2>{{ $product->comments()->count() }} review for {{ $product->name }}</h2>
+
+                                    @forelse($product->comments as $comment)
+                                        <div class="reviews_comment_box">
+                                            <div class="comment_thmb">
+                                                <img src="assets/img/blog/comment2.jpg" alt="">
+                                            </div>
+                                            <div class="comment_text">
+                                                <div class="reviews_meta">
+                                                    <div class="star_rating">
+                                                        <ul>
+                                                            @for($i=0; $i<$comment->rate; $i++)
+                                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                                            @endfor
+                                                        </ul>
+                                                    </div>
+                                                    <p><strong>{{ $comment->commented->name }} </strong>- {{ $comment->created_at }}</p>
+                                                    <span>{{ $comment->comment }}</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    @empty
+                                    @endforelse
+
+
+                                    @auth('customer')
+
+                                        <form method="POST" action="{{ route('rate-product') }}">
+                                            @csrf
+                                    <div class="comment_title">
+                                        <h2>Add a review </h2>
+                                        <p>Your email address will not be published.  Required fields are marked </p>
+                                    </div>
+                                    <div class="product_ratting mb-10">
+                                        <h3>Your rating</h3>
+
+                                        <ul>
+                                            <input type="radio" name="star" value="5">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                        </ul>
+                                        <ul>
+                                            <input type="radio" name="star" value="4">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                        </ul>
+                                        <ul>
+                                            <input type="radio" name="star" value="3">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                        </ul>
+                                        <ul>
+                                            <input type="radio" name="star" value="2">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                        </ul>
+                                        <ul>
+                                            <input type="radio" name="star" value="1">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                        </ul>
+                                    </div>
+
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                    <div class="product_review_form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="review_comment">Your review *</label>
+                                                <textarea name="comment" id="review_comment" ></textarea>
+                                            </div>
+
+                                        </div>
+                                        <button type="submit">Submit</button>
+
+                                    </div>
+                                        </form>
+                                    @elseguest('customer')
+                                            <h1 class="text-xl font-weight-400">Create account and complete profile to review.</h1>
+                                        @endauth
                                 </div>
                             </div>
                         </div>
@@ -306,6 +414,52 @@
     @include('frontend.layout.footer')
 
 @endsection
+
+<div id="view-modal-review" class="modal fade"
+     tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: ;">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class="ion-android-close"></i></span>
+            </button>
+
+            <div class="modal_body">
+                <div class="container">
+                    <div class="row">
+
+                        <ul class="flex justify-center w-full">
+                            <li><a class="rating" data-value="1" href="#"><i class="ion-android-star text-4xl"></i></a></li>
+                            <li><a class="rating" data-value="2" href="#"><i class="ion-android-star text-4xl"></i></a></li>
+                            <li><a class="rating" data-value="3" href="#"><i class="ion-android-star text-4xl"></i></a></li>
+                            <li><a class="rating" data-value="4" href="#"><i class="ion-android-star text-4xl"></i></a></li>
+                            <li><a class="rating" data-value="5" href="#"><i class="ion-android-star text-4xl"></i></a></li>
+                        </ul>
+
+                        <input id="product" type="hidden" value="{{ $product->id }}">
+                        <input id="star" type="hidden" value="">
+
+                        <div class="w-full text-center">
+
+                            <input type="text" id="comment" class="border border-pink-100 w-full p-4 mb-2">
+
+                            <button id="customerRating" class="customButton py-2 px-4">Rate</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div><!-- /.modal -->
 
 
 

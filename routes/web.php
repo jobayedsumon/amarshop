@@ -32,9 +32,12 @@ Route::get('/shop/{shopId}', 'FrontendController@shop')->name('shop');
 Route::get('/shop/{shopId}/subshop/{subId}', 'FrontendController@subshop')->name('subshop');
 Route::get('/shop/{shopId}/subshop/{subId}/product/{productId}', 'FrontendController@product_details')->name('product-details');
 Route::get('/wishlist', 'FrontendController@wishlist')->name('wishlist');
+Route::get('/compare', 'FrontendController@compare')->name('compare');
 Route::get('/cart', 'FrontendController@cart')->name('cart');
 Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
 Route::post('/payment', 'PaymentController@index')->name('payment');
+Route::get('/tag/{tagName}', 'FrontendController@tag_search')->name('tag-search');
+Route::get('/search', 'FrontendController@search')->name('search');
 Route::get('/filter-product', 'AjaxController@filter_product')->name('filter-product');
 Route::get('/filter-product-shop', 'AjaxController@filter_product_shop')->name('filter-product-shop');
 Route::get('/filter-product-subshop', 'AjaxController@filter_product_subshop')->name('filter-product-subshop');
@@ -46,9 +49,12 @@ Route::post('/customer-login', 'CustomerController@login_customer');
 Route::post('/customer-register', 'CustomerController@register_customer');
 Route::get('/contact', 'FrontendController@contact');
 Route::get('/about', 'FrontendController@about');
+Route::get('/amar-care/{catId}', 'FrontendController@amar_care');
+Route::get('/amar-care/{catId}/vlog/{vlogId}', 'FrontendController@vlog')->name('vlog');
 
 //AJAX CALL
 Route::post('/wishlist/add', 'AjaxController@add_wishlist');
+Route::post('/compare/add', 'AjaxController@add_compare');
 Route::get('/wishlist/remove/{wishId}', 'AjaxController@remove_wishlist');
 Route::post('/cart/add', 'AjaxController@add_cart');
 Route::post('/cart/update', 'AjaxController@update_cart');
@@ -61,6 +67,14 @@ Route::get('dynamicModal/{id}',[
     'as'=>'dynamicModal',
     'uses'=> 'AjaxController@loadModal'
 ]);
+
+Route::get('dynamicModalReview/{id}',[
+    'as'=>'dynamicModalReview',
+    'uses'=> 'AjaxController@loadModalReview'
+]);
+
+Route::post('/product/rate', 'AjaxController@rate_product')->name('rate-product');
+Route::post('/vlog/comment', 'AjaxController@comment_vlog')->name('comment-vlog');
 
 
 
@@ -82,7 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('admin')->group(function () {
 
-
+            Route::resource('amar-care', 'AmarCareController');
 
             Route::resource('users', 'UserController', ['except' => ['show']]);
             Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -104,12 +118,15 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('products', 'ProductController');
             Route::resource('categories', 'CategoryController', ['except' => ['show']]);
             Route::resource('sub_categories', 'SubCategoryController', ['except' => ['show']]);
+            Route::resource('brands', 'BrandController', ['except' => ['show']]);
 
 
             Route::get('customers', function () {
                 $customers = \App\Customer::all();
                 return view('pages.customers', compact('customers'));
             })->name('customers');
+
+        Route::get('orders', 'OrderController@index')->name('orders');
 
 
     });
