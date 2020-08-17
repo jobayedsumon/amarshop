@@ -26,6 +26,10 @@
     </div>
     <!--breadcrumbs area end-->
 
+    @php
+      $compare = \session()->get('compare') ?? [];
+    @endphp
+
     <div class="container">
         <div class="row">
             @forelse($compare as $data)

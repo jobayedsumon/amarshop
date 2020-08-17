@@ -30,8 +30,7 @@
     <!--Checkout page section-->
     <div class="Checkout_section">
        <div class="container text-center text-2xl">
-
-           <h1>{{ session()->get('payment_message') }}</h1>
+           <h1>{!! nl2br(e(session()->get('payment_message'))) !!}</h1>
            <h1>Thank you for shopping with us.</h1>
 
         </div>

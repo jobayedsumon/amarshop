@@ -6,7 +6,9 @@ use App\AmarCare;
 use App\Brand;
 use App\Category;
 use App\FeaturedProduct;
+use App\Order;
 use App\Product;
+use App\ReturnProduct;
 use App\Sale;
 use App\Slider;
 use App\SubCategory;
@@ -199,5 +201,23 @@ class FrontendController extends Controller
         $products = Product::where('name', 'LIKE', '%'.$search.'%')->get();
 
         return view('frontend.search', compact('products', 'search'));
+    }
+
+    public function return_product($orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        return view('frontend.return-product', compact('order'));
+    }
+
+    public function return_request(Request $request)
+    {
+        ReturnProduct::create([
+           'customer_id' => \auth('customer')->id(),
+           'order_id' => $request->order_id,
+           'returning_reason' => $request->returning_reason,
+        ]);
+
+        return redirect(route('my-account'));
     }
 }

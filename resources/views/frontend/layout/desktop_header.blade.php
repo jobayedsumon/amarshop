@@ -14,15 +14,18 @@
                     <div class="col-lg-8 col-md-8">
                         <div class="language_currency text-right">
                             <ul>
+                                @php
+                                    $compare = \session()->get('compare') ?? [];
+                                @endphp
 
-                                <li><a href="{{ route('compare') }}"><i class="icon-refresh icons mr-1"></i> Compare (3)</a></li>
+                                <li><a href="{{ route('compare') }}"><i class="icon-refresh icons mr-1"></i> Compare ({{ count($compare) }})</a></li>
 
                                 @auth('customer')
 
                                 <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (<span id="wishlistCount">{{ auth()->guard('customer')->user()->wishlist->count()  }}</span>)</a></li>
 
                                 @elseguest('customer')
-                                    <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist ()</a></li>
+                                    <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist (0)</a></li>
                                 @endauth
                             </ul>
                         </div>

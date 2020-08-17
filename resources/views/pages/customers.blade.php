@@ -50,10 +50,10 @@
                                             {{ $customer->phone_number }}
                                         </td>
                                         <td>
-                                            {{ $customer->shipping_address }}
+                                            {{ str_replace('+', ', ', $customer->billing_address) }}
                                         </td>
                                         <td>
-                                            {{ $customer->billing_address }}
+                                            {{ str_replace('+', ', ', $customer->billing_address) }}
                                         </td>
                                         <td class="text-danger">
                                             {{ $customer->total_purchase_count }}

@@ -92,16 +92,20 @@ class AjaxController extends Controller
         $cart_sub_total = 0;
         $newCart = [];
 
-        foreach ($cart as $i => $data) {
-            $data['count'] = $request->count[$i];
-            $newCart[] = $data;
+        if ($cart) {
 
-            $product = Product::find($data['product_id']);
-            $product_price = $product->discount ? $product->price - round($product->price * $product->discount / 100) : $product->price;
+            foreach ($cart as $i => $data) {
 
-            $product_price *= $data['count'];
+                $data['count'] = $request->count[$i];
+                $newCart[] = $data;
 
-            $cart_sub_total += $product_price;
+                $product = Product::findOrFail($data['product_id']);
+                $product_price = $product->discount ? $product->price - round($product->price * $product->discount / 100) : $product->price;
+
+                $product_price *= $data['count'];
+
+                $cart_sub_total += $product_price;
+            }
         }
 
         session()->forget('cart');

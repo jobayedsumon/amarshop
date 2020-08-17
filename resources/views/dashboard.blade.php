@@ -53,7 +53,7 @@
             <div class="card-footer">
               <div class="stats">
                 <i class="material-icons">product</i>
-                  <a class="text-danger" href="#">View</a>
+                  <a class="text-danger" href="{{ route('orders') }}">View</a>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">product</i> <a class="text-danger" href="#">View</a>
+                <i class="material-icons">product</i> <a class="text-danger" href="{{ route('customers') }}">View</a>
               </div>
             </div>
           </div>

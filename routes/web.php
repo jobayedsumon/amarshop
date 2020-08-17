@@ -34,8 +34,8 @@ Route::get('/shop/{shopId}/subshop/{subId}/product/{productId}', 'FrontendContro
 Route::get('/wishlist', 'FrontendController@wishlist')->name('wishlist');
 Route::get('/compare', 'FrontendController@compare')->name('compare');
 Route::get('/cart', 'FrontendController@cart')->name('cart');
-Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
-Route::post('/payment', 'PaymentController@index')->name('payment');
+//Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
+//Route::post('/payment', 'PaymentController@index')->name('payment');
 Route::get('/tag/{tagName}', 'FrontendController@tag_search')->name('tag-search');
 Route::get('/search', 'FrontendController@search')->name('search');
 Route::get('/filter-product', 'AjaxController@filter_product')->name('filter-product');
@@ -44,6 +44,8 @@ Route::get('/filter-product-subshop', 'AjaxController@filter_product_subshop')->
 Route::get('/my-account', 'FrontendController@my_account')->name('my-account')->middleware('auth:customer');
 Route::patch('/my-account/update-account', 'FrontendController@update_account')->name('update-account')->middleware('auth:customer');
 Route::patch('/my-account/update-address', 'FrontendController@update_address')->name('update-address')->middleware('auth:customer');
+Route::get('/return/{orderId}', 'FrontendController@return_product')->name('return-product')->middleware('auth:customer');
+Route::post('/return/{orderId}', 'FrontendController@return_request')->name('return-product')->middleware('auth:customer');
 Route::get('/customer-login', 'CustomerController@customer_login')->name('customer-login');
 Route::post('/customer-login', 'CustomerController@login_customer');
 Route::post('/customer-register', 'CustomerController@register_customer');
@@ -127,6 +129,7 @@ Route::group(['middleware' => 'auth'], function () {
             })->name('customers');
 
         Route::get('orders', 'OrderController@index')->name('orders');
+        Route::get('orders/{orderId}', 'OrderController@details')->name('order-details');
 
 
     });
@@ -135,4 +138,18 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('logout_user', 'Auth\LoginController@logout_user')->name('logout_user');
 Route::get('logout_customer', 'CustomerController@logout_customer')->name('logout_customer');
+
+// SSLCOMMERZ Start
+//Route::get('/example1', 'SslCommerzPaymentController@exampleEasyCheckout');
+Route::get('/checkout', 'SslCommerzPaymentController@exampleHostedCheckout')->name('checkout');
+
+Route::post('/pay', 'SslCommerzPaymentController@index')->name('payment');
+//Route::post('/pay-via-ajax', 'SslCommerzPaymentController@payViaAjax');
+
+Route::post('/success', 'SslCommerzPaymentController@success');
+Route::post('/fail', 'SslCommerzPaymentController@fail');
+Route::post('/cancel', 'SslCommerzPaymentController@cancel');
+
+Route::post('/ipn', 'SslCommerzPaymentController@ipn');
+//SSLCOMMERZ END
 

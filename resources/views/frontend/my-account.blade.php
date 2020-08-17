@@ -66,8 +66,9 @@
                                             <tr>
                                                 <td>{{ $order->id }}</td>
                                                 <td>{{ $order->created_at }}</td>
-                                                <td><span class="success"></span></td>
-                                                <td> BDT {{ $order->total }} for {{ $order->order_details->sum('count') }} items</td>
+                                                <td><span class="success">{{ $order->status }}</span></td>
+                                                <td> BDT {{ $order->amount }} for {{ $order->order_details->sum('count') }} items</td>
+                                                <td><a href="{{ route('return-product', $order->id) }}">Return</a></td>
 
                                             </tr>
 

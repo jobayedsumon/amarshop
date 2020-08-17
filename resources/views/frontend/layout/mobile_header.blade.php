@@ -16,14 +16,18 @@
 
                     <div class="language_currency bottom">
                         <ul>
+                            @php
+                                $compare = \session()->get('compare') ?? [];
+                            @endphp
 
-                            <li><a href="#"><i class="icon-equalizer icons"></i> Compare (3)</a></li>
+                            <li><a href="{{ route('compare') }}"><i class="icon-refresh icons mr-1"></i> Compare ({{ count($compare) }})</a></li>
+
                             @auth('customer')
 
                                 <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (<span id="wishlistCount">{{ auth()->guard('customer')->user()->wishlist->count()  }}</span>)</a></li>
 
                             @elseguest('customer')
-                                <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist ()</a></li>
+                                <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist (0)</a></li>
                             @endauth
                         </ul>
                     </div>
@@ -31,8 +35,8 @@
                         <div class="header_account_list search_list">
                             <a href="javascript:void(0)"><i class="icon-magnifier icons"></i></a>
                             <div class="dropdown_search">
-                                <form action="#">
-                                    <input placeholder="Search entire store here ..." type="text">
+                                <form action="{{ route('search') }}" method="GET">
+                                    <input placeholder="Search entire store here ..." type="text" name="search">
                                     <button type="submit"><i class="icon-magnifier icons"></i></button>
                                 </form>
                             </div>
@@ -142,7 +146,7 @@
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@amarshop.com.bd</a></span>
+                        <span><a href="mailto:amarshop.com.bd"><i class="fa fa-envelope-o"></i> info@amarshop.com.bd</a></span>
                     </div>
                 </div>
             </div>

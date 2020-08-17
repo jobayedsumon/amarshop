@@ -22,9 +22,9 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <p>Address:</p>
                 <p class="mb-2">
-                    House No: 16 (1st Floor), Road No: 7, DIT Merul Badda
+                    231 Wapda Road, West Rampura (2.11 mi)
                     <br>
-                    Dhaka-1212, Bangladesh
+                    Dhaka-1219, Bangladesh
                 </p>
 
                 <p>
@@ -42,10 +42,18 @@
                     <h3 class="footer_title">My Account</h3>
                     <div class="footer_menu">
                         <ul>
-                            <li><a href="#">Sign In</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Order Status</a></li>
-                            <li><a href="#">Advanced Search</a></li>
+                            @auth('customer')
+
+                                <li><a class="" href="{{ route('logout_customer') }}">Logout <i class=""></i></a></li>
+
+
+                            @elseguest('customer')
+                                <li><a href="{{ route('customer-login') }}">Login <i class=""></i></a></li>
+                            @endauth
+
+                            <li><a href="{{ route('cart') }}">View Cart</a></li>
+                            <li><a href="{{ route('my-account') }}">Order Status</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -88,9 +96,9 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <ul class="flex justify-end social_icons">
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.facebook.com/amarshop.com.bd/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UC38O8VwkZQ_fZVTTf4x1nMg"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/amarshop._net/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 </ul>
             </div>

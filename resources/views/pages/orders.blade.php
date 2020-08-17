@@ -35,13 +35,17 @@
                                             {{ $order->id }}
                                         </td>
                                         <td>
-                                            {{ $order->customer->name }}
+                                            {{ $order->name }}
                                         </td>
                                         <td>
                                             {{ $order->order_details()->sum('count') }}
                                         </td>
                                         <td>
                                             {{ $order->total }}
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-danger" href="{{ route('order-details', $order->id) }}">Details</a>
                                         </td>
 
                                     </tr>

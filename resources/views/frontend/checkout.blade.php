@@ -30,7 +30,6 @@
 
         if ($billing_address = auth('customer')->user() ? auth('customer')->user()->billing_address : '')
         {
-
                $address = explode('+', $billing_address);
 
                $street = $address[0];
@@ -45,7 +44,7 @@
     <div class="Checkout_section">
        <div class="container">
 
-           <form action="{{ route('payment') }}" method="POST">
+           <form action="{{ url('/pay') }}" method="POST" class="needs-validation">
                @csrf
 
             <div class="checkout_form">
@@ -110,18 +109,21 @@
 
 
                                 <div class="col-12 mb-20">
-                                    <input id="address" type="checkbox" data-target="createp_account" />
+                                    <input id="address" type="checkbox" name="shiiping_address" data-target="createp_account" />
                                     <label class="righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>
 
                                     <div id="collapsetwo" class="collapse one" data-parent="#accordion">
                                        <div class="row">
+
                                            <div class="col-12 mb-20">
                                                <label>Name <span>*</span></label>
-                                               <input type="text">
+                                               <input type="text" name="shipping_name" value="{{ auth('customer')->user() ? auth('customer')->user()->name : '' }}">
                                            </div>
+
                                            <div class="col-12 mb-20">
                                                <label for="division">Division <span>*</span></label>
-                                               <select class="select_option" name="division" id="division">
+                                               <select class="select_option" name="shipping_division" id="division">
+                                                   <option value="{{ $division ?? '' }}">{{ $division ?? '' }}</option>
                                                    <option value="dhaka">Dhaka</option>
                                                    <option value="chittagong">Chittagong</option>
                                                    <option value="barisal">Barisal</option>
@@ -135,29 +137,30 @@
 
                                            <div class="col-12 mb-20">
                                                <label>District <span>*</span></label>
-                                               <input  type="text">
+                                               <input type="text" name="shipping_district" value="{{ $district ?? '' }}">
                                            </div>
 
                                            <div class="col-12 mb-20">
                                                <label>Town / City <span>*</span></label>
-                                               <input  type="text">
+                                               <input type="text" name="shipping_city" value="{{ $city ?? '' }}">
                                            </div>
 
                                            <div class="col-12 mb-20">
                                                <label>Street address  <span>*</span></label>
-                                               <input placeholder="House number and street name" type="text">
+                                               <input name="shipping_street" placeholder="House number and street name" value="{{ $street ?? '' }}" type="text">
                                            </div>
 
                                            <div class="col-lg-6 mb-20">
                                                <label>Phone<span>*</span></label>
-                                               <input type="text">
+                                               <input name="shipping_phone_number" type="text" value="{{ auth('customer')->user() ? auth('customer')->user()->phone_number : '' }}">
 
                                            </div>
                                            <div class="col-lg-6 mb-20">
                                                <label> Email Address   <span>*</span></label>
-                                               <input type="email">
+                                               <input name="shipping_email" type="email" value="{{ auth('customer')->user() ? auth('customer')->user()->email : '' }}">
 
                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -220,23 +223,17 @@
                                 </table>
                             </div>
                             <div class="payment_method">
-                               <div class="panel-default">
-                                    <input id="cod" name="check_method" value="cod" type="radio" data-target="createp_account" />
-                                    <label for="cod" data-toggle="collapse" data-target="#method" aria-controls="method">Cash on delivery</label>
-                                </div>
-                               <div class="panel-default flex items-center">
-                                    <input id="bkash" name="check_method" value="bkash" type="radio" data-target="createp_account" />
-                                    <label for="bkash" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult"> <img src="{{ asset('frontend/img/logo/bkash.png') }}" alt=""></label>
 
-                                </div>
-                                <div class="panel-default flex items-center">
-                                    <input id="card" name="check_method" value="card" type="radio" data-target="createp_account" />
-                                    <label for="card" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult"> <img src="{{ asset('frontend/img/logo/card.png') }}" alt=""></label>
-
-                                </div>
                                 <div class="order_button m-2">
-                                    <button type="submit">Confirm Order</button>
+                                    <button name="payment_method" value="ssl" type="submit">Pay Now</button>
                                 </div>
+
+                                <div class="order_button m-2">
+                                    <button name="payment_method" value="cod" type="submit">Cash on Delivery</button>
+                                </div>
+
+
+
                             </div>
 
                     </div>

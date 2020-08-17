@@ -170,3 +170,10 @@ footer, .header_top {
 .rating i {
     color: #FEB954;
 }
+
+@media (max-width: 768px) {
+    .footer_menu ul li a {
+        font-size: 12px;
+    }
+}
+
