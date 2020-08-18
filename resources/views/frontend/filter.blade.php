@@ -70,6 +70,8 @@
 
 </aside>
 
+
+
 <script>
     $('#colorSelect').on('change', function () {
        let color = $('.colorOption:selected').css('background-color');

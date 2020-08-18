@@ -186,7 +186,7 @@
                                      <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews ()</a>
+                                    <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews ({{ $product->comments()->count() }})</a>
                                 </li>
 
                             </ul>

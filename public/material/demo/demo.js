@@ -235,3 +235,67 @@ demo = {
   }
 
 }
+
+function readURLPrimary(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image_primary').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function readURLSecondary(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image_secondary').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function readURLLeft(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image_left').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function readURLRight(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#image_right').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#input-image_primary").change(function(){
+    readURLPrimary(this);
+});
+
+$("#input-image_secondary").change(function(){
+    readURLSecondary(this);
+});
+
+$("#input-image_left").change(function(){
+    readURLLeft(this);
+});
+
+$("#input-image_right").change(function(){
+    readURLRight(this);
+});

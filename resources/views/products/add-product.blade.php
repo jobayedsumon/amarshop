@@ -187,6 +187,7 @@
                                             <p>Primary</p>
                                             <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image_primary" id="input-image_primary" type="file" required />
+                                                <img src="#" id="image_primary" width="100px" alt=""/>   <!--for preview purpose -->
                                                 @if ($errors->has('image_primary'))
                                                     <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
                                                 @endif
@@ -197,6 +198,7 @@
                                             <p>Secondary</p>
                                             <div class="{{ $errors->has('image_secondary') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('image_secondary') ? ' is-invalid' : '' }}" name="image_secondary" id="input-image_secondary" type="file" required />
+                                                <img src="#" id="image_secondary" width="100px" alt=""/>   <!--for preview purpose -->
                                                 @if ($errors->has('image_secondary'))
                                                     <span id="image_secondary-error" class="error text-danger" for="input-image_secondary">{{ $errors->first('image_secondary') }}</span>
                                                 @endif
@@ -210,7 +212,8 @@
                                         <div class="col-sm-4">
                                             <p>Left</p>
                                             <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image_left" id="input-image_primary" type="file" required />
+                                                <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image_left" id="input-image_left" type="file" required />
+                                                <img src="#" id="image_left" width="100px" alt=""/>   <!--for preview purpose -->
                                                 @if ($errors->has('image_primary'))
                                                     <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
                                                 @endif
@@ -220,7 +223,8 @@
                                         <div class="col-sm-4">
                                             <p>Right</p>
                                             <div class="{{ $errors->has('image_secondary') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('image_secondary') ? ' is-invalid' : '' }}" name="image_right" id="input-image_secondary" type="file" required />
+                                                <input class="form-control{{ $errors->has('image_secondary') ? ' is-invalid' : '' }}" name="image_right" id="input-image_right" type="file" required />
+                                                <img src="#" id="image_right" width="100px" alt=""/>   <!--for preview purpose -->
                                                 @if ($errors->has('image_secondary'))
                                                     <span id="image_secondary-error" class="error text-danger" for="input-image_secondary">{{ $errors->first('image_secondary') }}</span>
                                                 @endif

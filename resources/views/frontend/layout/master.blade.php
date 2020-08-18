@@ -85,7 +85,7 @@
 <!--product area end-->
 
 <!--testimonial area start-->
-
+@yield('testimonial')
 <!--testimonial area end-->
 
 <!--blog area start-->
@@ -112,6 +112,13 @@
 
 <!-- JS
 ============================================ -->
+
+<!--map js code here-->
+<script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyChs2QWiAhnzz0a4OEhzqCXwx_qA9ST_lE"></script>
+<script src="https://www.google.com/jsapi"></script>
+<script src="{{ asset('frontend') }}/js/map.js"></script>
+
+
 <!--jquery min js-->
 <script src="{{ asset('frontend')}}/js/vendor/jquery-3.4.1.min.js"></script>
 <!--popper min js-->
@@ -142,6 +149,7 @@
 <!-- Main JS -->
 <script src="{{ asset('frontend')}}/js/main.js"></script>
 
+
 <script>
     (function (window, document) {
         var loader = function () {
@@ -156,8 +164,6 @@
 
 
 <script src="{{ asset('frontend')}}/js/custom.js"></script>
-
-
 
 </body>
 

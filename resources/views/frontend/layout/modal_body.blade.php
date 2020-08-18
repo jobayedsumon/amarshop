@@ -49,7 +49,10 @@
                                     <h2>{{ $data->name }}</h2>
                                 </div>
                                 <div class="modal_price mb-10">
-                                    <span class="new_price">BDT {{ $data->price - round($data->price * $data->discount / 100) }}</span>
+                                    @php
+                                    $discount = $data->sale ? $data->sale->percentage : $data->discount;
+                                    @endphp
+                                    <span class="new_price">BDT {{ $data->price - round($data->price * $discount / 100) }}</span>
                                     <span class="old_price" >BDT {{ $data->price }}</span>
                                 </div>
                                 <div class="modal_description mb-15">

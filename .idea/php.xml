@@ -106,6 +106,8 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-activitylog" />
       <path value="$PROJECT_DIR$/vendor/willvincent/laravel-rateable" />
       <path value="$PROJECT_DIR$/vendor/actuallymab/laravel-comment" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-image-optimizer" />
+      <path value="$PROJECT_DIR$/vendor/spatie/image-optimizer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

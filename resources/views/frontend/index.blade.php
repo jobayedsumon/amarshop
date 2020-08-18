@@ -44,6 +44,12 @@
 
 @endsection
 
+@section('testimonial')
+
+    @include('frontend.layout.testimonial')
+
+@endsection
+
 
 @section('modal')
 

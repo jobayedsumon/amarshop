@@ -17,7 +17,7 @@ class CreateAmarCaresTable extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained();
             $table->string('title');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->text('description');
             $table->text('video');
             $table->timestamps();

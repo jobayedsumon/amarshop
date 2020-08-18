@@ -40,8 +40,6 @@
                             <form action="{{ route('filter-product-subshop') }}" method="GET">
                                 @csrf
 
-                                <input type="hidden" name="sub_category_id" value="{{ $subshop->id }}">
-
                                 <div class="widget_list widget_filter">
                                     <h3>Select price range</h3>
                                     <div id="slider-range"></div>
@@ -80,7 +78,9 @@
                                     </select>
                                 </div>
 
-                                <button id="filter" class="customButton filter_button" type="submit">Filter</button>
+                                <input type="hidden" id="sub_category_id" value="{{ $subshop->id }}">
+
+                                <button id="filterSubShop" class="customButton filter_button" type="submit">Filter</button>
 
                             </form>
 
@@ -94,7 +94,7 @@
 
                                 @forelse($tags as $tag)
 
-                                    <a class="customButton" href="#">{{ $tag->name }}</a>
+                                    <a class="customButton" href="{{ route('tag-search', $tag->name) }}">{{ $tag->name }}</a>
                                 @empty
 
                                 @endforelse
@@ -148,7 +148,7 @@
                         </div>
                     </div>
                     <!--shop toolbar end-->
-                    <div class="row shop_wrapper">
+                    <div class="row shop_wrapper" id="chooseProduct">
 
                         @forelse($data as $product)
 
@@ -167,7 +167,7 @@
                                                 <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $product->id }}"
                                                                         title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
                                                 <li class="compare">
-                                                    <a  title="Add to Compare">
+                                                    <a href="javascript:void(0)" class="compareButton" data-id="{{ $product->id }}" title="Add to Compare">
                                                         <i class="icon-refresh icons"></i></a></li>
                                                 <li class="quick_button">
                                                     <a data-toggle="modal" data-target="#view-modal"

@@ -130,6 +130,7 @@ function sweetAlter(icon, title) {
     });
 
     $('#filter').on('click', function (e) {
+
         e.preventDefault();
        let amount = $('#amount').val();
        amount = amount.split(' - ');
@@ -159,8 +160,77 @@ function sweetAlter(icon, title) {
             }
         });
 
+    });
 
+    $('#filterShop').on('click', function (e) {
 
+        e.preventDefault();
+        let amount = $('#amount').val();
+        amount = amount.split(' - ');
+        minAmount = parseInt(amount[0]);
+        maxAmount = parseInt(amount[1]);
+
+        let category_id = $('#category_id').val();
+
+        let brand = parseInt($('.brand:selected').val());
+        let size = parseInt($('.size:selected').val());
+
+        if (isNaN(brand)) brand = -1;
+        if (isNaN(size)) size = -1;
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: 'GET',
+            url: '/filter-product-shop',
+            data: {
+                _token: CSRF_TOKEN,
+                brand_id: brand,
+                size_id: size,
+                category_id: category_id,
+                min_amount: minAmount,
+                max_amount: maxAmount
+            },
+            success: function (result) {
+                $('#chooseProduct').html(result);
+            }
+        });
+
+    });
+
+    $('#filterSubShop').on('click', function (e) {
+
+        e.preventDefault();
+        let amount = $('#amount').val();
+        amount = amount.split(' - ');
+        minAmount = parseInt(amount[0]);
+        maxAmount = parseInt(amount[1]);
+
+        let sub_category_id = $('#sub_category_id').val();
+
+        let brand = parseInt($('.brand:selected').val());
+        let size = parseInt($('.size:selected').val());
+
+        if (isNaN(brand)) brand = -1;
+        if (isNaN(size)) size = -1;
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: 'GET',
+            url: '/filter-product-subshop',
+            data: {
+                _token: CSRF_TOKEN,
+                brand_id: brand,
+                size_id: size,
+                sub_category_id: sub_category_id,
+                min_amount: minAmount,
+                max_amount: maxAmount
+            },
+            success: function (result) {
+                $('#chooseProduct').html(result);
+            }
+        });
 
     });
 

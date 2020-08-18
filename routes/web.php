@@ -98,6 +98,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('admin')->group(function () {
 
+        Route::middleware('optimizeImages')->group(function () {
+
             Route::resource('amar-care', 'AmarCareController');
 
             Route::resource('users', 'UserController', ['except' => ['show']]);
@@ -128,9 +130,10 @@ Route::group(['middleware' => 'auth'], function () {
                 return view('pages.customers', compact('customers'));
             })->name('customers');
 
-        Route::get('orders', 'OrderController@index')->name('orders');
-        Route::get('orders/{orderId}', 'OrderController@details')->name('order-details');
+            Route::get('orders', 'OrderController@index')->name('orders');
+            Route::get('orders/{orderId}', 'OrderController@details')->name('order-details');
 
+        });
 
     });
 

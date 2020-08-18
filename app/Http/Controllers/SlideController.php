@@ -17,6 +17,7 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $name = $request->file('slide_image')->getClientOriginalName();
+        $name = now() . $name;
         $path = $request->file('slide_image')->storeAs('slider', $name);
         $path = 'storage/' .$path;
 

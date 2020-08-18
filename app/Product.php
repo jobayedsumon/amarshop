@@ -60,4 +60,9 @@ class Product extends Model implements Commentable
         return $this->belongsToMany(Color::class, 'product_color');
     }
 
+    public function sale()
+    {
+        return $this->hasOne(Sale::class)->where('expire', '>', now());
+    }
+
 }

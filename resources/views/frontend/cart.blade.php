@@ -72,7 +72,8 @@
                                     <td class="product_name"><a href="#">{{ $product->name }}</a></td>
                                     <td class="product-price"><span style="background-color: {{ $color ? $color->name : '' }}" class="p-3"> &nbsp;</span></td>
                                     <td class="product-price">{{ $size ? $size->name : '' }}</td>
-                                    <td class="product-price">BDT {{ $cart_price = $product->discount ? $product->price - round($product->price * $product->discount / 100) : $product->price }}</td>
+                                    @php $discount = $product->sale ? $product->sale->percentage : $product->discount; @endphp
+                                    <td class="product-price">BDT {{ $cart_price = $discount ? $product->price - round($product->price * $discount / 100) : $product->price }}</td>
                                     <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" name="count[]" value="{{ $data['count'] }}" type="number"></td>
                                     <td class="product_total">BDT {!! $row_total = $cart_price * $data['count'] !!}</td>
 

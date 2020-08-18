@@ -112,11 +112,16 @@ class ProductController extends Controller
 
         for ($i=0; $i<$tagCount; $i++) {
 
-            $tag = Tag::firstOrCreate([
-                'name' => trim($allTags[$i])
-            ]);
+            if (trim($allTags[$i]) != '') {
 
-            $product->tags()->attach($tag);
+                $tag = Tag::firstOrCreate([
+                    'name' => trim($allTags[$i])
+                ]);
+
+                if (!$product->tags->contains($tag->id)) {
+                    $product->tags()->attach($tag);
+                }
+            }
         }
 
         return redirect(route('products.index'));
@@ -209,7 +214,9 @@ class ProductController extends Controller
                 'name' => $request->color[$i]
             ]);
 
-            $product->colors()->sync($color);
+            if (!$product->colors->contains($color->id)) {
+                $product->colors()->attach($color);
+            }
         }
 
         for ($i=0; $i<$sizeCount; $i++) {
@@ -218,16 +225,24 @@ class ProductController extends Controller
                 'name' => trim($allSize[$i])
             ]);
 
-            $product->sizes()->sync($size);
+            if (!$product->sizes->contains($size->id)) {
+                $product->sizes()->attach($size);
+            }
         }
 
         for ($i=0; $i<$tagCount; $i++) {
 
-            $tag = Tag::firstOrCreate([
-                'name' => trim($allTags[$i])
-            ]);
+            if (trim($allTags[$i]) != '') {
 
-            $product->tags()->sync($tag);
+                $tag = Tag::firstOrCreate([
+                    'name' => trim($allTags[$i])
+                ]);
+
+                if (!$product->tags->contains($tag->id)) {
+                    $product->tags()->attach($tag);
+                }
+            }
+
         }
 
         return redirect(route('products.index'));

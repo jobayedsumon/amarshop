@@ -129,7 +129,7 @@ class SslCommerzPaymentController extends Controller
                 'phone' => $post_data['cus_phone'],
                 'amount' => $post_data['total_amount'],
                 'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
+                'address' => $shipping_address,
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency'],
                 'customer_id' => $customer->id,
@@ -152,10 +152,16 @@ class SslCommerzPaymentController extends Controller
         switch ($request->payment_method)
         {
             case 'cod':
+                $order->update([
+                   'type' => 'cod'
+                ]);
                 session()->put('payment_message', 'Order placed successfully!');
                 return view('frontend.payment');
                 break;
             case 'ssl':
+                $order->update([
+                    'type' => 'ssl'
+                ]);
                 $sslc = new SslCommerzNotification();
                 # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
                 $payment_options = $sslc->makePayment($post_data, 'hosted');

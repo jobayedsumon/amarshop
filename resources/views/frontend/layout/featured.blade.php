@@ -53,7 +53,9 @@
                                                         <ul>
                                                             <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $featuredProduct->id }}"
                                                                                     title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                                            <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
+                                                            <li class="compare">
+                                                                <a href="javascript:void(0)" class="compareButton" data-id="{{ $featuredProduct->id }}" title="Add to Compare">
+                                                                    <i class="icon-refresh icons"></i></a></li>
                                                             <li class="quick_button">
                                                                 <a data-toggle="modal" data-target="#view-modal"
                                                                    class="quickButton"

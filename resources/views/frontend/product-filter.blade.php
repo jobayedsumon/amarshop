@@ -29,6 +29,12 @@
 </div>
 
 
+    @include('frontend.layout.modal')
+
+
+
+
+
 
 
 

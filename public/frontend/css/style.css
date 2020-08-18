@@ -5887,6 +5887,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     width: auto;
     height: 30px;
     display: block;
+    padding: 5px;
 }
 
 .product_variant.color ul li.color1 a {

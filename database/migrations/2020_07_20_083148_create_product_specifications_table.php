@@ -15,7 +15,7 @@ class CreateProductSpecificationsTable extends Migration
     {
         Schema::create('product_specifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->string('compositions')->nullable();
             $table->string('styles')->nullable();
             $table->string('properties')->nullable();

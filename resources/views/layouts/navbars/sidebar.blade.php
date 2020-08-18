@@ -55,7 +55,7 @@
       </li>
         <li class="nav-item{{ $activePage == 'orders' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('orders') }}">
-                <i class="material-icons">people</i>
+                <i class="material-icons">assignment</i>
                 <p>{{ __('Orders') }}</p>
             </a>
         </li>
@@ -123,21 +123,21 @@
 
       <li class="nav-item{{ $activePage == 'coupon' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('coupon.index') }}">
-          <i class="material-icons">%</i>
+          <i class="material-icons">redeem</i>
           <p>{{ __('Coupon') }}</p>
         </a>
       </li>
 
         <li class="nav-item{{ $activePage == 'slider' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('slider') }}">
-                <i class="material-icons">image</i>
+                <i class="material-icons">view_carousel</i>
                 <p>{{ __('Slider') }}</p>
             </a>
         </li>
 
         <li class="nav-item{{ $activePage == 'brand' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('brands.index') }}">
-                <i class="material-icons">image</i>
+                <i class="material-icons">work</i>
                 <p>{{ __('Brands') }}</p>
             </a>
         </li>

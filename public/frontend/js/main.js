@@ -18,6 +18,7 @@
     });
 
 
+
     /*---stickey menu---*/
     $(window).on('scroll',function() {
            var scroll = $(window).scrollTop();
@@ -37,7 +38,7 @@
             items: 1,
             nav: false,
             autoplay: true,
-            autoplayTimeout: 2000,
+            autoplayTimeout: 3000,
             loop: true,
             animateOut: 'fadeOut',
             dots: true,

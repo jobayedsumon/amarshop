@@ -69,7 +69,10 @@ class AjaxController extends Controller
         );
 
         $product = Product::find($request->product_id);
-        $product_price = $product->discount ? $product->price - round($product->price * $product->discount / 100) : $product->price;
+        $discount = $product->sale ? $product->sale->percentage : $product->discount;
+
+        $product_price = $product->price - round($product->price * $discount / 100);
+
 
         $product_price *= $request->count;
 
@@ -78,6 +81,7 @@ class AjaxController extends Controller
         session()->put('cart_items_count', count($cart));
 
         session()->put('cart', $cart);
+
 
         return response()->json([
             'cart_items_count' => count($cart),
@@ -100,7 +104,8 @@ class AjaxController extends Controller
                 $newCart[] = $data;
 
                 $product = Product::findOrFail($data['product_id']);
-                $product_price = $product->discount ? $product->price - round($product->price * $product->discount / 100) : $product->price;
+                $discount = $product->sale ? $product->sale->percenatge : $product->discount;
+                $product_price = $discount ? $product->price - round($product->price * $discount / 100) : $product->price;
 
                 $product_price *= $data['count'];
 
@@ -113,6 +118,7 @@ class AjaxController extends Controller
 
         session()->put('cart_sub_total', $cart_sub_total);
         session()->put('cart_items_count', count($newCart));
+
 
 
         return redirect('/cart');
@@ -217,65 +223,61 @@ class AjaxController extends Controller
 
     public function filter_product_shop(Request $request)
     {
-        $color = $request->color;
-        $size = $request->size;
+        $brand = $request->brand_id;
+        $size = $request->size_id;
 
-        $price = $request->price;
-        $price = explode(' - ', $price);
-        $minPrice = (int) $price[0];
-        $maxPrice = (int) $price[1];
+        $minPrice = $request->min_amount;
+        $maxPrice = $request->max_amount;
 
         $data = Product::where('category_id', $request->category_id);
 
         $data->whereBetween('price', [$minPrice, $maxPrice]);
 
-        if ($color) {
-            $prodIds = Color::find($color)->products()->pluck('id');
+
+        if ($brand != -1) {
+            $prodIds = Brand::find($brand)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }
 
-        if ($size) {
+        if ($size != -1) {
             $prodIds = Size::find($size)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }
 
-        $data = $data->paginate(9);
-        $shop = Category::findOrFail($request->category_id);
-        $categories = Category::all();
+        $data = $data->get();
 
-        return view('frontend.shop', compact('categories', 'shop', 'data'));
+
+        return view('frontend.choose-product', compact('data'))->render();
 
     }
 
     public function filter_product_subshop(Request $request)
     {
-        $color = $request->color;
-        $size = $request->size;
+        $brand = $request->brand_id;
+        $size = $request->size_id;
 
-        $price = $request->price;
-        $price = explode(' - ', $price);
-        $minPrice = (int) $price[0];
-        $maxPrice = (int) $price[1];
+        $minPrice = $request->min_amount;
+        $maxPrice = $request->max_amount;
 
         $data = Product::where('sub_category_id', $request->sub_category_id);
 
         $data->whereBetween('price', [$minPrice, $maxPrice]);
 
-        if ($color) {
-            $prodIds = Color::find($color)->products()->pluck('id');
+
+        if ($brand != -1) {
+            $prodIds = Brand::find($brand)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }
 
-        if ($size) {
+        if ($size != -1) {
             $prodIds = Size::find($size)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }
 
-        $data = $data->paginate(9);
-        $subshop = Category::findOrFail($request->sub_category_id);
-        $categories = Category::all();
+        $data = $data->get();
 
-        return view('frontend.subshop', compact('categories', 'subshop', 'data'));
+
+        return view('frontend.choose-product', compact('data'))->render();
 
     }
 
