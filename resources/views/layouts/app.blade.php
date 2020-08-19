@@ -82,6 +82,15 @@
         <script src="{{ asset('material') }}/demo/demo.js"></script>
         <script src="{{ asset('material') }}/js/settings.js"></script>
 
+        <script src="https://cdn.tiny.cloud/1/z9ekoznbkdy5bnxd46wf7olir5sg5bk6mq07kjjp8ocrnggq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'lineheight',
+                toolbar: 'lineheightselect'
+            });
+        </script>
         @stack('js')
     </body>
 </html>

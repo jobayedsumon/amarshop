@@ -11,6 +11,18 @@ body, .header_middle, .sticky-header .sticky{
     background: rgba(253, 230, 236, 0.1) !important;
 }
 
+.page_content h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.page_content {
+    line-height: 2rem;
+}
+
+
+
 .mega_menu, .dropdown_search {
     background: rgb(253, 230, 236) !important;
 }

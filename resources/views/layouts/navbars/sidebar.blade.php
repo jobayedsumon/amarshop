@@ -142,6 +142,31 @@
             </a>
         </li>
 
+        <li class="nav-item {{ ($activePage == 'page-manager') ? ' active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#pageManager" aria-expanded="true">
+                <i class="fa fa-user"></i>
+                <p>{{ __('Page Manager') }}
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div class="collapse " id="pageManager">
+                <ul class="nav">
+                    <li class="nav-item{{ $activePage == 'customer-care' ? ' active' : '' }}">
+                        <a class="nav-link" href="{{ route('customer-care') }}">
+                            <span class="sidebar-mini"> UP </span>
+                            <span class="sidebar-normal">{{ __('Customer Care') }} </span>
+                        </a>
+                    </li>
+                    <li class="nav-item{{ $activePage == 'policies' ? ' active' : '' }}">
+                        <a class="nav-link" href="{{ route('policies') }}">
+                            <span class="sidebar-mini"> UM </span>
+                            <span class="sidebar-normal"> {{ __('Policies') }} </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
 
     </ul>
   </div>

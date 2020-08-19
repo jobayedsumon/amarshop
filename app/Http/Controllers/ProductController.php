@@ -159,8 +159,9 @@ class ProductController extends Controller
         //
         $categories = Category::all();
         $sub_categories = SubCategory::all();
+        $brands = Brand::all();
 
-        return view('products.edit-product', compact('categories', 'sub_categories', 'product'));
+        return view('products.edit-product', compact('categories', 'sub_categories', 'product', 'brands'));
     }
 
     /**
@@ -208,6 +209,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'quantity' => $request->quantity,
             'discount' => $request->discount,
+            'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
             'sub_category_id' => $request->sub_category_id,
             'short_description' => $request->short_description,

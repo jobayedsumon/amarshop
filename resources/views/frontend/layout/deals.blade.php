@@ -75,11 +75,11 @@
 
             <div class="col-md-8 col-lg-8 col-sm-6">
                 <section class="slider_section">
-                    <div class="deals_slider_area owl-carousel stop">
+                    <div class="slider_area owl-carousel stop owl-theme">
 
                         @forelse($sliders as $slider)
 
-                            <div class="single_slider deals_slider d-flex align-items-center w-full" data-bgimg="{{ asset($slider->image)}}">
+                            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($slider->image)}}')">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">

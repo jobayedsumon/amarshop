@@ -18,6 +18,9 @@
                                         Order Id
                                     </th>
                                     <th>
+                                        Order Type
+                                    </th>
+                                    <th>
                                         Customer
                                     </th>
                                     <th>
@@ -34,6 +37,9 @@
                                         <td>
                                             {{ $order->id }}
                                         </td>
+                                            <td>
+                                                {{ $order->type }}
+                                            </td>
                                         <td>
                                             {{ $order->name }}
                                         </td>

@@ -82,6 +82,28 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Brand') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
+                                                <div class="inline-block relative w-64">
+                                                    <select name="brand_id"
+                                                            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                                        @forelse($brands as $brand)
+                                                            <option {{ $brand->id == $product->brand->id ? 'selected' : '' }} value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                            <hr>
+                                                        @empty
+                                                        @endforelse
+                                                    </select>
+                                                </div>
+
+                                                @if ($errors->has('sub_category_id'))
+                                                    <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label">{{ __('Color') }}</label>

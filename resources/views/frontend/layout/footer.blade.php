@@ -64,7 +64,7 @@
 
                         <ul>
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Returns & Exchange</a></li>
+                            <li><a href="/returns-exchange">Returns & Exchange</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
 
                         </ul>
@@ -77,9 +77,9 @@
                     <div class="footer_menu">
 
                         <ul>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="/terms-conditions">Terms & Conditions</a></li>
                             <li><a href="#">Delivery & Return Policy</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
         <div class="row mt-2">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="copyright_area">
-                    <p><a href="#">Disclaimer</a> | &copy; 2020  <a href="/">Amar Shop</a>.  All rights reserved | Developed by <a href="http://vmsl.com.bd">VMSL</a></p>
+                    <p><a href="/disclaimer">Disclaimer</a> | &copy; 2020  <a href="/">Amar Shop</a>.  All rights reserved | Developed by <a href="http://vmsl.com.bd">VMSL</a></p>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">

@@ -78,6 +78,14 @@ Route::get('dynamicModalReview/{id}',[
 Route::post('/product/rate', 'AjaxController@rate_product')->name('rate-product');
 Route::post('/vlog/comment', 'AjaxController@comment_vlog')->name('comment-vlog');
 
+Route::get('/privacy-policy', 'PageController@privacy_policy');
+Route::get('/terms-conditions', 'PageController@terms_conditions');
+Route::get('/delivery-returns', 'PageController@delivery_returns');
+Route::get('/about-us', 'PageController@about_us');
+Route::get('/contact-us', 'PageController@contact_us');
+Route::get('/returns-exchange', 'PageController@returns_exchange');
+Route::get('/disclaimer', 'PageController@disclaimer');
+
 
 
 
@@ -97,6 +105,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', 'AdminController@index')->name('admin');
 
     Route::prefix('admin')->group(function () {
+
+        Route::get('customer-care', 'PageController@customer_care')->name('customer-care');
+        Route::post('customer-care', 'PageController@customer_care_store')->name('customer-care');
+        Route::get('policies', 'PageController@policies')->name('policies');
+        Route::post('policies', 'PageController@policies_store')->name('policies');
 
         Route::middleware('optimizeImages')->group(function () {
 
