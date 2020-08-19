@@ -6,6 +6,7 @@ use App\Brand;
 use App\Category;
 use App\Color;
 use App\Product;
+use App\ProductSpecification;
 use App\Size;
 use App\SubCategory;
 use App\Tag;
@@ -123,6 +124,13 @@ class ProductController extends Controller
                 }
             }
         }
+
+        ProductSpecification::create([
+           'product_id' => $product->id,
+           'compositions' => $request->compositions,
+           'styles' => $request->styles,
+           'properties' => $request->properties
+        ]);
 
         return redirect(route('products.index'));
     }
@@ -244,6 +252,14 @@ class ProductController extends Controller
             }
 
         }
+
+
+
+        $product->specifications()->update([
+            'compositions' => $request->compositions,
+            'styles' => $request->styles,
+            'properties' => $request->properties
+        ]);
 
         return redirect(route('products.index'));
     }

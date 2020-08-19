@@ -220,6 +220,52 @@
 
                                     </div>
 
+
+                                    <br>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Compositions') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="compositions" id="input-name" type="text"
+                                                       placeholder="{{ __('Compositions') }}" value="{{ $product->specifications ? $product->specifications->compositions : '' }}" />
+                                                @if ($errors->has('name'))
+                                                    <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Styles') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="styles" id="input-name" type="text"
+                                                       placeholder="{{ __('Styles') }}" value="{{ $product->specifications ? $product->specifications->styles : '' }}" />
+                                                @if ($errors->has('name'))
+                                                    <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Properties') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="properties" id="input-name" type="text"
+                                                       placeholder="{{ __('Properties') }}" value="{{ $product->specifications ? $product->specifications->properties : '' }}" />
+                                                @if ($errors->has('name'))
+                                                    <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <br>
 
                                     <div class="row">

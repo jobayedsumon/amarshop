@@ -146,7 +146,7 @@
                            <div class="product_meta">
                                <span>Tags:
                                    @forelse($product->tags as $tag)
-                                       <a href="">{{ $tag->name }}</a>
+                                       <a href="{{ route('tag-search', $tag->name) }}">{{ $tag->name }}</a>
                                    @empty
                                    @endforelse
 

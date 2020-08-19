@@ -4,7 +4,7 @@
             <!--testimonial area start-->
             <div class="testimonial_area  testimonial_about">
                 <div class="about_testi_title">
-                    <h2>What Our Customers Says ?</h2>
+                    <h2>What Our Customers Say ?</h2>
                 </div>
                 <div class="testimonial_container">
                     <div class="owl-carousel owl-theme testimonial_column3">
