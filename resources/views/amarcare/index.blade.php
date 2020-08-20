@@ -54,7 +54,7 @@
                                                 <a class="text-danger" href="{">{{ $amarcare->category->name }}</a>
                                             </td>
                                             <td>
-                                                {{ \Illuminate\Support\Str::limit($amarcare->description, 200, ' . . . ') }}
+                                                {!! \Illuminate\Support\Str::limit($amarcare->description, 200, ' . . . ') !!}
                                             </td>
                                             <td class="td-actions">
                                                 <a href="{{ route('amar-care.edit', $amarcare->id) }}"><i class="material-icons text-danger">edit</i></a>

@@ -125,7 +125,7 @@
                                         <label class="col-sm-2 col-form-label" for="input-password">{{ __('Vlog Description') }}</label>
                                         <div class="col-sm-7">
                                             <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
-                                                <textarea required class="w-100" name="description" id="" cols="" rows="10"></textarea>
+                                                <textarea class="w-100" name="description" id="" cols="" rows="10"></textarea>
                                                 @if ($errors->has('description'))
                                                     <span id="description-error" class="error text-danger" for="input-product_description">{{ $errors->first('description') }}</span>
                                                 @endif
