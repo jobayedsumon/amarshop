@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Order;
 use App\OrderDetails;
+use App\Product;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
@@ -147,6 +148,12 @@ class SslCommerzPaymentController extends Controller
                 'color_id' => $cart[$i]['color_id'],
                 'size_id' => $cart[$i]['size_id'],
             ]);
+
+            $product = Product::find($cart[$i]['product_id']);
+
+            $product->quantity -= $cart[$i]['count'];
+
+            $product->save();
         }
 
         switch ($request->payment_method)
@@ -156,6 +163,7 @@ class SslCommerzPaymentController extends Controller
                    'type' => 'cod'
                 ]);
                 session()->put('payment_message', 'Order placed successfully!');
+                session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total']);
                 return view('frontend.payment');
                 break;
             case 'ssl':

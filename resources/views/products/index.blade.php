@@ -92,7 +92,7 @@
                                                 {{ $product->discount }}
                                             </td>
                                             <td>
-                                                {{ $product->short_description }}
+                                                {!! $product->short_description !!}
                                             </td>
                                             <td class="td-actions">
                                                 <a href="{{ route('products.edit', $product->id) }}"><i class="material-icons text-danger">edit</i></a>

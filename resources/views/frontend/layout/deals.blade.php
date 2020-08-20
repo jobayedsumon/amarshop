@@ -77,24 +77,12 @@
                 <section class="slider_section">
                     <div class="slider_area owl-carousel stop owl-theme">
 
-                        @forelse($sliders as $slider)
+                        @forelse(\App\Deal::all() as $deal)
 
-                            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($slider->image)}}')">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="slider_content">
-                                                <h2>Best Women's 2020</h2>
-                                                <h1>{{ $slider->title }}</h1>
-                                                <p>
-                                                    {{ $slider->exert }}
-                                                </p>
-                                                {{--                                <a href="{{ route('shop') }}">+ Shop Now </a>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($deal->product->image_primary)}}')">
+                                <a class="m-5 font-bold text-xl text-danger" href="{{ route('product-details', [$deal->product->category_id, $deal->product->sub_category_id, $deal->product->id]) }}"><i class="fa fa-gift"> </i> Take the Deal</a>
                             </div>
+
                         @empty
                         @endforelse
 

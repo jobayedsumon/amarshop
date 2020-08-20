@@ -124,6 +124,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
             Route::resource('sale', 'SaleController', ['except' => ['show']]);
+            Route::resource('deal', 'DealController', ['except' => ['show']]);
             Route::resource('featured', 'FeaturedController', ['except' => ['show']]);
             Route::resource('coupon', 'CouponController', ['except' => ['show']]);
 

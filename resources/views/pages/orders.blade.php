@@ -38,7 +38,7 @@
                                             {{ $order->id }}
                                         </td>
                                             <td>
-                                                {{ $order->type }}
+                                                {{ strtoupper($order->type) }}
                                             </td>
                                         <td>
                                             {{ $order->name }}
@@ -47,7 +47,7 @@
                                             {{ $order->order_details()->sum('count') }}
                                         </td>
                                         <td>
-                                            {{ $order->total }}
+                                            {{ $order->amount }}
                                         </td>
 
                                         <td>

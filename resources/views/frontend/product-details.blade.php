@@ -75,19 +75,21 @@
                                    @endfor
 
 
-                                   <li class="review"><a data-toggle="modal"
-
-                                                         data-target="#view-modal-review"> (Customer review) </a></li>
+                                   <li class="review"><a> (Customer Review) </a></li>
 
                                </ul>
                            </div>
 
+                           @php $discount = $product->sale ? $product->sale->percentage : $product->discount; @endphp
+
                             <div class="price_box">
-                                <span class="current_price">BDT {{ $product->price - round($product->price * $product->discount / 100) }}</span>
+                                <span class="current_price">BDT {{ $discount ? $product->price - round($product->price * $discount / 100) : $product->price }}</span>
+                                @if(!$product->discount == 0)
                                 <span class="old_price">BDT {{ $product->price }}</span>
+                                @endif
                             </div>
                             <div class="product_desc">
-                                {{ $product->short_description }}
+                                {!! $product->short_description !!}
                             </div>
                             <div class="product_variant color">
                                 <h3>Available Options</h3>
@@ -123,6 +125,10 @@
                                     </ul>
                                 </div>
 
+                                <div class="mt-2">
+                                    <label for="">Inventory : {{ $product->quantity }} products available</label>
+                                </div>
+
 
                             </div>
 
@@ -131,7 +137,11 @@
                             <div class="product_variant quantity">
                                 <label>quantity</label>
                                 <input min="1" max="100" id="count" value="1" type="number">
+                                @if($product->quantity > 0)
                                 <a href="javascript:void(0)" class="customButton" id="addToCart">add to cart</a>
+                                @else
+                                <p class="ml-2 font-bold text-danger">Out of Stock!</p>
+                                @endif
 
                             </div>
                             <div class=" product_d_action">
@@ -194,7 +204,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="info" role="tabpanel" >
                                 <div class="product_info_content">
-                                    {{ $product->description }}
+                                    {!! $product->description !!}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="sheet" role="tabpanel" >
@@ -219,7 +229,7 @@
                                     </form>
                                 </div>
                                 <div class="product_info_content">
-                                    {{ $product->short_description }}
+                                    {!! $product->short_description !!}
                                 </div>
                             </div>
 

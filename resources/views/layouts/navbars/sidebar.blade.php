@@ -121,6 +121,13 @@
         </a>
       </li>
 
+        <li class="nav-item{{ $activePage == 'deal' ? ' active' : '' }}">
+            <a class="nav-link" href="{{ route('deal.index') }}">
+                <i class="material-icons">%</i>
+                <p>{{ __('Deal') }}</p>
+            </a>
+        </li>
+
       <li class="nav-item{{ $activePage == 'coupon' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('coupon.index') }}">
           <i class="material-icons">redeem</i>
@@ -144,7 +151,7 @@
 
         <li class="nav-item {{ ($activePage == 'page-manager') ? ' active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#pageManager" aria-expanded="true">
-                <i class="fa fa-user"></i>
+                <i class="material-icons">pages</i>
                 <p>{{ __('Page Manager') }}
                     <b class="caret"></b>
                 </p>
@@ -153,13 +160,13 @@
                 <ul class="nav">
                     <li class="nav-item{{ $activePage == 'customer-care' ? ' active' : '' }}">
                         <a class="nav-link" href="{{ route('customer-care') }}">
-                            <span class="sidebar-mini"> UP </span>
+                            <span class="sidebar-mini"> CC </span>
                             <span class="sidebar-normal">{{ __('Customer Care') }} </span>
                         </a>
                     </li>
                     <li class="nav-item{{ $activePage == 'policies' ? ' active' : '' }}">
                         <a class="nav-link" href="{{ route('policies') }}">
-                            <span class="sidebar-mini"> UM </span>
+                            <span class="sidebar-mini"> P </span>
                             <span class="sidebar-normal"> {{ __('Policies') }} </span>
                         </a>
                     </li>
