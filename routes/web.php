@@ -42,6 +42,8 @@ Route::get('/filter-product', 'AjaxController@filter_product')->name('filter-pro
 Route::get('/filter-product-shop', 'AjaxController@filter_product_shop')->name('filter-product-shop');
 Route::get('/filter-product-subshop', 'AjaxController@filter_product_subshop')->name('filter-product-subshop');
 Route::get('/my-account', 'FrontendController@my_account')->name('my-account')->middleware('auth:customer');
+Route::get('/testimonial', 'TestimonialController@edit')->middleware('auth:customer');
+Route::post('/testimonial', 'TestimonialController@store')->middleware('auth:customer');
 Route::patch('/my-account/update-account', 'FrontendController@update_account')->name('update-account')->middleware('auth:customer');
 Route::patch('/my-account/update-address', 'FrontendController@update_address')->name('update-address')->middleware('auth:customer');
 Route::get('/return/{orderId}', 'FrontendController@return_product')->name('return-product')->middleware('auth:customer');
@@ -110,6 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('customer-care', 'PageController@customer_care_store')->name('customer-care');
         Route::get('policies', 'PageController@policies')->name('policies');
         Route::post('policies', 'PageController@policies_store')->name('policies');
+        Route::get('testimonial', 'TestimonialController@index');
 
         Route::middleware('optimizeImages')->group(function () {
 

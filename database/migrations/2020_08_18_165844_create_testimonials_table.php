@@ -18,6 +18,7 @@ class CreateTestimonialsTable extends Migration
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->text('testimonial');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

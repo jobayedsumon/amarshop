@@ -87,8 +87,6 @@
         <script>
             tinymce.init({
                 selector: 'textarea',
-                plugins: 'lineheight',
-                toolbar: 'lineheightselect'
             });
         </script>
         @stack('js')

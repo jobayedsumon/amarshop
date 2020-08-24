@@ -174,6 +174,13 @@
             </div>
         </li>
 
+        <li class="nav-item{{ $activePage == 'testimonial' ? ' active' : '' }}">
+            <a class="nav-link" href="/admin/testimonial">
+                <i class="material-icons">pending</i>
+                <p>{{ __('Testimonial') }}</p>
+            </a>
+        </li>
+
 
     </ul>
   </div>

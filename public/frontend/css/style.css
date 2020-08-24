@@ -5539,7 +5539,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .shop_wrapper .single_product {
   position: relative;
-    height: 100%;
+    /*height: 100%;*/
 }
 .shop_wrapper.grid_list .single_product {
   margin-bottom: 30px;
