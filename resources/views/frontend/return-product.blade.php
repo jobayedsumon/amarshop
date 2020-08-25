@@ -49,7 +49,7 @@
 
                                 @forelse($order->order_details as $data)
                                     <tr>
-                                    <td><img width="100px" src="{{ cdn($data->product->image_primary) }}" alt=""></td>
+                                    <td><img width="100px" src="{{ asset($data->product->image_primary) }}" alt=""></td>
                                     <td>{{ $data->product->name }}</td>
                                     <td><span class="py-2 px-4" style="background-color: {{ $data->color->name }}"></span></td>
                                     <td>{{ $data->size->name }}</td>

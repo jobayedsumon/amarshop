@@ -65,7 +65,7 @@
                                         <div class="col-sm-7">
                                             <div class="{{ $errors->has('category_image') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('category_image') ? ' is-invalid' : '' }}" name="image" id="input-category_image" type="file"/>
-                                                <img src="{{ cdn($sub_category->image) }}" width="100px" alt="">
+                                                <img src="{{ asset($sub_category->image) }}" width="100px" alt="">
                                                 @if ($errors->has('category_image'))
                                                     <span id="category_image-error" class="error text-danger" for="input-category_image">{{ $errors->first('category_image') }}</span>
                                                 @endif
@@ -127,7 +127,7 @@
 {{--                                                @forelse($sub_categories as $sub_category)--}}
 
 {{--                                                    <td>--}}
-{{--                                                        <img width="100px" src="{{ cdn($sub_category->image) }}" alt="">--}}
+{{--                                                        <img width="100px" src="{{ asset($sub_category->image) }}" alt="">--}}
 {{--                                                    </td>--}}
 
 {{--                                                    <td class="text-success font-weight-bold">--}}

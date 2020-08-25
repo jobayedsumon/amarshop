@@ -1,6 +1,8 @@
 <?php
 
-function cdn( $asset ){
+use Illuminate\Support\Facades\Config;
+
+function cdn($asset ){
 
 
 
@@ -8,7 +10,7 @@ function cdn( $asset ){
 
     if( !Config::get('app.cdn') )
 
-        return cdn( $asset );
+        return asset( $asset );
 
 
 

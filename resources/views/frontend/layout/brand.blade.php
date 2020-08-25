@@ -5,7 +5,7 @@
                 <div class="brand_container owl-carousel owl-theme">
                     @forelse($brands = \App\Brand::all() as $brand)
                         <div class="single_brand">
-                            <a href="#"><img class="h-full" src="{{ cdn($brand->image) }}" class="img-fluid" alt=""></a>
+                            <a href="#"><img class="h-full" src="{{ asset($brand->image) }}" class="img-fluid" alt=""></a>
                         </div>
                     @empty
                     @endforelse

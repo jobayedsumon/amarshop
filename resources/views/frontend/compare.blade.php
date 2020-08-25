@@ -38,7 +38,7 @@
 
             <div class="col-4">
                 <table class="table table-striped table-hover">
-                    <img src="{{ cdn($product->image_primary) }}" class="m-auto" alt="" width="200px">
+                    <img src="{{ asset($product->image_primary) }}" class="m-auto" alt="" width="200px">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>

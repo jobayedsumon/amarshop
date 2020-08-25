@@ -17,9 +17,9 @@
                                 <figure>
                                     <div class="product_thumb">
                                         <a class="primary_img" href="{{ route('product-details', [$sale->product->category->id, $sale->product->sub_category->id, $sale->product->id]) }}">
-                                            <img src="{{ cdn($sale->product->image_primary)}}" alt=""></a>
+                                            <img src="{{ asset($sale->product->image_primary)}}" alt=""></a>
                                         <a class="secondary_img" href="{{ route('product-details', [$sale->product->category->id, $sale->product->sub_category->id, $sale->product->id]) }}">
-                                            <img src="{{ cdn($sale->product->image_secondary)}}" alt=""></a>
+                                            <img src="{{ asset($sale->product->image_secondary)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">-{{ $sale->percentage }}%</span>
                                         </div>
@@ -79,7 +79,7 @@
 
                         @forelse(\App\Deal::all() as $deal)
 
-                            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ cdn($deal->product->image_primary)}}')">
+                            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($deal->product->image_primary)}}')">
                                 <a class="m-5 font-bold text-xl text-danger" href="{{ route('product-details', [$deal->product->category_id, $deal->product->sub_category_id, $deal->product->id]) }}"><i class="fa fa-gift"> </i> Take the Deal</a>
                             </div>
 

@@ -40354,7 +40354,7 @@ function renderSlot (
  * Runtime helper for resolving filters
  */
 function resolveFilter (id) {
-  return resolvecdn(this.$options, 'filters', id, true) || identity
+  return resolveasset(this.$options, 'filters', id, true) || identity
 }
 
 /*  */
@@ -41068,7 +41068,7 @@ function _createElement (
         config.parsePlatformTagName(tag), data, children,
         undefined, undefined, context
       );
-    } else if ((!data || !data.pre) && isDef(Ctor = resolvecdn(context.$options, 'components', tag))) {
+    } else if ((!data || !data.pre) && isDef(Ctor = resolveasset(context.$options, 'components', tag))) {
       // component
       vnode = createComponent(Ctor, data, context, children, tag);
     } else {
@@ -44301,7 +44301,7 @@ function normalizeDirectives$1 (
       dir.modifiers = emptyModifiers;
     }
     res[getRawDirName(dir)] = dir;
-    dir.def = resolvecdn(vm.$options, 'directives', dir.name, true);
+    dir.def = resolveasset(vm.$options, 'directives', dir.name, true);
   }
   // $flow-disable-line
   return res

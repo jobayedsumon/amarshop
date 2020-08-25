@@ -36,22 +36,22 @@
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="{{ cdn($product->image_primary) }}" data-zoom-image="{{ cdn($product->image_secondary) }}" alt="big-1">
+                                <img id="zoom1" src="{{ asset($product->image_primary) }}" data-zoom-image="{{ asset($product->image_secondary) }}" alt="big-1">
                             </a>
                         </div>
                         <div class="single-zoom-thumb">
                             <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                                 <li>
-                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ cdn($product->image_primary) }}"
-                                       data-zoom-image="{{ cdn($product->image_primary) }}">
-                                        <img src="{{ cdn($product->image_primary) }}" alt="zo-th-1"/>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ asset($product->image_primary) }}"
+                                       data-zoom-image="{{ asset($product->image_primary) }}">
+                                        <img src="{{ asset($product->image_primary) }}" alt="zo-th-1"/>
                                     </a>
 
                                 </li>
                                 <li>
-                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ cdn($product->image_secondary) }}"
-                                       data-zoom-image="{{ cdn($product->image_secondary) }}">
-                                        <img src="{{ cdn($product->image_secondary) }}" alt="zo-th-1"/>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ asset($product->image_secondary) }}"
+                                       data-zoom-image="{{ asset($product->image_secondary) }}">
+                                        <img src="{{ asset($product->image_secondary) }}" alt="zo-th-1"/>
                                     </a>
 
                                 </li>
@@ -351,9 +351,9 @@
                             <figure class="h-full flex flex-column justify-between">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
-                                        <img src="{{ cdn($related_product->image_primary)}}" alt=""></a>
+                                        <img src="{{ asset($related_product->image_primary)}}" alt=""></a>
                                     <a class="secondary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
-                                        <img src="{{ cdn($related_product->image_secondary)}}" alt=""></a>
+                                        <img src="{{ asset($related_product->image_secondary)}}" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">-{{ $related_product->discount }}%</span>
                                     </div>

@@ -68,7 +68,7 @@
 
                                 <tr>
                                    <td class="product_remove"><a href="/cart/remove/{{ $data['cart_id'] }}"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{ cdn($product->image_primary) }}" alt=""></a></td>
+                                    <td class="product_thumb"><a href="#"><img src="{{ asset($product->image_primary) }}" alt=""></a></td>
                                     <td class="product_name"><a href="#">{{ $product->name }}</a></td>
                                     <td class="product-price"><span style="background-color: {{ $color ? $color->name : '' }}" class="p-3"> &nbsp;</span></td>
                                     <td class="product-price">{{ $size ? $size->name : '' }}</td>

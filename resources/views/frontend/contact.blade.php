@@ -51,7 +51,7 @@
                 <div class="col-lg-6 col-md-6">
                    <div class="contact_message form">
                         <h3>Tell us your project</h3>
-                        <form id="contact-form" method="POST"  action="{{ cdn('frontend') }}/mail.php">
+                        <form id="contact-form" method="POST"  action="{{ asset('frontend') }}/mail.php">
                             <p>
                                <label> Your Name (required)</label>
                                 <input name="name" placeholder="Name *" type="text">

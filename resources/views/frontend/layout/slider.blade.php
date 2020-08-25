@@ -3,7 +3,7 @@
 
         @forelse($sliders as $slider)
 
-            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ cdn($slider->image)}}')">
+            <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($slider->image)}}')">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">

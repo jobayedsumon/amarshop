@@ -16,7 +16,7 @@
                             </div>
                             <div class="testimonial_content">
                                 <div class="testimonial_icon_img">
-                                    <img src="{{ cdn('frontend/img/icon/testimonials-icon.png') }}" alt="">
+                                    <img src="{{ asset('frontend/img/icon/testimonials-icon.png') }}" alt="">
                                 </div>
                                 {!! $testimonial->testimonial !!}
                                 <a href="#">{{ $testimonial->name }}</a>
@@ -31,7 +31,7 @@
 {{--                            </div>--}}
 {{--                            <div class="testimonial_content">--}}
 {{--                                <div class="testimonial_icon_img">--}}
-{{--                                    <img src="{{ cdn('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
+{{--                                    <img src="{{ asset('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
 {{--                                </div>--}}
 {{--                                <p>I am very happy to their service and product...and I am very happy to contact with the admin ..Really thankful to them for their excellent behavior.....--}}
 {{--                                    ..So I highly recommended to buy stuff from amar shop...</p>--}}
@@ -44,7 +44,7 @@
 {{--                            </div>--}}
 {{--                            <div class="testimonial_content">--}}
 {{--                                <div class="testimonial_icon_img">--}}
-{{--                                    <img src="{{ cdn('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
+{{--                                    <img src="{{ asset('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
 {{--                                </div>--}}
 {{--                                <p>Best online skin and hair page. All products are just magical. I love Amarshop 🥰🥰🥰</p>--}}
 {{--                                <a href="#">Khadija Akter</a>--}}
@@ -56,7 +56,7 @@
 {{--                            </div>--}}
 {{--                            <div class="testimonial_content">--}}
 {{--                                <div class="testimonial_icon_img">--}}
-{{--                                    <img src="{{ cdn('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
+{{--                                    <img src="{{ asset('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
 {{--                                </div>--}}
 {{--                                <p>God my daimonds😱😱😱--}}
 {{--                                    I means product💖💖💖--}}
@@ -72,7 +72,7 @@
 {{--                            </div>--}}
 {{--                            <div class="testimonial_content">--}}
 {{--                                <div class="testimonial_icon_img">--}}
-{{--                                    <img src="{{ cdn('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
+{{--                                    <img src="{{ asset('frontend/img/icon/testimonials-icon.png') }}" alt="">--}}
 {{--                                </div>--}}
 {{--                                <p>5 stars--}}
 {{--                                    Very friendly--}}

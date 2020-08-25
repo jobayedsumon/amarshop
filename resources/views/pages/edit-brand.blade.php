@@ -46,7 +46,7 @@
                                         <div class="col-sm-7">
                                             <div class="{{ $errors->has('brand_image') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('brand_image') ? ' is-invalid' : '' }}" name="image" id="input-brand_image" type="file"/>
-                                                <img src="{{ cdn($brand->image) }}" width="100px" alt="">
+                                                <img src="{{ asset($brand->image) }}" width="100px" alt="">
                                                 @if ($errors->has('brand_image'))
                                                     <span id="brand_image-error" class="error text-danger" for="input-brand_image">{{ $errors->first('brand_image') }}</span>
                                                 @endif
@@ -105,7 +105,7 @@
 {{--                                                @forelse($brands as $brand)--}}
 
 {{--                                                    <td>--}}
-{{--                                                        <img width="100px" src="{{ cdn($brand->image) }}" alt="">--}}
+{{--                                                        <img width="100px" src="{{ asset($brand->image) }}" alt="">--}}
 {{--                                                    </td>--}}
 
 {{--                                                    <td class="text-success font-weight-bold">--}}

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row items-center mb-2">
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <img width="120px" src="{{ cdn('frontend/img/logo/logo-amarshop.com.bd.png') }}" class="img-fluid" alt="">
+                <img width="120px" src="{{ asset('frontend/img/logo/logo-amarshop.com.bd.png') }}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="widgets_container widget_newsletter">
@@ -33,7 +33,7 @@
                     Call us: 02-55053512
                 </p>
 
-                <img src="{{ cdn('frontend/img/logo/payments.png') }}" class="img-fluid" alt="">
+                <img src="{{ asset('frontend/img/logo/payments.png') }}" class="img-fluid" alt="">
             </div>
 
 

@@ -17,12 +17,12 @@
                                 <div class="tab-content product-details-large">
                                     <div class="tab-pane fade show active" id="tab1" role="tabpanel" >
                                         <div class="modal_tab_img">
-                                            <a href="#"><img src="{{ cdn($data->image_primary)}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset($data->image_primary)}}" alt=""></a>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab2" role="tabpanel">
                                         <div class="modal_tab_img">
-                                            <a href="#"><img src="{{ cdn($data->image_secondary)}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset($data->image_secondary)}}" alt=""></a>
                                         </div>
                                     </div>
 
@@ -31,11 +31,11 @@
                                     <ul class="nav product_navactive owl-carousel" role="tablist">
                                         <li >
                                             <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false">
-                                                <img src="{{ cdn($data->image_primary)}}" alt=""></a>
+                                                <img src="{{ asset($data->image_primary)}}" alt=""></a>
                                         </li>
                                         <li>
                                             <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
-                                                <img src="{{ cdn($data->image_secondary)}}" alt=""></a>
+                                                <img src="{{ asset($data->image_secondary)}}" alt=""></a>
                                         </li>
 
 

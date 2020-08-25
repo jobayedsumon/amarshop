@@ -115,7 +115,7 @@
                     <!--shop wrapper start-->
 
                     <div class="shop_banner_area">
-                        <img src="{{ cdn($shop->image) }}" class="img-fluid single_slider w-100" alt="">
+                        <img src="{{ asset($shop->image) }}" class="img-fluid single_slider w-100" alt="">
                     </div>
 
                     <!--shop toolbar start-->
@@ -159,9 +159,9 @@
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
-                                        <img src="{{ cdn($product->image_primary) }}" alt=""></a>
+                                        <img src="{{ asset($product->image_primary) }}" alt=""></a>
                                     <a class="secondary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
-                                        <img src="{{ cdn($product->image_secondary) }}" alt=""></a>
+                                        <img src="{{ asset($product->image_secondary) }}" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">-{{ $product->discount }}%</span>
                                     </div>
