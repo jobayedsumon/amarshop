@@ -18,9 +18,9 @@
                     <figure class="h-full flex flex-column justify-start">
                         <div class="product_thumb">
                             <a class="primary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
-                                <img src="{{ asset($newProduct->image_primary)}}" alt=""></a>
+                                <img src="{{ cdn($newProduct->image_primary)}}" alt=""></a>
                             <a class="secondary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
-                                <img src="{{ asset($newProduct->image_secondary)}}" alt=""></a>
+                                <img src="{{ cdn($newProduct->image_secondary)}}" alt=""></a>
                             <div class="label_product">
                                 <span class="label_sale">-{{ $newProduct->discount }}%</span>
                             </div>

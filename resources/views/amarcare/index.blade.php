@@ -45,7 +45,7 @@
                                     @forelse($amarcares as $amarcare)
                                         <tr class="">
                                             <td>
-                                                <img width="200px" src="{{ asset($amarcare->image) }}" alt="">
+                                                <img width="200px" src="{{ cdn($amarcare->image) }}" alt="">
                                             </td>
                                             <td>
                                                 <a class="text-danger" href="{{ route('amar-care.show', $amarcare->id) }}">{{ $amarcare->title }}</a>

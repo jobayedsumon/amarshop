@@ -14,7 +14,7 @@
                     <div class="col-lg-4">
                         <div class="single_testimonial">
                             <div class="testimonial_thumb">
-                                <img src="{{ asset('frontend')}}/img/about/testimonial1.png" alt="">
+                                <img src="{{ cdn('frontend')}}/img/about/testimonial1.png" alt="">
                             </div>
                             <div class="testimonial_content">
                                 <h3>orando BLoom</h3>
@@ -26,7 +26,7 @@
                     <div class="col-lg-4">
                         <div class="single_testimonial">
                             <div class="testimonial_thumb">
-                                <img src="{{ asset('frontend')}}/img/about/testimonial2.png" alt="">
+                                <img src="{{ cdn('frontend')}}/img/about/testimonial2.png" alt="">
                             </div>
                             <div class="testimonial_content">
                                 <h3>orando BLoom</h3>
@@ -38,7 +38,7 @@
                     <div class="col-lg-4">
                         <div class="single_testimonial">
                             <div class="testimonial_thumb">
-                                <img src="{{ asset('frontend')}}/img/about/testimonial3.png" alt="">
+                                <img src="{{ cdn('frontend')}}/img/about/testimonial3.png" alt="">
                             </div>
                             <div class="testimonial_content">
                                 <h3>orando BLoom</h3>
@@ -50,7 +50,7 @@
                     <div class="col-lg-4">
                         <div class="single_testimonial">
                             <div class="testimonial_thumb">
-                                <img src="{{ asset('frontend')}}/img/about/testimonial1.png" alt="">
+                                <img src="{{ cdn('frontend')}}/img/about/testimonial1.png" alt="">
                             </div>
                             <div class="testimonial_content">
                                 <h3>orando BLoom</h3>

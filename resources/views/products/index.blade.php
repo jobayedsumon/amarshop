@@ -59,7 +59,7 @@
                                     @forelse($products as $product)
                                         <tr class="">
                                             <td>
-                                                <img width="100px" src="{{ asset($product->image_primary) }}" alt="">
+                                                <img width="100px" src="{{ cdn($product->image_primary) }}" alt="">
                                             </td>
                                             <td>
                                                 <a class="text-danger" href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>

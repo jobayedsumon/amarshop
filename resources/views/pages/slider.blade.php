@@ -89,7 +89,7 @@
 
                                 @forelse($slideImages as $slideImage)
 
-                                        <img width="200px" class="img-thumbnail" src="{{ asset($slideImage->image) }}" alt="">
+                                        <img width="200px" class="img-thumbnail" src="{{ cdn($slideImage->image) }}" alt="">
                                     <a onclick="return confirm('Are you sure?')" href="{{ route('slider.delete', $slideImage->id) }}"><i class="fa fa-remove text-danger mr-2"></i></a>
 
                                 @empty

@@ -231,4 +231,10 @@ return [
 
     ],
 
+    'cdn' => [
+
+        "458585-1437325-raikfcquaxqncofqfm.stackpathdns.com" => "css|js|eot|woff|ttf,jpg|jpeg|png|gif|svg"
+
+    ],
+
 ];

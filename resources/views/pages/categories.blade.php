@@ -102,7 +102,7 @@
                                                 @forelse($categories as $category)
 
                                                     <td>
-                                                        <img width="100px" src="{{ asset($category->image) }}" alt="">
+                                                        <img width="100px" src="{{ cdn($category->image) }}" alt="">
                                                     </td>
 
                                                     <td class="text-danger font-weight-bold">

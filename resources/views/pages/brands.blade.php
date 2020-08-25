@@ -102,7 +102,7 @@
                                                 @forelse($brands as $brand)
 
                                                     <td>
-                                                        <img width="100px" src="{{ asset($brand->image) }}" alt="">
+                                                        <img width="100px" src="{{ cdn($brand->image) }}" alt="">
                                                     </td>
 
                                                     <td class="text-danger font-weight-bold">

@@ -52,7 +52,7 @@
                                             <td class="product_remove"><a href="/wishlist/remove/{{ $wish->id }}">X</a></td>
                                             <td class="product_thumb">
                                                 <a href="{{ route('product-details', [$wish->product->category->id, $wish->product->sub_category->id, $wish->product->id]) }}">
-                                                    <img src="{{ asset($wish->product->image_primary) }}" alt=""></a></td>
+                                                    <img src="{{ cdn($wish->product->image_primary) }}" alt=""></a></td>
                                             <td class="product_name">
                                                 <a href="{{ route('product-details', [$wish->product->category->id, $wish->product->sub_category->id, $wish->product->id]) }}">
                                                     {{ $wish->product->name }}</a></td>

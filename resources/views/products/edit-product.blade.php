@@ -198,7 +198,7 @@
                                                 @if ($errors->has('image_primary'))
                                                     <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
                                                 @endif
-                                                <img src="{{ asset($product->image_primary) }}" alt="" width="100px">
+                                                <img src="{{ cdn($product->image_primary) }}" alt="" width="100px">
                                             </div>
                                         </div>
 
@@ -209,7 +209,7 @@
                                                 @if ($errors->has('image_secondary'))
                                                     <span id="image_secondary-error" class="error text-danger" for="input-image_secondary">{{ $errors->first('image_secondary') }}</span>
                                                 @endif
-                                                <img src="{{ asset($product->image_secondary) }}" alt="" width="100px">
+                                                <img src="{{ cdn($product->image_secondary) }}" alt="" width="100px">
                                             </div>
                                         </div>
 
@@ -224,7 +224,7 @@
                                                 @if ($errors->has('image_primary'))
                                                     <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
                                                 @endif
-                                                <img src="{{ asset($product->image_left) }}" alt="" width="100px">
+                                                <img src="{{ cdn($product->image_left) }}" alt="" width="100px">
                                             </div>
                                         </div>
 
@@ -235,7 +235,7 @@
                                                 @if ($errors->has('image_secondary'))
                                                     <span id="image_secondary-error" class="error text-danger" for="input-image_secondary">{{ $errors->first('image_secondary') }}</span>
                                                 @endif
-                                                <img src="{{ asset($product->image_right) }}" alt="" width="100px">
+                                                <img src="{{ cdn($product->image_right) }}" alt="" width="100px">
 
                                             </div>
                                         </div>

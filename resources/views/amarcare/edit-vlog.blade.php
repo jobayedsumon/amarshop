@@ -95,7 +95,7 @@
                                     <div class="col-sm-7">
                                         <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image" id="input-image_primary" type="file" />
-                                            <img src="{{ asset($amarcare->image) }}" alt="" width="100px">
+                                            <img src="{{ cdn($amarcare->image) }}" alt="" width="100px">
                                             @if ($errors->has('image_primary'))
                                                 <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
                                             @endif
