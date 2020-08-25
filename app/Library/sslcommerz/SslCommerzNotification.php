@@ -18,6 +18,8 @@ class SslCommerzNotification extends AbstractSslCommerz
     {
         $this->config = config('sslcommerz');
 
+
+
         $this->setStoreId($this->config['apiCredentials']['store_id']);
         $this->setStorePassword($this->config['apiCredentials']['store_password']);
     }
