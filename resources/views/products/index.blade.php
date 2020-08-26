@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" id="myTable">
                                     <thead class=" text-danger">
                                     <tr>
                                         <th>
@@ -51,6 +51,12 @@
                                         </th>
                                         <th class="">
                                             Short Description
+                                        </th>
+                                        <th class="">
+                                            Edit
+                                        </th>
+                                        <th class="">
+                                            Delete
                                         </th>
                                     </tr>
                                     </thead>

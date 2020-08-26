@@ -17,6 +17,8 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
 
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -88,6 +90,12 @@
             tinymce.init({
                 selector: 'textarea',
             });
+        </script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready( function () {
+                $('#myTable').DataTable();
+            } );
         </script>
         @stack('js')
     </body>

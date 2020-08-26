@@ -39,7 +39,7 @@
                     <h1 class="text-4xl">{{ $vlog->title }}</h1>
 
                     <div class="description mt-2">
-                        {{ $vlog->description }}
+                        {!! $vlog->description !!}
                     </div>
 
                 </div>
