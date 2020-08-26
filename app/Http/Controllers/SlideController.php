@@ -17,7 +17,7 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $name = $request->file('slide_image')->getClientOriginalName();
-        $name = now() . $name;
+        $name = now() . str_replace(' ', '_', $name);
         $path = $request->file('slide_image')->storeAs('slider', $name);
         $path = 'storage/' .$path;
 
@@ -35,7 +35,9 @@ class SlideController extends Controller
     {
         $slider = Slider::findOrFail($id);
 
-        unlink(public_path($slider->image));
+        if (file_exists(public_path($slider->image))) {
+            unlink(public_path($slider->image));
+        }
 
         $slider->delete();
 

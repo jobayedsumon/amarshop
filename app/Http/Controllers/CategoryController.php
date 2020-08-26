@@ -39,6 +39,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $name = $request->file('image')->getClientOriginalName();
+        $name = now() . str_replace(' ', '_', $name);
         $path = $request->file('image')->storeAs('category', $name);
         $path = 'storage/' .$path;
 
@@ -85,10 +86,13 @@ class CategoryController extends Controller
         //
         if ($request->file('image')) {
             $name = $request->file('image')->getClientOriginalName();
+            $name = now() . str_replace(' ', '_', $name);
             $path = $request->file('image')->storeAs('category', $name);
             $path = 'storage/' .$path;
 
-            unlink(public_path($category->image));
+            if (file_exists(public_path($category->image)))
+                unlink(public_path($category->image));
+
         } else {
             $path = $category->image;
         }

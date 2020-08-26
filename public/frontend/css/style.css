@@ -4890,6 +4890,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     transition: 0.3s;
 }
 
+.tag_cloud {
+    height: 300px;
+    overflow-y: auto;
+}
+
 .tag_cloud a {
   margin: 0 5px 12px 0;
   padding: 5px 15px;

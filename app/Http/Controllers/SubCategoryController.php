@@ -42,6 +42,7 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $name = $request->file('image')->getClientOriginalName();
+        $name = now() . str_replace(' ', '_', $name);
         $path = $request->file('image')->storeAs('subcategory', $name);
         $path = 'storage/' .$path;
 
@@ -92,6 +93,7 @@ class SubCategoryController extends Controller
         if ($request->file('image')) {
 
             $name = $request->file('image')->getClientOriginalName();
+            $name = now() . str_replace(' ', '_', $name);
             $path = $request->file('image')->storeAs('category', $name);
             $path = 'storage/' .$path;
 

@@ -14,6 +14,7 @@ use App\Slider;
 use App\SubCategory;
 use App\Tag;
 use App\Wishlist;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -28,10 +29,10 @@ class FrontendController extends Controller
         $featuredCategories = Category::whereIn('id', $featuredCatIds)->get();
 
 
-        $sliders = Slider::all();
+        $sliders = Slider::latest()->get();
         $categories = Category::all();
 
-        $newProducts = Product::latest()->get();
+        $newProducts = Product::whereDate('created_at', Carbon::now()->subDays(7))->get();
         $allSale = Sale::where('expire', '>', now())->get();
         $brands = Brand::all();
 

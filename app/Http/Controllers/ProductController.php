@@ -58,22 +58,22 @@ class ProductController extends Controller
         $colorCount = count($request->color);
 
         $image_primary = $request->file('image_primary')->getClientOriginalName();
-        $image_primary = now() . $image_primary;
+        $image_primary = now() . str_replace('', '_', $image_primary);
         $image_primary = $request->file('image_primary')->storeAs('product', $image_primary);
         $image_primary = 'storage/' .$image_primary;
 
         $image_secondary = $request->file('image_secondary')->getClientOriginalName();
-        $image_secondary = now() . $image_secondary;
+        $image_secondary = now() . str_replace('', '_', $image_secondary);
         $image_secondary = $request->file('image_secondary')->storeAs('product', $image_secondary);
         $image_secondary = 'storage/' .$image_secondary;
 
         $image_left = $request->file('image_left')->getClientOriginalName();
-        $image_left = now() . $image_left;
+        $image_left = now() . str_replace('', '_', $image_left);
         $image_left = $request->file('image_left')->storeAs('product', $image_left);
         $image_left = 'storage/' .$image_left;
 
         $image_right = $request->file('image_right')->getClientOriginalName();
-        $image_right = now() . $image_right;
+        $image_right = now() . str_replace('', '_', $image_right);
         $image_right = $request->file('image_right')->storeAs('product', $image_right);
         $image_right = 'storage/' .$image_right;
 
@@ -181,7 +181,8 @@ class ProductController extends Controller
         $tagCount = count($allTags);
 
         if ($request->file('image_primary')) {
-            $image_primary = $request->file('image_primary')->getClientOriginalName().now();
+            $image_primary = $request->file('image_primary')->getClientOriginalName();
+            $image_primary = now() . str_replace('', '_', $image_primary);
             $image_primary = $request->file('image_primary')->storeAs('product', $image_primary);
             $image_primary = 'storage/' .$image_primary;
 
@@ -192,7 +193,8 @@ class ProductController extends Controller
         }
 
         if ($request->file('image_secondary')) {
-            $image_secondary = $request->file('image_secondary')->getClientOriginalName().now();
+            $image_secondary = $request->file('image_secondary')->getClientOriginalName();
+            $image_secondary = now() . str_replace('', '_', $image_secondary);
             $image_secondary = $request->file('image_secondary')->storeAs('product', $image_secondary);
             $image_secondary = 'storage/' .$image_secondary;
 
@@ -200,6 +202,30 @@ class ProductController extends Controller
                 unlink(public_path($product->image_secondary));
         } else {
             $image_secondary = $product->image_secondary;
+        }
+
+        if ($request->file('image_left')) {
+            $image_left = $request->file('image_left')->getClientOriginalName();
+            $image_left = now() . str_replace('', '_', $image_left);
+            $image_left = $request->file('image_left')->storeAs('product', $image_left);
+            $image_left = 'storage/' .$image_left;
+
+            if (file_exists(public_path($product->image_left)))
+                unlink(public_path($product->image_left));
+        } else {
+            $image_left = $product->image_left;
+        }
+
+        if ($request->file('image_right')) {
+            $image_right = $request->file('image_right')->getClientOriginalName();
+            $image_right = now() . str_replace('', '_', $image_right);
+            $image_right = $request->file('image_right')->storeAs('product', $image_right);
+            $image_right = 'storage/' .$image_right;
+
+            if (file_exists(public_path($product->image_right)))
+                unlink(public_path($product->image_right));
+        } else {
+            $image_right = $product->image_right;
         }
 
 
