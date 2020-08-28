@@ -270,7 +270,6 @@ function sweetAlter(icon, title) {
 
     });
 
-    $('#filter').click();
 
 
 
