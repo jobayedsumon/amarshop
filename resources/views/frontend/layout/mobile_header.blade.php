@@ -146,7 +146,8 @@
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="mailto:amarshop.com.bd"><i class="fa fa-envelope-o"></i> info@amarshop.com.bd</a></span>
+                        <span><a href="mailto:amarshop.bd2020@gmail.com"><i class="fa fa-envelope-o"></i> amarshop.bd2020@gmail.com</a></span>
+                        <span><a href="mailto:inf0@amarshop.com.bd"><i class="fa fa-envelope-o"></i> info@amarshop.com.bd</a></span>
                     </div>
                 </div>
             </div>

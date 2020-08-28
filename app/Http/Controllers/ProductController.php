@@ -250,10 +250,10 @@ class ProductController extends Controller
                 'name' => $request->color[$i]
             ]);
 
-            if (!$product->colors->contains($color->id)) {
-                $product->colors()->attach($color);
-            }
+            $colorList[] = $color->id;
         }
+
+        $product->colors()->sync($colorList);
 
         for ($i=0; $i<$sizeCount; $i++) {
 
@@ -261,10 +261,13 @@ class ProductController extends Controller
                 'name' => trim($allSize[$i])
             ]);
 
-            if (!$product->sizes->contains($size->id)) {
-                $product->sizes()->attach($size);
-            }
+            $sizeList[] = $size->id;
+
         }
+
+
+        $product->sizes()->sync($sizeList);
+
 
         for ($i=0; $i<$tagCount; $i++) {
 
@@ -274,12 +277,13 @@ class ProductController extends Controller
                     'name' => trim($allTags[$i])
                 ]);
 
-                if (!$product->tags->contains($tag->id)) {
-                    $product->tags()->attach($tag);
-                }
+                $tagList[] = $tag->id;
+
             }
 
         }
+
+        $product->tags()->sync($tagList);
 
 
 

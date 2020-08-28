@@ -188,8 +188,8 @@
                                     <h4 class="product_name"><a href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
                                             {{ $product->name }}</a></h4>
                                     <div class="price_box">
+                                        <span class="current_price">BDT {{ $product->price - round($product->price * $product->discount / 100) }}</span>
                                         <span class="old_price">BDT {{ $product->price }}</span>
-                                        <span class="current_price">BDT {!! $product->price * $product->discount_price / 100 !!}</span>
                                     </div>
                                     <div class="add_to_cart">
                                         <a data-toggle="modal" data-target="#view-modal"
