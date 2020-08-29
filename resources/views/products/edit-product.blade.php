@@ -118,7 +118,8 @@
 
                                                 </div>
 
-                                                <a id="colorPlus"><span class="fa fa-plus"></span></a>
+                                                <a id="colorPlus"><span class="fa fa-plus"></span></a>&nbsp;
+                                                &nbsp;<a id="colorMinus"><span class="fa fa-minus"></span></a>
 
                                                 @if ($errors->has('sub_category_id'))
                                                     <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
@@ -356,6 +357,12 @@
                 "value=\"\" required=\"true\" aria-required=\"true\"/>";
 
             $('#colorDiv').append(element);
+        });
+
+        $('#colorMinus').click(function () {
+
+            el = $('#colorDiv').children().last().remove();
+            console.log(el);
         });
     </script>
 @endpush

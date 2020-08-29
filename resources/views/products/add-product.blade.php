@@ -108,12 +108,14 @@
                                         <div class="col-sm-7">
                                             <div class="form-group{{ $errors->has('sub_category_id') ? ' has-danger' : '' }}">
                                                 <div class="inline-block relative w-64 flex items-center" id="colorDiv">
+
                                                     <input class="{ $errors->has('color') ? ' is-invalid' : '' }}" name="color[]" type="color"
                                                             value="" required="true" aria-required="true"/>
 
                                                 </div>
 
-                                                <a id="colorPlus"><span class="fa fa-plus"></span></a>
+                                                <a id="colorPlus"><span class="fa fa-plus"></span></a>&nbsp;
+                                                &nbsp;<a id="colorMinus"><span class="fa fa-minus"></span></a>
 
                                                 @if ($errors->has('sub_category_id'))
                                                     <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('sub_category_id') }}</span>
@@ -341,6 +343,7 @@
 
 @push('js')
     <script>
+
         $('#colorPlus').click(function () {
 
             let element = "<input class=\"{ $errors->has('color') ? ' is-invalid' : '' }}\" name=\"color[]\" id=\"input-name\" type=\"color\"\n" +
@@ -348,5 +351,12 @@
 
             $('#colorDiv').append(element);
         });
+
+        $('#colorMinus').click(function () {
+
+            el = $('#colorDiv').children().last().remove();
+            console.log(el);
+        });
+
     </script>
 @endpush

@@ -63,7 +63,6 @@
                                         </div>
                                     </div>
 
-
                                 <br>
 
                                     <div class="row">
@@ -73,8 +72,8 @@
 
                                                 <select multiple name="products[]" required
                                                         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                                    @forelse($amarcare->products as $product)
-                                                        <option {{ array_search($product->id, $amarcare->products()->pluck('id')->toArray()) ? 'selected': '' }} value="{{ $product->id }}">{{ $product->name }}</option>
+                                                    @forelse(\App\Product::all() as $product)
+                                                        <option {{ $amarcare->products()->pluck('id')->contains($product->id) ? 'selected': '' }} value="{{ $product->id }}">{{ $product->name }}</option>
                                                         <hr>
                                                     @empty
                                                     @endforelse

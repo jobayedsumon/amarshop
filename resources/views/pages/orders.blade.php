@@ -29,6 +29,9 @@
                                     <th>
                                         Total Amount
                                     </th>
+                                    <th>
+                                        Details
+                                    </th>
                                     </thead>
                                     <tbody>
                                     <tr>

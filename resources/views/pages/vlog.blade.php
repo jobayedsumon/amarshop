@@ -52,7 +52,7 @@
         <h3 class="text-xl">Products:
 
             @forelse($vlog->products as $product)
-                <a class="text-red-600 hover:text-red-800" href="{{ route('product-details', [$product->category_id, $product->sub_category_id, $product->id]) }}">{{ $product->name }}</a>
+                <a class="text-red-600 hover:text-red-800" href="{{ route('product-details', [$product->category_id, $product->sub_category_id, $product->id]) }}">{{ $product->name }}</a> &nbsp;
             @empty
             @endforelse
 

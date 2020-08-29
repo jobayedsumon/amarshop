@@ -14,7 +14,7 @@ class CreateVlogProductsTable extends Migration
     public function up()
     {
         Schema::create('vlog_products', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('vlog_id')->references('id')->on('amar_cares')->onDelete('cascade');
             $table->primary(['vlog_id', 'product_id']);
             $table->timestamps();
