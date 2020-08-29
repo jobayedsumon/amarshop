@@ -15,7 +15,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="/">home</a></li>
                             <li>about us</li>
                         </ul>
                     </div>
@@ -37,6 +37,7 @@
     </section>
     <!--about section end-->
 
+    @include('frontend.layout.testimonial')
 
 
    <!--brand area start-->

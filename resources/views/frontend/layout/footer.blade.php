@@ -63,9 +63,9 @@
                     <div class="footer_menu">
 
                         <ul>
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="/about-us">About Us</a></li>
                             <li><a href="/returns-exchange">Returns & Exchange</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact-us">Contact Us</a></li>
 
                         </ul>
                     </div>

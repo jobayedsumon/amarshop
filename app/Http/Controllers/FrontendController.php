@@ -7,6 +7,7 @@ use App\Brand;
 use App\Category;
 use App\FeaturedProduct;
 use App\Order;
+use App\Page;
 use App\Product;
 use App\ReturnProduct;
 use App\Sale;
@@ -169,7 +170,8 @@ class FrontendController extends Controller
     public function about()
     {
         $brands = Brand::all();
-        return view('frontend.about', compact('brands'));
+
+        return view('frontend.about', compact('brands', 'page'));
     }
 
     public function amar_care($catId)

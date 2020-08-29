@@ -124,8 +124,8 @@
                                 </ul>
                             </li>
 
-                            <li><a href="/about"> About us</a></li>
-                            <li><a href="/contact"> Contact Us</a></li>
+                            <li><a href="/about-us"> About us</a></li>
+                            <li><a href="/contact-us"> Contact Us</a></li>
 
 
                             @auth('customer')

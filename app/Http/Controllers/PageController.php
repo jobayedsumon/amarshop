@@ -36,6 +36,20 @@ class PageController extends Controller
         return view('frontend.pages.disclaimer', compact('page'));
     }
 
+    public function about_us()
+    {
+        $page = Page::first();
+
+        return view('frontend.pages.about-us', compact('page'));
+    }
+
+    public function contact_us()
+    {
+        $page = Page::first();
+
+        return view('frontend.pages.contact-us', compact('page'));
+    }
+
 
     //
     public function policies()
@@ -51,6 +65,8 @@ class PageController extends Controller
 
         return view('pages.customer-care', compact('page'));
     }
+
+
 
     public function policies_store(Request $request)
     {
