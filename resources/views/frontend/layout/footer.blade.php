@@ -28,9 +28,14 @@
                 </p>
 
                 <p>
-                    E-mail: info@amarshop.com.bd
+                    E-mail:
                     <br>
-                    Call us: 02-55053512
+                    amarshop.bd2020@gmail.com
+                    <br>
+                    inf0@amarshop.com.bd
+                    <br>
+                    <br>
+                    Call us: +880-1998916331, +880-1891962812
                 </p>
 
                 <img src="{{ asset('frontend/img/logo/payments.png') }}" class="img-fluid" alt="">
