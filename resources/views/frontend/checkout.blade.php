@@ -55,11 +55,11 @@
                             <div class="row">
                                 <div class="col-12 mb-20">
                                     <label>Name <span>*</span></label>
-                                    <input type="text" name="name" value="{{ auth('customer')->user() ? auth('customer')->user()->name : '' }}">
+                                    <input required type="text" name="name" value="{{ auth('customer')->user() ? auth('customer')->user()->name : '' }}">
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="division">Division <span>*</span></label>
-                                    <select class="select_option" name="division" id="division">
+                                    <select required class="select_option" name="division" id="division">
                                         <option value="{{ $division ?? '' }}">{{ $division ?? '' }}</option>
                                         <option value="dhaka">Dhaka</option>
                                         <option value="chittagong">Chittagong</option>
@@ -74,27 +74,27 @@
 
                                 <div class="col-12 mb-20">
                                     <label>District <span>*</span></label>
-                                    <input type="text" name="district" value="{{ $district ?? '' }}">
+                                    <input required type="text" name="district" value="{{ $district ?? '' }}">
                                 </div>
 
                                 <div class="col-12 mb-20">
                                     <label>Town / City <span>*</span></label>
-                                    <input type="text" name="city" value="{{ $city ?? '' }}">
+                                    <input required type="text" name="city" value="{{ $city ?? '' }}">
                                 </div>
 
                                 <div class="col-12 mb-20">
                                     <label>Street address  <span>*</span></label>
-                                    <input name="street" placeholder="House number and street name" value="{{ $street ?? '' }}" type="text">
+                                    <input required name="street" placeholder="House number and street name" value="{{ $street ?? '' }}" type="text">
                                 </div>
 
                                 <div class="col-lg-6 mb-20">
                                     <label>Phone<span>*</span></label>
-                                    <input name="phone_number" type="text" value="{{ auth('customer')->user() ? auth('customer')->user()->phone_number : '' }}">
+                                    <input required name="phone_number" type="text" value="{{ auth('customer')->user() ? auth('customer')->user()->phone_number : '' }}">
 
                                 </div>
                                  <div class="col-lg-6 mb-20">
                                     <label> Email Address   <span>*</span></label>
-                                      <input name="email" type="email" value="{{ auth('customer')->user() ? auth('customer')->user()->email : '' }}">
+                                      <input required name="email" type="email" value="{{ auth('customer')->user() ? auth('customer')->user()->email : '' }}">
 
                                 </div>
 

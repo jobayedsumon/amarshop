@@ -58,6 +58,12 @@ class SslCommerzPaymentController extends Controller
         $billing_address .= ucfirst($request->division);
 
         if ($request->shipping_address) {
+            $request->validate([
+               'shipping_street' => 'required',
+               'shipping_city' => 'required',
+               'shipping_district' => 'required',
+               'shipping_division' => 'required',
+            ]);
             $shipping_address = $request->shipping_street . '+';
             $shipping_address .= $request->shipping_city . '+';
             $shipping_address .= $request->shipping_district . '+';
