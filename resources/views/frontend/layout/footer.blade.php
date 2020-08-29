@@ -34,7 +34,7 @@
                     <br>
                     inf0@amarshop.com.bd
                     <br>
-                    <br>
+
                     Call us: +880-1998916331, +880-1891962812
                 </p>
 
