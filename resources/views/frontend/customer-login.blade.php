@@ -6,6 +6,7 @@
 
 @endsection
 
+
 @section('content')
 
     <!--breadcrumbs area start-->
@@ -15,7 +16,7 @@
                 <div class="col-md-4">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="/">home</a></li>
                             <li>Login</li>
 
                         </ul>
@@ -53,7 +54,7 @@
                                 <input type="password" name="password">
                              </p>
                             <div class="login_submit">
-                               <a href="#">Lost your password?</a>
+                               <a href="{{ route('customers.showResetEmailForm', ['user_type'=>'customer']) }}">Lost your password?</a>
                                 <label for="remember">
                                     <input id="remember" type="checkbox">
                                     Remember me

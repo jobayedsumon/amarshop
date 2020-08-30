@@ -228,4 +228,9 @@ class FrontendController extends Controller
 
         return redirect(route('my-account'));
     }
+
+    public function password_reset()
+    {
+        return view('frontend.password-reset');
+    }
 }

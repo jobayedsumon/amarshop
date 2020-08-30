@@ -56,7 +56,6 @@ class AmarCareController extends Controller
         $vlog = AmarCare::create([
             'title' => $request->title,
             'category_id' => $request->category_id,
-            'image' => $image,
             'video' => $request->video,
             'description' => $request->description,
         ]);
@@ -119,7 +118,6 @@ class AmarCareController extends Controller
         $amarcare->update([
             'title' => $request->title,
             'category_id' => $request->category_id,
-            'image' => $image,
             'video' => $request->video,
             'description' => $request->description,
         ]);
@@ -138,10 +136,6 @@ class AmarCareController extends Controller
         //
 
         $amarcare = AmarCare::findOrFail($id);
-
-        if (file_exists(public_path($amarcare->imges))) {
-            File::delete(public_path($amarcare->image));
-        }
 
         $amarcare->delete();
 

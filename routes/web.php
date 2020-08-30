@@ -173,3 +173,14 @@ Route::post('/cancel', 'SslCommerzPaymentController@cancel');
 Route::post('/ipn', 'SslCommerzPaymentController@ipn');
 //SSLCOMMERZ END
 
+
+//PASSWORD RESET
+Route::prefix('customers')->group(function () {
+    Route::get('/reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')
+        ->name('customers.showResetForm');
+    Route::get('/resetemail/{user_type}', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')
+        ->name('customers.showResetEmailForm');
+    Route::post('/reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')
+        ->name('customers.password.update');
+});
+

@@ -23,7 +23,7 @@
                                     <thead class=" text-danger">
                                     <tr>
                                         <th>
-                                            Image
+                                            Thumbnail
                                         </th>
                                         <th>
                                             Title
@@ -45,7 +45,7 @@
                                     @forelse($amarcares as $amarcare)
                                         <tr class="">
                                             <td>
-                                                <img width="200px" src="{{ asset($amarcare->image) }}" alt="">
+                                                <img width="200px" src="http://img.youtube.com/vi/{{ $amarcare->video }}/mqdefault.jpg" alt="">
                                             </td>
                                             <td>
                                                 <a class="text-danger" href="{{ route('amar-care.show', $amarcare->id) }}">{{ $amarcare->title }}</a>

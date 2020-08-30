@@ -51,6 +51,8 @@
                                         <li><a class="active"  href="{{ route('home') }}">home<i class=""></i></a>
 
                                         </li>
+
+
                                         <li class="mega_items"><a href="#">shop<i class="fa fa-angle-down"></i></a>
                                             <div class="mega_menu">
                                                 <ul class="mega_menu_inner">
@@ -83,8 +85,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-
-
+                                        
 
                                         <li><a href="#">Amar Care<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">

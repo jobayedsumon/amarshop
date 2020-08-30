@@ -1,4 +1,11 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'email', 'title' => __('Material Dashboard')])
+@extends('frontend.layout.master')
+
+@section('header')
+
+    @include('frontend.layout.header')
+
+@endsection
+
 
 @section('content')
 <div class="container" style="height: auto;">
@@ -9,7 +16,7 @@
 
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
-            <h4 class="card-title"><strong>{{ __('Forgot Password') }}</strong></h4>
+            <h4 class="text-xl"><strong>{{ __('Forgot Password') }}</strong></h4>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -17,7 +24,7 @@
                 <div class="col-sm-12">
                   <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <i class="material-icons">close</i>
+                      <i class="fa fa-close"></i>
                     </button>
                     <span>{{ session('status') }}</span>
                   </div>
@@ -28,7 +35,7 @@
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">email</i>
+                    <i class="fa fa-inbox"></i>
                   </span>
                 </div>
                 <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
@@ -40,12 +47,26 @@
               @endif
             </div>
           </div>
+            <input type="hidden" name="user_type" value="{{ $user_type }}" required>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Send Password Reset Link') }}</button>
+            <button type="submit" class="customButton p-2 rounded">{{ __('Send Password Reset Link') }}</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+@endsection
+
+
+@section('modal')
+
+    @include('frontend.layout.modal')
+
+@endsection
+
+@section('footer')
+
+    @include('frontend.layout.footer')
+
 @endsection

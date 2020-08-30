@@ -91,17 +91,6 @@
 
                                     <hr>
 
-                                    <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Vlog Image') }}</label>
-                                        <div class="col-sm-7">
-                                            <div class="{{ $errors->has('image_primary') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('image_primary') ? ' is-invalid' : '' }}" name="image" id="input-image_primary" type="file" required />
-                                                @if ($errors->has('image_primary'))
-                                                    <span id="image_primary-error" class="error text-danger" for="input-image_primary">{{ $errors->first('image_primary') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <br>
 
