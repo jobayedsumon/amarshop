@@ -80,11 +80,18 @@ class AjaxController extends Controller
         session()->put('cart_sub_total', $cart_sub_total);
         session()->put('cart_items_count', count($cart));
 
+        $cart_items_quantity = 0;
+
+        foreach ($cart as $data) {
+            $cart_items_quantity += $data['count'];
+        }
+
+        session()->put('cart_items_quantity', $cart_items_quantity);
         session()->put('cart', $cart);
 
 
         return response()->json([
-            'cart_items_count' => count($cart),
+            'cart_items_quantity' => $cart_items_quantity,
             'cart_sub_total' => $cart_sub_total,
         ]);
     }
@@ -118,6 +125,14 @@ class AjaxController extends Controller
 
         session()->put('cart_sub_total', $cart_sub_total);
         session()->put('cart_items_count', count($newCart));
+
+        $cart_items_quantity = 0;
+
+        foreach ($newCart as $data) {
+            $cart_items_quantity += $data['count'];
+        }
+
+        session()->put('cart_items_quantity', $cart_items_quantity);
 
 
 

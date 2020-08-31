@@ -207,7 +207,7 @@
                                             @endif
                                         </div>
                                         <div class="product_desc">
-                                            <p>{{ $product->short_description }}</p>
+                                            <p>{!! $product->short_description !!}</p>
                                         </div>
                                         <div class="list_action_wrapper">
                                             <div class="list_cart_btn">

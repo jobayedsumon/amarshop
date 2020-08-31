@@ -89,9 +89,9 @@ function sweetAlter(icon, title) {
             success: function (data) {
                 sweetAlter('success', 'Product added to cart');
                 $('.cart_sub_total').text('BDT ' + data.cart_sub_total);
-                let cart_total_amount = parseInt(data.cart_sub_total) + 100;
+                let cart_total_amount = parseInt(data.cart_sub_total);
                 $('.cart_total_amount').text('BDT ' + cart_total_amount);
-                $('.cart_items_count').text(data.cart_items_count);
+                $('.cart_items_count').text(data.cart_items_quantity);
             }
         });
 
@@ -265,6 +265,58 @@ function sweetAlter(icon, title) {
             success: function (result) {
                 console.log(result);
                 sweetAlter('success', 'Thank you for your review!');
+            }
+        });
+
+    });
+
+    $('input[name="location"]').on('change', function () {
+        value = $(this).val();
+
+        switch (value) {
+            case 'inside_dhaka':
+                if (cart_items_quantity <= 1) {
+                    shipping_cost = 80;
+                } else if (cart_items_quantity >= 2 && cart_items_quantity <= 5) {
+                    shipping_cost = 150
+                } else if (cart_items_quantity >= 6 && cart_items_quantity <= 10) {
+                    shipping_cost = 250
+                } else {
+                    remaining_items_quantity = Math.ceil((cart_items_quantity - 10) / 5);
+                    shipping_cost = 250 + remaining_items_quantity * 50;
+                }
+
+                $('#shippingCost').text('BDT '+shipping_cost);
+                break;
+
+            case 'outside_dhaka':
+                if (cart_items_quantity <= 1) {
+                    shipping_cost = 160;
+                } else if (cart_items_quantity >= 2 && cart_items_quantity <= 5) {
+                    shipping_cost = 250
+                } else if (cart_items_quantity >= 6 && cart_items_quantity <= 10) {
+                    shipping_cost = 400
+                } else {
+                    remaining_items_quantity = Math.ceil((cart_items_quantity - 10) / 5);
+                    shipping_cost = 400 + remaining_items_quantity * 100;
+                }
+
+                $('#shippingCost').text('BDT '+shipping_cost);
+
+                break;
+        }
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: 'POST',
+            url: '/set-shipping-cost',
+            data: {
+                _token: CSRF_TOKEN,
+                shipping_cost: shipping_cost
+            },
+            success: function (data) {
+                console.log(data);
             }
         });
 

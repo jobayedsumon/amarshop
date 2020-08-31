@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="cart_total mt-10">
                                             <span>Total:</span>
-                                            <span class="price cart_total_amount">BDT {{ session()->get('cart_sub_total') ? session()->get('cart_sub_total') + 100 : 0 }}</span>
+                                            <span class="price cart_total_amount">BDT {{ session()->get('cart_sub_total') ? session()->get('cart_sub_total') : 0 }}</span>
                                         </div>
                                     </div>
                                 </div>

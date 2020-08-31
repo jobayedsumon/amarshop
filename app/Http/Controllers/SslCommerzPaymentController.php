@@ -28,10 +28,6 @@ class SslCommerzPaymentController extends Controller
 
         if (auth('customer')->check()) {
 
-            $data = $request->validate([
-                'password' => 'required|confirmed',
-            ]);
-
             $customer = auth('customer')->user();
 
         } else {
@@ -75,7 +71,6 @@ class SslCommerzPaymentController extends Controller
         $customer->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
-            'password' => bcrypt($data['password']),
             'billing_address' => $billing_address,
             'shipping_address' => $shipping_address,
 
@@ -169,7 +164,7 @@ class SslCommerzPaymentController extends Controller
                    'type' => 'cod'
                 ]);
                 session()->put('payment_message', 'Order placed successfully!');
-                session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total']);
+                session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total', 'cart_items_quantity']);
                 return view('frontend.payment');
                 break;
             case 'ssl':

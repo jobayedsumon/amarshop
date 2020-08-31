@@ -53,7 +53,8 @@
                             @php
 
                                 $sub_total = 0;
-                                $shipping_cost = 100;
+
+                                $shipping_cost = 0;
 
                             @endphp
 
@@ -116,40 +117,48 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="coupon_code right">
-                                <h3>Cart Totals</h3>
+                                <h3>Cart Calculations</h3>
                                 <div class="coupon_inner">
                                    <div class="cart_subtotal">
                                        <p>Subtotal</p>
                                        <p class="cart_amount" id="cart_sub_total">BDT {{ $sub_total }}</p>
                                    </div>
-                                   <div class="cart_subtotal ">
-                                       <p>Shipping</p>
-                                       <p class="cart_amount"><span>Flat Rate:</span> BDT {{ $shipping_cost }}</p>
-                                   </div>
-{{--                                   <a href="#">Calculate shipping</a>--}}
 
-                                   <div class="cart_subtotal">
-                                       <p>Total</p>
-                                       <p class="cart_amount" id="cart_total_amount">BDT {{ $total_amount = $sub_total + $shipping_cost }}</p>
-                                   </div>
+
                                     @if(session()->has('couponCart'))
                                         @php $couponCart = session()->get('couponCart'); @endphp
-                                    <div class="cart_subtotal">
-                                        <p>Discount</p>
-                                        <p class="flex">({{ $couponCart['code'] }})<a title="Remove" href="{{ route('remove-coupon') }}"><i class="fa fa-remove"></i></a></p>
-                                        <p class="cart_amount" id="cart_total_amount">BDT {{ $discount = round($total_amount * $couponCart['value'] / 100) }}</p>
-                                    </div>
                                         <div class="cart_subtotal">
-                                            <p>After Discount</p>
-                                            <p class="cart_amount" id="cart_total_amount">BDT {{ $total_amount = $total_amount - $discount }}</p>
+                                            <p>Discount</p>
+                                            <p class="flex">({{ $couponCart['code'] }})<a title="Remove" href="{{ route('remove-coupon') }}"><i class="fa fa-remove"></i></a></p>
+                                            <p class="cart_amount" id="">BDT {{ $discount = round($sub_total * $couponCart['value'] / 100) }}</p>
                                         </div>
+
+
                                     @endif
 
-                                    @php
-                                        session()->put('cart_total', $total_amount);
-                                    @endphp
+                                    <div class="cart_subtotal ">
+                                        <p>Shipping</p>
+                                        <p id="shippingCost" class="cart_amount">BDT 0</p>
+                                    </div>
+
+                                    <div>
+
+                                        <div class="flex items-center">
+
+                                            <input type="radio" class="location" name="location" value="inside_dhaka" required> Inside Dhaka
+
+
+                                            <input type="radio" class="ml-5 location" name="location" value="outside_dhaka" required> Outside Dhaka
+
+                                        </div>
+
+                                        <p> * Please choose correctly, otherwise delivery won't be guaranteed.</p>
+
+                                    </div>
+
                                    <div class="checkout_btn">
-                                       <a href="{{ route('checkout') }}">Proceed to Checkout</a>
+                                       <a onclick="return checkLocation();" href="{{ route('checkout') }}">Proceed to Checkout</a>
+                                       <p> * Cart total will be calculated accordingly.</p>
                                    </div>
                                 </div>
                             </div>
@@ -169,6 +178,17 @@
     <!--brand area end-->
 
 @endsection
+
+<script>
+    let cart_items_quantity = @json(session()->get('cart_items_quantity'));
+
+    function checkLocation()
+    {
+        return $('input[name="location"]').is(':checked');
+    }
+
+
+</script>
 
 
 @section('footer')

@@ -98,6 +98,8 @@
 
                                 </div>
 
+                                @guest('customer')
+
                                 <div class="col-lg-6 mb-20">
 
                                 <label> Account password   <span>*</span></label>
@@ -106,6 +108,8 @@
                                 <input name="password_confirmation" placeholder="confirm password" type="password" required>
 
                                 </div>
+
+                                @endguest
 
 
                                 <div class="col-12 mb-20">
@@ -203,18 +207,25 @@
                                             <th>Cart Subtotal</th>
                                             <td>BDT {{ $sub_total = session()->get('cart_sub_total') }}</td>
                                         </tr>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td><strong>BDT 100</strong></td>
-                                        </tr>
+
+
                                         @if(session()->has('couponCart'))
                                             @php $couponCart = session()->get('couponCart'); @endphp
                                             <tr>
                                                 <th>Discount</th>
-                                                <td><strong>BDT {{ $discount = round(($sub_total + 100) * $couponCart['value']) / 100 }}</strong></td>
+                                                <td><strong>BDT {{ $discount = round(($sub_total) * $couponCart['value']) / 100 }}</strong></td>
                                             </tr>
 
+                                            @php $sub_total -= $discount @endphp
+
                                         @endif
+
+
+                                        <tr>
+                                            <th>Shipping</th>
+                                            <td id="shipping_amount">{{ $shipping_cost = session()->get('shipping_cost') }}</td>
+                                        </tr>
+                                        @php session()->put('cart_total', $sub_total + $shipping_cost) @endphp
                                         <tr class="order_total">
                                             <th>Order Total</th>
                                             <td><strong>BDT {{ session()->get('cart_total') }}</strong></td>
@@ -249,6 +260,9 @@
     <!--brand area end-->
 
 @endsection
+
+
+
 
 
 @section('footer')

@@ -210,7 +210,7 @@
                                         @endif
                                     </div>
                                     <div class="product_desc">
-                                        <p>{{ $product->short_description }}</p>
+                                        {!! $product->short_description !!}
                                     </div>
                                     <div class="list_action_wrapper">
                                         <div class="list_cart_btn">
