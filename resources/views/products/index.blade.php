@@ -50,9 +50,6 @@
                                             Discount
                                         </th>
                                         <th class="">
-                                            Short Description
-                                        </th>
-                                        <th class="">
                                             Edit
                                         </th>
                                         <th class="">
@@ -97,9 +94,7 @@
                                             <td class="text-danger">
                                                 {{ $product->discount }}
                                             </td>
-                                            <td>
-                                                {!! \Illuminate\Support\Str::limit($product->short_description, 200, ' . . . ') !!}
-                                            </td>
+
                                             <td class="td-actions">
                                                 <a href="{{ route('products.edit', $product->id) }}"><i class="material-icons text-danger">edit</i></a>
                                             </td>
