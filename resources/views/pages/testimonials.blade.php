@@ -48,13 +48,13 @@
                                             {{ strtoupper($testimonial->status) }}
                                         </td>
 
-                                        <td>
-                                            <a class="btn btn-danger" href="{{ route('testimonial-approve', $testimonial->id) }}">Approve</a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a class="btn btn-danger" href="{{ route('testimonial-approve', $testimonial->id) }}">Approve</a>--}}
+{{--                                        </td>--}}
 
-                                        <td>
-                                            <a class="btn btn-danger" href="{{ route('testimonial-remove', $testimonial->id) }}">Remove</a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a class="btn btn-danger" href="{{ route('testimonial-remove', $testimonial->id) }}">Remove</a>--}}
+{{--                                        </td>--}}
 
                                     </tr>
 

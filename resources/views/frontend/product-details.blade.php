@@ -376,9 +376,10 @@
                                     <h4 class="product_name"><a href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
                                             {{ $related_product->name }}</a></h4>
                                     <div class="price_box">
-                                        <span class="old_price">BDT {{ $related_product->price }}</span>
-
                                         <span class="current_price">BDT {{ $related_product->price - round($related_product->price * $related_product->discount / 100) }}</span>
+                                        @if(!$product->discount == 0)
+                                            <span class="old_price">BDT {{ $product->price }}</span>
+                                        @endif
                                     </div>
                                     <div class="add_to_cart">
                                         <a href="{{ route('cart') }}">+ Add to cart</a>

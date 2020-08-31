@@ -53,7 +53,9 @@
                                     $discount = $data->sale ? $data->sale->percentage : $data->discount;
                                     @endphp
                                     <span class="new_price">BDT {{ $data->price - round($data->price * $discount / 100) }}</span>
-                                    <span class="old_price" >BDT {{ $data->price }}</span>
+                                    @if(!$data->discount == 0)
+                                        <span class="old_price">BDT {{ $data->price }}</span>
+                                    @endif
                                 </div>
                                 <div class="modal_description mb-15">
                                     {{ $data->short_description }}

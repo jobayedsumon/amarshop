@@ -173,7 +173,7 @@
             nav: true,
             autoplay: false,
             autoplayTimeout: 8000,
-            items: 3,
+            items: 1,
             dots:false,
             navText: ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
             responsiveClass:true,
@@ -182,13 +182,13 @@
                     items:1,
                 },
                 768:{
-                    items:2,
+                    items:1,
                 },
                 992:{
-                    items:2,
+                    items:1,
                 },
                 1200:{
-                    items:3,
+                    items:1,
                 },
             }
         });

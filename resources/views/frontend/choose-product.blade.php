@@ -34,7 +34,9 @@
                 {{ $product->name }}</a></h4>
         <div class="price_box">
             <span class="current_price">BDT {{ $product->price - round($product->price * $product->discount / 100) }}</span>
-            <span class="old_price">BDT {{ $product->price }}</span>
+            @if(!$product->discount == 0)
+                <span class="old_price">BDT {{ $product->price }}</span>
+            @endif
         </div>
         <div class="add_to_cart">
             <a data-toggle="modal" data-target="#view-modal"
@@ -129,6 +131,10 @@
 
 
 </script>
+
+@section('modal')
+    @include('frontend.layout.modal')
+@endsection
 
 
 
