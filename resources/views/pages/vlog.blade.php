@@ -99,7 +99,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="review_comment">Your comment *</label>
-                                        <textarea name="comment" id="review_comment" ></textarea>
+                                        <input class="p-5" type="text" name="comment" id="review_comment">
                                     </div>
 
                                 </div>

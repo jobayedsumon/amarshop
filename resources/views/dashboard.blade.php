@@ -32,11 +32,11 @@
                 <i class="material-icons">store</i>
               </div>
               <p class="card-category">Revenue</p>
-              <h3 class="card-title">BDT 0</h3>
+              <h3 class="card-title">BDT {{ \App\Order::all()->sum('amount') }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">product</i> <a class="text-danger" href="#">View</a>
+                <i class="material-icons">product</i> <a class="text-danger" href="#">&nbsp;</a>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
                 <i class="material-icons">info_outline</i>
               </div>
               <p class="card-category">Awaiting Shipment</p>
-              <h3 class="card-title">0</h3>
+              <h3 class="card-title">{{ \App\Order::where('delivery_status', 'awaiting')->count() }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -119,7 +119,7 @@
       <div class="row">
 
         <div class="col-lg-6 col-md-12">
-          <div class="card">
+          <div class="card" style="height: 500px; overflow: auto">
             <div class="card-header card-header-tabs card-header-danger">
               <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
@@ -187,6 +187,8 @@
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
   </div>
@@ -203,4 +205,5 @@
       md.initDashboardPageCharts();
     });
   </script>
+
 @endpush
