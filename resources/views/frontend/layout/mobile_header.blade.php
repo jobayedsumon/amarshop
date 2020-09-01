@@ -20,11 +20,11 @@
                                 $compare = \session()->get('compare') ?? [];
                             @endphp
 
-                            <li><a href="{{ route('compare') }}"><i class="icon-refresh icons mr-1"></i> Compare ({{ count($compare) }})</a></li>
+                            <li><a href="{{ route('compare') }}"><i class="icon-refresh icons mr-1"></i> Compare (<span class="compareCount">{{ count($compare) }}</span>)</a></li>
 
                             @auth('customer')
 
-                                <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (<span id="wishlistCount">{{ auth()->guard('customer')->user()->wishlist->count()  }}</span>)</a></li>
+                                <li><a href="{{ route('wishlist') }}"><i class="icon-heart mr-1"></i> Wishlist (<span class="wishlistCount">{{ auth()->guard('customer')->user()->wishlist->count()  }}</span>)</a></li>
 
                             @elseguest('customer')
                                 <li><a href="{{ route('customer-login') }}"><i class="icon-heart mr-1"></i> Wishlist (0)</a></li>

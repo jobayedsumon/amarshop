@@ -22,6 +22,11 @@ Route::get('/log', function () {
    return view('log', compact('activities'));
 })->middleware('can:access-manager-data');
 
+Route::get('/compare/remove', function () {
+   session()->forget(['compare']);
+   return redirect()->back();
+});
+
 /*********************
  *
  *
@@ -41,6 +46,7 @@ Route::get('/cart', 'FrontendController@cart')->name('cart');
 //Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
 //Route::post('/payment', 'PaymentController@index')->name('payment');
 Route::get('/tag/{tagName}', 'FrontendController@tag_search')->name('tag-search');
+Route::get('/brand/{brandName}', 'FrontendController@brand_search')->name('brand-search');
 Route::get('/search', 'FrontendController@search')->name('search');
 Route::get('/filter-product', 'AjaxController@filter_product')->name('filter-product');
 Route::get('/filter-product-shop', 'AjaxController@filter_product_shop')->name('filter-product-shop');
@@ -153,6 +159,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('orders', 'OrderController@index')->name('orders');
             Route::get('orders/{orderId}', 'OrderController@details')->name('order-details');
+            Route::patch('orders/{orderId}', 'OrderController@shipped')->name('order-shipped');
 
         });
 

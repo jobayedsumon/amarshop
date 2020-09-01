@@ -82,7 +82,13 @@
                         @forelse(\App\Deal::all() as $deal)
 
                             <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($deal->product->image_primary)}}')">
-                                <a class="m-5 font-bold text-xl text-danger" href="{{ route('product-details', [$deal->product->category_id, $deal->product->sub_category_id, $deal->product->id]) }}"><i class="fa fa-gift"> </i> Take the Deal</a>
+                                <div class="m-5 font-bold text-xl text-danger">
+                                    <a class="hover:text-pink-500"
+                                       href="{{ route('product-details', [$deal->product->category_id, $deal->product->sub_category_id, $deal->product->id]) }}">
+                                        <i class="fa fa-gift"> </i> Take the Deal</a>
+                                    <h1>at BDT {{ $deal->price }} only !</h1>
+                                </div>
+
                             </div>
 
                         @empty

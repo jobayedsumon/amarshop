@@ -32,7 +32,7 @@
                     <br>
                     amarshop.bd2020@gmail.com
                     <br>
-                    inf0@amarshop.com.bd
+                    info@amarshop.com.bd
                     <br>
 
                     Call us: +880-1998916331, +880-1891962812

@@ -30,6 +30,12 @@
                                         Total Amount
                                     </th>
                                     <th>
+                                        Payment Status
+                                    </th>
+                                    <th>
+                                        Delivery Status
+                                    </th>
+                                    <th>
                                         Details
                                     </th>
                                     </thead>
@@ -52,6 +58,13 @@
                                         <td>
                                             {{ $order->amount }}
                                         </td>
+                                        <td>
+                                            {{ $order->status }}
+                                        </td>
+
+                                            <td>
+                                                {!! $order->delivery_status == 'awaiting' ? 'Awaiting Shipment' : 'Shipped' !!}
+                                            </td>
 
                                         <td>
                                             <a class="btn btn-danger" href="{{ route('order-details', $order->id) }}">Details</a>

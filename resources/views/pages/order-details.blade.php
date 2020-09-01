@@ -68,6 +68,18 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <label class="col-sm-2 col-form-label">{{ __('Payment Status') }}</label>
+                                <div class="col-sm-7">
+                                    {{ $order->status }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">{{ __('Delivery Status') }}</label>
+                                <div class="col-sm-7">
+                                    {!! $order->delivery_status == 'awaiting' ? 'Awaiting Shipment' : 'Shipped' !!}
+                                </div>
+                            </div>
+                            <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Billing Address') }}</label>
                                 <div class="col-sm-7">
                                     {{ str_replace('+', ', ', $order->address) }}
@@ -82,7 +94,34 @@
 
                         </div>
                     </div>
+
+                    <form method="post" action="" class="form-horizontal">
+                        @csrf
+                        @method('patch')
+
+                        <label class="" for="input-notes">{{ __('Order Notes') }}</label>
+
+                    <div class="row">
+
+                        <div class="col-sm-7">
+                            <div class="form-group{{ $errors->has('noted') ? ' has-danger' : '' }}">
+                                <textarea class="w-100" name="notes" id="" cols="" rows="10">{{ $order->notes }}</textarea>
+                                @if ($errors->has('notes'))
+                                    <span id="notes-error" class="error text-danger" for="input-product_notes">{{ $errors->first('notes') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="card-footer ml-auto mr-auto">
+                            <button type="submit" class="btn btn-danger">{{ __('Ship Order') }}</button>
+                        </div>
+
+                    </form>
+
                 </div>
+
+
 
 
         </div>

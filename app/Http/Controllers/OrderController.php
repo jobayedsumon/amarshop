@@ -19,4 +19,17 @@ class OrderController extends Controller
 
         return view('pages.order-details', compact('order'));
     }
+
+    public function shipped(Request $request, $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        $order->update([
+            'notes' => $request->notes,
+            'delivery_status' => 'shipped'
+        ]);
+
+        return redirect()->back();
+
+    }
 }

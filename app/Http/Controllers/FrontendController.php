@@ -202,6 +202,16 @@ class FrontendController extends Controller
         return view('frontend.tag-search', compact('tag'));
     }
 
+    public function brand_search($brandName)
+    {
+        $prodIds = Brand::where('name', $brandName)->first()->products()->pluck('id');
+
+
+        $products = Product::whereIn('id', $prodIds)->get();
+
+        return view('frontend.brand-search', compact('brandName', 'products'));
+    }
+
     public function search(Request $request)
     {
         $search = $request->search;

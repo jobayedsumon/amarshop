@@ -48,7 +48,7 @@
                                 <div class="widget_list widget_color">
                                     <h3>Select Brand</h3>
                                     <select class="form-control p-2" id="colorSelect">
-                                        <option value=""></option>
+                                        <option value="-1"></option>
                                         @php $brands = \App\Brand::all(); @endphp
 
 
@@ -66,7 +66,7 @@
                                 <div class="widget_list widget_color">
                                     <h3>Select SIze</h3>
                                     <select class="form-control">
-                                        <option value=""></option>
+                                        <option value="-1"></option>
                                         @php $sizes = \App\Size::all(); @endphp
 
                                         @forelse($sizes as $size)

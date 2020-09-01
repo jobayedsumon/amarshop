@@ -83,7 +83,7 @@
                            @php $discount = $product->sale ? $product->sale->percentage : $product->discount; @endphp
 
                             <div class="price_box">
-                                <span class="current_price">BDT {{ $discount ? $product->price - round($product->price * $discount / 100) : $product->price }}</span>
+                                <span class="current_price">BDT {{ $discount ? $product->price - round($product->price * $discount / 100) : $product->price }}</span>&nbsp;
                                 @if(!$product->discount == 0)
                                 <span class="old_price">BDT {{ $product->price }}</span>
                                 @endif
@@ -126,7 +126,7 @@
                                 </div>
 
                                 <div class="mt-2">
-                                    <label for="">Inventory : {{ $product->quantity }} products available</label>
+                                    <label for="">Inventory : {!! $product->quantity > 0 ? $product->quantity : 0 !!} products available</label>
                                 </div>
 
 
@@ -146,7 +146,8 @@
                             </div>
                             <div class=" product_d_action">
                                <ul>
-                                   <li><a href="javascript:void(0)" onclick="wishlist({{ $product->id }})" title="Add to wishlist">+ Add to Wishlist</a></li>
+                                   <li><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $product->id }}" title="Add to Wishlist">+ Add to Wishlist</a></li>
+                                   <li><a href="javascript:void(0)" class="compareButton" data-id="{{ $product->id }}" title="Add to Compare">+ Add to Compare</a></li>
 
                                </ul>
                             </div>
@@ -359,8 +360,10 @@
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="wishlist"><a href="javascript:void(0)" onclick="return wishlist({{ $related_product->id }})" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
-                                            <li class="compare"><a href="#" title="Add to Compare"><i class="icon-refresh icons"></i></a></li>
+                                            <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $related_product->id }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                            <li class="compare">
+                                                <a href="javascript:void(0)" class="compareButton" data-id="{{ $related_product->id }}" title="Add to Compare">
+                                                    <i class="icon-refresh icons"></i></a></li>
                                             <li class="quick_button">
                                                 <a data-toggle="modal" data-target="#view-modal"
                                                         class="quickButton"

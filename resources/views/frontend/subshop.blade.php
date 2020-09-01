@@ -48,12 +48,13 @@
                                 <div class="widget_list widget_color">
                                     <h3>Select Brand</h3>
                                     <select class="form-control p-2" id="colorSelect">
+                                        <option value="-1"></option>
                                         @php $brands = \App\Brand::all(); @endphp
 
 
 
                                         @forelse($brands as $brand)
-                                            <option class="colorOption" value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            <option class="brand" value="{{ $brand->id }}">{{ $brand->name }}</option>
 
                                         @empty
 
@@ -65,10 +66,11 @@
                                 <div class="widget_list widget_color">
                                     <h3>Select SIze</h3>
                                     <select class="form-control">
+                                        <option value="-1"></option>
                                         @php $sizes = \App\Size::all(); @endphp
 
                                         @forelse($sizes as $size)
-                                            <option value="{{ $size->id }}">
+                                            <option class="size" value="{{ $size->id }}">
                                                 {{ $size->name }}
                                             </option>
 

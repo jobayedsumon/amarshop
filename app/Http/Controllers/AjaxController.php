@@ -244,9 +244,9 @@ class AjaxController extends Controller
         $minPrice = $request->min_amount;
         $maxPrice = $request->max_amount;
 
-        $data = Product::where('category_id', $request->category_id);
+        $data = Product::whereBetween('price', [$minPrice, $maxPrice]);
 
-        $data->whereBetween('price', [$minPrice, $maxPrice]);
+        $data->where('category_id', $request->category_id);
 
 
         if ($brand != -1) {
@@ -274,9 +274,9 @@ class AjaxController extends Controller
         $minPrice = $request->min_amount;
         $maxPrice = $request->max_amount;
 
-        $data = Product::where('sub_category_id', $request->sub_category_id);
+        $data = Product::whereBetween('price', [$minPrice, $maxPrice]);
 
-        $data->whereBetween('price', [$minPrice, $maxPrice]);
+        $data->where('sub_category_id', $request->sub_category_id);
 
 
         if ($brand != -1) {
@@ -285,6 +285,7 @@ class AjaxController extends Controller
         }
 
         if ($size != -1) {
+
             $prodIds = Size::find($size)->products()->pluck('id');
             $data->whereIn('id', $prodIds);
         }

@@ -13,13 +13,16 @@
     <div class="breadcrumbs_area">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-10">
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="/">home</a></li>
                             <li>Compare</li>
                         </ul>
                     </div>
+                </div>
+                <div class="col-2">
+                    <a class="text-danger" href="/compare/remove">Clear <i class="fa fa-remove"></i></a>
                 </div>
             </div>
         </div>
