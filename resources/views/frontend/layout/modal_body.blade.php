@@ -58,7 +58,7 @@
                                     @endif
                                 </div>
                                 <div class="modal_description mb-15">
-                                    {{ $data->short_description }}
+                                    {!! $data->short_description !!}
                                 </div>
 
                                 <div class="variants_selects">
