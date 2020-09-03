@@ -19,3 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/pay', 'SslCommerzPaymentController@index')->name('payment');
+
+Route::prefix('v1')->group(function () {
+
+    Route::get('sliders', 'ApiController@sliders');
+});
+
+
