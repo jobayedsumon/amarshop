@@ -158,9 +158,9 @@
             success: function (data) {
                 sweetAlter('success', 'Product added to cart');
                 $('.cart_sub_total').text('BDT ' + data.cart_sub_total);
-                let cart_total_amount = parseInt(data.cart_sub_total) + 100;
+                let cart_total_amount = parseInt(data.cart_sub_total);
                 $('.cart_total_amount').text('BDT ' + cart_total_amount);
-                $('.cart_items_count').text(data.cart_items_count);
+                $('.cart_items_quantity').text(data.cart_items_quantity);
             }
         });
 

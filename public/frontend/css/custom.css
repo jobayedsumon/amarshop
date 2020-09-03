@@ -189,3 +189,15 @@ footer, .header_top {
     }
 }
 
+
+.page-item.active .page-link {
+
+	color: #000;    
+    background-color: #F9BBCA;
+    border-color: #F9BBCA;
+}
+
+
+.page-link {
+	color: #000;
+}

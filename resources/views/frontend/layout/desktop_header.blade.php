@@ -143,7 +143,7 @@
                             <div class="header_account_list  mini_cart_wrapper">
                                 <a href="javascript:void(0)"><i class="icon-bag icons"></i>
                                     <span class="cart_itemtotal cart_sub_total">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
-                                    <span class="item_count cart_items_count">{{ session()->get('cart_items_quantity') ?? 0 }}</span>
+                                    <span class="item_count cart_items_quantity">{{ session()->get('cart_items_quantity') ?? 0 }}</span>
                                 </a>
                                 <!--mini cart-->
                                 <div class="mini_cart">

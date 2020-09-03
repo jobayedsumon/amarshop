@@ -158,6 +158,14 @@ class AjaxController extends Controller
 
         session()->put('cart_items_count', count($cart));
 
+        $cart_items_quantity = 0;
+
+        foreach ($cart as $data) {
+            $cart_items_quantity += $data['count'];
+        }
+
+        session()->put('cart_items_quantity', $cart_items_quantity);
+
         session()->put('cart', $cart);
 
         return redirect('/cart');

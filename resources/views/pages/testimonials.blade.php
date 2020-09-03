@@ -41,12 +41,12 @@
                                             {{ $testimonial->name }}
                                         </td>
                                         <td>
-                                            {{ $testimonial->testimonial }}
+                                            {!! $testimonial->testimonial !!}
                                         </td>
 
-                                        <td>
-                                            {{ strtoupper($testimonial->status) }}
-                                        </td>
+                                        <!-- <td>
+                                            {!! $testimonial->status ? 'Approved' : 'Pending' !!}
+                                        </td> -->
 
 {{--                                        <td>--}}
 {{--                                            <a class="btn btn-danger" href="{{ route('testimonial-approve', $testimonial->id) }}">Approve</a>--}}

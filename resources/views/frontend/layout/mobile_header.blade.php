@@ -44,8 +44,8 @@
                         <div class="header_account_list  mini_cart_wrapper">
                             <a href="javascript:void(0)"><i class="icon-bag icons"></i>
                                 <span class="cart_itemtext">Cart:</span>
-                                <span class="cart_itemtotal">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
-                                <span class="item_count">{{ session()->get('cart_items_count') ?? 0 }}</span>
+                                <span class="cart_itemtotal cart_sub_total">BDT {{ session()->get('cart_sub_total') ?? 0 }}</span>
+                                <span class="item_count cart_items_quantity">{{ session()->get('cart_items_quantity') ?? 0 }}</span>
                             </a>
                             <!--mini cart-->
                             <div class="mini_cart">
@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="cart_total mt-10">
                                             <span>Total:</span>
-                                            <span class="price cart_total_amount">BDT {{ session()->get('cart_sub_total') ? session()->get('cart_sub_total') : 0 }}</span>
+                                            <span class="price cart_total_amount">BDT {{ session()->get('cart_sub_total') ? session()->get('cart_sub_total')  : 0 }}</span>
                                         </div>
                                     </div>
                                 </div>

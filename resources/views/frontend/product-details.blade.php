@@ -349,7 +349,7 @@
                 @forelse($related_products as $related_product)
 
                         <article class="single_product  mr-3">
-                            <figure class="h-full flex flex-column justify-between">
+                            <figure class="h-full flex flex-column justify-start">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
                                         <img src="{{ asset($related_product->image_primary)}}" alt=""></a>
