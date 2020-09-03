@@ -66,9 +66,6 @@
                                     <div class="cart_button">
                                         <a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> View cart</a>
                                     </div>
-                                    <div class="cart_button">
-                                        <a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i> Checkout</a>
-                                    </div>
 
                                 </div>
                             </div>

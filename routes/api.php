@@ -23,6 +23,9 @@ Route::post('/pay', 'SslCommerzPaymentController@index')->name('payment');
 Route::prefix('v1')->group(function () {
 
     Route::get('sliders', 'ApiController@sliders');
+
+    Route::get('shops', 'ApiController@shops');
+
 });
 
 

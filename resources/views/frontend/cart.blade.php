@@ -58,7 +58,7 @@
 
                             @endphp
 
-                            @forelse($cart as $data)
+                            @forelse($cart ?? [] as $data)
 
                                 @php
                                     $product = \App\Product::findOrFail($data['product_id']);
