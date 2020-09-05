@@ -24,7 +24,7 @@ class ApiController extends Controller
 
     public function shops()
     {
-        $shops = Category::with('sub_categories')->with('products')->get();
+        $shops = Category::with('sub_categories')->get();
 
         return response()->json($shops, 200);
     }
