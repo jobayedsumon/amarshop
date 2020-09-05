@@ -111,6 +111,7 @@ class AjaxController extends Controller
 
                 if ($request->count[$i] > $product->quantity) {
                     $data['count'] = $product->quantity;
+                    session()->put('msg', 'Product quantity exceeded and set to maximum');
                 } else {
                     $data['count'] = $request->count[$i];
                 }

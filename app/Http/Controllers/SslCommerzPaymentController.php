@@ -20,17 +20,20 @@ class SslCommerzPaymentController extends Controller
 
     public function exampleHostedCheckout()
     {
-        if (session()->has('shipping_cost')) {
+        if (session()->has('shipping_cost') && session()->has('cart')) {
             return view('frontend.checkout');
         } else {
             $cart = session()->get('cart');
-            return redirect('/cart')->with('msg', 'Please choose shipping location');
+            return redirect('/cart')->with('msg', 'Please add products and choose shipping location');
         }
 
     }
 
     public function index(Request $request)
     {
+        if (!session()->has('cart')) {
+            return redirect('/');
+        }
 
         if (auth('customer')->check()) {
 

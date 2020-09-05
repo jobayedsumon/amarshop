@@ -96,7 +96,7 @@
                         </div>
                      </div>
                     @if(session()->has('msg'))
-                    <p class="w-full text-right text-danger font-bold">Product quantity exceeded!</p>
+                    <p class="w-full text-right text-danger font-bold">{{ session()->get('msg') }}</p>
                     @endif
                  </div>
             </form>
