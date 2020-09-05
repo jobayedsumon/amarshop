@@ -28,6 +28,16 @@ Route::prefix('v1')->group(function () {
 
     Route::get('new-arrivals', 'ApiController@new_arrivals');
 
+    Route::get('subshop/{id}/products', 'ApiController@sub_shop_products');
+
+    Route::get('featured-products', 'ApiController@featured_products');
+
+    Route::get('search/{query}', 'ApiController@search_products');
+
+    Route::get('tag/{tagName}', 'ApiController@tag_search');
+
+    Route::get('user/{id}/wishlist', 'ApiController@wishlist');
+
 
 });
 
