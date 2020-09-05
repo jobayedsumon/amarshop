@@ -36,7 +36,7 @@ class FrontendController extends Controller
         $newProducts = Product::whereDate('created_at', Carbon::now()->subDays(7))->get();
 
         if ($newProducts->count() <= 0) {
-            $newProducts = Product::latest()->limit(10)->get();
+            $newProducts = Product::latest()->limit(20)->get();
         }
 
         $allSale = Sale::where('expire', '>', now())->get();

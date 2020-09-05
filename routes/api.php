@@ -26,6 +26,9 @@ Route::prefix('v1')->group(function () {
 
     Route::get('shops', 'ApiController@shops');
 
+    Route::get('new-arrivals', 'ApiController@new_arrivals');
+
+
 });
 
 
