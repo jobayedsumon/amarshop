@@ -6685,18 +6685,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 12px;
   color: #333;
 }
-@media only screen and (max-width: 767px) {
-  .coupon_inner input {
-    margin-bottom: 24px;
-    width: 100%;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .coupon_inner input {
-    margin-bottom: 24px;
-    width: 100%;
-  }
-}
+/*@media only screen and (max-width: 767px) {*/
+/*  .coupon_inner input {*/
+/*    margin-bottom: 24px;*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
+/*@media only screen and (min-width: 768px) and (max-width: 991px) {*/
+/*  .coupon_inner input {*/
+/*    margin-bottom: 24px;*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
 .coupon_inner a {
   display: block;
   text-align: right;

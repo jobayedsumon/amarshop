@@ -107,10 +107,17 @@ class AjaxController extends Controller
 
             foreach ($cart as $i => $data) {
 
-                $data['count'] = $request->count[$i];
+                $product = Product::findOrFail($data['product_id']);
+
+                if ($request->count[$i] > $product->quantity) {
+                    $data['count'] = $product->quantity;
+                } else {
+                    $data['count'] = $request->count[$i];
+                }
+
+
                 $newCart[] = $data;
 
-                $product = Product::findOrFail($data['product_id']);
                 $discount = $product->sale ? $product->sale->percenatge : $product->discount;
                 $product_price = $discount ? $product->price - round($product->price * $discount / 100) : $product->price;
 

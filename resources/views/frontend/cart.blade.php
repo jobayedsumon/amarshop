@@ -58,7 +58,7 @@
 
                             @endphp
 
-                            @forelse($cart ?? [] as $data)
+                            @forelse(session()->get('cart') ?? [] as $data)
 
                                 @php
                                     $product = \App\Product::findOrFail($data['product_id']);
@@ -69,8 +69,8 @@
 
                                 <tr>
                                    <td class="product_remove"><a href="/cart/remove/{{ $data['cart_id'] }}"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{ asset($product->image_primary) }}" alt=""></a></td>
-                                    <td class="product_name"><a href="#">{{ $product->name }}</a></td>
+                                    <td class="product_thumb"><a href="{{ route('product-details', [$product->category_id, $product->sub_category_id, $product->id]) }}"><img src="{{ asset($product->image_primary) }}" alt=""></a></td>
+                                    <td class="product_name"><a href="{{ route('product-details', [$product->category_id, $product->sub_category_id, $product->id]) }}">{{ $product->name }}</a></td>
                                     <td class="product-price"><span style="background-color: {{ $color ? $color->name : '' }}" class="p-3"> &nbsp;</span></td>
                                     <td class="product-price">{{ $size ? $size->name : '' }}</td>
                                     @php $discount = $product->sale ? $product->sale->percentage : $product->discount; @endphp
@@ -95,6 +95,9 @@
                             </div>
                         </div>
                      </div>
+                    @if(session()->has('msg'))
+                    <p class="w-full text-right text-danger font-bold">Product quantity exceeded!</p>
+                    @endif
                  </div>
             </form>
                  <!--coupon code area start-->
