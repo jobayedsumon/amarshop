@@ -2594,7 +2594,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .single_product {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    height: 100%;
   border: 1px solid #e5e5e5;
   padding: 10px;
   background: #fff;

@@ -273,6 +273,7 @@ $('input[name="location"]').on('change', function () {
 
     switch (value) {
         case 'inside_dhaka':
+
             if (cart_items_quantity <= 1) {
                 shipping_cost = 80;
             } else if (cart_items_quantity >= 2 && cart_items_quantity <= 5) {
