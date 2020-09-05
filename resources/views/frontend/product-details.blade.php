@@ -138,7 +138,7 @@
                                 <label>quantity</label>
                                 <input min="1" max="100" id="count" value="1" type="number">
                                 @if($product->quantity > 0)
-                                <a href="javascript:void(0)" class="customButton" id="addToCart">add to cart</a>
+                                <a href="javascript:void(0)" class="customButton px-2" id="addToCart">add to cart</a>
                                 @else
                                 <p class="ml-2 font-bold text-danger">Out of Stock!</p>
                                 @endif
