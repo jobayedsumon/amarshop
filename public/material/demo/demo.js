@@ -285,17 +285,49 @@ function readURLRight(input) {
 }
 
 $("#input-image_primary").change(function(){
+    const size =
+        (this.files[0].size / 1024 / 1024).toFixed(2);
+
+    if (size > 2) {
+        alert("Image must be under the size of 2 MB");
+        $(this).val(null);
+        return false;
+    }
     readURLPrimary(this);
 });
 
 $("#input-image_secondary").change(function(){
+    const size =
+        (this.files[0].size / 1024 / 1024).toFixed(2);
+
+    if (size > 2) {
+        alert("Image must be under the size of 2 MB");
+        $(this).val(null);
+        return false;
+    }
     readURLSecondary(this);
 });
 
 $("#input-image_left").change(function(){
+    const size =
+        (this.files[0].size / 1024 / 1024).toFixed(2);
+
+    if (size > 2) {
+        alert("Image must be under the size of 2 MB");
+        $(this).val(null);
+        return false;
+    }
     readURLLeft(this);
 });
 
 $("#input-image_right").change(function(){
+    const size =
+        (this.files[0].size / 1024 / 1024).toFixed(2);
+
+    if (size > 2) {
+        alert("Image must be under the size of 2 MB");
+        $(this).val(null);
+        return false;
+    }
     readURLRight(this);
 });

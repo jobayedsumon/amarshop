@@ -51,6 +51,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'image_primary' => 'required|file|max:2000',
+            'image_secondary' => 'required|file|max:2000',
+            'image_left' => 'required|file|max:2000',
+            'image_right' => 'required|file|max:2000',
+        ]);
+
         $allSize = explode(',', $request->size);
         $allTags = explode(',', $request->tags);
         $tagCount = count($allTags);
