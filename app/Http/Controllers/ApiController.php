@@ -47,14 +47,14 @@ class ApiController extends Controller
 
     public function sub_shop_products($id)
     {
-        $products = Product::where('sub_category_id', $id)
-            ->select('name', 'price', 'quantity', 'discount', 'image_primary', 'image_secondary', 'image_left', 'image_right', 'description')
+        $products = $this->products()->where('sub_category_id', $id)
             ->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])
             ->get();
 
-foreach($products as $p){
-    $p->description = strip_tags($p->description);
-}
+        foreach($products as $p){
+            $p->description = strip_tags($p->description);
+        }
+
         return response()->json($products, 200);
     }
 
@@ -95,6 +95,11 @@ foreach($products as $p){
         $wishlist = $this->products()->whereIn('id', $prodIds)->get();
 
         return response()->json($wishlist, 200);
+
+    }
+
+    public function amarcare()
+    {
 
     }
 }

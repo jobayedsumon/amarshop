@@ -38,6 +38,10 @@ Route::prefix('v1')->group(function () {
 
     Route::get('customer/{id}/wishlist', 'ApiController@wishlist');
 
+    Route::get('amarcare', 'ApiController@amarcare');
+
+
+
 
 });
 
