@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\AmarCare;
+use App\Brand;
 use App\Category;
 use App\Customer;
 use App\FeaturedProduct;
 use App\Product;
+use App\Size;
 use App\Slider;
 use App\SubCategory;
 use App\Tag;
@@ -64,10 +67,18 @@ class ApiController extends Controller
         $featuredCatIds = FeaturedProduct::all()->pluck('category_id')->unique();
         $featuredProdIds = FeaturedProduct::all()->pluck('product_id');
         $featuredCategories = Category::whereIn('id', $featuredCatIds)->get();
-        $featuredProducts = $this->products()->whereIn('id', $featuredProdIds)->get();
+        $featuredProducts = $this->products()->whereIn('id', $featuredProdIds);
 
+        $data = [];
 
-        return response()->json([$featuredCategories, $featuredProducts], 200);
+        foreach ($featuredCategories as $i => $fc) {
+            $data[$i]['categoryName'] = $fc->name;
+            $data[$i]['Products'] = $fc->products()->whereIn('id', $featuredProdIds)
+                ->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])
+                ->get();
+        }
+
+        return response()->json($data, 200);
 
     }
 
@@ -101,6 +112,41 @@ class ApiController extends Controller
 
     public function amarcare()
     {
+        $vlogs = AmarCare::all();
+        $data = [];
+
+        foreach ($vlogs as $i => $vlog) {
+            $data[$i]['categoryName'] = $vlog->category->name;
+            $data[$i]['videos'] = $vlog->video;
+        }
+
+        return response()->json($data, 200);
+    }
+
+    public function filter_product(Request $request)
+    {
+        $brand = $request->brand_id;
+        $size = $request->size_id;
+
+        $minPrice = $request->min_amount;
+        $maxPrice = $request->max_amount;
+
+        $data = $this->products()->whereBetween('price', [$minPrice, $maxPrice]);
+
+        if ($brand != -1) {
+            $prodIds = Brand::find($brand)->products()->pluck('id');
+            $data->whereIn('id', $prodIds);
+        }
+
+        if ($size != -1) {
+            $prodIds = Size::find($size)->products()->pluck('id');
+            $data->whereIn('id', $prodIds);
+        }
+
+        $data = $data->get();
+
+        return response()->json($data, 200);
+
 
     }
 }

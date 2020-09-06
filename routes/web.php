@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,6 +77,8 @@ Route::get('/cart/remove/{cartId}', 'AjaxController@remove_cart');
 
 Route::post('/cart/apply-coupon', 'AjaxController@apply_coupon')->name('apply-coupon');
 Route::get('/cart/remove-coupon', 'AjaxController@remove_coupon')->name('remove-coupon');
+
+Route::get('/product-price', 'AjaxController@product_price');
 
 Route::get('dynamicModal/{id}',[
     'as'=>'dynamicModal',

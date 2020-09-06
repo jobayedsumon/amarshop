@@ -16,6 +16,7 @@ use App\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
 {
@@ -339,6 +340,17 @@ class AjaxController extends Controller
         $customer->comment($vlog, $comment, $rate=0);
 
         return redirect()->back();
+
+    }
+
+    public function product_price(Request $request)
+    {
+        $data = DB::table('product_size')
+            ->where('product_id', $request->product_id)
+            ->where('size_id', $request->size_id)
+            ->first();
+
+        return $data->price;
 
     }
 

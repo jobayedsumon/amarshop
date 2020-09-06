@@ -40,6 +40,8 @@ Route::prefix('v1')->group(function () {
 
     Route::get('amarcare', 'ApiController@amarcare');
 
+    Route::post('filter-product', 'ApiController@filter_product');
+
 
 
 

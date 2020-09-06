@@ -305,7 +305,7 @@
                                         </ul>
                                     </div>
 
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" id="productId" name="product_id" value="{{ $product->id }}">
 
                                     <div class="product_review_form">
                                         <div class="row">
@@ -419,7 +419,28 @@
 
 @section('script')
 
+    <script>
+        $('.sizeId').on('click', function () {
+           let sizeId = $(this).val();
+           let productId = $('#productId').val();
 
+            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                type: 'GET',
+                url: '/product-price',
+                data: {
+                    _token: CSRF_TOKEN,
+                    size_id: sizeId,
+                    product_id: productId
+                },
+                success: function (result) {
+                    console.log(result);
+                }
+            });
+
+        });
+    </script>
 
 @endsection
 
