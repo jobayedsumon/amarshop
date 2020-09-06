@@ -53,6 +53,7 @@ class ApiController extends Controller
 
         foreach($products as $p){
             $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
         }
 
         return response()->json($products, 200);
