@@ -47,7 +47,7 @@ class ApiController extends Controller
 
     public function sub_shop_products($id)
     {
-        $products = Product::where('sub_category_id', $id)->select('name')->get();
+        $products = $this->products()->where('sub_category_id', $id)->get();
 
         return response()->json($products, 200);
     }

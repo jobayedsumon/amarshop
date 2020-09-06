@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -51,6 +52,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
+            // create a validator and validate to throw a new ValidationException
+            return Validator::make($request->all(), [
+                'file' => 'required|file|max:2000',
+            ])->validate();
+        }
+
         return parent::render($request, $exception);
     }
 
