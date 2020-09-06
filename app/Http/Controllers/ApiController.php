@@ -47,7 +47,7 @@ class ApiController extends Controller
 
     public function sub_shop_products($id)
     {
-        $products = $this->products()->where('sub_category_id', $id)->get();
+        $products = Product::where('sub_category_id', $id)->select('name')->get();
 
         return response()->json($products, 200);
     }
@@ -84,7 +84,11 @@ class ApiController extends Controller
     public function wishlist($id)
     {
         $customer = Customer::findOrFail($id);
-        $wishlist = $customer->wishlist ?? [];
+        $prodIds = $customer->wishlist()->pluck('product_id');
+
+        $wishlist = $this->products()->whereIn('id', $prodIds)->get();
+
+        return response()->json($wishlist, 200);
 
     }
 }

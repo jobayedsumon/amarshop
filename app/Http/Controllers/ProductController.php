@@ -50,6 +50,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->file('image_primary');
         //
         $allSize = explode(',', $request->size);
         $allTags = explode(',', $request->tags);

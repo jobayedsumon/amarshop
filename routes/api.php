@@ -36,7 +36,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('tag/{tagName}', 'ApiController@tag_search');
 
-    Route::get('user/{id}/wishlist', 'ApiController@wishlist');
+    Route::get('customer/{id}/wishlist', 'ApiController@wishlist');
 
 
 });
