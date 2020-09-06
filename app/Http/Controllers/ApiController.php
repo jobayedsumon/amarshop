@@ -48,10 +48,13 @@ class ApiController extends Controller
     public function sub_shop_products($id)
     {
         $products = Product::where('sub_category_id', $id)
-            ->select('name', 'price', 'quantity', 'discount', 'image_primary', 'image_secondary', 'image_left', 'image_right')
+            ->select('name', 'price', 'quantity', 'discount', 'image_primary', 'image_secondary', 'image_left', 'image_right', 'description')
             ->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])
             ->get();
 
+foreach($products as $p){
+    $p->description = strip_tags($p->description);
+}
         return response()->json($products, 200);
     }
 
