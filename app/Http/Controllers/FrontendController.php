@@ -39,7 +39,7 @@ class FrontendController extends Controller
             $newProducts = Product::latest()->limit(20)->get();
         }
 
-        $allSale = Sale::where('expire', '>', now())->get();
+        $allSale = Sale::latest()->where('expire', '>', now())->get();
         $brands = Brand::all();
 
         return view('frontend.index', compact('sliders', 'categories',

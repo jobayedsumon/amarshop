@@ -6,8 +6,10 @@ use App\AmarCare;
 use App\Brand;
 use App\Category;
 use App\Customer;
+use App\Deal;
 use App\FeaturedProduct;
 use App\Product;
+use App\Sale;
 use App\Size;
 use App\Slider;
 use App\SubCategory;
@@ -43,6 +45,11 @@ class ApiController extends Controller
 
         if ($newProducts->count() <= 0) {
             $newProducts = $this->products()->latest()->limit(20)->get();
+        }
+
+        foreach($newProducts as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
         }
 
         return response()->json($newProducts, 200);
@@ -146,6 +153,37 @@ class ApiController extends Controller
         $data = $data->get();
 
         return response()->json($data, 200);
+
+
+    }
+
+    public function sale_products()
+    {
+        $saleProdIds = Sale::latest()->where('expire', '>', now())->pluck('product_id');
+
+        $saleProducts = $this->products()->whereIn('id', $saleProdIds)->get();
+
+        return response()->json($saleProducts, 200);
+    }
+
+    public function deal_products()
+    {
+        $dealProdIds = Deal::latest()->where('expire', '>', now())->pluck('product_id');
+
+        $dealProducts = $this->products()->whereIn('id', $dealProdIds)->get();
+
+        return response()->json($dealProducts, 200);
+    }
+
+    public function my_account(Request $request)
+    {
+        $customer = Customer::with('orders')->findOrFail($request->id);
+
+        foreach($customer->orders as $order){
+            $order->notes = strip_tags($order->notes);
+        }
+
+        return response()->json($customer, 200);
 
 
     }
