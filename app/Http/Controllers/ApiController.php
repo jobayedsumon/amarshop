@@ -87,7 +87,12 @@ class ApiController extends Controller
                 ->get();
         }
 
-
+        foreach ($data as $d) {
+            foreach ($d['Products'] as $p) {
+                $p->description = strip_tags($p->description);
+                $p->short_description = strip_tags($p->short_description);
+            }
+        }
 
         return response()->json($data, 200);
 
@@ -98,6 +103,11 @@ class ApiController extends Controller
 
         $products = $this->products()->where('name', 'LIKE', '%'.$query.'%')->get();
 
+        foreach($products as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
+
         return response()->json($products, 200);
     }
 
@@ -106,6 +116,11 @@ class ApiController extends Controller
         $tag = Tag::where('name', $tagName)->first();
 
         $products = $tag->products()->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])->get();
+
+        foreach($products as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
 
         return response()->json($products, 200);
     }
@@ -155,6 +170,11 @@ class ApiController extends Controller
         }
 
         $data = $data->get();
+
+        foreach($data as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
 
         return response()->json($data, 200);
 
