@@ -226,19 +226,19 @@ class ApiController extends Controller
         return response()->json($products, 200);
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-           'email' => 'email|required',
-           'password' => 'password|required'
-        ]);
-
-        try {
-            if (!JWTAuth::attempt($request->all())) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
-            }
-        } catch (JWTException $e) {
-            return response()->json(['msg' => 'Authentication failed!'], 401);
-        }
-    }
+//    public function login(Request $request)
+//    {
+//        $request->validate([
+//           'email' => 'email|required',
+//           'password' => 'password|required'
+//        ]);
+//
+//        try {
+//            if (!JWTAuth::attempt($request->all())) {
+//                return response()->json(['error' => 'invalid_credentials'], 401);
+//            }
+//        } catch (JWTException $e) {
+//            return response()->json(['msg' => 'Authentication failed!'], 401);
+//        }
+//    }
 }
