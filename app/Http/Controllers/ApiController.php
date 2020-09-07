@@ -119,15 +119,9 @@ class ApiController extends Controller
 
     public function amarcare()
     {
-        $vlogs = AmarCare::all();
-        $data = [];
+        $vlogs = Category::with('vlogs')->get();
 
-        foreach ($vlogs as $i => $vlog) {
-            $data[$i]['categoryName'] = $vlog->category->name;
-            $data[$i]['videos'] = $vlog->video;
-        }
-
-        return response()->json($data, 200);
+        return response()->json($vlogs, 200);
     }
 
     public function filter_product(Request $request)

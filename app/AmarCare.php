@@ -21,4 +21,5 @@ class AmarCare extends Model implements Commentable
     {
         return $this->belongsToMany(Product::class, 'vlog_products', 'vlog_id');
     }
+
 }
