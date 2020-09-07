@@ -42,11 +42,15 @@ Route::prefix('v1')->group(function () {
 
     Route::post('filter-product', 'ApiController@filter_product');
 
+    Route::get('filter-product', 'ApiController@random_products');
+
     Route::get('sale', 'ApiController@sale_products');
 
     Route::get('deal', 'ApiController@deal_products');
 
     Route::post('my-account', 'ApiController@my_account');
+
+    Route::get('filter-attributes', 'ApiController@filter_attributes');
 
 
 

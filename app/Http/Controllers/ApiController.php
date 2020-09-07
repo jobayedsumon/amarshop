@@ -185,6 +185,30 @@ class ApiController extends Controller
 
         return response()->json($customer, 200);
 
+    }
 
+    public function filter_attributes()
+    {
+        $brands = Brand::all();
+        $sizes = Size::all();
+        $tags = Tag::all();
+
+        return response()->json([
+            'brands' => $brands,
+            'sizes' => $sizes,
+            'tags' => $tags
+        ], 200);
+    }
+
+    public function random_products()
+    {
+        $products = $this->products()->limit(6)->get();
+
+        foreach($products as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
+
+        return response()->json($products, 200);
     }
 }
