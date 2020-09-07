@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Customer extends Authenticatable implements CanResetPassword
+class Customer extends Authenticatable implements CanResetPassword, JWTSubject
 {
     //
     use Notifiable;
@@ -34,4 +35,13 @@ class Customer extends Authenticatable implements CanResetPassword
     }
 
 
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

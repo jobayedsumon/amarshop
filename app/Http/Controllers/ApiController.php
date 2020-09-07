@@ -16,6 +16,8 @@ use App\SubCategory;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth;
 
 class ApiController extends Controller
 {
@@ -84,6 +86,8 @@ class ApiController extends Controller
                 ->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])
                 ->get();
         }
+
+
 
         return response()->json($data, 200);
 
@@ -163,6 +167,11 @@ class ApiController extends Controller
 
         $saleProducts = $this->products()->whereIn('id', $saleProdIds)->get();
 
+        foreach($saleProducts as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
+
         return response()->json($saleProducts, 200);
     }
 
@@ -171,6 +180,11 @@ class ApiController extends Controller
         $dealProdIds = Deal::latest()->where('expire', '>', now())->pluck('product_id');
 
         $dealProducts = $this->products()->whereIn('id', $dealProdIds)->get();
+
+        foreach($dealProducts as $p){
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
 
         return response()->json($dealProducts, 200);
     }
@@ -210,5 +224,21 @@ class ApiController extends Controller
         }
 
         return response()->json($products, 200);
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+           'email' => 'email|required',
+           'password' => 'password|required'
+        ]);
+
+        try {
+            if (!JWTAuth::attempt($request->all())) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['msg' => 'Authentication failed!'], 401);
+        }
     }
 }
