@@ -52,7 +52,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('filter-attributes', 'ApiController@filter_attributes');
 
-//    Route::get('login', 'ApiController@login');
+    Route::post('login', 'ApiController@login');
 
 
 
