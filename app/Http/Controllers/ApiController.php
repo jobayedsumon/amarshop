@@ -241,4 +241,5 @@ class ApiController extends Controller
 //            return response()->json(['msg' => 'Authentication failed!'], 401);
 //        }
 //    }
+
 }
