@@ -121,6 +121,12 @@ class ApiController extends Controller
     {
         $vlogs = Category::with('vlogs')->get();
 
+        foreach ($vlogs as $vlog) {
+            foreach ($vlog->vlogs as $v) {
+                $v->description = strip_tags($v->description);
+            }
+        }
+
         return response()->json($vlogs, 200);
     }
 
