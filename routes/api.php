@@ -66,8 +66,6 @@ Route::prefix('v1')->group(function () {
 
     Route::post('register', 'ApiController@register');
 
-    Route::get('/resetemail/{user_type}', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm');
-
 
 });
 
