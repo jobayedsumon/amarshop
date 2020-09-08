@@ -31,7 +31,7 @@ class SslCommerzPaymentController extends Controller
 
     public function index(Request $request)
     {
-        return $request->all();
+//        return $request->all();
         if (!session()->has('cart')) {
             return redirect('/');
         }

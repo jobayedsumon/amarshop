@@ -69,14 +69,14 @@ Route::prefix('v1')->group(function () {
 
     // SSLCOMMERZ Start
 
-//
-//    Route::post('pay', 'SslCommerzPaymentController@index')->name('payment');
-//
-//    Route::post('success', 'SslCommerzPaymentController@success');
-//    Route::post('fail', 'SslCommerzPaymentController@fail');
-//    Route::post('cancel', 'SslCommerzPaymentController@cancel');
-//
-//    Route::post('/ipn', 'SslCommerzPaymentController@ipn');
+
+    Route::post('pay', 'SslCommerzPaymentController@index')->name('payment');
+
+    Route::post('success', 'SslCommerzPaymentController@success');
+    Route::post('fail', 'SslCommerzPaymentController@fail');
+    Route::post('cancel', 'SslCommerzPaymentController@cancel');
+
+    Route::post('/ipn', 'SslCommerzPaymentController@ipn');
 
 //SSLCOMMERZ END
 
