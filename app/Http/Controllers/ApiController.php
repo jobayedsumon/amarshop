@@ -134,8 +134,8 @@ class ApiController extends Controller
 
     public function wishlist()
     {
-        return "IT WORKS";
-        $customer = Customer::findOrFail($id);
+        $customer = auth('customer-api')->user();
+
         $prodIds = $customer->wishlist()->pluck('product_id');
 
         $wishlist = $this->products()->whereIn('id', $prodIds)->get();
@@ -219,7 +219,8 @@ class ApiController extends Controller
 
     public function my_account(Request $request)
     {
-        $customer = Customer::with('orders')->findOrFail($request->id);
+        $customer = auth('customer-api')->user();
+
 
         foreach($customer->orders as $order){
             $order->notes = strip_tags($order->notes);
