@@ -350,9 +350,11 @@ class AjaxController extends Controller
             ->where('size_id', $request->size_id)
             ->first();
 
+        $product = Product::with('sale')->findOrFail($request->product_id);
+
         return response()->json([
-            'price' => $data->price,
-            'discount' => $data->discount
+            'data' => $data,
+            'product' => $product
         ]);
 
     }

@@ -83,9 +83,9 @@
                            @php $discount = $product->sale ? $product->sale->percentage : $product->discount; @endphp
 
                             <div class="price_box">
-                                <span class="current_price">BDT {{ $discount ? $product->price - round($product->price * $discount / 100) : $product->price }}</span>&nbsp;
+                                <span id="currentPrice" class="current_price">BDT {{ $discount ? $product->price - round($product->price * $discount / 100) : $product->price }}</span>&nbsp;
                                 @if(!$product->discount == 0)
-                                <span class="old_price">BDT {{ $product->price }}</span>
+                                <span id="oldPrice" class="old_price">BDT {{ $product->price }}</span>
                                 @endif
                             </div>
                             <div class="product_desc">
@@ -436,6 +436,10 @@
                 },
                 success: function (result) {
                     console.log(result);
+                    $('#oldPrice').text('BDT '+result.data.price);
+                    let discount = result.product.sale;
+                    console.log(discount);
+                    $('#currentPrice').text('BDT '+result.data.price);
                 }
             });
 
