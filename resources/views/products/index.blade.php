@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table" id="myTable">
+                                <table class="table" id="productsTable">
                                     <thead class=" text-danger">
                                     <tr>
                                         <th>
