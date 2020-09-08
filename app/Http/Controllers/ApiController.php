@@ -277,6 +277,7 @@ class ApiController extends Controller
         }
 
         return response()->json([
+            'customer' => \auth('customer-api')->user(),
             'token' => $token,
             'expire' => auth('customer-api')->factory()->getTTL() * 60
         ], 200);
@@ -336,7 +337,10 @@ class ApiController extends Controller
 
         ]);
 
-        return response()->json(['msg'=>'Account updated successfully'], 201);
+        return response()->json([
+            'customer' => $customer,
+            'msg'=>'Account updated successfully'
+        ], 201);
     }
 
     public function update_address(Request $request)
@@ -353,7 +357,10 @@ class ApiController extends Controller
             'billing_address' => $billing_address,
         ]);
 
-        return response()->json(['msg'=>'Address updated successfully'], 200);
+        return response()->json([
+            'customer' => $customer,
+            'msg'=>'Address updated successfully'
+        ], 200);
     }
 
     public function add_wishlist(Request $request)

@@ -350,7 +350,10 @@ class AjaxController extends Controller
             ->where('size_id', $request->size_id)
             ->first();
 
-        return $data->price;
+        return response()->json([
+            'price' => $data->price,
+            'discount' => $data->discount
+        ]);
 
     }
 
