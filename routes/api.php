@@ -36,7 +36,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('tag/{tagName}', 'ApiController@tag_search');
 
-    Route::get('customer/{id}/wishlist', 'ApiController@wishlist');
+    Route::get('wishlist', 'ApiController@wishlist');
 
     Route::get('amarcare', 'ApiController@amarcare');
 
@@ -53,6 +53,10 @@ Route::prefix('v1')->group(function () {
     Route::get('filter-attributes', 'ApiController@filter_attributes');
 
     Route::post('login', 'ApiController@login');
+
+    Route::post('logout', 'ApiController@logout');
+
+    Route::post('register', 'ApiController@register');
 
 
 

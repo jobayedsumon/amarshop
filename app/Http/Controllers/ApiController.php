@@ -21,6 +21,13 @@ use Tymon\JWTAuth\JWTAuth;
 
 class ApiController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:customer-api')->only(['wishlist', 'my_account', 'logout']);
+    }
+
+
     public function products()
     {
         return Product::with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments']);
@@ -125,8 +132,9 @@ class ApiController extends Controller
         return response()->json($products, 200);
     }
 
-    public function wishlist($id)
+    public function wishlist()
     {
+        return "IT WORKS";
         $customer = Customer::findOrFail($id);
         $prodIds = $customer->wishlist()->pluck('product_id');
 
@@ -256,13 +264,41 @@ class ApiController extends Controller
 
         try {
             if (! $token = auth('customer-api')->attempt($request->all())) {
-                return response()->json(['msg' => 'Customer not found!'], 404);
+                return response()->json(['msg' => 'Credentials not found!'], 404);
             }
         } catch (JWTException $e) {
             return response()->json(['msg' => 'Token creation failed!'], 401);
         }
 
         return response()->json(['token' => $token], 200);
+    }
+
+    public function register(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'email|required|unique:customers',
+            'password' => 'required|confirmed|min:6',
+            'name' => 'required',
+            'phone_number' => 'required',
+        ]);
+
+        $customer = Customer::create([
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'name' => $data['name'],
+            'phone_number' => $data['phone_number'],
+        ]);
+
+        return response()->json(['msg' => 'Registration successful'], 200);
+
+
+    }
+
+    public function logout()
+    {
+        auth('customer-api')->logout();
+
+        return response()->json(['msg' => 'Logged out successfully'], 200);
     }
 
 }

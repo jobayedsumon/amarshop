@@ -29,11 +29,15 @@ class CustomerController extends Controller
         $data = $request->validate([
            'email' => 'email|required|unique:customers',
            'password' => 'required|confirmed|min:6',
+           'name' => 'required',
+           'phone_number' => 'required',
         ]);
 
         Customer::create([
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
+            'name' => $data['name'],
+            'phone_number' => $data['phone_number']
         ]);
 
         session()->flash('message', 'Registration completed successfully!');

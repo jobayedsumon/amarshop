@@ -76,15 +76,31 @@
                         <form action="/customer-register" method="POST">
                             @csrf
                             <p>
+                                <label>Name  <span>*</span></label>
+                                <input type="text" name="name" required>
+                            </p>
+                            @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <p>
+                            <p>
+                                <label>Phone Number  <span>*</span></label>
+                                <input type="text" name="phone_number" required>
+                            </p>
+                            @error('phone_number')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <p>
+                            <p>
                                 <label>Email address  <span>*</span></label>
-                                <input type="email" name="email">
+                                <input type="email" name="email" required>
                              </p>
                             @error('email')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                              <p>
                                 <label>Password <span>*</span></label>
-                                <input type="password" name="password">
+                                <input type="password" name="password" required>
                              </p>
                             @error('password')
                             <span class="text-danger">{{ $message }}</span>
