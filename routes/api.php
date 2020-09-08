@@ -66,21 +66,7 @@ Route::prefix('v1')->group(function () {
 
     Route::post('register', 'ApiController@register');
 
-
-    // SSLCOMMERZ Start
-
-
-    Route::post('pay', 'SslCommerzPaymentController@index')->name('payment');
-
-    Route::post('success', 'SslCommerzPaymentController@success');
-    Route::post('fail', 'SslCommerzPaymentController@fail');
-    Route::post('cancel', 'SslCommerzPaymentController@cancel');
-
-    Route::post('/ipn', 'SslCommerzPaymentController@ipn');
-
-//SSLCOMMERZ END
-
-
+    Route::get('/resetemail/{user_type}', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm');
 
 
 });

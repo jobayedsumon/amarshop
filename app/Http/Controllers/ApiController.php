@@ -276,7 +276,10 @@ class ApiController extends Controller
             return response()->json(['msg' => 'Token creation failed!'], 401);
         }
 
-        return response()->json(['token' => $token], 200);
+        return response()->json([
+            'token' => $token,
+            'expire' => auth('customer-api')->factory()->getTTL() * 60
+        ], 200);
     }
 
     public function register(Request $request)
