@@ -42,7 +42,7 @@ Route::prefix('v1')->group(function () {
 
     Route::post('filter-product', 'ApiController@filter_product');
 
-    Route::get('filter-product', 'ApiController@random_products');
+    Route::get('random-product', 'ApiController@random_products');
 
     Route::get('sale', 'ApiController@sale_products');
 
