@@ -98,19 +98,6 @@
 
                                 </div>
 
-                                @guest('customer')
-
-                                <div class="col-lg-6 mb-20">
-
-                                <label> Account password   <span>*</span></label>
-                                <input name="password" placeholder="password" type="password" required>
-                                <label> Confirm password   <span>*</span></label>
-                                <input name="password_confirmation" placeholder="confirm password" type="password" required>
-
-                                </div>
-
-                                @endguest
-
 
                                 <div class="col-12 mb-20">
                                     <input id="address" type="checkbox" name="shiiping_address" data-target="createp_account" />

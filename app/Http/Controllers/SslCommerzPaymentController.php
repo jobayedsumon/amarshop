@@ -12,6 +12,10 @@ use App\Library\SslCommerz\SslCommerzNotification;
 
 class SslCommerzPaymentController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth:customer');
+    }
 
     public function exampleEasyCheckout()
     {
@@ -36,23 +40,7 @@ class SslCommerzPaymentController extends Controller
             return redirect('/');
         }
 
-        if (auth('customer')->check()) {
-
-            $customer = auth('customer')->user();
-
-        } else {
-
-            $data = $request->validate([
-                'email' => 'email|required|unique:customers',
-                'password' => 'required|confirmed',
-            ]);
-
-            $customer = Customer::create([
-                'email' => $data['email'],
-                'password' => bcrypt($data['password'])
-            ]);
-
-        }
+        $customer = auth('customer')->user();
 
         $total = session()->get('cart_total');
         $count = session()->get('cart_items_count');
@@ -112,13 +100,14 @@ class SslCommerzPaymentController extends Controller
         $post_data['cus_fax'] = "";
 
         # SHIPMENT INFORMATION
-        $post_data['ship_name'] =  $request->shipping_name ?? "";
-        $post_data['ship_add1'] =  $request->shipping_street ?? "";
-        $post_data['ship_add2'] = $request->shipping_street ?? "";
-        $post_data['ship_city'] = $request->shipping_city ?? "";
-        $post_data['ship_state'] = $request->shipping_city ?? "";
-        $post_data['ship_postcode'] = $request->shipping_post ?? "";
-        $post_data['ship_phone'] = $request->shipping_phone_number ?? "";
+        $post_data['ship_name'] =  $request->shipping_name ?? $request->name;
+        $post_data['ship_add1'] =  $request->shipping_street ?? $request->street;
+        $post_data['ship_add2'] = $request->shipping_street ?? $request->street;
+        $post_data['ship_city'] = $request->shipping_city ?? $request->city;
+        $post_data['ship_state'] = $request->shipping_city ?? $request->city;
+        $post_data['ship_postcode'] = $request->shipping_post ?? $request->post;
+        $post_data['ship_phone'] = $request->shipping_phone_number ?? $request->phone_number;
+        $post_data['ship_email'] = $request->shipping_email?? $request->email;
         $post_data['ship_country'] = "Bangladesh";
 
         $post_data['shipping_method'] = "NO";
@@ -136,9 +125,9 @@ class SslCommerzPaymentController extends Controller
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
+                'name' => $post_data['ship_name'],
+                'email' => $post_data['ship_email'],
+                'phone' => $post_data['ship_phone'],
                 'amount' => $post_data['total_amount'],
                 'status' => 'Pending',
                 'address' => $shipping_address,
