@@ -14,8 +14,10 @@ use App\Size;
 use App\Slider;
 use App\SubCategory;
 use App\Tag;
+use App\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\JWTAuth;
 
@@ -24,7 +26,10 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:customer-api')->only(['wishlist', 'my_account', 'logout']);
+        $this->middleware('auth:customer-api')->only([
+            'wishlist', 'my_account', 'update_account', 'update_address', 'logout',
+            'add_wishlist', 'remove_wishlist'
+        ]);
     }
 
 
@@ -290,7 +295,7 @@ class ApiController extends Controller
             'phone_number' => $data['phone_number'],
         ]);
 
-        return response()->json(['msg' => 'Registration successful'], 200);
+        return response()->json(['msg' => 'Registration successful'], 201);
 
 
     }
@@ -300,6 +305,82 @@ class ApiController extends Controller
         auth('customer-api')->logout();
 
         return response()->json(['msg' => 'Logged out successfully'], 200);
+    }
+
+    public function update_account(Request $request)
+    {
+
+        $customer = auth('customer-api')->user();
+
+        $data = $request->validate([
+            'email' => 'email|required',
+            'password' => 'required|min:6',
+            'name' => 'required',
+            'phone_number' => 'required',
+        ]);
+
+        $receive_offer = $request->receive_offer ? true : false;
+        $newsletter = $request->newsletter ? true : false;
+
+        $customer->update([
+            'name' => $request->name,
+            'email' =>$data['email'],
+            'phone_number' => $request->phone_number,
+            'password' => bcrypt($data['password']),
+            'birthdate' => $request->birthdate,
+            'receive_offer' => $receive_offer,
+            'newsletter' => $newsletter,
+
+        ]);
+
+        return response()->json(['msg'=>'Account updated successfully'], 201);
+    }
+
+    public function update_address(Request $request)
+    {
+
+        $customer = auth('customer-api')->user();
+
+        $billing_address = $request->street . '+';
+        $billing_address .= $request->city . '+';
+        $billing_address .= $request->district . '+';
+        $billing_address .= ucfirst($request->division);
+
+        $customer->update([
+            'billing_address' => $billing_address,
+        ]);
+
+        return response()->json(['msg'=>'Address updated successfully'], 200);
+    }
+
+    public function add_wishlist(Request $request)
+    {
+        $customer = auth('customer-api')->user();
+
+        Wishlist::create([
+            'customer_id' => $customer->id,
+            'product_id' => $request->productId
+        ]);
+
+        $wishlistCount = Wishlist::all()->count();
+
+        return response()->json([
+            'msg' => 'Product added to wishlist',
+            'wishlistCount' => $wishlistCount
+        ], 201);
+
+    }
+
+    public function remove_wishlist($wishId)
+    {
+        Wishlist::findOrFail($wishId)->delete();
+
+        $wishlistCount = Wishlist::all()->count();
+
+        return response()->json([
+            'msg' => 'Product removed from wishlist',
+            'wishlistCount' => $wishlistCount
+        ], 201);
     }
 
 }

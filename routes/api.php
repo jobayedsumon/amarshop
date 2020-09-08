@@ -38,6 +38,10 @@ Route::prefix('v1')->group(function () {
 
     Route::get('wishlist', 'ApiController@wishlist');
 
+    Route::post('wishlist', 'ApiController@add_wishlist');
+
+    Route::delete('wishlist/{wishId}', 'ApiController@remove_wishlist');
+
     Route::get('amarcare', 'ApiController@amarcare');
 
     Route::post('filter-product', 'ApiController@filter_product');
@@ -50,6 +54,10 @@ Route::prefix('v1')->group(function () {
 
     Route::post('my-account', 'ApiController@my_account');
 
+    Route::patch('my-account/update-account', 'ApiController@update_account');
+
+    Route::patch('my-account/update-address', 'ApiController@update_address');
+
     Route::get('filter-attributes', 'ApiController@filter_attributes');
 
     Route::post('login', 'ApiController@login');
@@ -57,6 +65,20 @@ Route::prefix('v1')->group(function () {
     Route::post('logout', 'ApiController@logout');
 
     Route::post('register', 'ApiController@register');
+
+
+    // SSLCOMMERZ Start
+
+//
+//    Route::post('pay', 'SslCommerzPaymentController@index')->name('payment');
+//
+//    Route::post('success', 'SslCommerzPaymentController@success');
+//    Route::post('fail', 'SslCommerzPaymentController@fail');
+//    Route::post('cancel', 'SslCommerzPaymentController@cancel');
+//
+//    Route::post('/ipn', 'SslCommerzPaymentController@ipn');
+
+//SSLCOMMERZ END
 
 
 
