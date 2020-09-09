@@ -114,7 +114,12 @@
                     </div>
 
                         <div class="card-footer ml-auto mr-auto">
-                            <button type="submit" class="btn btn-danger">{{ __('Ship Order') }}</button>
+                            <input type="checkbox" name="order_action" value="ship_order"> SHIP ORDER
+                            <input type="checkbox" name="order_action" value="receive_payment"> SHIP ORDER
+                        </div>
+
+                        <div class="card-footer ml-auto mr-auto">
+                            <button type="submit" class="btn btn-danger">{{ __('Receive Payment') }}</button>
                         </div>
 
                     </form>

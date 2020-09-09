@@ -16,9 +16,13 @@ use App\SubCategory;
 use App\Tag;
 use App\Wishlist;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\JWTAuth;
 
 class ApiController extends Controller
@@ -262,18 +266,21 @@ class ApiController extends Controller
 
     public function login(Request $request)
     {
-
-        $request->validate([
-           'email' => 'email|required',
-           'password' => 'required'
+        $validator = Validator::make($request->all(), [
+            'email' => 'email|required',
+            'password' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => 'Login falied'], 404);
+        }
 
         try {
             if (! $token = auth('customer-api')->attempt($request->all())) {
                 return response()->json(['msg' => 'Credentials not found!'], 404);
             }
         } catch (JWTException $e) {
-            return response()->json(['msg' => 'Token creation failed!'], 401);
+            return response()->json(['msg' => 'Token creation failed!'], 404);
         }
 
         return response()->json([
@@ -299,7 +306,7 @@ class ApiController extends Controller
             'phone_number' => $data['phone_number'],
         ]);
 
-        return response()->json(['msg' => 'Registration successful'], 201);
+        return response()->json(['msg' => 'Registration successful'], 200);
 
 
     }
@@ -340,7 +347,7 @@ class ApiController extends Controller
         return response()->json([
             'customer' => $customer,
             'msg'=>'Account updated successfully'
-        ], 201);
+        ], 200);
     }
 
     public function update_address(Request $request)
@@ -377,7 +384,7 @@ class ApiController extends Controller
         return response()->json([
             'msg' => 'Product added to wishlist',
             'wishlistCount' => $wishlistCount
-        ], 201);
+        ], 200);
 
     }
 
@@ -390,7 +397,7 @@ class ApiController extends Controller
         return response()->json([
             'msg' => 'Product removed from wishlist',
             'wishlistCount' => $wishlistCount
-        ], 201);
+        ], 200);
     }
 
 }
