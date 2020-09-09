@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->string('transaction_id')->nullable();
             $table->string('currency')->nullable();
             $table->string('status')->nullable();
-            $table->string('delivery_status')->default('awaiting')->nullable();
+            $table->string('delivery_status')->default('Awaiting')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });

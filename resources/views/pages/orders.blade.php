@@ -63,7 +63,7 @@
                                         </td>
 
                                             <td>
-                                                {!! $order->delivery_status == 'awaiting' ? 'Awaiting Shipment' : 'Shipped' !!}
+                                                {{ $order->delivery_status }}
                                             </td>
 
                                         <td>

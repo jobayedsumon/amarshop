@@ -32,7 +32,7 @@
                 <i class="material-icons">store</i>
               </div>
               <p class="card-category">Revenue</p>
-              <h3 class="card-title">BDT {{ \App\Order::all()->sum('amount') }}</h3>
+              <h3 class="card-title">BDT {{ \App\Order::where('status', 'Confirmed')->get()->sum('amount') }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -48,7 +48,7 @@
                 <i class="material-icons">info_outline</i>
               </div>
               <p class="card-category">Awaiting Shipment</p>
-              <h3 class="card-title">{{ \App\Order::where('delivery_status', 'awaiting')->count() }}</h3>
+              <h3 class="card-title">{{ \App\Order::where('delivery_status', 'Awaiting')->count() }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">

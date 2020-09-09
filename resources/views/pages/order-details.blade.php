@@ -76,7 +76,7 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Delivery Status') }}</label>
                                 <div class="col-sm-7">
-                                    {!! $order->delivery_status == 'awaiting' ? 'Awaiting Shipment' : 'Shipped' !!}
+                                    {{ $order->delivery_status }}
                                 </div>
                             </div>
                             <div class="row">
@@ -113,13 +113,14 @@
                         </div>
                     </div>
 
-                        <div class="card-footer ml-auto mr-auto">
-                            <input type="checkbox" name="ship_order" value="Shipped"> SHIP ORDER
-                            <input type="checkbox" name="receive_payment" value="receive_payment"> SHIP ORDER
+                        <div class="card-footer ml-auto mr-auto p-5">
+                            <input {!! $order->delivery_status == 'Shipped' ? 'checked' : '' !!} type="checkbox" name="delivery_status"> SHIP ORDER
+                            <br>
+                            <input {!! $order->status == 'Confirmed' ? 'checked' : '' !!} class="mt-5" type="checkbox" name="payment_status"> CONFIRM PAYMENT
                         </div>
 
                         <div class="card-footer ml-auto mr-auto">
-                            <button type="submit" class="btn btn-danger">{{ __('Receive Payment') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('Update Order') }}</button>
                         </div>
 
                     </form>

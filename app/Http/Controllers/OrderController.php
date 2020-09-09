@@ -20,13 +20,33 @@ class OrderController extends Controller
         return view('pages.order-details', compact('order'));
     }
 
-    public function shipped(Request $request, $orderId)
+    public function order_update(Request $request, $orderId)
     {
+
         $order = Order::findOrFail($orderId);
+
+        if ($request->has('payment_status')) {
+            $order->update([
+               'status' => 'Confirmed'
+            ]);
+        } else {
+            $order->update([
+                'status' => 'Pending'
+            ]);
+        }
+
+        if ($request->has('delivery_status')) {
+            $order->update([
+                'delivery_status' => 'Shipped'
+            ]);
+        } else {
+            $order->update([
+                'delivery_status' => 'Awaiting'
+            ]);
+        }
 
         $order->update([
             'notes' => $request->notes,
-            'delivery_status' => 'shipped'
         ]);
 
         return redirect()->back();

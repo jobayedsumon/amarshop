@@ -162,7 +162,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('orders', 'OrderController@index')->name('orders');
             Route::get('orders/{orderId}', 'OrderController@details')->name('order-details');
-            Route::patch('orders/{orderId}', 'OrderController@shipped')->name('order-shipped');
+            Route::patch('orders/{orderId}', 'OrderController@order_update')->name('order-update');
 
         });
 
