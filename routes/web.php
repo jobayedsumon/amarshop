@@ -166,6 +166,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
 
+        Route::get('/optimize-website', function () {
+            \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+            return "OPTIMIZED";
+        });
 
 
     });
