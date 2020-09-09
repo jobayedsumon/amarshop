@@ -46,14 +46,26 @@ class ApiController extends Controller
     {
         $sliders = Slider::latest()->get();
 
-        return response()->json($sliders, 200);
+        if ($sliders) {
+            return response()->json($sliders, 200);
+        } else {
+            return response()->json('Sliders not found!', 404);
+        }
+
+
     }
 
     public function shops()
     {
         $shops = Category::with('sub_categories')->get();
 
-        return response()->json($shops, 200);
+        if ($shops) {
+            return response()->json($shops, 200);
+        } else {
+            return response()->json('Shops not found!', 404);
+        }
+
+
     }
 
     public function new_arrivals()
@@ -70,7 +82,13 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($newProducts, 200);
+        if ($newProducts) {
+            return response()->json($newProducts, 200);
+        } else {
+            return response()->json('New products not found!', 404);
+        }
+
+
     }
 
     public function sub_shop_products($id)
@@ -84,7 +102,12 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($products, 200);
+        if ($products) {
+            return response()->json($products, 200);
+        } else {
+            return response()->json('Products not found!', 404);
+        }
+
     }
 
     public function featured_products()
@@ -110,7 +133,11 @@ class ApiController extends Controller
             }
         }
 
-        return response()->json($data, 200);
+        if ($data) {
+            return response()->json($data, 200);
+        } else {
+            return response()->json('Featured products not found!', 404);
+        }
 
     }
 
@@ -124,7 +151,11 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($products, 200);
+        if ($products) {
+            return response()->json($products, 200);
+        } else {
+            return response()->json('Search products not found!', 404);
+        }
     }
 
     public function tag_search($tagName)
@@ -138,7 +169,12 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($products, 200);
+        if ($products) {
+            return response()->json($products, 200);
+        } else {
+            return response()->json('Tag products not found!', 404);
+        }
+
     }
 
     public function wishlist()
@@ -149,7 +185,11 @@ class ApiController extends Controller
 
         $wishlist = $this->products()->whereIn('id', $prodIds)->get();
 
-        return response()->json($wishlist, 200);
+        if ($wishlist) {
+            return response()->json($wishlist, 200);
+        } else {
+            return response()->json('Wishlist products not found!', 404);
+        }
 
     }
 
@@ -163,7 +203,13 @@ class ApiController extends Controller
             }
         }
 
-        return response()->json($vlogs, 200);
+        if ($vlogs) {
+            return response()->json($vlogs, 200);
+        } else {
+            return response()->json('Vlogs not found!', 404);
+        }
+
+
     }
 
     public function filter_product(Request $request)
@@ -193,8 +239,11 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($data, 200);
-
+        if ($data) {
+            return response()->json($data, 200);
+        } else {
+            return response()->json('Filter products not found!', 404);
+        }
 
     }
 
@@ -209,7 +258,11 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($saleProducts, 200);
+        if ($saleProducts) {
+            return response()->json($saleProducts, 200);
+        } else {
+            return response()->json('Sale products not found!', 404);
+        }
     }
 
     public function deal_products()
@@ -223,7 +276,11 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($dealProducts, 200);
+        if ($dealProducts) {
+            return response()->json($dealProducts, 200);
+        } else {
+            return response()->json('Deal products not found!', 404);
+        }
     }
 
     public function my_account(Request $request)
@@ -235,7 +292,11 @@ class ApiController extends Controller
             $order->notes = strip_tags($order->notes);
         }
 
-        return response()->json($customer, 200);
+        if ($customer) {
+            return response()->json($customer, 200);
+        } else {
+            return response()->json('Customer not found!', 404);
+        }
 
     }
 
@@ -261,7 +322,12 @@ class ApiController extends Controller
             $p->short_description = strip_tags($p->short_description);
         }
 
-        return response()->json($products, 200);
+        if ($products) {
+            return response()->json($products, 200);
+        } else {
+            return response()->json('Random products not found!', 404);
+        }
+
     }
 
     public function login(Request $request)
@@ -272,7 +338,7 @@ class ApiController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['msg' => 'Login falied'], 404);
+            return response()->json(['msg' => 'Login failed'], 404);
         }
 
         try {
@@ -292,6 +358,17 @@ class ApiController extends Controller
 
     public function register(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'email|required|unique:customers',
+            'password' => 'required|confirmed|min:6',
+            'name' => 'required',
+            'phone_number' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => 'Registration failed'], 404);
+        }
+
         $data = $request->validate([
             'email' => 'email|required|unique:customers',
             'password' => 'required|confirmed|min:6',
@@ -306,8 +383,11 @@ class ApiController extends Controller
             'phone_number' => $data['phone_number'],
         ]);
 
-        return response()->json(['msg' => 'Registration successful'], 200);
-
+        if ($customer) {
+            return response()->json(['msg' => 'Registration successful'], 200);
+        } else {
+            return response()->json('Registration failed', 404);
+        }
 
     }
 
@@ -323,31 +403,44 @@ class ApiController extends Controller
 
         $customer = auth('customer-api')->user();
 
-        $data = $request->validate([
-            'email' => 'email|required',
-            'password' => 'required|min:6',
+        $customer->email = '';
+        $customer->save();
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'email|required|unique:customers',
+            'password' => 'required|confirmed|min:6',
             'name' => 'required',
             'phone_number' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => 'Update failed'], 404);
+        }
 
         $receive_offer = $request->receive_offer ? true : false;
         $newsletter = $request->newsletter ? true : false;
 
         $customer->update([
             'name' => $request->name,
-            'email' =>$data['email'],
+            'email' => $request->email,
             'phone_number' => $request->phone_number,
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($request->password),
             'birthdate' => $request->birthdate,
             'receive_offer' => $receive_offer,
             'newsletter' => $newsletter,
 
         ]);
 
-        return response()->json([
-            'customer' => $customer,
-            'msg'=>'Account updated successfully'
-        ], 200);
+        if ($customer) {
+            return response()->json([
+                'customer' => $customer,
+                'msg'=>'Account updated successfully'
+            ], 200);
+        } else {
+            return response()->json('Update failed', 404);
+        }
+
+
     }
 
     public function update_address(Request $request)
@@ -364,40 +457,53 @@ class ApiController extends Controller
             'billing_address' => $billing_address,
         ]);
 
-        return response()->json([
-            'customer' => $customer,
-            'msg'=>'Address updated successfully'
-        ], 200);
+        if ($customer) {
+            return response()->json([
+                'customer' => $customer,
+                'msg'=>'Account updated successfully'
+            ], 200);
+        } else {
+            return response()->json('Update failed', 404);
+        }
     }
 
     public function add_wishlist(Request $request)
     {
         $customer = auth('customer-api')->user();
 
-        Wishlist::create([
+        $wishlist = Wishlist::create([
             'customer_id' => $customer->id,
             'product_id' => $request->productId
         ]);
 
         $wishlistCount = Wishlist::all()->count();
 
-        return response()->json([
-            'msg' => 'Product added to wishlist',
-            'wishlistCount' => $wishlistCount
-        ], 200);
+        if ($wishlist) {
+            return response()->json([
+                'msg' => 'Product added to wishlist',
+                'wishlistCount' => $wishlistCount
+            ], 200);
+        } else {
+            return response()->json('Add to wishlist failed', 404);
+        }
 
     }
 
     public function remove_wishlist($wishId)
     {
-        Wishlist::findOrFail($wishId)->delete();
+        $wishlist = Wishlist::findOrFail($wishId)->delete();
 
         $wishlistCount = Wishlist::all()->count();
 
-        return response()->json([
-            'msg' => 'Product removed from wishlist',
-            'wishlistCount' => $wishlistCount
-        ], 200);
+        if ($wishlist) {
+            return response()->json([
+                'msg' => 'Product removed from wishlist',
+                'wishlistCount' => $wishlistCount
+            ], 200);
+        } else {
+            return response()->json('Remove from wishlist failed', 404);
+        }
+
     }
 
 }

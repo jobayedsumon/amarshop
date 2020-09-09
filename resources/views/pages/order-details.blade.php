@@ -114,8 +114,8 @@
                     </div>
 
                         <div class="card-footer ml-auto mr-auto">
-                            <input type="checkbox" name="order_action" value="ship_order"> SHIP ORDER
-                            <input type="checkbox" name="order_action" value="receive_payment"> SHIP ORDER
+                            <input type="checkbox" name="ship_order" value="Shipped"> SHIP ORDER
+                            <input type="checkbox" name="receive_payment" value="receive_payment"> SHIP ORDER
                         </div>
 
                         <div class="card-footer ml-auto mr-auto">
