@@ -66,7 +66,7 @@
                                             <tr>
                                                 <td>{{ $order->id }}</td>
                                                 <td>{{ $order->created_at }}</td>
-                                                <td><span class="success">{!! $order->delivery_status == 'awaiting' ? 'Awaiting Shipment' : 'Shipped' !!}</span></td>
+                                                <td><span class="success">{{ $order->delivery_status }}</span></td>
                                                 <td> BDT {{ $order->amount }} for {{ $order->order_details->sum('count') }} items</td>
                                                 <td><a href="#">Tracking</a></td>
 

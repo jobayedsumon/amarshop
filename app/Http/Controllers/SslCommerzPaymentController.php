@@ -46,6 +46,18 @@ class SslCommerzPaymentController extends Controller
         $count = session()->get('cart_items_count');
         $cart = session()->get('cart');
 
+        if ($count <= 0 || $total <= 0) {
+            session()->put('payment_message', 'An error occurred while processing your order!');
+            session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total', 'cart_items_quantity']);
+            return view('frontend.payment');
+        }
+
+        if ($request->payment_method != 'ssl' && $request->payment_method != 'cod') {
+            session()->put('payment_message', 'An error occurred while processing your order!');
+            session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total', 'cart_items_quantity']);
+            return view('frontend.payment');
+        }
+
         $billing_address = $request->street . '+';
         $billing_address .= $request->city . '+';
         $billing_address .= $request->district . '+';
@@ -179,6 +191,10 @@ class SslCommerzPaymentController extends Controller
                     $payment_options = array();
                 }
                 break;
+            default:
+                session()->put('payment_message', 'An error occurred while processing your order!');
+                session()->forget(['cart', 'cart_total', 'couponCart', 'cart_items_count', 'cart_sub_total', 'cart_items_quantity']);
+                return view('frontend.payment');
         }
     }
 

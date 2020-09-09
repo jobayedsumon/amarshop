@@ -24,6 +24,12 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <label class="col-sm-2 col-form-label">{{ __('Order Type') }}</label>
+                                <div class="col-sm-7">
+                                    {{ strtoupper($order->type) }}
+                                </div>
+                            </div>
+                            <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Customer') }}</label>
                                 <div class="col-sm-7">
                                     {{ $order->name }}
@@ -52,6 +58,7 @@
                                                     <li>{{ $data->product->name }}</li>
                                                     <li>{{ $data->size->name }}</li>
                                                     <li><span class="py-2 px-4" style="background-color: {{ $data->color->name }}"></span></li>
+                                                    <li>{{ $data->count }}</li>
                                                 </ul>
                                             </li>
                                             <br>
@@ -59,6 +66,12 @@
                                         @endforelse
 
                                     </ol>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">{{ __('Total Products') }}</label>
+                                <div class="col-sm-7">
+                                    {{ $order->order_details()->sum('count') }}
                                 </div>
                             </div>
                             <div class="row">
