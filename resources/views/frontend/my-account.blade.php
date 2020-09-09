@@ -157,6 +157,10 @@
                                                 <input type="text" name="name" value="{{ $customer->name }}">
                                                 <label>Email</label>
                                                 <input type="email" name="email" value="{{ $customer->email }}">
+                                                @if ($errors->has('email'))
+                                                    <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('email') }}</span>
+                                                    <br>
+                                                @endif
                                                 <label>Phone Number</label>
                                                 <input type="text" name="phone_number" value="{{ $customer->phone_number }}">
                                                 <label>Password</label>

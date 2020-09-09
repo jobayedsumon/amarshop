@@ -123,7 +123,7 @@ class FrontendController extends Controller
         $customer = \auth('customer')->user();
 
         $data = $request->validate([
-            'email' => 'email|required',
+            'email' => 'unique:customers,email,'.$customer->id,
             'password' => 'required|min:6',
         ]);
 

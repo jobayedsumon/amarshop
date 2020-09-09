@@ -403,11 +403,8 @@ class ApiController extends Controller
 
         $customer = auth('customer-api')->user();
 
-        $customer->email = '';
-        $customer->save();
-
         $validator = Validator::make($request->all(), [
-            'email' => 'email|required|unique:customers',
+            'email' => 'unique:customers,email,'.$customer->id,
             'password' => 'required|confirmed|min:6',
             'name' => 'required',
             'phone_number' => 'required',
