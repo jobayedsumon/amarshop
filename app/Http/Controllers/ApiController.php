@@ -405,7 +405,7 @@ class ApiController extends Controller
 
         $validator = Validator::make($request->all(), [
             'email' => 'unique:customers,email,'.$customer->id,
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
             'name' => 'required',
             'phone_number' => 'required',
         ]);
@@ -488,11 +488,12 @@ class ApiController extends Controller
 
     public function remove_wishlist($wishId)
     {
-        $wishlist = Wishlist::findOrFail($wishId)->delete();
+        $wishlist = Wishlist::findOrFail($wishId);
+        $response = $wishlist->delete();
 
         $wishlistCount = Wishlist::all()->count();
 
-        if ($wishlist) {
+        if ($response) {
             return response()->json([
                 'msg' => 'Product removed from wishlist',
                 'wishlistCount' => $wishlistCount
