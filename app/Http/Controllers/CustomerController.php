@@ -101,7 +101,7 @@ class CustomerController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::driver('google')->user();
 
         // OAuth Two Providers
         $token = $user->token;
