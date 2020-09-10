@@ -184,17 +184,16 @@ class ApiController extends Controller
     {
         $customer = auth('customer-api')->user();
 
-        $wishlist = $customer->wishlist ?? [];
+        $prodIds = $customer->wishlist()->pluck('product_id');
+        $wishIds = $customer->wishlist()->pluck('id');
 
-        foreach($wishlist as $wish) {
-            $wish->wishProduct = $wish->product;
-            $wish->wishProduct = $wish->wishProduct
-                ->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])->get();
-            $wish->wishProduct->description = strip_tags($wish->wishProduct->description);
-            $wish->wishProduct->short_description = strip_tags($wish->wishProduct->short_description);
+        $wishlist = $this->products()->whereIn('id', $prodIds)->get();
+
+        foreach($wishlist as $i => $p) {
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+            $p->wish_id = $wishIds[$i];
         }
-
-        dd($wishlist);
 
         if ($wishlist) {
             return response()->json($wishlist, 200);
