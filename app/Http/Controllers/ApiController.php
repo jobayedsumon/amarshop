@@ -35,7 +35,7 @@ class ApiController extends Controller
     {
         $this->middleware('auth:customer-api')->only([
             'wishlist', 'my_account', 'update_account', 'update_address', 'logout',
-            'add_wishlist', 'remove_wishlist'
+            'add_wishlist', 'remove_wishlist', 'cash_on_delivery'
         ]);
     }
 
@@ -184,14 +184,17 @@ class ApiController extends Controller
     {
         $customer = auth('customer-api')->user();
 
-        $prodIds = $customer->wishlist()->pluck('product_id');
+        $wishlist = $customer->wishlist ?? [];
 
-        $wishlist = $this->products()->whereIn('id', $prodIds)->get();
-
-        foreach($wishlist as $p){
-            $p->description = strip_tags($p->description);
-            $p->short_description = strip_tags($p->short_description);
+        foreach($wishlist as $wish) {
+            $wish->wishProduct = $wish->product;
+            $wish->wishProduct = $wish->wishProduct
+                ->with(['category', 'sale', 'specifications', 'colors', 'sizes', 'tags', 'comments'])->get();
+            $wish->wishProduct->description = strip_tags($wish->wishProduct->description);
+            $wish->wishProduct->short_description = strip_tags($wish->wishProduct->short_description);
         }
+
+        dd($wishlist);
 
         if ($wishlist) {
             return response()->json($wishlist, 200);
@@ -425,7 +428,7 @@ class ApiController extends Controller
         $receive_offer = $request->receive_offer ? true : false;
         $newsletter = $request->newsletter ? true : false;
 
-        $customer->update([
+        $response = $customer->update([
             'name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
@@ -436,7 +439,7 @@ class ApiController extends Controller
 
         ]);
 
-        if ($customer) {
+        if ($response) {
             return response()->json([
                 'customer' => $customer,
                 'msg'=>'Account updated successfully'
@@ -476,7 +479,7 @@ class ApiController extends Controller
     {
         $customer = auth('customer-api')->user();
 
-        $wishlist = Wishlist::create([
+        $wishlist = Wishlist::firstOrCreate([
             'customer_id' => $customer->id,
             'product_id' => $request->productId
         ]);
@@ -513,153 +516,163 @@ class ApiController extends Controller
     }
 
 
-//    public function cash_on_delivery(Request $request)
-//    {
-//
-//        $customer = auth('customer')->user();
-//
-//        $total = $request->total;
-//        $count = $request->count;
-//        $cart =  $request->cart;
-//
-//        if (!$cart) {
-//            return response()->json([
-//                'msg' => 'Please add products and choose shipping location'
-//            ], 404);
-//        }
-//
-//        if ($count <= 0 || $total <= 0) {
-//            return response()->json([
-//                'msg' => 'An error occurred while processing your order!'
-//            ], 404);
-//        }
-//
-//        if ($request->payment_method != 'cod') {
-//
-//        }
-//
-//        $billing_address = $request->street . '+';
-//        $billing_address .= $request->city . '+';
-//        $billing_address .= $request->district . '+';
-//        $billing_address .= ucfirst($request->division);
-//
-//        if ($request->shipping_address) {
-//            $request->validate([
-//                'shipping_street' => 'required',
-//                'shipping_city' => 'required',
-//                'shipping_district' => 'required',
-//                'shipping_division' => 'required',
-//            ]);
-//            $shipping_address = $request->shipping_street . '+';
-//            $shipping_address .= $request->shipping_city . '+';
-//            $shipping_address .= $request->shipping_district . '+';
-//            $shipping_address .= ucfirst($request->shipping_division);
-//        } else {
-//            $shipping_address = $billing_address;
-//        }
-//
-//        $customer->update([
-//            'name' => $request->name,
-//            'phone_number' => $request->phone_number,
-//            'billing_address' => $billing_address,
-//            'shipping_address' => $shipping_address,
-//
-//        ]);
-//
-//        $notes = $request->notes;
-//
-//
-//
-//        # Here you have to receive all the order data to initate the payment.
-//        # Let's say, your oder transaction informations are saving in a table called "orders"
-//        # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
-//
-//        $post_data = array();
-//        $post_data['total_amount'] = $total; # You cant not pay less than 10
-//        $post_data['currency'] = "BDT";
-//        $post_data['tran_id'] = uniqid(); // tran_id must be unique
-//
-//        # CUSTOMER INFORMATION
-//        $post_data['cus_name'] =  $request->name ?? "";
-//        $post_data['cus_email'] =  $request->email ?? "";
-//        $post_data['cus_add1'] = $request->street ?? "";
-//        $post_data['cus_add2'] = $request->street ?? "";
-//        $post_data['cus_city'] =  $request->city ?? "";
-//        $post_data['cus_state'] = $request->city ?? "";
-//        $post_data['cus_postcode'] = $request->post ?? "";
-//        $post_data['cus_country'] = "Bangladesh";
-//        $post_data['cus_phone'] =  $request->phone_number ?? "";;
-//        $post_data['cus_fax'] = "";
-//
-//        # SHIPMENT INFORMATION
-//        $post_data['ship_name'] =  $request->shipping_name ?? $request->name;
-//        $post_data['ship_add1'] =  $request->shipping_street ?? $request->street;
-//        $post_data['ship_add2'] = $request->shipping_street ?? $request->street;
-//        $post_data['ship_city'] = $request->shipping_city ?? $request->city;
-//        $post_data['ship_state'] = $request->shipping_city ?? $request->city;
-//        $post_data['ship_postcode'] = $request->shipping_post ?? $request->post;
-//        $post_data['ship_phone'] = $request->shipping_phone_number ?? $request->phone_number;
-//        $post_data['ship_email'] = $request->shipping_email?? $request->email;
-//        $post_data['ship_country'] = "Bangladesh";
-//
-//        $post_data['shipping_method'] = "NO";
-//        $post_data['product_name'] = "AmarShop";
-//        $post_data['product_category'] = "AmarShop";
-//        $post_data['product_profile'] = "AmarShop";
-//
-//        # OPTIONAL PARAMETERS
-//        $post_data['value_a'] = "ref001";
-//        $post_data['value_b'] = "ref002";
-//        $post_data['value_c'] = "ref003";
-//        $post_data['value_d'] = "ref004";
-//
-//        #Before  going to initiate the payment order status need to insert or update as Pending.
-//        $update_product = DB::table('orders')
-//            ->where('transaction_id', $post_data['tran_id'])
-//            ->updateOrInsert([
-//                'name' => $post_data['ship_name'],
-//                'email' => $post_data['ship_email'],
-//                'phone' => $post_data['ship_phone'],
-//                'amount' => $post_data['total_amount'],
-//                'status' => 'Pending',
-//                'address' => $shipping_address,
-//                'transaction_id' => $post_data['tran_id'],
-//                'currency' => $post_data['currency'],
-//                'customer_id' => $customer->id,
-//                'notes' => $notes,
-//                'created_at' => now(),
-//            ]);
-//
-//        $order = Order::where('transaction_id', $post_data['tran_id'])->first();
-//
-//        for ($i = 0; $i < $count; $i++) {
-//            OrderDetails::create([
-//                'order_id' => $order->id,
-//                'product_id' => $cart[$i]['product_id'],
-//                'count' => $cart[$i]['count'],
-//                'color_id' => $cart[$i]['color_id'],
-//                'size_id' => $cart[$i]['size_id'],
-//            ]);
-//
-//            $product = Product::find($cart[$i]['product_id']);
-//
-//            $product->quantity -= $cart[$i]['count'];
-//
-//            $product->save();
-//        }
-//
-//        switch ($request->payment_method)
-//        {
-//            case 'cod':
-//                $order->update([
-//                    'type' => 'cod'
-//                ]);
-//
-//                break;
-//
-//            default:
-//
-//        }
-//    }
+    public function cash_on_delivery(Request $request)
+    {
+
+        $customer = auth('customer-api')->user();
+
+        $total = $request->total;
+        $count = $request->count;
+        $cart =  $request->cart;
+
+        if (!$cart) {
+            return response()->json([
+                'msg' => 'Please add products and choose shipping location'
+            ], 404);
+        }
+
+        if ($count <= 0 || $total <= 0) {
+            return response()->json([
+                'msg' => 'An error occurred while processing your order!'
+            ], 404);
+        }
+
+        if ($request->payment_method != 'cod') {
+            return response()->json([
+                'msg' => 'An error occurred while processing your order!'
+            ], 404);
+        }
+
+        $billing_address = $request->street . '+';
+        $billing_address .= $request->city . '+';
+        $billing_address .= $request->district . '+';
+        $billing_address .= ucfirst($request->division);
+
+        if ($request->shipping_address) {
+            $request->validate([
+                'shipping_street' => 'required',
+                'shipping_city' => 'required',
+                'shipping_district' => 'required',
+                'shipping_division' => 'required',
+            ]);
+            $shipping_address = $request->shipping_street . '+';
+            $shipping_address .= $request->shipping_city . '+';
+            $shipping_address .= $request->shipping_district . '+';
+            $shipping_address .= ucfirst($request->shipping_division);
+        } else {
+            $shipping_address = $billing_address;
+        }
+
+        $customer->update([
+            'name' => $request->name,
+            'phone_number' => $request->phone_number,
+            'billing_address' => $billing_address,
+            'shipping_address' => $shipping_address,
+
+        ]);
+
+        $notes = $request->notes;
+
+
+
+        # Here you have to receive all the order data to initate the payment.
+        # Let's say, your oder transaction informations are saving in a table called "orders"
+        # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
+
+        $post_data = array();
+        $post_data['total_amount'] = $total; # You cant not pay less than 10
+        $post_data['currency'] = "BDT";
+        $post_data['tran_id'] = uniqid(); // tran_id must be unique
+
+        # CUSTOMER INFORMATION
+        $post_data['cus_name'] =  $request->name ?? "";
+        $post_data['cus_email'] =  $request->email ?? "";
+        $post_data['cus_add1'] = $request->street ?? "";
+        $post_data['cus_add2'] = $request->street ?? "";
+        $post_data['cus_city'] =  $request->city ?? "";
+        $post_data['cus_state'] = $request->city ?? "";
+        $post_data['cus_postcode'] = $request->post ?? "";
+        $post_data['cus_country'] = "Bangladesh";
+        $post_data['cus_phone'] =  $request->phone_number ?? "";;
+        $post_data['cus_fax'] = "";
+
+        # SHIPMENT INFORMATION
+        $post_data['ship_name'] =  $request->shipping_name ?? $request->name;
+        $post_data['ship_add1'] =  $request->shipping_street ?? $request->street;
+        $post_data['ship_add2'] = $request->shipping_street ?? $request->street;
+        $post_data['ship_city'] = $request->shipping_city ?? $request->city;
+        $post_data['ship_state'] = $request->shipping_city ?? $request->city;
+        $post_data['ship_postcode'] = $request->shipping_post ?? $request->post;
+        $post_data['ship_phone'] = $request->shipping_phone_number ?? $request->phone_number;
+        $post_data['ship_email'] = $request->shipping_email?? $request->email;
+        $post_data['ship_country'] = "Bangladesh";
+
+        $post_data['shipping_method'] = "NO";
+        $post_data['product_name'] = "AmarShop";
+        $post_data['product_category'] = "AmarShop";
+        $post_data['product_profile'] = "AmarShop";
+
+        # OPTIONAL PARAMETERS
+        $post_data['value_a'] = "ref001";
+        $post_data['value_b'] = "ref002";
+        $post_data['value_c'] = "ref003";
+        $post_data['value_d'] = "ref004";
+
+        #Before  going to initiate the payment order status need to insert or update as Pending.
+        $update_product = DB::table('orders')
+            ->where('transaction_id', $post_data['tran_id'])
+            ->updateOrInsert([
+                'name' => $post_data['ship_name'],
+                'email' => $post_data['ship_email'],
+                'phone' => $post_data['ship_phone'],
+                'amount' => $post_data['total_amount'],
+                'status' => 'Pending',
+                'address' => $shipping_address,
+                'transaction_id' => $post_data['tran_id'],
+                'currency' => $post_data['currency'],
+                'customer_id' => $customer->id,
+                'notes' => $notes,
+                'created_at' => now(),
+            ]);
+
+        $order = Order::where('transaction_id', $post_data['tran_id'])->first();
+
+        for ($i = 0; $i < $count; $i++) {
+            OrderDetails::create([
+                'order_id' => $order->id,
+                'product_id' => $cart[$i]['product_id'],
+                'count' => $cart[$i]['count'],
+                'color_id' => $cart[$i]['color_id'],
+                'size_id' => $cart[$i]['size_id'],
+            ]);
+
+            $product = Product::find($cart[$i]['product_id']);
+
+            $product->quantity -= $cart[$i]['count'];
+
+            $product->save();
+        }
+
+        switch ($request->payment_method)
+        {
+            case 'cod':
+                $order->update([
+                    'type' => 'cod'
+                ]);
+
+                return response()->json([
+                    'msg' => 'Order placed successfully!'
+                ], 200);
+
+                break;
+
+            default:
+
+                return response()->json([
+                    'msg' => 'An error occurred while processing your order!'
+                ], 404);
+
+        }
+    }
 
 }

@@ -40,7 +40,7 @@ Route::prefix('v1')->group(function () {
 
     Route::post('wishlist', 'ApiController@add_wishlist');
 
-    Route::delete('wishlist/{wishId}', 'ApiController@remove_wishlist');
+    Route::post('wishlist/{wishId}', 'ApiController@remove_wishlist');
 
     Route::get('amarcare', 'ApiController@amarcare');
 
@@ -54,9 +54,9 @@ Route::prefix('v1')->group(function () {
 
     Route::post('my-account', 'ApiController@my_account');
 
-    Route::patch('my-account/update-account', 'ApiController@update_account');
+    Route::post('my-account/update-account', 'ApiController@update_account');
 
-    Route::patch('my-account/update-address', 'ApiController@update_address');
+    Route::post('my-account/update-address', 'ApiController@update_address');
 
     Route::get('filter-attributes', 'ApiController@filter_attributes');
 

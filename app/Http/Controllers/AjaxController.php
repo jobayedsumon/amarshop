@@ -23,7 +23,7 @@ class AjaxController extends Controller
     //
     public function add_wishlist(Request $request)
     {
-        Wishlist::create([
+        Wishlist::firstOrCreate([
            'customer_id' => Auth::guard('customer')->id(),
            'product_id' => $request->productId
         ]);
