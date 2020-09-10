@@ -497,8 +497,9 @@ class ApiController extends Controller
 
     }
 
-    public function remove_wishlist($wishId)
+    public function remove_wishlist(Request $request)
     {
+        $wishId = $request->wish_id;
         $wishlist = Wishlist::findOrFail($wishId);
         $response = $wishlist->delete();
 
