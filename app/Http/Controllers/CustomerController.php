@@ -94,31 +94,33 @@ class CustomerController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->user();
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/customer-login');
+        }
 
-        // OAuth Two Providers
-        $token = $user->token;
-        $refreshToken = $user->refreshToken; // not always provided
-        $expiresIn = $user->expiresIn;
+        // check if they're an existing user
+        $existingCustomer = Customer::where('email', $user->email)->first();
 
-        // OAuth One Providers
-        $token = $user->token;
-        $tokenSecret = $user->tokenSecret;
+        if($existingCustomer){
+            // log them in
+            auth('customer')->login($existingCustomer, true);
+        } else {
+            // create a new user
+            $newCustomer                  = new Customer;
+            $newCustomer->name            = $user->name;
+            $newCustomer->email           = $user->email;
+            $newCustomer->password        = bcrypt('amarshop');
+            $newCustomer->phone_number    = '';
+            $newCustomer->save();
 
-        // All Providers
-        $user->getId();
-        $user->getNickname();
-        $user->getName();
-        $user->getEmail();
-
-        dd($user);
+            auth('customer')->login($newCustomer, true);
+        }
+        return redirect()->to('/my-account');
     }
 
 }

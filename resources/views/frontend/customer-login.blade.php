@@ -65,6 +65,9 @@
 
                         </form>
                      </div>
+
+                    <a href="/login/google"><img class="mt-2" src="{{ asset('frontend/img/logo/google-signin-1x.png') }}" alt=""></a>
+
                 </div>
                 <!--login area start-->
 
