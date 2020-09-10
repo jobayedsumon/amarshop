@@ -22,6 +22,7 @@ use Carbon\Carbon;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -521,8 +522,9 @@ class ApiController extends Controller
         $customer = auth('customer-api')->user();
 
         $total = $request->total;
-        $count = $request->count;
-        $cart =  $request->cart;
+        $cart =  $request->cart ?? [];
+        $count = count($cart);
+
 
         if (!$cart) {
             return response()->json([

@@ -43,8 +43,10 @@ class SslCommerzPaymentController extends Controller
         $customer = auth('customer')->user();
 
         $total = session()->get('cart_total');
-        $count = session()->get('cart_items_count');
         $cart = session()->get('cart');
+        $count = count($cart) ?? [];
+
+        dd($cart);
 
         if ($count <= 0 || $total <= 0) {
             session()->put('payment_message', 'An error occurred while processing your order!');
