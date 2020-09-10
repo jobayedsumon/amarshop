@@ -6,11 +6,11 @@ use App\Category;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class CustomerController extends Controller
 {
     //
-
 
     public function __construct()
     {
@@ -83,4 +83,42 @@ class CustomerController extends Controller
         return redirect('/');
 
     }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        // OAuth Two Providers
+        $token = $user->token;
+        $refreshToken = $user->refreshToken; // not always provided
+        $expiresIn = $user->expiresIn;
+
+        // OAuth One Providers
+        $token = $user->token;
+        $tokenSecret = $user->tokenSecret;
+
+        // All Providers
+        $user->getId();
+        $user->getNickname();
+        $user->getName();
+        $user->getEmail();
+
+        dd($user);
+    }
+
 }

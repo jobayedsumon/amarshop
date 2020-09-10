@@ -204,3 +204,7 @@ Route::prefix('customers')->group(function () {
         ->name('customers.password.update');
 });
 
+//SOCIAL LOGIN
+Route::get('login/google', 'CustomerController@redirectToProvider');
+Route::get('login/google/callback', 'CustomerController@handleProviderCallback');
+
