@@ -501,6 +501,7 @@ class ApiController extends Controller
     {
         $wishId = $request->wish_id;
         $wishlist = Wishlist::findOrFail($wishId);
+        $wishlist;
         $response = $wishlist->delete();
 
         $wishlistCount = Wishlist::all()->count();

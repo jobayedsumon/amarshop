@@ -40,7 +40,7 @@ Route::prefix('v1')->group(function () {
 
     Route::post('wishlist', 'ApiController@add_wishlist');
 
-    Route::post('wishlist/{wishId}', 'ApiController@remove_wishlist');
+    Route::post('wishlist/delete', 'ApiController@remove_wishlist');
 
     Route::get('amarcare', 'ApiController@amarcare');
 
