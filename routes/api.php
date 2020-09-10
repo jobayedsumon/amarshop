@@ -66,6 +66,8 @@ Route::prefix('v1')->group(function () {
 
     Route::post('register', 'ApiController@register');
 
+//    Route::post('cash-on-delivery', 'ApiController@cash_on_delivery');
+
 
 });
 
