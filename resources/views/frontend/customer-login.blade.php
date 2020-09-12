@@ -66,8 +66,8 @@
                         </form>
                      </div>
 
-                    <a href="/login/google"><img class="my-2" src="{{ asset('frontend/img/logo/google-signin-1x.png') }}" alt=""></a>
-                    <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
+                    <a href="/login/google"><img width="200px" class="my-2" src="{{ asset('frontend/img/logo/google-signin-1x.png') }}" alt=""></a>
+                    <a href="/login/facebook"><img width="300px" class="my-2" src="{{ asset('frontend/img/logo/facebook-login.png') }}" alt=""></a>
 
                 </div>
                 <!--login area start-->

@@ -69,8 +69,6 @@
 </head>
 
 <body data-turbolinks="false">
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=243699563605520&autoLogAppEvents=1" nonce="vZLJql5R"></script>
 <!--header area start-->
 @yield('header')
 <!--header area end-->
