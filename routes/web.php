@@ -205,6 +205,6 @@ Route::prefix('customers')->group(function () {
 });
 
 //SOCIAL LOGIN
-Route::get('login/google', 'CustomerController@redirectToProvider');
-Route::get('login/google/callback', 'CustomerController@handleProviderCallback');
+Route::get('login/{provider}', 'CustomerController@redirectToProvider');
+Route::get('login/{provider}/callback', 'CustomerController@handleProviderCallback');
 

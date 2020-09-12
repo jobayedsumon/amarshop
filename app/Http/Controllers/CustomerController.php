@@ -87,20 +87,41 @@ class CustomerController extends Controller
     /**
      * Redirect the user to the GitHub authentication page.
      *
+     * @param $provider
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('google')->redirect();
+        switch ($provider) {
+            case 'google':
+                return Socialite::driver('google')->redirect();
+                break;
+            case 'facebook':
+                return Socialite::driver('facebook')->redirect();
+                break;
+        }
+
     }
 
 
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        try {
-            $user = Socialite::driver('google')->user();
-        } catch (\Exception $e) {
-            return redirect('/customer-login');
+        switch ($provider) {
+            case 'google':
+                try {
+                    $user = Socialite::driver('google')->user();
+                } catch (\Exception $e) {
+                    return redirect('/customer-login');
+                }
+                break;
+            case 'facebook':
+                try {
+                    $user = Socialite::driver('facebook')->user();
+                    dd($user);
+                } catch (\Exception $e) {
+                    return redirect('/customer-login');
+                }
+                break;
         }
 
         // check if they're an existing user
