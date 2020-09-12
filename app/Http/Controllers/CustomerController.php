@@ -117,7 +117,6 @@ class CustomerController extends Controller
             case 'facebook':
                 try {
                     $user = Socialite::driver('facebook')->user();
-                    dd($user);
                 } catch (\Exception $e) {
                     return redirect('/customer-login');
                 }
