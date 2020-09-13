@@ -520,6 +520,7 @@ class ApiController extends Controller
 
     public function cash_on_delivery(Request $request)
     {
+        return $request->cart;
 
         $customer = auth('customer-api')->user();
 
