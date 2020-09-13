@@ -36,7 +36,7 @@ class ApiController extends Controller
     {
         $this->middleware('auth:customer-api')->only([
             'wishlist', 'my_account', 'update_account', 'update_address', 'logout',
-            'add_wishlist', 'remove_wishlist', 'cash_on_delivery', 'online_payment'
+            'add_wishlist', 'remove_wishlist', 'cash_on_delivery', ''
         ]);
     }
 
@@ -689,66 +689,66 @@ class ApiController extends Controller
     public function online_payment(Request $request)
     {
 
-        $customer = auth('customer-api')->user();
-
-
-        $cart = json_decode($request->cart);
-
-        $count = count($cart);
-
-        $total = $request->total;
-
-
-
-        if (!$cart) {
-            return response()->json([
-                'msg' => 'Please add products and choose shipping location'
-            ], 404);
-        }
-
-        if ($count <= 0 || $total <= 0) {
-            return response()->json([
-                'msg' => 'An error occurred while processing your order!'
-            ], 404);
-        }
-
-        if ($request->payment_method != 'ssl') {
-            return response()->json([
-                'msg' => 'An error occurred while processing your order!'
-            ], 404);
-        }
-
-        $billing_address = $request->street . '+';
-        $billing_address .= $request->city . '+';
-        $billing_address .= $request->district . '+';
-        $billing_address .= ucfirst($request->division);
-
-
-
-        if ($request->shipping_address == 'true') {
-            $request->validate([
-                'shipping_street' => 'required',
-                'shipping_city' => 'required',
-                'shipping_district' => 'required',
-                'shipping_division' => 'required',
-            ]);
-            $shipping_address = $request->shipping_street . '+';
-            $shipping_address .= $request->shipping_city . '+';
-            $shipping_address .= $request->shipping_district . '+';
-            $shipping_address .= ucfirst($request->shipping_division);
-        } else {
-            $shipping_address = $billing_address;
-        }
-
-        $customer->update([
-            'name' => $request->name,
-            'phone_number' => $request->phone_number,
-            'billing_address' => $billing_address,
-            'shipping_address' => $shipping_address,
-
-        ]);
-
-        $notes = $request->notes;
+//        $customer = auth('customer-api')->user();
+//
+//
+//        $cart = json_decode($request->cart);
+//
+//        $count = count($cart);
+//
+//        $total = $request->total;
+//
+//
+//
+//        if (!$cart) {
+//            return response()->json([
+//                'msg' => 'Please add products and choose shipping location'
+//            ], 404);
+//        }
+//
+//        if ($count <= 0 || $total <= 0) {
+//            return response()->json([
+//                'msg' => 'An error occurred while processing your order!'
+//            ], 404);
+//        }
+//
+//        if ($request->payment_method != 'ssl') {
+//            return response()->json([
+//                'msg' => 'An error occurred while processing your order!'
+//            ], 404);
+//        }
+//
+//        $billing_address = $request->street . '+';
+//        $billing_address .= $request->city . '+';
+//        $billing_address .= $request->district . '+';
+//        $billing_address .= ucfirst($request->division);
+//
+//
+//
+//        if ($request->shipping_address == 'true') {
+//            $request->validate([
+//                'shipping_street' => 'required',
+//                'shipping_city' => 'required',
+//                'shipping_district' => 'required',
+//                'shipping_division' => 'required',
+//            ]);
+//            $shipping_address = $request->shipping_street . '+';
+//            $shipping_address .= $request->shipping_city . '+';
+//            $shipping_address .= $request->shipping_district . '+';
+//            $shipping_address .= ucfirst($request->shipping_division);
+//        } else {
+//            $shipping_address = $billing_address;
+//        }
+//
+//        $customer->update([
+//            'name' => $request->name,
+//            'phone_number' => $request->phone_number,
+//            'billing_address' => $billing_address,
+//            'shipping_address' => $shipping_address,
+//
+//        ]);
+//
+//        $notes = $request->notes;
 
 
 
@@ -757,7 +757,7 @@ class ApiController extends Controller
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = $total; # You cant not pay less than 10
+        $post_data['total_amount'] = 10; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
@@ -794,53 +794,78 @@ class ApiController extends Controller
         $post_data['value_b'] = "ref002";
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
+//
+//        #Before  going to initiate the payment order status need to insert or update as Pending.
+//        $update_product = DB::table('orders')
+//            ->where('transaction_id', $post_data['tran_id'])
+//            ->updateOrInsert([
+//                'name' => $post_data['ship_name'],
+//                'email' => $post_data['ship_email'],
+//                'phone' => $post_data['ship_phone'],
+//                'amount' => $post_data['total_amount'],
+//                'status' => 'Pending',
+//                'address' => $shipping_address,
+//                'transaction_id' => $post_data['tran_id'],
+//                'currency' => $post_data['currency'],
+//                'customer_id' => $customer->id,
+//                'notes' => $notes,
+//                'created_at' => now(),
+//            ]);
+//
+//        $order = Order::where('transaction_id', $post_data['tran_id'])->first();
+//
+//
+//        for ($i = 0; $i < $count; $i++) {
+//            OrderDetails::create([
+//                'order_id' => $order->id,
+//                'product_id' => $cart[$i]->product_id,
+//                'count' => $cart[$i]->count,
+//                'color_id' => $cart[$i]->color_id,
+//                'size_id' => $cart[$i]->size_id,
+//            ]);
+//
+//            $product = Product::find($cart[$i]->product_id);
+//
+//            $product->quantity -= $cart[$i]->count;
+//
+//            $product->save();
+//        }
 
-        #Before  going to initiate the payment order status need to insert or update as Pending.
-        $update_product = DB::table('orders')
-            ->where('transaction_id', $post_data['tran_id'])
-            ->updateOrInsert([
-                'name' => $post_data['ship_name'],
-                'email' => $post_data['ship_email'],
-                'phone' => $post_data['ship_phone'],
-                'amount' => $post_data['total_amount'],
-                'status' => 'Pending',
-                'address' => $shipping_address,
-                'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency'],
-                'customer_id' => $customer->id,
-                'notes' => $notes,
-                'created_at' => now(),
-            ]);
-
-        $order = Order::where('transaction_id', $post_data['tran_id'])->first();
+        $sslc = new SslCommerzNotification();
 
 
-        for ($i = 0; $i < $count; $i++) {
-            OrderDetails::create([
-                'order_id' => $order->id,
-                'product_id' => $cart[$i]->product_id,
-                'count' => $cart[$i]->count,
-                'color_id' => $cart[$i]->color_id,
-                'size_id' => $cart[$i]->size_id,
-            ]);
 
-            $product = Product::find($cart[$i]->product_id);
+        $payment_options = $sslc->makePayment($post_data, 'hosted');
 
-            $product->quantity -= $cart[$i]->count;
 
-            $product->save();
+
+
+        if (!is_array($payment_options)) {
+            print_r($payment_options);
+            $payment_options = array();
         }
+
+
+        # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
+        $payment_options = $sslc->makePayment($post_data, 'hosted');
 
         switch ($request->payment_method)
         {
             case 'ssl':
-                $order->update([
-                    'type' => 'ssl'
-                ]);
+//                $order->update([
+//                    'type' => 'ssl'
+//                ]);
 
                 $sslc = new SslCommerzNotification();
+
+                return $post_data;
+
+
                 # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
                 $payment_options = $sslc->makePayment($post_data, 'hosted');
+
+
+
 
                 if (!is_array($payment_options)) {
                     print_r($payment_options);

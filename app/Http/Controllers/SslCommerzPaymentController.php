@@ -182,6 +182,7 @@ class SslCommerzPaymentController extends Controller
                 $order->update([
                     'type' => 'ssl'
                 ]);
+
                 $sslc = new SslCommerzNotification();
                 # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
                 $payment_options = $sslc->makePayment($post_data, 'hosted');
