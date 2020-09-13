@@ -24,7 +24,7 @@ body, .header_middle, .sticky-header .sticky{
 
 
 .mega_menu, .dropdown_search {
-    background: rgb(253, 230, 236) !important;
+    background-color: rgb(253, 230, 236) !important;
 }
 
     /* Equal Heights for OwlCarousel 2 */
@@ -192,7 +192,7 @@ footer, .header_top {
 
 .page-item.active .page-link {
 
-	color: #000;    
+	color: #000;
     background-color: #F9BBCA;
     border-color: #F9BBCA;
 }

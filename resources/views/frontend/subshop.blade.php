@@ -154,7 +154,7 @@
 
                         @forelse($data as $product)
 
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 my-3">
+                            <div class="col-lg-4 col-md-4 col-sm-6 p-1">
                                 <div class="single_product">
                                     <div class="product_thumb">
                                         <a class="primary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">

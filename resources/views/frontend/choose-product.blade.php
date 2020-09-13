@@ -2,7 +2,7 @@
 
 @forelse($data as $product)
 
-<div class="single_product col-md-4 h-full">
+<div class="single_product col-md-4 h-auto">
     <div class="product_thumb">
         <a class="primary_img" href="{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}">
             <img src="{{ asset($product->image_primary) }}" alt=""></a>
