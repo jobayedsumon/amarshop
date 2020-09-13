@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::post('/set-shipping-cost', function () {
     session()->put('shipping_cost', request()->get('shipping_cost'));
 });

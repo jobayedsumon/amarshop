@@ -65,9 +65,8 @@
 
                         </form>
                      </div>
-
+                    <a href="/login/facebook"><img width="200px" class="my-2" src="{{ asset('frontend/img/logo/facebook-login.png') }}" alt=""></a>
                     <a href="/login/google"><img width="200px" class="my-2" src="{{ asset('frontend/img/logo/google-signin-1x.png') }}" alt=""></a>
-                    <a href="/login/facebook"><img width="300px" class="my-2" src="{{ asset('frontend/img/logo/facebook-login.png') }}" alt=""></a>
 
                 </div>
                 <!--login area start-->
