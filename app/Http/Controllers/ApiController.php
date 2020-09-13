@@ -520,13 +520,16 @@ class ApiController extends Controller
 
     public function cash_on_delivery(Request $request)
     {
-        return $request->cart;
 
         $customer = auth('customer-api')->user();
 
-        $total = $request->total;
-        $cart =  $request->cart ?? [];
-        $count = count($cart);
+
+         $cart = json_decode($request->cart);
+
+         $count = count($cart);
+
+         $total = $request->total;
+
 
 
         if (!$cart) {
@@ -552,7 +555,9 @@ class ApiController extends Controller
         $billing_address .= $request->district . '+';
         $billing_address .= ucfirst($request->division);
 
-        if ($request->shipping_address) {
+
+
+        if ($request->shipping_address == 'true') {
             $request->validate([
                 'shipping_street' => 'required',
                 'shipping_city' => 'required',
@@ -641,18 +646,19 @@ class ApiController extends Controller
 
         $order = Order::where('transaction_id', $post_data['tran_id'])->first();
 
+
         for ($i = 0; $i < $count; $i++) {
             OrderDetails::create([
                 'order_id' => $order->id,
-                'product_id' => $cart[$i]['product_id'],
-                'count' => $cart[$i]['count'],
-                'color_id' => $cart[$i]['color_id'],
-                'size_id' => $cart[$i]['size_id'],
+                'product_id' => $cart[$i]->product_id,
+                'count' => $cart[$i]->count,
+                'color_id' => $cart[$i]->color_id,
+                'size_id' => $cart[$i]->size_id,
             ]);
 
-            $product = Product::find($cart[$i]['product_id']);
+            $product = Product::find($cart[$i]->product_id);
 
-            $product->quantity -= $cart[$i]['count'];
+            $product->quantity -= $cart[$i]->count;
 
             $product->save();
         }

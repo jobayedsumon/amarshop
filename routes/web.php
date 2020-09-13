@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/demo', function () {
+    $y = '{"total":"930","cart":[{"product_id": 132, "color_id": 129, "size_id": 44, "count": 1}],"payment_method":"cod","shipping_name":"dew","shipping_phone_number":"dew@gmail.com","shipping_email":"01777777777","shipping_street":"banani","shipping_city":"dhaka","shipping_district":"dhaka","shipping_division":"Dhaka","notes":null,"name":"dew","email":"dew@gmail.com","phone_number":"01777777777","street":"banani","city":"dhaka","district":"dhaka","division":"Dhaka"}';
+    //var_dump(json_decode($y));
+    $data = json_decode($y);
+    //var_dump(json_decode($data->cart));
+    var_dump($data);
+
+
+});
+
 
 
 Route::post('/set-shipping-cost', function () {
