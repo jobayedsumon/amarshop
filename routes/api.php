@@ -68,6 +68,8 @@ Route::prefix('v1')->group(function () {
 
     Route::post('cash-on-delivery', 'ApiController@cash_on_delivery');
 
+    Route::post('online-payment', 'ApiController@online_payment');
+
 
 });
 
