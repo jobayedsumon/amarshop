@@ -52,202 +52,39 @@
 
                                         </li>
 
-                                        <li class="nav-item has-dimmer dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Mega submenu </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li>
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 2 </a></li>
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
-                                                <li class="has-megasubmenu">
-                                                    <a class="dropdown-item icon-arrow" href="#"> Dropdown item 4 </a>
-                                                    <div class="megasubmenu dropdown-menu">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <h6 class="title">Title Menu One</h6>
-                                                                <ul class="list-unstyled">
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                </ul>
-                                                            </div><!-- end col-3 -->
-                                                            <div class="col-6">
-                                                                <h6 class="title">Title Menu Two</h6>
-                                                                <ul class="list-unstyled">
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                    <li><a href="#">Submenu item</a></li>
-                                                                </ul>
-                                                            </div><!-- end col-3 -->
-                                                        </div><!-- end row -->
-                                                    </div>
-                                                </li>
-                                                <li class="has-megasubmenu">
-                                                    <a class="dropdown-item icon-arrow" href="#"> Dropdown item 5 </a>
-                                                    <div class="megasubmenu dropdown-menu">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                        consequat.
-                                                    </div>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 6 </a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Large menu  </a>
-                                            <div class="dropdown-menu animate fade-up dropdown-large">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-6">
-                                                        <h6 class="title">Title Menu One</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                        </ul>
-                                                    </div><!-- end col-3 -->
-                                                    <div class="col-md-6 col-6">
-                                                        <h6 class="title">Title Menu Two</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                            <li><a href="#">Submenu item</a></li>
-                                                        </ul>
-                                                    </div><!-- end col-3 -->
-                                                </div><!-- end row -->
-                                            </div> <!-- dropdown-large.// -->
-                                        </li>
-                                        <li class="nav-item active"> <a class="nav-link" href="#">Home </a> </li>
-                                        <li class="nav-item"><a class="nav-link" href="#"> About </a></li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Treeview  </a>
-                                            <ul class="dropdown-menu animate fade-up">
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 1 </a></li>
-                                                <li><a class="dropdown-item icon-arrow" href="#"> Dropdown item 2 </a>
-                                                    <ul class="submenu dropdown-menu  animate fade-up">
-                                                        <li><a class="dropdown-item" href="">Submenu item 1</a></li>
-                                                        <li><a class="dropdown-item" href="">Submenu item 2</a></li>
-                                                        <li><a class="dropdown-item icon-arrow" href="">Submenu item 3  </a>
-                                                            <ul class="submenu dropdown-menu  animate fade-up">
-                                                                <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                                <li><a class="dropdown-item" href="">Multi level 2</a></li>
+
+                                        <li class="mega_items"><a href="#">shop<i class="fa fa-angle-down"></i></a>
+                                            <div class="mega_menu">
+                                                <ul class="mega_menu_inner">
+
+                                                    @php
+                                                        $categories = \App\Category::all();
+                                                    @endphp
+
+                                                    @forelse($categories as $category)
+                                                        <li class="mega_items"><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a>
+
+                                                            <ul>
+
+
+                                                                @forelse($sub_categories = $category->sub_categories as $sub_category)
+
+                                                                    <li><a href="{{ route('subshop', [$category->id, $sub_category->id]) }}">{{ $sub_category->name }}</a></li>
+                                                                @empty
+                                                                @endforelse
+
                                                             </ul>
+
                                                         </li>
-                                                        <li><a class="dropdown-item" href="">Submenu item 4</a></li>
-                                                        <li><a class="dropdown-item" href="">Submenu item 5</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
-                                                <li><a class="dropdown-item" href="#"> Dropdown item 4 </a>
-                                                </li></ul>
+
+
+
+                                                    @empty
+                                                    @endforelse
+
+                                                </ul>
+                                            </div>
                                         </li>
-                                        <li class="nav-item dropdown has-megamenu">
-                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Megamenu  </a>
-                                            <div class="dropdown-menu animate fade-down megamenu" role="menu">
-                                                <div class="row">
-                                                    <div class="col-md-3 col-6">
-                                                        <div class="col-megamenu">
-                                                            <h6 class="title">Title Menu One</h6>
-                                                            <ul class="list-unstyled">
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                            </ul>
-                                                        </div>  <!-- col-megamenu.// -->
-                                                    </div><!-- end col-3 -->
-                                                    <div class="col-md-3 col-6">
-                                                        <div class="col-megamenu">
-                                                            <h6 class="title">Title Menu Two</h6>
-                                                            <ul class="list-unstyled">
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                            </ul>
-                                                        </div>  <!-- col-megamenu.// -->
-                                                    </div><!-- end col-3 -->
-                                                    <div class="col-md-3 col-6">
-                                                        <div class="col-megamenu">
-                                                            <h6 class="title">Title Menu Three</h6>
-                                                            <ul class="list-unstyled">
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                            </ul>
-                                                        </div>  <!-- col-megamenu.// -->
-                                                    </div>
-                                                    <div class="col-md-3 col-6">
-                                                        <div class="col-megamenu">
-                                                            <h6 class="title">Title Menu Four</h6>
-                                                            <ul class="list-unstyled">
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                                <li><a href="#">Submenu item</a></li>
-                                                            </ul>
-                                                        </div>  <!-- col-megamenu.// -->
-                                                    </div><!-- end col-3 -->
-                                                </div><!-- end row -->
-                                            </div> <!-- dropdown-mega-menu.// -->
-                                        </li>
-
-
-{{--                                        <li class="mega_items"><a href="#">shop<i class="fa fa-angle-down"></i></a>--}}
-{{--                                            <div class="mega_menu">--}}
-{{--                                                <ul class="mega_menu_inner">--}}
-
-{{--                                                    @php--}}
-{{--                                                        $categories = \App\Category::all();--}}
-{{--                                                    @endphp--}}
-
-{{--                                                    @forelse($categories as $category)--}}
-{{--                                                        <li class="mega_items"><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a>--}}
-
-{{--                                                            <ul>--}}
-
-
-{{--                                                                @forelse($sub_categories = $category->sub_categories as $sub_category)--}}
-
-{{--                                                                    <li><a href="{{ route('subshop', [$category->id, $sub_category->id]) }}">{{ $sub_category->name }}</a></li>--}}
-{{--                                                                @empty--}}
-{{--                                                                @endforelse--}}
-
-{{--                                                            </ul>--}}
-
-{{--                                                        </li>--}}
-
-
-
-{{--                                                    @empty--}}
-{{--                                                    @endforelse--}}
-
-{{--                                                </ul>--}}
-{{--                                            </div>--}}
-{{--                                        </li>--}}
 
 
                                         <li><a href="#">Amar Care<i class="fa fa-angle-down"></i></a>
