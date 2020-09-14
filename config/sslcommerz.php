@@ -6,13 +6,13 @@ return [
     'projectPath' => env('PROJECT_PATH'),
     // For Sandbox, use "https://sandbox.sslcommerz.com"
     // For Live, use "https://securepay.sslcommerz.com"
-    'apiDomain' => env("API_DOMAIN_URL", "https://sandbox.sslcommerz.com/gwprocess/v3/api.php"),
+    'apiDomain' => env("API_DOMAIN_URL", "https://sandbox.sslcommerz.com"),
     'apiCredentials' => [
         'store_id' => env("STORE_ID"),
         'store_password' => env("STORE_PASSWORD"),
     ],
     'apiUrl' => [
-        'make_payment' => "/gwprocess/v4/api.php",
+        'make_payment' => "/gwprocess/v3/api.php",
         'transaction_status' => "/validator/api/merchantTransIDvalidationAPI.php",
         'order_validate' => "/validator/api/validationserverAPI.php",
         'refund_payment' => "/validator/api/merchantTransIDvalidationAPI.php",

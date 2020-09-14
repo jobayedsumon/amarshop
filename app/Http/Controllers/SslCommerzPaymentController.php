@@ -6,15 +6,15 @@ use App\Customer;
 use App\Order;
 use App\OrderDetails;
 use App\Product;
-use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use Illuminate\Support\Facades\DB;
 
 class SslCommerzPaymentController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('auth:customer');
+//        return $this->middleware('auth:customer');
     }
 
     public function exampleEasyCheckout()
