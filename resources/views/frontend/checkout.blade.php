@@ -223,7 +223,7 @@
                             <div class="payment_method">
 
                                 <div class="order_button m-2">
-                                    <button name="payment_method" value="ssl" type="submit">Pay Now</button>
+{{--                                    <button name="payment_method" value="ssl" type="submit">Pay Now</button>--}}
                                 </div>
 
                                 <div class="order_button m-2">

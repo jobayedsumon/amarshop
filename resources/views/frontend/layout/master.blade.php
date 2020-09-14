@@ -45,6 +45,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+    <link rel="stylesheet" href="{{ asset('frontend/css/menukit.css') }}">
+    <script src="{{ asset('frontend/js/menukit.js') }}"></script>
+
 
 
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
