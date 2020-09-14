@@ -698,8 +698,6 @@ class ApiController extends Controller
 //
 //        $total = $request->total;
 //
-//
-//
 //        if (!$cart) {
 //            return response()->json([
 //                'msg' => 'Please add products and choose shipping location'
@@ -757,7 +755,7 @@ class ApiController extends Controller
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = 10; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->total; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
@@ -774,14 +772,14 @@ class ApiController extends Controller
         $post_data['cus_fax'] = "";
 
         # SHIPMENT INFORMATION
-        $post_data['ship_name'] =  $request->shipping_name ?? $request->name;
-        $post_data['ship_add1'] =  $request->shipping_street ?? $request->street;
-        $post_data['ship_add2'] = $request->shipping_street ?? $request->street;
-        $post_data['ship_city'] = $request->shipping_city ?? $request->city;
-        $post_data['ship_state'] = $request->shipping_city ?? $request->city;
-        $post_data['ship_postcode'] = $request->shipping_post ?? $request->post;
-        $post_data['ship_phone'] = $request->shipping_phone_number ?? $request->phone_number;
-        $post_data['ship_email'] = $request->shipping_email?? $request->email;
+        $post_data['ship_name'] =  $request->shipping_name ?? $post_data['cus_name'];
+        $post_data['ship_add1'] =  $request->shipping_street ?? $post_data['cus_add1'];
+        $post_data['ship_add2'] = $request->shipping_street ?? $post_data['cus_add1'];
+        $post_data['ship_city'] = $request->shipping_city ?? $post_data['cus_add2'];
+        $post_data['ship_state'] = $request->shipping_city ?? $post_data['cus_city'];
+        $post_data['ship_postcode'] = $request->shipping_post ?? $post_data['cus_postcode'];
+        $post_data['ship_phone'] = $request->shipping_phone_number ?? $post_data['cus_phone'];
+        $post_data['ship_email'] = $request->shipping_email?? $post_data['cus_email'];
         $post_data['ship_country'] = "Bangladesh";
 
         $post_data['shipping_method'] = "NO";
@@ -835,7 +833,7 @@ class ApiController extends Controller
 
 
 
-        $payment_options = $sslc->makePayment($post_data, 'hosted');
+        $payment_options = $sslc->makePayment($post_data);
 
 
 
@@ -847,40 +845,40 @@ class ApiController extends Controller
 
 
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
-        $payment_options = $sslc->makePayment($post_data, 'hosted');
+//        $payment_options = $sslc->makePayment($post_data, 'hosted');
 
-        switch ($request->payment_method)
-        {
-            case 'ssl':
-//                $order->update([
-//                    'type' => 'ssl'
-//                ]);
-
-                $sslc = new SslCommerzNotification();
-
-                return $post_data;
-
-
-                # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
-                $payment_options = $sslc->makePayment($post_data, 'hosted');
-
-
-
-
-                if (!is_array($payment_options)) {
-                    print_r($payment_options);
-                    $payment_options = array();
-                }
-
-                break;
-
-            default:
-
-                return response()->json([
-                    'msg' => 'An error occurred while processing your order!'
-                ], 404);
-
-        }
+//        switch ($request->payment_method)
+//        {
+//            case 'ssl':
+////                $order->update([
+////                    'type' => 'ssl'
+////                ]);
+//
+//                $sslc = new SslCommerzNotification();
+//
+//                return $post_data;
+//
+//
+//                # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
+//                $payment_options = $sslc->makePayment($post_data, 'hosted');
+//
+//
+//
+//
+//                if (!is_array($payment_options)) {
+//                    print_r($payment_options);
+//                    $payment_options = array();
+//                }
+//
+//                break;
+//
+//            default:
+//
+//                return response()->json([
+//                    'msg' => 'An error occurred while processing your order!'
+//                ], 404);
+//
+//        }
     }
 
 }
