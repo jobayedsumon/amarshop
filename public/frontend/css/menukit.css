@@ -121,8 +121,9 @@ body.offcanvas-active {
     .navbar .megasubmenu {
       left: 100%;
       top: 0;
-      min-height: 100%;
-      min-width: 500px; }
+      max-height: 120%;
+        overflow-y: auto;
+      min-width: 300px; }
     .navbar .dropdown-large {
       min-width: 500px; }
     .navbar .nav-link {
@@ -240,9 +241,7 @@ body.offcanvas-active {
 /* ============ small screen //end ============ */
 /* ============  THEME SOFT  ============ */
 .navbar-soft {
-  background-color: white;
-  -webkit-box-shadow: 0 2px 3px rgba(100, 100, 100, 0.1);
-          box-shadow: 0 2px 3px rgba(100, 100, 100, 0.1);
+
   font-size: 14px; }
   .navbar-soft .navbar-toggler {
     color: rgba(0, 0, 0, 0.5);
@@ -258,12 +257,12 @@ body.offcanvas-active {
     margin-right: 5px; }
   .navbar-soft .navbar-nav .nav-link {
     padding: 1.4rem .5rem;
-    font-weight: 600;
+
     text-transform: uppercase;
-    color: #888;
-    border: 2px solid transparent; }
+      font-size: 18px;
+  }
   .navbar-soft .navbar-nav .nav-item:hover .nav-link, .navbar-soft .navbar-nav .nav-item.show .nav-link {
-    border-bottom: 2px solid orange;
+    border-bottom: 2px solid pink;
     color: #111; }
   .navbar-soft .dropdown-menu {
     border: 0;
@@ -273,6 +272,7 @@ body.offcanvas-active {
             box-shadow: 0 1px 5px rgba(70, 70, 70, 0.2); }
     .navbar-soft .dropdown-menu .dropdown-item {
       padding: .6rem 1.5rem;
+        font-size: 18px;
       border-bottom: 1px solid #f1f1f1; }
 
 /* ============ small screen ============ */

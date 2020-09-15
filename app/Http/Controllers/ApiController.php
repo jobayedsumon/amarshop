@@ -36,7 +36,7 @@ class ApiController extends Controller
     {
         $this->middleware('auth:customer-api')->only([
             'wishlist', 'my_account', 'update_account', 'update_address', 'logout',
-            'add_wishlist', 'remove_wishlist', 'cash_on_delivery', ''
+            'add_wishlist', 'remove_wishlist', 'cash_on_delivery', 'online_payment'
         ]);
     }
 

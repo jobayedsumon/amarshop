@@ -14,7 +14,9 @@ class SslCommerzPaymentController extends Controller
 {
     public function __construct()
     {
-//        return $this->middleware('auth:customer');
+        return $this->middleware('auth:customer')->only([
+            'exampleHostedCheckout', 'index',
+        ]);
     }
 
     public function exampleEasyCheckout()
