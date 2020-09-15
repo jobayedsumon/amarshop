@@ -121,7 +121,7 @@ body.offcanvas-active {
     .navbar .megasubmenu {
       left: 100%;
       top: 0;
-      max-height: 120%;
+      height: 110%;
         overflow-y: auto;
       min-width: 300px; }
     .navbar .dropdown-large {
