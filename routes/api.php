@@ -32,7 +32,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('featured-products', 'ApiController@featured_products');
 
-    Route::get('similar-products/{shopId}', 'ApiController@featured_products');
+    Route::get('similar-products/{shopId}', 'ApiController@similar_products');
 
     Route::get('search/{query}', 'ApiController@search_products');
 
@@ -75,6 +75,8 @@ Route::prefix('v1')->group(function () {
     Route::post('online-payment', 'ApiController@online_payment');
 
     Route::post('product/rate', 'ApiController@rate_product');
+
+    Route::post('coupon', 'ApiController@coupon');
 
 
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AmarCare;
 use App\Brand;
 use App\Category;
+use App\Coupon;
 use App\Customer;
 use App\Deal;
 use App\FeaturedProduct;
@@ -910,11 +911,9 @@ class ApiController extends Controller
 
     public function similar_products($shopId)
     {
-        $related_products = products()->where('category_id', $shopId)->get();
+        $related_products = $this->products()->where('category_id', $shopId)->get();
 
-        return response()->json([
-           'similar_products' => $related_products,
-        ], 200);
+        return response()->json($related_products, 200);
     }
 
     public function rate_product(Request $request)
@@ -933,6 +932,31 @@ class ApiController extends Controller
             'comments' => $comments,
         ], 200);
 
+    }
+
+    public function coupon(Request $request)
+    {
+        $coupon = Coupon::where('code', $request->coupon)->first();
+
+        if (!$coupon) {
+            return response()->json([
+                'msg' => 'Invalid Coupon',
+            ], 404);
+        }
+        else {
+            if ($coupon->expire <= Carbon::now()) {
+                return response()->json([
+                    'msg' => 'Coupon Expired!',
+                ], 404);
+            } else {
+                $validCoupon = [
+                    'code' => $coupon->code,
+                    'value' => $coupon->value,
+                ];
+                session()->put('$validCoupon', $validCoupon);
+                return redirect(route('cart'));
+            }
+        }
     }
 
 }
