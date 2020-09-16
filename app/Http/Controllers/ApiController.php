@@ -966,7 +966,7 @@ class ApiController extends Controller
                 ];
 
                 return response()->json([
-                    '$validCoupon' => $validCoupon,
+                    'validCoupon' => $validCoupon,
                 ], 200);
 
             }

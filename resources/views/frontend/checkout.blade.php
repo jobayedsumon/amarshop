@@ -220,14 +220,18 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="payment_method">
+                        <input id="agree" type="checkbox"> Read and agree to our <a
+                            class="text-pink-500 hover:text-pink-600" href="/terms-conditions">Terms & Conditions</a>, <a
+                            class="text-pink-500 hover:text-pink-600" href="/privacy-policy">Privacy Policy</a> and <a
+                            class="text-pink-500 hover:text-pink-600" href="/returns-exchange">Return & Exchange Policy</a>
+                        <div class="payment_method">
 
                                 <div class="order_button m-2">
-                                    <button name="payment_method" value="ssl" type="submit">Pay Now</button>
+                                    <button class="orderButton" name="payment_method" value="ssl" type="submit">Pay Now</button>
                                 </div>
 
                                 <div class="order_button m-2">
-                                    <button name="payment_method" value="cod" type="submit">Cash on Delivery</button>
+                                    <button class="orderButton" name="payment_method" value="cod" type="submit">Cash on Delivery</button>
                                 </div>
 
 
@@ -247,6 +251,10 @@
     <!--brand area end-->
 
 @endsection
+
+<script>
+
+</script>
 
 
 
