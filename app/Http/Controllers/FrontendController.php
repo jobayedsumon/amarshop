@@ -72,7 +72,7 @@ class FrontendController extends Controller
         $category = Category::findOrFail($shopId);
         $sub_category = SubCategory::findOrFail($subId);
         $product = Product::where('category_id', $shopId)->where('sub_category_id', $subId)->findOrFail($productId);
-        $related_products = Product::where('category_id', $shopId)->get();
+        $related_products = Product::where('category_id', $shopId)->limit(20)->get();
         $brands = Brand::all();
 
 

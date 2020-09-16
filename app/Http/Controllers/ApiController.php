@@ -911,9 +911,20 @@ class ApiController extends Controller
 
     public function similar_products($shopId)
     {
-        $related_products = $this->products()->where('category_id', $shopId)->get();
+        $related_products = $this->products()->where('category_id', $shopId)->limit(20)->get();
 
-        return response()->json($related_products, 200);
+        foreach ($related_products as $p) {
+            $p->description = strip_tags($p->description);
+            $p->short_description = strip_tags($p->short_description);
+        }
+
+        if ($related_products) {
+            return response()->json($related_products, 200);
+        } else {
+            return response()->json([
+                'msg' => 'No related products found!'
+            ], 404);
+        }
     }
 
     public function rate_product(Request $request)
