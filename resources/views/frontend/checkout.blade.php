@@ -227,11 +227,11 @@
                         <div class="payment_method">
 
                                 <div class="order_button m-2">
-                                    <button class="orderButton" name="payment_method" value="ssl" type="submit">Pay Now</button>
+                                    <button id="payNowBtn" name="payment_method" value="ssl" type="submit">Pay Now</button>
                                 </div>
 
                                 <div class="order_button m-2">
-                                    <button class="orderButton" name="payment_method" value="cod" type="submit">Cash on Delivery</button>
+                                    <button id="codBtn" name="payment_method" value="cod" type="submit">Cash on Delivery</button>
                                 </div>
 
 
@@ -252,9 +252,25 @@
 
 @endsection
 
-<script>
+@section('script')
+    <script>
 
-</script>
+        $('#payNowBtn').attr('disabled', 'disabled');
+        $('#codBtn').attr('disabled', 'disabled');
+
+        $('#agree').click(function() {
+            if ($(this).is(':checked')) {
+                $('#payNowBtn').removeAttr('disabled');
+                $('#codBtn').removeAttr('disabled');
+            } else {
+                $('#payNowBtn').attr('disabled', 'disabled');
+                $('#codBtn').attr('disabled', 'disabled');
+            }
+        });
+    </script>
+@endsection
+
+
 
 
 
