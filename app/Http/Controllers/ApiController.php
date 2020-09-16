@@ -953,8 +953,11 @@ class ApiController extends Controller
                     'code' => $coupon->code,
                     'value' => $coupon->value,
                 ];
-                session()->put('$validCoupon', $validCoupon);
-                return redirect(route('cart'));
+
+                return response()->json([
+                    '$validCoupon' => $validCoupon,
+                ], 200);
+
             }
         }
     }
