@@ -32,6 +32,8 @@ Route::prefix('v1')->group(function () {
 
     Route::get('featured-products', 'ApiController@featured_products');
 
+    Route::get('similar-products/{shopId}', 'ApiController@featured_products');
+
     Route::get('search/{query}', 'ApiController@search_products');
 
     Route::get('tag/{tagName}', 'ApiController@tag_search');
@@ -62,6 +64,8 @@ Route::prefix('v1')->group(function () {
 
     Route::post('login', 'ApiController@login');
 
+    Route::post('social-login', 'ApiController@social_login');
+
     Route::post('logout', 'ApiController@logout');
 
     Route::post('register', 'ApiController@register');
@@ -69,6 +73,8 @@ Route::prefix('v1')->group(function () {
     Route::post('cash-on-delivery', 'ApiController@cash_on_delivery');
 
     Route::post('online-payment', 'ApiController@online_payment');
+
+    Route::post('product/rate', 'ApiController@rate_product');
 
 
 });

@@ -36,7 +36,8 @@ class ApiController extends Controller
     {
         $this->middleware('auth:customer-api')->only([
             'wishlist', 'my_account', 'update_account', 'update_address', 'logout',
-            'add_wishlist', 'remove_wishlist', 'cash_on_delivery', 'online_payment'
+            'add_wishlist', 'remove_wishlist', 'cash_on_delivery', 'online_payment',
+            'rate_product'
         ]);
     }
 
@@ -367,6 +368,57 @@ class ApiController extends Controller
         ], 200);
     }
 
+    public function social_login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'email|required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => 'Login failed'], 404);
+        }
+
+        $name = $request->input('name');
+        $email = $request->input('email');
+
+        // check if they're an existing user
+        $existingCustomer = Customer::where('email', $email)->first();
+
+        if($existingCustomer){
+            // log them in
+            $token = auth('customer-api')->login($existingCustomer, true);
+        } else {
+            // create a new user
+            $newCustomer = Customer::create([
+               'name' => $name,
+               'email' => $email,
+               'password' => bcrypt('amarshop'),
+               'phone_number' => '',
+               'birthdate' => null,
+               'remember_token' => null,
+               'shipping_address' => null,
+               'billing_address' => null,
+               'total_purchase_amount' => null,
+               'total_purchase_count' => null,
+               'receive_offer' => null,
+               'newsletter' => null,
+            ]);
+
+            $token = auth('customer-api')->login($newCustomer, true);
+        }
+
+        if (!$token) {
+            return response()->json(['msg' => 'Credentials not found!'], 404);
+        }
+
+        return response()->json([
+            'customer' => \auth('customer-api')->user(),
+            'token' => $token,
+            'expire' => auth('customer-api')->factory()->getTTL() * 60
+        ], 200);
+
+    }
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -501,7 +553,6 @@ class ApiController extends Controller
     {
         $wishId = $request->wish_id;
         $wishlist = Wishlist::findOrFail($wishId);
-        $wishlist;
         $response = $wishlist->delete();
 
         $wishlistCount = Wishlist::all()->count();
@@ -855,6 +906,33 @@ class ApiController extends Controller
                 ], 404);
 
         }
+    }
+
+    public function similar_products($shopId)
+    {
+        $related_products = products()->where('category_id', $shopId)->get();
+
+        return response()->json([
+           'similar_products' => $related_products,
+        ], 200);
+    }
+
+    public function rate_product(Request $request)
+    {
+
+        $product = Product::findOrFail($request->product_id);
+        $star = $request->star;
+        $comment = $request->comment;
+        $customer = auth('customer-api')->user();
+
+        $customer->comment($product, $comment, $star);
+
+        $comments = $product->comments;
+
+        return response()->json([
+            'comments' => $comments,
+        ], 200);
+
     }
 
 }
