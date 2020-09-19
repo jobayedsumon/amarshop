@@ -1,7 +1,7 @@
-<footer class="footer" style="width: 100%; position: fixed; bottom: 0">
+<footer class="footer" style="width: 100%; position: absolute; bottom: 0">
     <div class="container">
       <div class="row">
-        <div class="copyright">
+        <div class="copyright" style="width: 100%;">
             &copy;
             <script>
                 document.write(new Date().getFullYear())

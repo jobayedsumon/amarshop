@@ -1,6 +1,6 @@
 @extends('layouts.app', ['activePage' => 'featured-products', 'titlePage' => __('Featured Product')])
 
-@can('access-all-data')
+@canany(['access-all-data', 'access-manager-data'])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -133,4 +133,4 @@
     </div>
     </div>
 @endsection
-@endcan
+@endcanany

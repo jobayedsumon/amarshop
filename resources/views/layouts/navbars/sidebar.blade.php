@@ -13,7 +13,7 @@
 
     <ul class="nav">
 
-        @canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
+        @canany(['access-all-data', 'access-admin-data',])
 
 
         <li class="nav-item{{ $activePage == 'amar-care' ? ' active' : '' }}">
@@ -69,7 +69,7 @@
             </a>
         </li>
 
-            @canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
+            @canany(['access-all-data', 'access-admin-data'])
 
         <li class="nav-item {{ ($activePage == 'category' || $activePage == 'sub_category') ? ' ' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#category" aria-expanded="true">
@@ -129,7 +129,7 @@
             </div>
         </li>
 
-            @canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
+            @canany(['access-all-data', 'access-admin-data'])
 
       <li class="nav-item{{ $activePage == 'sale' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('sale.index') }}">
