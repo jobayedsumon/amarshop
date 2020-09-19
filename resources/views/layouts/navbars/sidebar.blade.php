@@ -10,7 +10,12 @@
     </a>
   </div>
   <div class="sidebar-wrapper">
+
     <ul class="nav">
+
+        @canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
+
+
         <li class="nav-item{{ $activePage == 'amar-care' ? ' active' : '' }}">
             <a class="nav-link" href="/admin/amar-care">
                 <i class="fa fa-heart"></i>
@@ -47,18 +52,25 @@
           </ul>
         </div>
       </li>
+
       <li class="nav-item{{ $activePage == 'customers' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('customers') }}">
           <i class="material-icons">people</i>
             <p>{{ __('Customers') }}</p>
         </a>
       </li>
+
+        @endcanany
+
         <li class="nav-item{{ $activePage == 'orders' ? ' active' : '' }}">
             <a class="nav-link" href="{{ route('orders') }}">
                 <i class="material-icons">assignment</i>
                 <p>{{ __('Orders') }}</p>
             </a>
         </li>
+
+            @canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
+
         <li class="nav-item {{ ($activePage == 'category' || $activePage == 'sub_category') ? ' ' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#category" aria-expanded="true">
                 <i class="fa fa-book"></i>
@@ -83,6 +95,8 @@
                 </ul>
             </div>
         </li>
+
+            @endcanany
 
         <li class="nav-item {{ ($activePage == 'products' || $activePage == 'add-product') ? ' active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="true">
@@ -114,6 +128,9 @@
                 </ul>
             </div>
         </li>
+
+            @canany(['access-all-data', 'access-admin-data', 'access-manager-data'])
+
       <li class="nav-item{{ $activePage == 'sale' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('sale.index') }}">
           <i class="material-icons">%</i>
@@ -180,6 +197,8 @@
                 <p>{{ __('Testimonial') }}</p>
             </a>
         </li>
+
+            @endcanany
 
 
     </ul>
