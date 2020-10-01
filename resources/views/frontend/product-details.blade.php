@@ -6,7 +6,7 @@
 {
   "@context" : "http://schema.org",
   "@type" : "Product",
-  "name" : "{{ $product->name }}",
+  "title" : "{{ $product->name }}",
   "image" : "{{ asset($product->image_primary) }}",
   "description" : "{{ $product->description }}",
   "url" : "{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}",
