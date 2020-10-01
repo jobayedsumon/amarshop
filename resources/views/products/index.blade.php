@@ -14,7 +14,10 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12 text-right">
+                                <div class="col-6 text-left">
+                                    <a href="{{ route('exportCSV') }}" class="btn btn-sm btn-danger">Export CSV</a>
+                                </div>
+                                <div class="col-6 text-right">
                                     <a href="{{ route('products.create') }}" class="btn btn-sm btn-danger">Add Product</a>
                                 </div>
                             </div>

@@ -159,6 +159,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('slider', 'SlideController@index')->name('slider');
             Route::post('slider', 'SlideController@store')->name('slider')->middleware('optimizeImages');
             Route::get('slider/{id}/delete', ['as' => 'slider.delete', 'uses' => 'SlideController@destroy']);
+            Route::get('products/export', 'ProductController@exportCSV')->name('exportCSV');
             Route::resource('products', 'ProductController')->middleware('optimizeImages');
             Route::resource('categories', 'CategoryController', ['except' => ['show']]);
             Route::resource('sub_categories', 'SubCategoryController', ['except' => ['show']]);

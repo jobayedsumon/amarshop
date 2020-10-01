@@ -323,4 +323,62 @@ class ProductController extends Controller
 
         return redirect(route('products.index'));
     }
+
+    public function exportCsv(Request $request)
+    {
+        $fileName = 'products.csv';
+        $products = Product::all();
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $columns = array('id', 'title', 'android_url', 'android_package', 'android_app_name', 'description', 'google_product_category',
+            'product_type', 'link', 'image_link', 'condition', 'availability', 'price', 'sale_price', 'sale_price_effective_date', 'brand',
+            'item_group_id', 'color', 'size');
+
+        $callback = function() use($products, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($products as $product) {
+
+                $row['id']  = $product->id;
+                $row['title']    = $product->name;
+                $row['android_url']    = 'https://play.google.com/store/apps/details?id=com.vmsl.amar_shop&hl=en';
+                $row['android_package']  = 'com.vmsl.amar_shop';
+                $row['android_app_name']  = 'Amar Shop';
+                $row['description']  = $product->description;
+                $row['google_product_category']  = 'Health & Beauty > Personal Care';
+                $row['product_type']  = $product->sub_category->name;
+                $row['link']  = route('product-details', [$product->category->id, $product->sub_category->id, $product->id]);
+                $row['image_link']  = asset($product->image_primary);
+                $row['condition']  = 'New';
+                $row['availability']  = $product->quantity > 0 ? 'In Stock' : 'Out of Stock';
+                $row['price']  = $product->price;
+                $discount = $product->sale ? $product->sale->percentage : $product->discount;
+                $row['sale_price']  = $discount ? $product->price - round($product->price * $discount / 100) : $product->price;
+                $row['sale_price_effective_date']  = $product->sale ? $product->sale->percentage : '';
+                $row['brand']  = $product->brand->name;
+                $row['item_group_id']  = $product->category->name;
+                $colors = $product->colors;
+                $row['color']  = $colors->implode('name', ', ');
+                $sizes = $product->sizes;
+                $row['size']  = $sizes->implode('name', ', ');
+
+                fputcsv($file, array($row['id'], $row['title'] , $row['android_url'], $row['android_package'], $row['android_app_name'],
+                    $row['description'], $row['google_product_category'], $row['product_type'], $row['link'], $row['image_link'], $row['condition'],
+                    $row['availability'], $row['price'], $row['sale_price'], $row['sale_price_effective_date'], $row['brand'], $row['item_group_id'],
+                    $row['color'], $row['size']));
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }
