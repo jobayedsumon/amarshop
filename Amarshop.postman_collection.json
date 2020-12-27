@@ -1,0 +1,1170 @@
+{
+	"info": {
+		"_postman_id": "af538311-56d7-47b2-b642-2408a718e2c7",
+		"name": "Amarshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sliders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/sliders",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sliders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Shops",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/shops",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Arrivals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/new-arrivals",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"new-arrivals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sub Shop Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/subshop/1/products",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"subshop",
+						"1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Featured Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sumonjobayed@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "11111111",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/featured-products",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"featured-products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/search/hello",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"search",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tag Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/tag/shampoo",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tag",
+						"shampoo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Amar Care",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/amarcare",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"amarcare"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sale Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/sale",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sale"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deal Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/deal",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"deal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Attributes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/filter-attributes",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"filter-attributes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Random Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "wish_id",
+							"value": "9",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/random-product",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"random-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/wishlist?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1OTk3MzY5NzcsImV4cCI6MTU5OTc0MDU3NywibmJmIjoxNTk5NzM2OTc3LCJqdGkiOiJMZU5WdUlOR1hYSUYzWXRkIiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.VA3r8tfoWGJA7WlwRgLEa-nZPngQFJmZt4V-YNUpD_Y",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"wishlist"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1OTk3MzY5NzcsImV4cCI6MTU5OTc0MDU3NywibmJmIjoxNTk5NzM2OTc3LCJqdGkiOiJMZU5WdUlOR1hYSUYzWXRkIiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.VA3r8tfoWGJA7WlwRgLEa-nZPngQFJmZt4V-YNUpD_Y"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "min_amount",
+						"value": "0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "max_amount",
+						"value": "20000",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "brand_id",
+						"value": "-1",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "size_id",
+						"value": "-1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "min_amount",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "max_amount",
+							"value": "20000",
+							"type": "text"
+						},
+						{
+							"key": "brand_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "size_id",
+							"value": "-1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/filter-product",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"filter-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sumonjobayed@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "111111",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/login",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "tesqaajhjt@test.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "tested",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "tested",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Test",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "016",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/register",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Account",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/my-account?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTcxNDcwOCwiZXhwIjoxNTk5NzE4MzA4LCJuYmYiOjE1OTk3MTQ3MDgsImp0aSI6InBtOXRsYklmMUVvV25QdXoiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.-8qahGieUp1LkjfVpGLRChqCxELnwktIBAqcj-UBgXA",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"my-account"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTcxNDcwOCwiZXhwIjoxNTk5NzE4MzA4LCJuYmYiOjE1OTk3MTQ3MDgsImp0aSI6InBtOXRsYklmMUVvV25QdXoiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.-8qahGieUp1LkjfVpGLRChqCxELnwktIBAqcj-UBgXA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Wishlist",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "productId",
+							"value": "1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/wishlist?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1OTk3MjQwMDYsImV4cCI6MTU5OTcyNzYwNiwibmJmIjoxNTk5NzI0MDA2LCJqdGkiOiJKZUNFRFlLTWdiZXhCTlU4Iiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.S1AKNDDsaXSiKuc1edx9ENE-rJUDO35d56nWXPZFno4",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"wishlist"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1OTk3MjQwMDYsImV4cCI6MTU5OTcyNzYwNiwibmJmIjoxNTk5NzI0MDA2LCJqdGkiOiJKZUNFRFlLTWdiZXhCTlU4Iiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.S1AKNDDsaXSiKuc1edx9ENE-rJUDO35d56nWXPZFno4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/logout?token",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Wishlist",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "wish_id",
+							"value": "10",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/wishlist/delete?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1OTk3MzY5NzcsImV4cCI6MTU5OTc0MDU3NywibmJmIjoxNTk5NzM2OTc3LCJqdGkiOiJMZU5WdUlOR1hYSUYzWXRkIiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.VA3r8tfoWGJA7WlwRgLEa-nZPngQFJmZt4V-YNUpD_Y",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"wishlist",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1OTk3MzY5NzcsImV4cCI6MTU5OTc0MDU3NywibmJmIjoxNTk5NzM2OTc3LCJqdGkiOiJMZU5WdUlOR1hYSUYzWXRkIiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.VA3r8tfoWGJA7WlwRgLEa-nZPngQFJmZt4V-YNUpD_Y"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Address",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "street",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "disctrict",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "division",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/my-account/update-address?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTcxNDcwOCwiZXhwIjoxNTk5NzE4MzA4LCJuYmYiOjE1OTk3MTQ3MDgsImp0aSI6InBtOXRsYklmMUVvV25QdXoiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.-8qahGieUp1LkjfVpGLRChqCxELnwktIBAqcj-UBgXA",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"my-account",
+						"update-address"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTcxNDcwOCwiZXhwIjoxNTk5NzE4MzA4LCJuYmYiOjE1OTk3MTQ3MDgsImp0aSI6InBtOXRsYklmMUVvV25QdXoiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.-8qahGieUp1LkjfVpGLRChqCxELnwktIBAqcj-UBgXA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Account",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/my-account/update-account?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTcxNDI0MSwiZXhwIjoxNTk5NzE3ODQxLCJuYmYiOjE1OTk3MTQyNDEsImp0aSI6IjB5V2RFSW9IZk5hNGZSckwiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.uGeQRXohjno8CadJArCQJrxHC0zDrnT6haoWj1ZLmrU",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"my-account",
+						"update-account"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTcxNDI0MSwiZXhwIjoxNTk5NzE3ODQxLCJuYmYiOjE1OTk3MTQyNDEsImp0aSI6IjB5V2RFSW9IZk5hNGZSckwiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.uGeQRXohjno8CadJArCQJrxHC0zDrnT6haoWj1ZLmrU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cash On Delivery",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTk5NjI5MywiZXhwIjoxNTk5OTk5ODkzLCJuYmYiOjE1OTk5OTYyOTMsImp0aSI6Ilp1QWNwSFNjTXRjVm1iZkgiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.TdGNMFnyakeK6jpjLdiNZcSB5WmvnDugteXFDjUsx-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"total\":\"930\",\n\"cart\":\"[{\"product_id\":132,\"color_id\":129,\"size_id\":44,\"count\":1}]\",\n\"payment_method\":\"cod\",\n\"shipping_name\":\"dew\",\n\"shipping_phone_number\":\"dew@gmail.com\",\n\"shipping_email\":\"01777777777\",\n\"shipping_street\":\"banani\",\n\"shipping_city\":\"dhaka\",\n\"shipping_district\":\"dhaka\",\n\"shipping_division\":\"Dhaka\",\n\"notes\":null,\"name\":\"dew\",\n\"email\":\"dew@gmail.com\",\n\"phone_number\":\"01777777777\",\n\"street\":\"banani\",\n\"city\":\"dhaka\",\n\"district\":\"dhaka\",\n\"division\":\"Dhaka\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/cash-on-delivery",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cash-on-delivery"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYW1hcnNob3AuY29tLmJkXC9hcGlcL3YxXC9sb2dpbiIsImlhdCI6MTU5OTkxOTgxNCwiZXhwIjoxNTk5OTIzNDE0LCJuYmYiOjE1OTk5MTk4MTQsImp0aSI6IjJDTmkxSUVhbUlZSk80ZWQiLCJzdWIiOjEsInBydiI6IjhiNDIyZTZmNjU3OTMyYjhhZWJjYjFiZjFlMzU2ZGQ3NmEzNjViZjIifQ.jrmkGJxk7duNNQIFEZmgYhBE49oIZwVHPz5Z5ZzpeFk",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Online Payment",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tran_id",
+							"value": "5f50a2e1bab04",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "amount",
+							"value": "10",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "currency",
+							"value": "BDT",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "total",
+							"value": "10",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/online-payment",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"online-payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate email",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Sumon",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sumonjobayed8@gmail.com",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/social-login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"social-login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post review",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "star",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "hello",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "https://amarshop.com.bd/api/v1/product/rate?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDAyNDEwNDUsImV4cCI6MTYwMDI0NDY0NSwibmJmIjoxNjAwMjQxMDQ1LCJqdGkiOiI5aHZLMlBEMmZVYnJKdUQyIiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.l1QLcAeGnCFL9IogsGGNKuVT8Y45h0Gs9t4-ZmwdVLk",
+					"protocol": "https",
+					"host": [
+						"amarshop",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"rate"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDAyNDEwNDUsImV4cCI6MTYwMDI0NDY0NSwibmJmIjoxNjAwMjQxMDQ1LCJqdGkiOiI5aHZLMlBEMmZVYnJKdUQyIiwic3ViIjozNiwicHJ2IjoiOGI0MjJlNmY2NTc5MzJiOGFlYmNiMWJmMWUzNTZkZDc2YTM2NWJmMiJ9.l1QLcAeGnCFL9IogsGGNKuVT8Y45h0Gs9t4-ZmwdVLk"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "similar products ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/similar-products/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"similar-products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "coupon check",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "coupon",
+							"value": "newuser",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/v1/coupon",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"coupon"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
