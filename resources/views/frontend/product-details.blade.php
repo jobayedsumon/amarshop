@@ -13,6 +13,13 @@
 
 @section('content')
 
+    <style>
+        .icons-down {
+            top: 10px;
+            position: relative;
+        }
+    </style>
+
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
         <div class="container">
@@ -151,7 +158,7 @@
                                </ul>
                             </div>
                             <div class="product_meta">
-                                <span>Category: <a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a></span>
+                                <span>Category: <a href="{{ route('shop', $category->slug) }}">{{ $category->name }}</a></span>
                             </div>
                            <div class="product_meta">
                                <span>Tags:
@@ -350,32 +357,32 @@
                         <article class="single_product  mr-3">
                             <figure class="h-full flex flex-column justify-start">
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
+                                    <a class="primary_img" href="{{ route('product-details', [$related_product->category->slug, $related_product->sub_category->slug, $related_product->slug]) }}">
                                         <img src="{{ asset($related_product->image_primary)}}" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
+                                    <a class="secondary_img" href="{{ route('product-details', [$related_product->category->slug, $related_product->sub_category->slug, $related_product->slug]) }}">
                                         <img src="{{ asset($related_product->image_secondary)}}" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">-{{ $related_product->discount }}%</span>
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $related_product->id }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>
+                                            <li class="wishlist"><a href="javascript:void(0)" class="wishlistButton" data-id="{{ $related_product->id }}" title="Add to Wishlist"><i class="icon-heart icons icons-down"></i></a></li>
                                             <li class="compare">
                                                 <a href="javascript:void(0)" class="compareButton" data-id="{{ $related_product->id }}" title="Add to Compare">
-                                                    <i class="icon-refresh icons"></i></a></li>
+                                                    <i class="icon-refresh icons icons-down"></i></a></li>
                                             <li class="quick_button">
                                                 <a data-toggle="modal" data-target="#view-modal"
                                                         class="quickButton"
                                                         data-url="{{ route('dynamicModal',['id'=>$related_product->id])}}"
                                                 >
-                                                    <i class="icon-magnifier-add icons"></i>
+                                                    <i class="icon-magnifier-add icons icons-down"></i>
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <figcaption class="product_content">
-                                    <h4 class="product_name"><a href="{{ route('product-details', [$related_product->category->id, $related_product->sub_category->id, $related_product->id]) }}">
+                                    <h4 class="product_name"><a href="{{ route('product-details', [$related_product->category->slug, $related_product->sub_category->slug, $related_product->slug]) }}">
                                             {{ $related_product->name }}</a></h4>
                                     <div class="price_box">
                                         <span class="current_price">BDT {{ $related_product->price - round($related_product->price * $related_product->discount / 100) }}</span>

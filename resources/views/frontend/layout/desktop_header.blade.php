@@ -48,21 +48,21 @@
                             <ul class="dropdown-menu">
                                 @forelse(\App\Category::all() as $category)
                                     <li class="has-megasubmenu">
-                                        <a class="dropdown-item icon-arrow" href="{{ route('shop', $category->id) }}"> {{ $category->name }} </a>
+                                        <a class="dropdown-item icon-arrow" href="{{ route('shop', $category->slug) }}"> {{ $category->name }} </a>
                                         <div class="megasubmenu dropdown-menu">
                                             <div class="row items-center">
                                                         @forelse($sub_categories = $category->sub_categories as $sub_category)
 
                                                             <div class="col-6">
 
-                                                                <a class="" href="{{ route('subshop', [$category->id, $sub_category->id]) }}">
+                                                                <a class="" href="{{ route('subshop', [$category->slug, $sub_category->slug]) }}">
                                                                     <img width="100px" src="{{ asset($sub_category->image) }}" alt="">
 
                                                                 </a>
 
                                                             </div>
                                                             <div class="col-6 flex align-center">
-                                                                <a class="text-xl" href="{{ route('subshop', [$category->id, $sub_category->id]) }}">
+                                                                <a class="text-xl" href="{{ route('subshop', [$category->slug, $sub_category->slug]) }}">
 
                                                                     {{ $sub_category->name }}
 
@@ -85,7 +85,7 @@
                             <ul class="dropdown-menu animate fade-up">
                                 @forelse($categories = \App\Category::all() as $category)
 
-                                <li><a class="dropdown-item" href="/amar-care/{{ $category->id }}">{{ $category->name }}</a></li>
+                                <li><a class="dropdown-item" href="/amar-care/{{ $category->slug }}">{{ $category->name }}</a></li>
 
                                 @empty
                                 @endforelse
@@ -190,14 +190,14 @@
 {{--                                                    @endphp--}}
 
 {{--                                                    @forelse($categories as $category)--}}
-{{--                                                        <li class="mega_items"><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a>--}}
+{{--                                                        <li class="mega_items"><a href="{{ route('shop', $category->slug) }}">{{ $category->name }}</a>--}}
 
 {{--                                                            <ul>--}}
 
 
 {{--                                                                @forelse($sub_categories = $category->sub_categories as $sub_category)--}}
 
-{{--                                                                    <li><a href="{{ route('subshop', [$category->id, $sub_category->id]) }}">{{ $sub_category->name }}</a></li>--}}
+{{--                                                                    <li><a href="{{ route('subshop', [$category->slug, $sub_category->slug]) }}">{{ $sub_category->name }}</a></li>--}}
 {{--                                                                @empty--}}
 {{--                                                                @endforelse--}}
 

@@ -16,9 +16,9 @@
                             <article class="single_product">
                                 <figure>
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{ route('product-details', [$sale->product->category->id, $sale->product->sub_category->id, $sale->product->id]) }}">
+                                        <a class="primary_img" href="{{ route('product-details', [$sale->product->category->slug, $sale->product->sub_category->slug, $sale->product->slug]) }}">
                                             <img src="{{ asset($sale->product->image_primary)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{ route('product-details', [$sale->product->category->id, $sale->product->sub_category->id, $sale->product->id]) }}">
+                                        <a class="secondary_img" href="{{ route('product-details', [$sale->product->category->slug, $sale->product->sub_category->slug, $sale->product->slug]) }}">
                                             <img src="{{ asset($sale->product->image_secondary)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">-{{ $sale->percentage }}%</span>
@@ -44,7 +44,7 @@
                                     </div>
                                     <figcaption class="product_content">
                                         <div class="product_content_inner">
-                                            <h4 class="product_name"><a href="{{ route('product-details', [$sale->product->category->id, $sale->product->sub_category->id, $sale->product->id]) }}">
+                                            <h4 class="product_name"><a href="{{ route('product-details', [$sale->product->category->slug, $sale->product->sub_category->slug, $sale->product->slug]) }}">
                                                     {{ $sale->product->name }}</a></h4>
                                             <div class="price_box">
                                                 <span class="current_price">BDT {!! $sale->product->price - ($sale->product->price * $sale->percentage / 100) !!}</span>
@@ -84,7 +84,7 @@
                             <div class="single_slider d-flex align-items-center w-full" style="background-image: url('{{ asset($deal->product->image_primary)}}')">
                                 <div class="m-5 font-bold text-xl text-danger">
                                     <a class="hover:text-pink-500"
-                                       href="{{ route('product-details', [$deal->product->category_id, $deal->product->sub_category_id, $deal->product->id]) }}">
+                                       href="{{ route('product-details', [$deal->product->category->slug, $deal->product->sub_category->slug, $deal->product->slug]) }}">
                                         <i class="fa fa-gift"> </i> Take the Deal</a>
                                     <h1>at BDT {{ $deal->price }} only !</h1>
                                 </div>

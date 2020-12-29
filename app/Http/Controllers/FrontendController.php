@@ -46,9 +46,9 @@ class FrontendController extends Controller
             'newProducts', 'featuredCategories', 'featuredProdIds', 'allSale'));
     }
 
-    public function shop($shopId)
+    public function shop($shopSlug)
     {
-        $shop = Category::findOrFail($shopId);
+        $shop = Category::whereSlug($shopSlug)->first();
         $categories = Category::all();
         $data = $shop->products()->paginate(9);
 
@@ -56,10 +56,10 @@ class FrontendController extends Controller
         return view('frontend.shop', compact('categories', 'data', 'shop'));
     }
 
-    public function subshop($shopId, $subId)
+    public function subshop($shopSlug, $subSlug)
     {
-        $shop = Category::findOrFail($shopId);
-        $subshop = SubCategory::findOrFail($subId);
+        $shop = Category::whereSlug($shopSlug)->first();
+        $subshop = SubCategory::whereSlug($subSlug)->first();
         $categories = Category::all();
         $data = $subshop->products()->paginate(9);
 
@@ -67,12 +67,12 @@ class FrontendController extends Controller
         return view('frontend.subshop', compact('subshop', 'shop', 'data'));
     }
 
-    public function product_details($shopId, $subId, $productId)
+    public function product_details($shopSlug, $subSlug, $prodSlug)
     {
-        $category = Category::findOrFail($shopId);
-        $sub_category = SubCategory::findOrFail($subId);
-        $product = Product::where('category_id', $shopId)->where('sub_category_id', $subId)->findOrFail($productId);
-        $related_products = Product::where('category_id', $shopId)->limit(20)->get();
+        $category = Category::whereSlug($shopSlug)->first();
+        $sub_category = SubCategory::whereSlug($subSlug)->first();
+        $product = Product::whereSlug($prodSlug)->first();
+        $related_products = Product::where('category_id', $category->id)->limit(20)->get();
         $brands = Brand::all();
 
 
@@ -174,16 +174,17 @@ class FrontendController extends Controller
         return view('frontend.about', compact('brands', 'page'));
     }
 
-    public function amar_care($catId)
+    public function amar_care($catSlug)
     {
-        $vlogs = AmarCare::where('category_id', $catId)->latest()->get();
+        $category = Category::whereSlug($catSlug)->first();
+        $vlogs = AmarCare::where('category_id', $category->id)->latest()->get();
 
         return view('pages.amar-care', compact('vlogs'));
     }
 
-    public function vlog($catId, $vlogId)
+    public function vlog($catSlug, $vlogSlug)
     {
-        $vlog = AmarCare::findOrFail($vlogId);
+        $vlog = AmarCare::whereSlug($vlogSlug)->first();
 
         return view('pages.vlog', compact('vlog'));
     }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="02f0aa49-9097-47f5-adc0-9f89ab9a72f3" name="Nuraiz" url="http://ftp.fruitbd.com">
+        <fileTransfer rootFolder="/nuraiz.fruitbd.com" host="ftp.fruitbd.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

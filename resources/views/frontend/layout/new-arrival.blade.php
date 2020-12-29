@@ -17,9 +17,9 @@
                 <article class="single_product mr-3">
                     <figure class="h-full flex flex-column justify-start">
                         <div class="product_thumb">
-                            <a class="primary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
+                            <a class="primary_img" href="{{ route('product-details', [$newProduct->category->slug, $newProduct->sub_category->slug, $newProduct->slug]) }}">
                                 <img src="{{ asset($newProduct->image_primary)}}" alt=""></a>
-                            <a class="secondary_img" href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
+                            <a class="secondary_img" href="{{ route('product-details', [$newProduct->category->slug, $newProduct->sub_category->slug, $newProduct->slug]) }}">
                                 <img src="{{ asset($newProduct->image_secondary)}}" alt=""></a>
                             <div class="label_product">
                                 <span class="label_sale">-{{ $newProduct->discount }}%</span>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <figcaption class="product_content">
-                            <h4 class="product_name"><a href="{{ route('product-details', [$newProduct->category->id, $newProduct->sub_category->id, $newProduct->id]) }}">
+                            <h4 class="product_name"><a href="{{ route('product-details', [$newProduct->category->slug, $newProduct->sub_category->slug, $newProduct->slug]) }}">
                                     {{ $newProduct->name }}</a></h4>
                             <div class="price_box">
                                 <span class="current_price">BDT {{ $newProduct->price - round($newProduct->price * $newProduct->discount / 100) }}</span>

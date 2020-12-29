@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
 {
@@ -48,6 +49,7 @@ class SubCategoryController extends Controller
 
         SubCategory ::create([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'image' => $path,
             'category_id' => $request->category_id
         ]);
@@ -105,6 +107,7 @@ class SubCategoryController extends Controller
 
         $sub_category->update([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'image' => $path,
         ]);
 

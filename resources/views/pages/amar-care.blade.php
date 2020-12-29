@@ -34,7 +34,7 @@
                         <div class="col-md-3 col-lg-3 col-sm-6">
                             <div class="single_banner m-2">
                                 <div class="banner_thumb img-thumbnail">
-                                    <a href="{{ route('vlog', [$vlog->category->id, $vlog->id]) }}">
+                                    <a href="{{ route('vlog', [$vlog->category->slug, $vlog->slug]) }}">
                                         <img class="img-fluid banner_image" src="http://img.youtube.com/vi/{{ $vlog->video }}/mqdefault.jpg" alt="">
                                     </a>
                                 </div>

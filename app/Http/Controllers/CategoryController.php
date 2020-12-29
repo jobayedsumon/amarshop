@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -45,6 +46,7 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'image' => $path,
         ]);
 
@@ -100,6 +102,7 @@ class CategoryController extends Controller
 
         $category->update([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'image' => $path,
         ]);
 

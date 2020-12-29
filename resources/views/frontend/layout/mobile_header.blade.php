@@ -87,14 +87,14 @@
                                     @endphp
 
                                     @forelse($categories as $category)
-                                        <li class="menu-item-has-children"><a href="{{ route('shop', $category->id) }}">{{ $category->name }}</a>
+                                        <li class="menu-item-has-children"><a href="{{ route('shop', $category->slug) }}">{{ $category->name }}</a>
 
                                             <ul class="sub-menu">
 
 
                                                 @forelse($sub_categories = $category->sub_categories as $sub_category)
 
-                                                    <li><a href="{{ route('subshop', [$category->id, $sub_category->id]) }}">{{ $sub_category->name }}</a></li>
+                                                    <li><a href="{{ route('subshop', [$category->slug, $sub_category->slug]) }}">{{ $sub_category->name }}</a></li>
                                                 @empty
                                                 @endforelse
 

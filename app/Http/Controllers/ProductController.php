@@ -12,6 +12,7 @@ use App\SubCategory;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -86,6 +87,7 @@ class ProductController extends Controller
 
         $product = Product::create([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'price' => $request->price,
             'quantity' => $request->quantity,
             'discount' => $request->discount,
@@ -239,6 +241,7 @@ class ProductController extends Controller
 
         $product->update([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'price' => $request->price,
             'quantity' => $request->quantity,
             'discount' => $request->discount,

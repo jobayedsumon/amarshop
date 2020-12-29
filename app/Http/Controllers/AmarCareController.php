@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class AmarCareController extends Controller
 {
@@ -55,6 +56,7 @@ class AmarCareController extends Controller
 
         $vlog = AmarCare::create([
             'title' => $request->title,
+            'slug' => Str::slug($request->title),
             'category_id' => $request->category_id,
             'video' => $request->video,
             'description' => $request->description,
@@ -117,6 +119,7 @@ class AmarCareController extends Controller
 
         $amarcare->update([
             'title' => $request->title,
+            'slug' => Str::slug($request->title),
             'category_id' => $request->category_id,
             'video' => $request->video,
             'description' => $request->description,

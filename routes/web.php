@@ -14,6 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/generate-slug', function () {
+   $categories = \App\Category::all();
+   foreach ($categories as $category) {
+       $category->slug = \Illuminate\Support\Str::slug($category->name);
+       $category->save();
+   }
+   $sub_categories = \App\SubCategory::all();
+   foreach ($sub_categories as $sub_category) {
+       $sub_category->slug = \Illuminate\Support\Str::slug($sub_category->name);
+       $sub_category->save();
+   }
+   $products = \App\Product::all();
+   foreach ($products as $product) {
+       $product->slug = \Illuminate\Support\Str::slug($product->name);
+       $product->save();
+   }
+    $amar_cares = \App\AmarCare::all();
+    foreach ($amar_cares as $amar_care) {
+        $amar_care->slug = \Illuminate\Support\Str::slug($amar_care->title);
+        $amar_care->save();
+    }
+
+   echo "Successful!";
+});
+
+
 Route::get('/generate-sitemap', function () {
 
     \Spatie\Sitemap\SitemapGenerator::create('https://amarshop.com.bd')->writeToFile(public_path('sitemap.xml'));
@@ -48,9 +74,13 @@ Route::get('/compare/remove', function () {
  */
 
 Route::get('/', 'FrontendController@index')->name('home');
-Route::get('/shop/{shopId}', 'FrontendController@shop')->name('shop');
-Route::get('/shop/{shopId}/subshop/{subId}', 'FrontendController@subshop')->name('subshop');
-Route::get('/shop/{shopId}/subshop/{subId}/product/{productId}', 'FrontendController@product_details')->name('product-details');
+
+
+Route::get('/shop/{shopSlug}', 'FrontendController@shop')->name('shop');
+Route::get('/shop/{shopSlug}/subshop/{subSlug}', 'FrontendController@subshop')->name('subshop');
+Route::get('/shop/{shopSlug}/subshop/{subSlug}/product/{prodSlug}', 'FrontendController@product_details')->name('product-details');
+
+
 Route::get('/wishlist', 'FrontendController@wishlist')->name('wishlist');
 Route::get('/compare', 'FrontendController@compare')->name('compare');
 Route::get('/cart', 'FrontendController@cart')->name('cart');
@@ -74,8 +104,9 @@ Route::post('/customer-login', 'CustomerController@login_customer');
 Route::post('/customer-register', 'CustomerController@register_customer');
 Route::get('/contact', 'FrontendController@contact');
 Route::get('/about', 'FrontendController@about');
-Route::get('/amar-care/{catId}', 'FrontendController@amar_care');
-Route::get('/amar-care/{catId}/vlog/{vlogId}', 'FrontendController@vlog')->name('vlog');
+
+Route::get('/amar-care/{catSlug}', 'FrontendController@amar_care');
+Route::get('/amar-care/{catSlug}/vlog/{vlogSlug}', 'FrontendController@vlog')->name('vlog');
 
 //AJAX CALL
 Route::post('/wishlist/add', 'AjaxController@add_wishlist');

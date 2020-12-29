@@ -107,7 +107,7 @@
   "title" : "{{ $product->name }}",
   "image" : "{{ asset($product->image_primary) }}",
   "description" : "{{ $product->description }}",
-  "url" : "{{ route('product-details', [$product->category->id, $product->sub_category->id, $product->id]) }}",
+  "url" : "{{ route('product-details', [$product->category->slug, $product->sub_category->slug, $product->slug]) }}",
   "brand" : {
     "@type" : "Brand",
     "name" : "{{ $product->brand->name }}",

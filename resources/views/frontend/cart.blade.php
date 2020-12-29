@@ -69,8 +69,8 @@
 
                                 <tr>
                                    <td class="product_remove"><a href="/cart/remove/{{ $data['cart_id'] }}"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="{{ route('product-details', [$product->category_id, $product->sub_category_id, $product->id]) }}"><img src="{{ asset($product->image_primary) }}" alt=""></a></td>
-                                    <td class="product_name"><a href="{{ route('product-details', [$product->category_id, $product->sub_category_id, $product->id]) }}">{{ $product->name }}</a></td>
+                                    <td class="product_thumb"><a href="{{ route('product-details', [$product->category->slug, $product->sub_category->slug, $product->slug]) }}"><img src="{{ asset($product->image_primary) }}" alt=""></a></td>
+                                    <td class="product_name"><a href="{{ route('product-details', [$product->category->slug, $product->sub_category->slug, $product->slug]) }}">{{ $product->name }}</a></td>
                                     <td class="product-price"><span style="background-color: {{ $color ? $color->name : '' }}" class="p-3"> &nbsp;</span></td>
                                     <td class="product-price">{{ $size ? $size->name : '' }}</td>
                                     @php $discount = $product->sale ? $product->sale->percentage : $product->discount; @endphp
