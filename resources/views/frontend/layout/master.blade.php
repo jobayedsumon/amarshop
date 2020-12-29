@@ -6,7 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Amar Shop - Shop With A Smile</title>
-    <meta name="description" content="">
+
+    @isset($product)
+        <meta name="title" content="{{ $product->name }}">
+    <meta name="description" content="{{ strip_tags($product->description) }}">
+    @endisset
 
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
